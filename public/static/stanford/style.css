@@ -3254,3 +3254,10 @@ input.select::-webkit-calendar-picker-indicator {
     align-items: center;
     gap: 24px;
 }
+
+/* Added new styles */
+
+.submit {
+    background: #0b57d0;
+    color:#fff;
+}

@@ -1,0 +1,313 @@
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width:780px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 4.4rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+                height:30px;
+            }
+            .pagebreak{
+                 background: #9e9e9e;
+                 width: 100%;
+                 height: 5px;
+                 margin-top: 50px;
+                 margin-bottom: 80px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+        .mtable{
+          width:820px;
+        }
+        @media screen and (max-width: 600px) {
+             .mtable{
+              zoom:1
+            }
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+        <div class="pagepdf" style="padding-top:80px;">
+            <table style="width:100%;">
+                <tr>
+                 <td class="w50" style="height: 50px;"><img src="https://taxprep.republictax.com/static/images/logob.png"> </td>
+                  <td></td>
+                 </tr> 
+            </table>
+            <h2 style="text-align: center;">One Time Credit Card Payment Authorization Form</h2>
+            <p>Sign and complete this form to authorize Republic Tax to make a one time debit to your credit card listed below.</p>
+            <p>By signing this form you give us permission to debit your account for the amount indicated 
+on or after the indicated date. This is permission for a single transaction only, and does not provide authorization for any additional unrelated debits or credits to your account.</p>
+            <table class="ftable" style="width:100%;">  
+               <tbody>
+                 <tr>
+                     <td><br>
+                     <hr style=" height: 3px; background-color:#000; border: none; ">
+                    </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="bold">Please complete the information below:</p>
+            <p>I {{CCN}} authorize Republic Tax to charge my credit card on behalf of {{NM}}</p>
+            <p style="margin-top:20px;">on account indicated below:</p>
+            <p style="min-height:80px;">{{IN}}</p>
+            <p style="margin-top:20px;">This payment is for tax services:</p>
+            <p style="min-height:80px;">{{SN}}</p>
+             <table class="ftable" style="width:100%; border:1px solid #000;">  
+               <tbody>
+                 <tr>
+                     <td style="padding-left:20px;">
+                     <p>Billing Address:{{CCA}}</p>
+                     <p>Account Type:{{CCT}}</p>
+                     <p>City, State, Zip:{{CCC}} {{CCST}} {{CCZ}}</p>
+                     <p>Cardholder Name:{{CCN}}</p>
+                     <p>Account Number:{{CCNU}}</p>
+                     <p>Expiration Date:{{CCE}}</p>
+                     <br>
+                    </td>
+                  </tr>
+               </tbody>
+            </table>
+            <table class="ftable" style="width:100%;margin-top:50px;">  
+               <tbody>
+                 <tr>
+                     <td style="width:50%">
+                         <div style="display: flex;">
+                            <div>SIGNATURE</div>
+                            <div style="margin-left:10px;">{{signature}}</div>
+                         </div>
+                     </td>
+                     <td style="width:50%">
+                       Date <span class="underline">{{currentdate}}</span>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>     
+            <p style="margin-top:20px;font-size:12px;margin-bottom:50px;">I authorize the above named business to charge the credit card indicated in this authorization form according to the terms outlined above. This payment authorization is for the goods/services described above, for the amount indicated above only, and is valid for one time use only. I certify that I am an authorized user of this credit card and that I will not dispute the payment with my credit card company; so long as the transaction corresponds to the terms indicated in this form.</p>
+            <p style="margin-top:20px;font-size:12px;margin-bottom:50px;text-align: center;">255 E Rincon St Ste. 225 Corona, CA 92879 * Phone: (951) 824-1708 * fax:(213) 550-0062  <span style="inline-block;margin-left:20px;">{{HID}}</span></p>
+            <p style="margin-top:20px;font-size:12px;padding-bottom:50px;text-align: center;"></p>
+    </div>   
+   
+     </div>
+      </div> 

@@ -1,0 +1,292 @@
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width:780px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 4.4rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+                height:30px;
+            }
+            .pagebreak{
+                 background: #9e9e9e;
+                 width: 100%;
+                 height: 5px;
+                 margin-top: 50px;
+                 margin-bottom: 80px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+        .mtable{
+          width:820px;
+        }
+        @media screen and (max-width: 600px) {
+             .mtable{
+              zoom:1
+            }
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+        <div class="pagepdf" style="padding-top:80px;">
+            <p>Taxpayer (and Spouse, if applicable) Full Legal Name(s) {{NM}}</p>
+            <p>Tax Year: {{YNF}}</p>
+            <p style="margin-top:20px">Republic Account# {{HID}}</p>
+            <p style="margin-top:20px">I, {{NM}}, understand that in order to prepare complete and correct tax returns, I must provide all information that is requested from Republic and it's representatives. I certify that I am either unable or unwilling to provide information requested including, but not limited to: W-2s, Form 1099s, administrative documents requested, backup documentation, organizers, questionnaires, etc. I am formally requesting that Republic prepare my tax returns based off of the Wage and Income Transcripts (W&I) for the above referenced year(s) that they obtained from the Internal Revenue Service on my behalf. I have been sent a copy of the W&I for each year listed above and have reviewed the transcript(s) completely. I am certifying under penalty of perjury that the W&I transcript for the above mentioned year(s) contains complete and total information of ALL taxable income I received in that tax year. I understand that the IRS only provides Republic with the W&I, but they may have additional information internally that is not reflected on the transcript(s). I attest that <span class="bold">DID NOT </span> receive any additional taxable income from what is reported on the W&I for the above referenced year.
+            </p>
+            <div style="display: flex;flex-direction: row-reverse">{{signature1}}<br>(initial here)</div>
+            <p style="margin-top:20px">
+            I also understand that while I may have previously contracted Republic to prepare State returns (if applicable), <span class="bold">the W&I DOES NOT include ANY State tax information</span>, Since I have failed to provide the necessary information to prepare a true and accurate State tax return for the above mentioned year, I am waiving the portion of the contract that states that Republic will provide State Tax Preparation. I also understand that if at a later date I need Republic to prepare State Tax returns, I will be required to sign a new contract and pay any applicable fees in that contract relating to State tax preparation.
+            </p>
+             <div style="display: flex;flex-direction: row-reverse">{{signature2}}<br>(initial here)</div>
+            <p style="margin-top:20px">
+            Furthermore, I understand that if I have misrepresented the facts of my case, omitted information or lied about any aspect of my tax returns (including, but not limited to filing/marital status), I will be subject to fines, penalties and possibly fraud charges from the Internal Revenue Service or other government agencies. I release Republic and any of its owners, employees, contractors and/or representatives of liability in the event that my returns are examined and it is found that I have underreported income, or otherwise misstated any information included in my tax return(s).
+            </p>
+            <div style="display: flex;flex-direction: row-reverse">{{signature3}}<br>(initial here)</div>
+            <p style="margin-top:20px">
+           In the event that I am requesting current tax year return preparation, I understand that the Wage and Income Transcript may not be finalized by the date that my tax returns are prepared. I understand it is my responsibility to provide ALL true, correct and relevant facts pertaining to the preparation of my tax returns. Current tax year preparation is defined as the last, single most current, tax year that closed prior to the date of my signature below. In regards to current year tax preparation, I certify that I have truthfully and completely provided ALL INCOME and expense documentation and any additional pertinent information to Republic to accurately and completely prepare my current year tax returns. I further understand that if I fail to provide ALL information to accurately prepare my current year tax preparation, I am SOLELY responsible for ALL data on my tax returns and will not hold Republic liable for any omissions of Income, expenses or facts on my tax returns.
+            </p>
+            <p style="margin-top:20px">
+          By signing this letter, l am certifying that l acknowledge and understand all items contained herein and that all items in this letter are true and correct.
+            </p>
+            <table class="ftable" style="width:100%; margin-top:20px;font-size:14px;">  
+               <tbody>
+                 <tr style="height:40px;">
+                     <td>{{signature4}}</td>
+                     <td>{{currentdate}}</td>
+                 </tr>
+                 <tr>
+                     <td><div style="border-bottom: 1px solid #000;width:300px;"></div></td>
+                     <td><div style="border-bottom: 1px solid #000;width:300px;"></div></td>
+                 </tr>
+                 <tr>
+                     <td>Taxpayer Signature</td>
+                     <td>Date</td>
+                 </tr>
+               </tbody>
+            </table>
+          <p style="height:30px;"></p>
+    </div>   
+   
+     </div>
+      </div> 

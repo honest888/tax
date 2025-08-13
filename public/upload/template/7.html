@@ -1,0 +1,776 @@
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width:780px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 4.4rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+                height:30px;
+            }
+            .pagebreak{
+                 background: #9e9e9e;
+                 width: 100%;
+                 height: 5px;
+                 margin-top: 50px;
+                 margin-bottom: 80px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+        .mtable{
+          width:820px;
+        }
+        @media screen and (max-width: 600px) {
+             .mtable{
+              zoom:1
+            }
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+        <div class="pagepdf" style="padding-top:80px;">
+            <table style="width:100%;">
+                <tr>
+                 <td class="w50" style="height: 50px;"><img src="https://taxprep.republictax.com/static/images/logob.png"> </td>
+                  <td>{{HID}}</td>
+                 </tr> 
+            </table>
+            <h2 style="text-align: center;font-size: 22px;">Engagement Agreement</h2>
+            <p>This agreement is entered into on {{currentdate}}; I(we) <span class="underline">{{NM}}</span> (known as the client) hereby retain the services of Republic Tax to represent me (us) individually and collectively.Republic Tax agrees to represent the client in consideration of the client's payment of the required fees set forth, and demonstrated in section 3 of this agreement. The term of this agreement is three years from the date of this agreement, or until service(s) (see section 2 for scope of representation services) are completed, whichever is preceded.</p>
+            <h2>Section 1. Client(s) General Information</h2>
+                <table class="ftable" style="width:100%;line-height: 20px;"> 
+                    <tr>
+                        <td style="width:50%">
+                          Name:{{NM}}
+                        </td>
+                        <td>
+                          SSN:{{SSN}}
+                        </td>
+                        <td>
+                          DOB:{{DB}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">
+                          Spouse:{{SP}}
+                        </td>
+                        <td>
+                          SSN:{{SPN}}
+                        </td>
+                        <td>
+                          DOB:{{SDB}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">
+                          Address:{{ADDR}}<br>
+                          {{ADDR2}}
+                        </td>
+                        <td>
+                         
+                        </td>
+                        <td>
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">
+                          Business Name:{{BN}}<br>
+                          (if Applicable)
+                        </td>
+                        <td>
+                          EIN:{{EI}}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">
+                          Mailing Address:{{MA}}
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">
+                         Phone:{{WP}}
+                        </td>
+                        <td>Email:{{EM}}</td>
+                        <td></td>
+                    </tr>
+            </table>
+            <h2>Section 2. Scope of Representation Services</h2>
+            <p>Republic Tax's representation of client will include and is limited to the following services:</p>
+            <p>Tax years owed to Federal: {{YO}}<br>
+              Tax years not filed Federal: {{YNF}}<br>{{YYY}}</p>
+            <p class="bold">The following services are being contracted for. Please see Appendix C below for full description: </p>
+            <p style="min-height:200px;">{{SN}}</p>
+            <h2>Section 3. Compliance</h2>
+            <p>In order to maintain compliance per Internal Revenue Service and state agency guidelines for the resolution contracted for client, we highly recommend annual returns to be performed, completed and submitted by Republic Tax on your behalf.This process ensures that full compliance is maintained and you do not default on any resolution that requires a minimum compliance term to remain in effect. Failure to remain compliant will result in offer or installment default and render any resolution void. To avoid such a costly error, client will maintain compliance by performing annual personal (1040 or 1040EZ) or business returns (1040 Schedule C,1120,1065) for a minimum fee of $395.00 and $800, respectively depending on complexity.<br>
+            To maintain such compliance, please indicate on Appendix A below. Client must supply Republic Tax with all tax forms necessary to complete returns in a timely manner fifteen (15) days prior to submittal due date. Failure to do so may result in added fees and penalties from federal and state agencies and result in non compliance of offered and established services.Terms of such service are during the duration of the resolution engagement and for a period of three (3) years from the date of resolution completion.</p>
+            <p></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+            <table class="ftable" style="width:100%;"> 
+                    <tr>
+                        <td>
+                          <div style="display: flex;justify-content: space-between;font-weight: bold;">
+                              <div>
+                              </div>
+                              <div>
+                              Initial(s)-{{signature}}
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+            </table>
+            <h2>Section 4. Service Fees</h2>
+            <p>All retainers and fees for services are earned when paid. See APPENDIX D for Fee Schedule. Because the majority of our services are performed at the beginning of each engagement, no refunds are given. All invoices are due upon presentation. Failure to pay either the retainer request or invoices shall cause our firm to immediately stop providing services without further notice. The fee applies to those services indicated in Section 2 of this agreement and is limited for the term of this agreement.</p>
+            <p>Any obligations on our part become null and void if you fail to provide us with information on a timely manner or if you provide us with false and misleading information. All unpaid fees shall become immediately due. Timely manner is defined as five (5) business days from the request date.</p>
+            <p style="height:150px;margin-top:20px;">{{IN}}</p>
+            <table class="ftable" style="width:100%;">  
+               <tr>
+                 <td><br>
+                 <hr style=" height: 2px; background-color:#4f81bd; border: none; ">
+                </td>
+              </tr>
+            </table>
+           <p class="underline italic">Professional fees to be paid as followed according to <span class="bold">Appendix D</span> included below.</p>
+           <p style="margin-top:40px;">For <span style="text-decoration: underline;">Credit Card</span>, please complete the following:</p>
+            <div style="margin:0 auto;width:93%;">
+           <table style="width:100%; border-collapse: collapse;margin: 10px 0;">
+              <tr class="tline"> 
+                <td width="10" class="paddingbottom">-</td> 
+                <td  class="paddingbottom">{{CCT}}</td>
+                <td width="10"  class="paddingbottom">-</td>
+                <td class="paddingbottom">{{CCN}}</td>
+              </tr>
+              <tr style="vertical-align: top;"> <!-- 关键4: 顶部对齐 -->
+                <td colspan="2" style="padding-top: 2px;">Type (Visa/MC/Amex)</td>
+                <td colspan="2" style="padding-top: 2px;">Card-holder Name</td>
+              </tr>
+            </table>
+             <table style="width:100%;border-collapse: collapse;margin: 10px 0;"> 
+                <tr class="tline"> 
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCNU}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCE}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCV}}</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td colspan="2" style="padding-top: 2px;">Credit Card Number</td>
+                    <td colspan="2" style="padding-top: 2px;">Exp. Date</td>
+                    <td colspan="2" style="padding-top: 2px;">CVV2</td>
+                </tr>
+              </table> 
+               <table style="width:100%;border-collapse: collapse;margin: 10px 0;"> 
+                <tr class="tline"> 
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCA}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCC}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCST}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{CCZ}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-top: 2px;">Billing Address</td>
+                    <td colspan="2" style="padding-top: 2px;">City</td>
+                    <td colspan="2" style="padding-top: 2px;">State</td>
+                    <td colspan="2" style="padding-top: 2px;">Zip Code</td>
+                </tr>
+              </table>
+              </div>
+           <p style="margin-top:40px;font-size:11px;">If this service is unable to deduct the payment(s) due to insufficient funds or the account is closed, or if the credit card charge is declined, this service reserves the right to cancel the agreement or charge a penalty and or collection fee. Client accepts responsibility for any overdraft fees charged by the bank. If client needs to change any payment date(s) or amount(s), client must contact 72 hours prior to the payment date(s) for consideration. Republic Tax will do whatever possible within reason to assist all clients with payments on a case by case basis.</p>  
+           <p style="margin-top:20px;font-size:12px;margin-bottom:200px;" class="italic bold">
+           NOTICE AND ACKNOWLEDGMENT OF PAYMENT FOR SERVICES: BY SIGNING THIS BILLING AUTHORIZATION FORM I HEREBY ACKNOWLEDGE THAT I HAVE AGREED TO RETAIN THIS SERVICE FOR THE ABOVE STATED FEE TO REPRESENT ME BEFORE THE IRS AND OR STATE TAXING AUTHORITY(S). I FURTHER ACKNOWLEDGE THAT NO WARRANTIES OR PROMISES HAVE BEEN MADE TO ME AS TO ANY ULTIMATE OUTCOME WITH REGARDS TO MY TAX LIABILITY(S). SEE APPENDIX F FOR DETAILS. </p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+        <h2>Section 5. Signatures</h2>
+        <p>By signing below, you acknowledge that you have read and agree to this agreement in full including <span class="bold underline">Appendixes A-F </span>below and/or in this document.</p>
+        <table class="ftable" style="width:100%;line-height: 20px;"> 
+                    <tr>
+                        <td style="width:50%;height: 60px;">
+                          <div style="display: flex">
+                           <div>X:</div>
+                           <div>{{signature1}}</div>
+                           </div>
+                        </td>
+                        <td>
+                          Date:{{currentdate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%;height: 60px;">
+                          PRINT NAME:{{NM}}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%;height: 60px;">
+                         Republic Tax's Representative:{{SO}}
+                        </td>
+                        <td>
+                         Case #:{{CASEID}}
+                        </td>
+                    </tr>
+            </table>
+            <h2 class="underline">APPENDIX A</h2>
+            <h2>TAX RETURN COMPLIANCE SERVIC</h2>
+            <p>I, <span class="underline">{{NM}}</span>,understand and authorize Republic Tax to maintain and file required tax returns for me on an annual basis based on the minimum fees discussed in Section 3 above. Please opt out in writing to decline this service. By not opting in, I understand that failure to file on a timely basis will result in a default with the Federal and State taxing agencies and my resolution will be terminated by those respective agencies, resulting in increased fees, penalties and interest.</p>
+            <table class="ftable" style="width:100%;"> 
+             <td style="width:15%;vertical-align: bottom;"><div style="vertical-align: middle;line-height: 100px">{{signature2}}</div><div style="border-top:2px solid #000;height:20px"><span class="underline">INITIALS</span></div></td>
+             <td><p style="margin-left:10px;">By initialing here, you are requesting Republic Tax Relief to be retained to prepare and file tax returns throughout the duration of the resolution engagement and for a period of (3) three consecutive years from the date of resolution completion, unless otherwise specified within said contract. This requested service has a base retainer fee specified in "Section 3 - Compliance" of this contract and will be billed to the taxpayer's account with Company Name annually (with respect to the tax return type needed,i.e. individual personal tax or corporation tax) for the stated (3) years in Mid January each year, exact date to be provided prior to billing. Cancellation of this agreement must be done in writing and within five(5) business days of January 10.</p></td>
+            </table>
+            <h2 class="underline">APPENDIX B</h2>
+            <h2>Cancellation and Disclaimer of Guarantee</h2>
+            <p>I, <span class="underline">{{NM}}</span>,understand and authorize Republic Tax's disclaimer of guarantee and cancellation policies in Apendix E, Section 7 and 8, detailed below. In summary, Republic Tax does not guarantee services or outcomes and any communication to that effect shall not be construed as such. Republic Tax has a no cancellation policy once the agreement is executed and services started.</p>
+            <table class="ftable" style="width:100%;"> 
+             <td style="width:15%;vertical-align: bottom;"><div style="vertical-align: middle;line-height: 100px">{{signature3}}</div><div style="border-top:2px solid #000;height:20px"><span class="underline">INITIALS</span></div></td>
+             <td><p style="margin-left:10px;">By initialing here, you have read and understand the policies and disclaimers of Republic Tax towards cancellation and Guarantee of Services, further outlined in Appendix E, Section 7 and 8. </p></td>
+            </table>
+             <p style="text-align: right;margin-top:200px;"></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+        <h2 class="underline">APPENDIX C</h2>
+        <p><span class="bold underline">Description of Services:</span> Please refer to Appendix F for a definition of Scope of Services, RTR method of completion, Client Responsibilities, Suspension,cancellation,Termination and Disclaimer of Guarantee.</p>
+        <p style="min-height: 330px;">
+          {{SI}}
+        </p>
+        <h2 class="underline">APPENDIX D</h2>
+        <p><span class="bold underline">Schedule of Fees</span></p>
+        <p style="min-height: 520px;">
+          {{SPM}}
+        </p>
+        <p>*Please note that if payment falls on a Saturday or Sunday or Bank Holiday, Republic Tax will process the payment the previous business day automatically. In order to avoid any declines, please make note of this policy and contact Republic Tax's accounts receivable department to make your change of preference. There will be a $25 fee for declined Credit Card payments and a $50 fee for ACH or check NSF (Non Sufficient Funds) payments scheduled on the agreed upon payment date to cover administrative and service fees. It is the clients responsibility to ensure funds are available on the scheduled date.</p>
+        <p style="text-align: right;margin-top:50px;"></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+       <h2 class="underline">APPENDIX E</h2>
+       <p style="margin-top:30px;">All fees for services are earned in whole upon performance of the tasks set forth in the Fee Schedule below:</p>
+             <table class="ftable" style="width:95%;margin:0 auto;font-size:12px;">
+                    <tr>
+                        <td width="60%" style="height:30px;text-align: center;font-weight: 600">
+                         Fee Schedule
+                        </td>
+                        <td width="40%" style="padding-left:10px;text-align: center;font-weight: 600">
+                        Percentage of Fee Earned
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: 3px solid #4f81bd;background: #d3dfee;height:40px; font-weight: bold;padding-left:15px;    width: 65%;">
+                           Prepare and Submit Power of Attorney to requisite Taxing Authority(s)
+                        </td>
+                        <td style="border-top: 3px solid #4f81bd;background: #d3dfee;text-align: center;">
+                           10%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;font-weight: bold;padding-left:15px;">
+                          Perform 15 year Compliance Check, Review Record of Account, Wage and Income and Tax Authority Account Transcripts
+                        </td>
+                        <td style="text-align: center;">
+                           10%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background: #d3dfee;height:40px; font-weight: bold;padding-left:15px;">
+                           Set up payment plan, if available
+                        </td>
+                        <td style="background: #d3dfee;text-align: center;">
+                           5%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;font-weight: bold;padding-left:15px;">
+                         Review and Analysis of financial documents submitted by client
+                        </td>
+                        <td style="text-align: center;">
+                           25%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background: #d3dfee;height:40px; font-weight: bold;padding-left:15px;">
+                          Development of appropriate tax resolution strategy
+                        </td>
+                        <td style="background: #d3dfee;text-align: center;">
+                           10%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;font-weight: bold;padding-left:15px;">
+                        Contact requisite taxing authority(s) regarding resolution strategy
+                        </td>
+                        <td style="text-align: center;">
+                           10%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background: #d3dfee;height:40px; font-weight: bold;padding-left:15px;">
+                         Negotiations with requisite taxing Authority(s)
+                        </td>
+                        <td style="background: #d3dfee;text-align: center;">
+                           10%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;font-weight: bold;padding-left:15px;">
+                        Preparation of tax resolution documents
+                        </td>
+                        <td style="text-align: center;">
+                           15%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background: #d3dfee;height:40px; font-weight: bold;padding-left:15px;">
+                        Submission of completed documents to requisite taxing authority(s)
+                        </td>
+                        <td style="background: #d3dfee;text-align: center;">
+                           5%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom: 3px solid #4f81bd;height:40px;font-weight: bold;padding-left:15px;">
+                        Client follow-up for additional documentation and substantiation
+                        </td>
+                        <td style="border-bottom: 3px solid #4f81bd;text-align: center;">
+                          AS NEEDED
+                        </td>
+                    </tr>
+                    
+            </table>
+        <p>In the event of a voluntary withdrawal on behalf of the client, a refund will be granted on a pro-rata basis according to the completed tasks listed in the FEE SCHEDULE above. RTR will subtract the value of  completed services from the total fees agreed upon and return payments for services not rendered according to the fee schedule. A $200.00 cancellation fee will be charged to CLIENT for voluntary withdrawal.</p>    
+
+       <p style="margin-top:40px;">All refund requests must be submitted in writing to the following address:</p>
+       <p style="margin-top:20px;text-align: center" class="bold" >
+          Republic Tax Relief
+          <br>c/o Compliance Officer
+          <br>255 E Rincon St #225
+          <br>Corona, CA 92879
+       </p>      
+       <p>No refunds will be granted in the event of termination of a client by RTR for failure to comply with the terms of this Agreement.</p> 
+       <h2 class="underline"  style="margin-bottom:20px;margin-top:20px;">APPENDIX F</h2>
+        <table class="ftable" style="width:95%;margin:0 auto;font-size:12px;">
+          <tr>
+            <td><h2>1.</h2></td>
+            <td><h2>SCOPE OF SERVICES</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px">RTR has agreed to assist CLIENT with the specific services described in Section 2 of this Agreement. Any services not described therein, or on a separate addendum attached to this Agreement, are outside the scope of this Agreement and not the responsibility of RTR. If CLIENT and RTR mutually agree on additional services, an addendum to this Agreement will be executed and an additional fee will be collected. </td>
+          </tr>
+          <tr>
+            <td><h2>2.</h2></td>
+            <td><h2>INTEREST AND PENALTIES</h2></td>
+          </tr>
+       </table>
+       <p style="text-align: right;margin-top:100px;"></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+      <table class="ftable" style="width:95%;margin:0 auto;font-size:12px;">          
+          <tr>
+            <td></td>
+            <td>Interest and penalties will continue to accrue on your tax liability until your balance is paid. RTR cannot stop this accrual, and CLIENT remains solely liable for any such additional amounts.</td>
+          </tr>  
+          <tr>
+            <td><h2>3.</h2></td>
+            <td><h2>THE REPUBLIC TAX RELIEF METHOD</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px">RTR utilizes a team of attorneys, Certified Public Accountants (CPAs), IRS Enrolled Agents (EAs), and other professionals to perform tax resolution, mediation, and preparation services. At the commencement of this agreement, RTR will file a Power of Attorney (POA) on behalf of the CLIENT with the appropriate taxing
+authority(s).<br>
+            Once the POA has been executed, RTR will conduct a thorough investigation—using financial information provided by the client—to determine CLIENT'S outstanding tax liability and whether CLIENT is in filing compliance. Based on the findings of the investigation, RTR will prepare a final resolution tax plan in accordance with the legal collections options provided by the Internal Revenue Service. This plan will be prepared, submitted, and negotiated with the appropriate taxing authority(s).
+            <br>
+            RTR will provide the best tax resolution possible to CLIENT, based on CLIENT'S individual circumstance.
+Resolution may include an installment agreement, Offer in Compromise, penalty abatement, Currently Non-Collectible status, etc.; however, not every type of resolution is available to every client, and RTR will solely determine the best resolution based on the CLIENT'S individual circumstance.<br>
+            Each taxing authority decides the outcome of all requests made before it, and no specific resolution is ever guaranteed. In addition, none of the services can be relied upon to detect errors or illegal acts that may exist; however, RTR will inform CLIENT of any such matters as they occur. The amount of an Offer in Compromise is not based upon a national or overall average of tax debt forgiveness rates, but on the unique facts of each taxpayer. RTR will perform its duties in a manner consistent with the degree of care and skill ordinarily exercised by members of the same profession currently practicing under similar circumstances, in providing services under this Agreement.          
+            </td>
+          </tr>  
+          <tr>
+            <td><h2>4.</h2></td>
+            <td><h2>CLIENT's Responsibilities/Duties</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px"><span class="bold">a) Full Disclosure.</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>In accordance with the Treasury Department's Regulations Governing Practice before the Internal Revenue Service,RTR will exercise due diligence in preparation of documents and forms using financial information provided by CLIENT. Circular 230 §10.34(d) states that RTR may rely in good faith without verification upon information furnished by CLIENT whenever possible. CLIENT remains responsible for the accuracy and completeness of the financial disclosure, and fully indemnifies RTR from any damages or consequences resulting directly or indirectly from representations made by CLIENT. CLIENT agrees to be truthful and cooperative, and to provide RTR with full and accurate disclosure of all financial information related to CLIENT'S tax matter. CLIENT agrees to notify RTR of any changes in financial circumstance, marital status, contact information, or any other information that is material to the outcome of CLIENT'S case within 14 days of occurrence.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;"><span class="bold">b) Instruction</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>CLIENT agrees to follow all advice and instruction provided by RTR regarding the timely filing of tax returns,making required payments to the appropriate taxing authority(s), and signing any financial forms or statements necessary to resolve CLIENT'S tax liability</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;"><span class="bold">c) IRS Communications.</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>CLIENT agrees not to contact the IRS or state taxing authority(s) regarding CLIENT'S specific tax matter, unless otherwise instructed to do so by RTR.</td>
+          </tr>  
+       </table>
+            <p style="margin-top:200px;"></p>
+    </div>
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+        <table class="ftable" style="width:95%;margin:0 auto;font-size:12px;"> 
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;"><span class="bold">d) Payment.</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>CLIENT will make timely payments, as required by this Agreement. CLIENT acknowledges that they are responsible for all fees charged by the IRS and state taxing authority(s) for the filing and/or acceptance of the appropriate tax remedy.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;"><span class="bold">e) Representation.</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>CLIENT agrees that RTR's representation of CLIENT is conditioned on CLIENT staying current with the filing of all tax returns and paying all future tax liabilities as they come due. Failure to remain in compliance with timely filing and payment requirements will limit RTR's ability to effectively represent CLIENT and may result in a rejection of any resolution set up for CLIENT under this Agreement</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;"><span class="bold">f) Response.</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>CLIENT agrees to respond promptly (within 14 days, unless otherwise noted) to every request by RTR for additional documentation or substantiation. CLIENT agrees that any documentation or information provided to RTR is truthful, accurate, and complete. CLIENT agrees to immediately notify and provide RTR copies of all notifications received from the IRS and/or state taxing authorities that are related to their specific tax situation.</td>
+          </tr>
+          <tr>
+            <td><h2>5.</h2></td>
+            <td><h2>SUSPENSION</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px">RTR may place CLIENT'S account in to a temporary suspended status for any of the following reasons:</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;padding-left:10px;">a) CLIENT fails to provide RTR with requested documents or information within the specified timeframe</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-left:10px;">b) CLIENT fails to make timely payment as set forth in this Agreement</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-left:10px;">c) CLIENT fails to comply with any of the terms of this Agreement</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">In the event of a temporary suspension, no refunds or exchanges will be granted. CLIENT shall be notified in writing in the event of a suspension. A minimum reinstatement fee of $250.00 may be charged.</td>
+          </tr>
+          <tr>
+            <td><h2>6.</h2></td>
+            <td><h2>TERMINATION</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">RTR may terminate services and revoke its Power of Attorney for any of the following reasons:</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;padding-left:10px;">a) CLIENT fails to provide RTR with requested documents or information within the specified timeframe</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-left:10px;">b) CLIENT acts contrary to the advice given by RTR</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-left:10px;">c) CLIENT fails to make timely payments as set forth in this Agreement</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-left:10px;">d) CLIENT presents any fact or circumstance that would render the work by RTR as unlawful or unethical</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-left:10px;">e) CLIENT fails to comply with any of the terms of this Agreement</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">In the event of a termination, no refunds or exchanges will be granted. CLIENT shall be notified in writing in the event of a termination. A minimum reinstatement fee of $500.00 may be charged.</td>
+          </tr>
+          <tr>
+            <td><h2>7.</h2></td>
+            <td><h2>Cancelation</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">In the event of voluntary withdrawal by CLIENT or termination by RTR, the Power of Attorney on file with RTR
+will be revoked. Additionally, a cancellation letter will be submitted to CLIENT, identifying the reason(s) for the cancellation.<br>
+            Should CLIENT wish to be reinstated with RTR, a minimum $500.00 reinstatement fee and a new Service Agreement will be required. In the event of another cancellation, this reinstatement fee is not refundable for any reason.
+           </td>
+          </tr>
+        </table>
+         <p style="margin-top:200px;"></p>
+    </div>
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+        <table class="ftable" style="width:95%;margin:0 auto;font-size:12px;"> 
+         <tr>
+            <td><h2>8.</h2></td>
+            <td><h2>DISCLAIMER OF GUARANTEE</h2></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">RTR makes no promises or guarantees to CLIENT about the outcome of negotiations, and nothing in this Agreement shall be construed as such. RTR makes no warranties or representations as to time it takes to perform or complete services, since this time will vary on an individual basis.
+           </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">RTR does not make any guarantees or assurances that tax liens will not be filed, that RTR can prevent accrual interest or penalties on outstanding tax liabilities, or that any other collections action will be avoided as RTR cannot control government policy, procedure or law changes, or lack of disclosure by CLIENT.
+           </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding-top:20px;">CLIENT has the right to accept or reject any settlement negotiated by RTR. CLIENT acknowledges that each of the various taxing authorities will determine the acceptability of any proposal and may reject, counter, or accept a proposal set forth by RTR.
+           </td>
+          </tr>
+        </table>
+         <p style="margin-top:200px;height:500px;"></p>
+    </div>
+    
+     </div>
+      </div> 

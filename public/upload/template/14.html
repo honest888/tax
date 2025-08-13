@@ -1,0 +1,600 @@
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width: 692px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 4.4rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+				height:30px;
+            }
+            .pagebreak{
+                   background: #9e9e9e;
+                    width: 100%;
+                    height: 5px;
+                   margin-top: 30px;
+                     margin-bottom: 50px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+		.mtable{
+		  width:820px;
+		}
+		@media screen and (max-width: 600px) {
+			 .mtable{
+			  zoom:1
+			}
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+     <div class="pagepdf mtable" style="padding-top:60px;">
+                <p style="text-align: right;margin-bottom: 20px; margin-left: 30px;width: 70%;">{{HID}}</p>
+                <table class="ftable" style="width:100%">   
+                    <tr>
+                        <td style="border-bottom: 2px solid #000;border-right: 2px solid #000;width:15%;">
+                            <p style="width:100%;font-size:0.6rem">Form <span style="font-size:1.6rem;font-weight:800">8879</span>
+                            <br>(Rev. January 2021) 
+                            Department of the Treasury Internal Revenue Service
+                            </p>
+                        </td>
+                        <td style="border-bottom: 2px solid #000;text-align: center;width:70%;">
+                           <p style="font-size: 16px; font-weight: 800;">IRS <span class="italic">e-file</span> Signature Authorization</p>
+                            <ul class="arrow-list" style="font-size:12px;">
+                                <li><b>ERO must obtain and retain completed Form 8879</b></li>
+                                <li><b>Go to <span class="italic">www.irs.gov/Form8879</span> for the latest information.</b></li>
+                            </ul>
+                        </td>
+                        <td style="width:15%;border-bottom: 2px solid #000;border-left: 2px solid #000;">
+                           <p style="width:100%;margin-bottom: 2px;text-align: center;font-size:12px;">OMB No. 1545-0074</p>
+                        </td>
+                    </tr>
+                </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="font-size:16px;">
+                        Submission Identification Number(SID) <span class="arrow"></span>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="55%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;">
+                           Taxpayer's name <br>{{NM}}
+                        </td>
+                        <td width="45%" style="border-bottom: 1px solid #000;padding:3px 0 3px 6px">
+                           <span class="bold"> Social security number</span><br>{{SSN}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="55%" style="border-bottom: 2px solid #000;border-right: 1px solid #000;vertical-align:top;">
+                           Spouse's Name <br>{{SP}}
+                        </td>
+                        <td width="45%" style="border-bottom: 2px solid #000;padding:3px 0 3px 6px">
+                            <span class="bold"> Spouse's social security number</span><br>{{SPN}}
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="font-size:15px;border-bottom:2px solid #000;padding-top:0;padding-bottom: 0;">
+                         <span style="background: #000;color:#fff;margin-right: 20px; font-weight: 800;"> Part I </span> <span class="bold">Tax Return Information - Tax Year Ending Decemeber 31,{{taxrep7}}</span> (Enter year you are authorizing.)
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="75%" style="">
+                           Enter whole dollars only on line 1 through 5
+                           <br>
+                           Note:Form 1040-SS filers use line 4 only.Leave lines 1,2,3 and 5 blank.
+                        </td>
+                        <td width="25%">
+                            
+                        </td>
+                    </tr>
+            </table>
+            <style>
+              .tlcol{width:5%;border-bottom: 1px solid #000;border-left: 1px solid #000;text-align: center;font-weight: bold;}
+              .trcol{width:18%;border-bottom: 1px solid #000;border-left: 1px solid #000;text-align: center;}
+              .t1 li{
+                height:20px;
+              }
+              .t1{
+                margin-bottom:0;
+              }
+            </style>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="80%" rowspan="5">
+                          <ul class="t1" style="list-style: decimal;">
+                            <li>
+                                <div style='display: inline-flex;width: 100%;align-items: center;line-height: 30px;'>
+                                   <div>Adjusted gross income</div>
+                                   <div style="margin-left: 10px;width: 75%;"><hr style="border: 1px dashed #000;width:100%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div style='display: inline-flex;width: 100%;align-items: center;line-height: 30px;'>
+                                   <div>Total tax</div>
+                                   <div style="margin-left: 10px;width: 88%;"><hr style="border: 1px dashed #000;width:100%"></div>
+                                </div>
+                             </li>
+                             <li>
+                                <div style='display: inline-flex;width: 100%;align-items: center;line-height: 30px;'>
+                                   <div>Federal income tax withheld form Form(s)W-2 and Form(s) 1099</div>
+                                   <div style="margin-left: 10px;width: 36%"><hr style="border: 1px dashed #000;width:100%"></div>
+                                </div>
+                             </li>
+                             <li>
+                                <div style='display: inline-flex;width: 100%;align-items: center;line-height: 30px;'>
+                                   <div>Amount you want refunded to you</div>
+                                   <div style="margin-left: 10px;width: 65%;"><hr style="border: 1px dashed #000;width:100%"></div>
+                                </div>
+                             </li>
+                             <li>
+                                <div style='display: inline-flex;width: 100%;align-items: center;line-height: 30px;'>
+                                   <div>Amount you owe</div>
+                                   <div style="margin-left: 10px;width: 81%;"><hr style="border: 1px dashed #000;width:100%"></div>
+                                </div>    
+                            </li>
+                          </ul>
+                        </td>
+                        <td class="tlcol">
+                            1
+                        </td>
+                        <td class="trcol">
+                            {{taxrep1}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  class="tlcol">
+                            2
+                        </td>
+                        <td class="trcol">
+                            {{taxrep2}}
+                        </td>
+                    </tr>
+                     <tr>
+                        <td class="tlcol">
+                            3
+                        </td>
+                        <td  class="trcol">
+                            {{taxrep3}}
+                        </td>
+                    </tr>
+                     <tr>
+                        <td class="tlcol">
+                           4
+                        </td>
+                        <td class="trcol">
+                            {{taxrep4}}
+                        </td>
+                    </tr>
+                     <tr>
+                        <td style="width:5%;border-left: 1px solid #000;text-align: center;font-weight: bold;">
+                           5
+                        </td>
+                        <td style="width:18%;border-left: 1px solid #000;text-align: center;">
+                            {{taxrep5}}
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="font-size:15px;border-top: 2px solid #000;border-bottom: 2px solid #000;padding-top:0;padding-bottom: 0;">
+                         <span style="background: #000;color:#fff;margin-right: 20px; font-weight: 800;"> Part II </span> <span class="bold">Taxpayer Declaration and Signature Authorization (Be sure you get and keep a copy of your return) </span> 
+                        </td>
+                    </tr>
+            </table>
+            <p style="font-size:13px">
+            Under penalties of perjury,l declare that l have examined a copy of the income tax return (original or amended) I am now authorizing, and to the best of my knowledge and belief, it is true, correct, and complete. l furher declare that the amounts in Part I above are the amounts from the income tax return (original or amended) I am now authorzing. I consent o allow my intemediate service provider, transmitter, or electronic return originator(ERO) to send my return to the lRS and to receive from the IRS(a) an acknowledgement of receipt or reason for rejection of the transmission, (b) the reason for any delay in processing the return or refund, and (c) the date of any refund. lf applicable, I authorize the U.S. Treasury and its designated Financial Agent to initiate an ACH electronic funds withdrawal (direct debit) entry to the financial institution account indicated in the tax preparation software for payment of my federal taxes owed on this return and/or a payment of estimated tax, and the financial institution to debit the entry to this account. This authorization is to remain in full force and effect until notify the U.S. Treasury Financial Agent to terminate the authorization. To revoke (cancel) a payment, I must contact the U.S. Treasury Financial Agent at <span class="bold">1-888-353-4537</span>. Payment callellation requests must be received no later than 2 business days prior to the payment (settlement) date. I also authorize the financial institutions involved in the processing of the electronic payment of taxes to receive confidential information necessary to answer inquiries and resolve issues related to the payment. I futher acknowledge that the personal idenifcation number (PIN) below is my signature for the income tax return (original or amended) l am now authonizing and, if applicable, my Ectronic Funds Withdrawal Consent.
+            </p>
+            <p class="bold">Taxpayer's PIN:check one box only</p>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td style="text-indent:20px;font-size:14px;">
+                        <input type="checkbox" checked> </td>
+                        <td style="vertical-align: middle;font-size:14px;">
+                        
+                       <span>I authorize 
+                            <div style="display:inline-flex">
+                            <table style="border-collapse: collapse;">
+                               <tr>
+                                  <td><span class="underline">Republic Tax Relief </span></td>
+                               </tr>
+                               <tr>
+                                  <td style="font-weight: bold;">ERO firm name</td>
+                               </tr>
+                            </table>
+                            </div>
+                        to enter or generate my PIN </span>
+                            <div style="display:inline-flex">
+                            <table style="border-collapse: collapse;">
+                               <tr>
+                                  <td style="border:1px solid #000;font-size:26px;">2</td>
+                                  <td style="border:1px solid #000;font-size:26px;">1</td>
+                                  <td style="border:1px solid #000;font-size:26px;">2</td>
+                                  <td style="border:1px solid #000;font-size:26px;">2</td>
+                                  <td style="border:1px solid #000;font-size:26px;">2</td>
+                               </tr>
+                               <tr>
+                                  <td style="font-weight: bold;" colspan="5">Enter five digits,but<br> dont's enter all zeros</td>
+                               </tr>
+                            </table>
+                            </div>
+                         <span>as my signature on the income tax return (original or amended) I am now authoring.
+                       </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-indent:20px;">
+                        <input type="checkbox"> </td>
+                        <td style="vertical-align: middle;font-size:14px;">
+                         I will enter my PIN as my signature on the income tax return (original or amended) I am now authorizing. Check this box only if you are entering your own PIN and your return is filed using the Practitioner PIN method. The ERO must complete Part III below.
+                        </td> 
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+              <tr>
+                 <td style=" width:15%;font-size:14px;">
+                 <p>Your signature <span class="arrow"></span></p></td> 
+                 <td style="border-bottom:1px solid #000;">{{signature}}</td>
+                 <td style=" width:7%;font-size:14px;">Date <span class="arrow"></span> </td> 
+                 <td style="border-bottom:1px solid #000;font-size:14px;">{{currentdate}}</td>
+              </tr>
+            </table>
+             <p class="bold">Spouse's PIN:check one box only</p>
+             <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td style="text-indent:20px;">
+                        <input type="checkbox" checked> </td>
+                        <td style="vertical-align: middle;font-size:14px;">
+                        
+                       <span>I authorize 
+                            <div style="display:inline-flex">
+                            <table style="border-collapse: collapse;">
+                               <tr>
+                                  <td><span class="underline">Republic Tax Relief </span></td>
+                               </tr>
+                               <tr>
+                                  <td style="font-weight: bold;">ERO firm name</td>
+                               </tr>
+                            </table>
+                            </div>
+                        to enter or generate my PIN </span>
+                            <div style="display:inline-flex">
+                            <table style="border-collapse: collapse;">
+                               <tr>
+                                  <td style="width:23px;height:34px;border:1px solid #000;font-size:26px;">2</td>
+                                  <td style="width:23px;height:34px;border:1px solid #000;font-size:26px;">1</td>
+                                  <td style="width:23px;height:34px;border:1px solid #000;font-size:26px;">2</td>
+                                  <td style="width:23px;height:34px;border:1px solid #000;font-size:26px;">2</td>
+                                  <td style="width:23px;height:34px;border:1px solid #000;font-size:26px;">2</td>
+                               </tr>
+                               <tr>
+                                  <td style="font-weight: bold;" colspan="5">Enter five digits,but<br> dont's enter all zeros</td>
+                               </tr>
+                            </table>
+                            </div>
+                         <span>as my signature on the income tax return (original or amended) I am now authoring.
+                       </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-indent:20px;">
+                        <input type="checkbox"> </td>
+                        <td style="vertical-align: middle;font-size:14px;">
+                         I will enter my PIN as my signature on the income tax return (original or amended) I am now authorizing. Check this box only if you are entering your own PIN and your return is filed using the Practitioner PIN method. The ERO must complete Part III below.
+                        </td> 
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+              <tr>
+                 <td style=" width:20%;font-size:14px;">
+                 <p>Spouse's signature <span class="arrow"></span></p></td> 
+                 <td></td>
+                 <td style=" width:7%;font-size:14px;">Date <span class="arrow"></span> </td> 
+                 <td style="font-size:14px;"></td>
+              </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="font-size:15px;border-top:2px solid #000;text-align: center;font-weight: bold;">
+                        Practitioner PIN Method Returns Only-continue below
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="font-size:15px;border-top: 2px solid #000;border-bottom: 2px solid #000;padding-bottom:0">
+                         <span style="background: #000;color:#fff;margin-right: 20px; font-weight: 800;"> Part III </span> <span class="bold">Certifictation and Authentication - Practitioner PIN Method Only </span> 
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td style="vertical-align: middle;font-size:14px;padding-top:0">
+                        
+                       <span class="bold">ERO's EFIN/PIN.</span> Enter your six-digit EFIN followed by your five-digit self-selected PIN.
+                            <div style="display:inline-flex">
+                            <table style="border-collapse: collapse;">
+                               <tr>
+                                  <td style="border:1px solid #000;width:18px;height:26px;"> </td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;"></td>
+                                  <td style="border:1px solid #000;width:18px;height:30px;"></td>                                  
+                               </tr>
+                               <tr>
+                                  <td style="font-weight: bold;text-align: center;" colspan="11">Don't enter all zeros</td>
+                               </tr>
+                            </table>
+                            </div>
+                       
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-size:13px;">I certify that the above numeric entry is my PIN, which is my signature for the electronic individual income tax return (original or amended) I am now authorized to file for tax year indicated above for the taxpayer(s) indicated above. I confirm that I am submitting this return in accordance with the requirements of the Practitioner PIN method and <span class="bold">PUB.1245</span>, Handbook for Authorized IRS <span class="italic">e-file</span> Providers of individual Income Tax Returns.</p>
+                <table class="ftable" style="width:100%;">
+                  <tr>
+                     <td style=" width:20%;font-size:14px;">
+                     <p>ERO's signature <span class="arrow"></span></p></td> 
+                     <td style=" width:7%;font-size:14px;">Date <span class="arrow"></span> </td> 
+                  </tr>
+                </table>
+                <p style="border-top:2px solid #000;text-align: center;font-weight: bold;padding-top:5px;margin-bottom:0;margin-top:0;font-size:15px;">ERO Must Retain This Form - See Instructions<br>
+                Don't Submit This Form to the IRS Unless Requested To Do So
+                </p>
+                <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  style="onecols">
+                        <hr style=" height: 2px; background-color: black; border: none; ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <div style="display: flex;justify-content: space-between;">
+                              <div>
+                              <span class="bold">For Paperwork Reduction Act Notice,see your tax return instructions.</span>
+                              </div>
+                              <div>
+                              Cat. No. 32778X
+                              </div>
+                              <div>
+                              Form <span class="bold">8879</span> (Rev.01-2021)
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+            </table>
+            <p style="height:50px;"></p>
+        </div>
+     </div>
+      </div> 

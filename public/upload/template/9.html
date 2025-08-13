@@ -1,0 +1,317 @@
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width:780px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 4.4rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+                height:30px;
+            }
+            .pagebreak{
+                 background: #9e9e9e;
+                 width: 100%;
+                 height: 5px;
+                 margin-top: 50px;
+                 margin-bottom: 80px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+        .mtable{
+          width:820px;
+        }
+        @media screen and (max-width: 600px) {
+             .mtable{
+              zoom:1
+            }
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+        <div class="pagepdf" style="padding-top:80px;">
+            <p style="margin-top:20px;">Billing Schedule</p> 
+            <p style="margin-top:20px;min-height:200px;font-size:13px;">{{SPM}}</p>  
+            <p style="font-size:13px;">*Please note that if payment falls on a Saturday or Sunday or Bank Holiday, Republic Tax will process the payment the previous business day automatically. In order to avoid any declines, please make note of this policy and contact Republic Tax's accounts receivable department to make your change of preference. <span style="text-decoration: underline;">There will be a $25 fee for declined Credit Card payments and a $50 fee for ACH or check NSF (Non Sufficient Funds) payments scheduled on the agreed upon payment date to cover administrative and service fees.</span> It is the clients responsibility to ensure funds are available on the scheduled date.</p>
+            
+            <p style="margin-top:20px;">For <span style="text-decoration: underline;">Credit Card</span>, please complete the following:</p>
+            <div style="margin:0 auto;width:93%;">
+           <table style="width:100%; border-collapse: collapse;margin: 10px 0;">
+              <tr class="tline"> 
+                <td width="10" class="paddingbottom">-</td> 
+                <td  class="paddingbottom">{{inputCCN}}</td>
+                <td width="10"  class="paddingbottom">-</td>
+                <td class="paddingbottom">{{inputCCT}}</td>
+              </tr>
+              <tr style="vertical-align: top;"> <!-- 关键4: 顶部对齐 -->
+                <td colspan="2" style="padding-top: 2px;">Card-holder Name</td>
+                <td colspan="2" style="padding-top: 2px;">Type (Visa/MC/Amex)</td>
+              </tr>
+            </table>
+             <table style="width:100%;border-collapse: collapse;margin: 10px 0;"> 
+                <tr class="tline"> 
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCNU}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCE}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCV}}</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td colspan="2" style="padding-top: 2px;">Credit Card Number</td>
+                    <td colspan="2" style="padding-top: 2px;">Exp. Date</td>
+                    <td colspan="2" style="padding-top: 2px;">CVV2</td>
+                </tr>
+              </table> 
+               <table style="width:100%;border-collapse: collapse;margin: 10px 0;"> 
+                <tr class="tline"> 
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCA}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCC}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCST}}</td>
+                    <td width="10" class="paddingbottom">-</td>
+                    <td class="paddingbottom">{{inputCCZ}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-top: 2px;">Billing Address</td>
+                    <td colspan="2" style="padding-top: 2px;">City</td>
+                    <td colspan="2" style="padding-top: 2px;">State</td>
+                    <td colspan="2" style="padding-top: 2px;">Zip Code</td>
+                </tr>
+              </table>
+              </div>
+            
+            
+            <p style="font-size:13px;margin-bottom:80px;margin-top:220px;">
+I have read and agree to the following fee schedule for services. I also acknowledge I have read and fully understand Section 8 of the Service Agreement that details all refund and cancelation policies.
+            </p>
+            <p>{{signature}}</p>
+            <div class="signature-line" ></div>
+            <p style="margin-top:50px;font-size:13px;">{{CCN}}</p>   
+            <p style="text-align: right;font-size:13px;">{{HID}}</p>
+            <p style="height:30px;"></p>
+        </div>
+        <!--table start-->
+     </div>
+      </div> 

@@ -1,0 +1,484 @@
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width:800px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 3rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+                height:30px;
+            }
+            .pagebreak{
+                 background: #9e9e9e;
+                 width: 100%;
+                 height: 5px;
+                 margin-top: 50px;
+                 margin-bottom: 80px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+        .mtable{
+          width:820px;
+        }
+        @media screen and (max-width: 600px) {
+             .mtable{
+              zoom:1
+            }
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+        <div class="pagepdf" style="padding-top:80px;">
+            <table style="width:100%;">
+                <tr>
+                 <td class="w50" style="height: 50px;"><img src="https://taxprep.republictax.com/static/images/logob.png"> </td>
+                  <td></td>
+                 </tr> 
+            </table>
+            <h2 style="text-align: center;font-size: 22px;">Tax Preparation Agreement</h2>
+            <p>Thank you for engaging Republic Tax to assist you in your annual tax preparation services.</p>
+            <p>Here are the terms of our professional relationship.</p>
+            <ul class="leftm" style="list-style-type: decimal;line-height: 22px;">
+                <li>We will prepare our work product based only on information which you give us. You represent that you will provide us with information, which is complete, true and correct, disclosing all relevant facts. You understand we won't audit or verify your information.</li>
+                <li>The IRS says it is your responsibility that all items of income and expense are properly included and presented on your tax return. You promise to review the returns carefully before signing and submitting form 8879.</li>
+                <li>We will, if possible, e-file your returns. For a variety of reasons your e-filing may be rejected, in which case we will prepare returns for paper filing. There will be an additional charge for re-compiling the returns for paper filing.</li>
+                <li>You're aware of IRS record keeping and documentation requirements, and you represent that you have the necessary documentation.</li>
+                <li>It is possible you may receive a notice for additional tax, or for clarification of items. You promise you will contact us if you receive any communication from any taxing authority. Additional work required including responding to any inquiries from tax authorities, tax planning, amended returns or audit work will be billed at our regular hourly rates.</li>
+                <li>There may be elections and decisions in your return which could be challenged by tax authorities. If we see a grey area, we will discuss it with you. We are required by law to disclose any position on a return for which there is a reasonable probability of challenge. Tax law is ever changing. It is possible that you may be assessed additional tax, interest, or penalties. While we try our best, we are human, and occasionally make mistakes. It's an imperfect world.</li>
+                <li>Penalties on underpayment, late filing, or failure to file on time are interest on unpaid tax and are your responsibility. If you receive a penalty imposed as the result of our error, we will reimburse you for the penalty or credit your account at our option.</li>
+                <li>You understand what was involved in the preparation of your return and acknowledge that the return was prepared with your informed consent. You agree to the reasonableness of our bill and terms of payment. (Upon presentation)</li>
+                <li>The IRS says that any advice which you receive from us, either in writing or orally, cannot be used as a defense against the assessment of a penalty.</li>
+                <li>We will return all the original source documents provided to us. We routinely scan and keep copies of some supporting documents, but you understand that we are not the custodian of your records, and you cannot rely upon us to maintain support for your tax return: that is your responsibility.</li>
+                <li>Should there be any disagreement of any sort between us, you agree to mediation. If mediation is unsuccessful, you agree to binding arbitration under the rules of the American Arbitration Association. The limit of time for making a claim arising from our services is one year after the services are rendered.</li>
+                <li>In the case of work product covering more than one party, the undersigned enters into this agreement on behalf of all affected parties. (i.e. husband signing for both spouses)</li>
+                <li>If any provision herein is inoperative, the remainder of this agreement shall remain in full force and effect. This agreement is intended as the complete agreement and can only be modified in writing signed by both of us.</li>
+                <li>Payment of Services Rendered.</li>
+            </ul>
+            <p></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+         <table style="width:100%;">
+                <tr>
+                 <td class="w50" style="height: 50px;"><img src="https://taxprep.republictax.com/static/images/logob.png"> </td>
+                  <td></td>
+                </tr> 
+        </table>
+        <ul style="padding-left:80px;">
+           <li>Services will not begin until 50% of tax preparation fee have been paid.</li>
+           <li>Payment is due in full at the completion of services rendered BEFORE tax returns are submitted to the IRS.</li>
+           <li>Payment for services rendered is due on all completed tax returns whether the client is to receive a refund or not.</li>
+           <li>Once preparation of a return is started, no refunds will be offered, and all fees collected to date will be marked as earned.</li>
+           <li>If added schedules or forms are required to complete the necessary filing, added fees will be assessed per the schedule below.</li>
+        </ul>
+        <p style="padding-left:80px">
+           The following is a fee schedule of tax services
+        </p> 
+         <style>
+          ul.custom-start {
+            list-style-type: none;
+            counter-reset: my-counter 14; 
+            text-indent: -25px; /* 文本向左移动 */
+   padding-left: 50px; /* 补偿缩进 */
+        }
+          ul.custom-start li::before {
+            counter-increment: my-counter;
+            content: counter(my-counter) ". ";
+          }
+          .leftcol{
+            border-top:1px solid #000;border-left:1px solid #000;padding-left:5px;
+          }
+          .rightcol{
+            border-top:1px solid #000;border-left:1px solid #000;border-right:1px solid #000;padding-left:5px;
+          }
+        </style>
+        <table style="width:60%;margin:0 auto;border-collapse: collapse;">
+             <tr>
+                <td class="leftcol">Basic Fee for 1040 Tax Prep - Individual</td>
+                <td class="rightcol">$375.00</td>
+             </tr> 
+             <tr>
+                <td class="leftcol">Basic Fee for Corp/LLC/LLP Tax Prep</td>
+                <td class="rightcol">$800.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Sch A - Itemized deductions</td>
+                <td class="rightcol">$35.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Sch B - Interest & Dividends</td>
+                <td class="rightcol">$35.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Sch C - Self employment</td>
+                <td class="rightcol">$125.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Sch D - Capital gains/losses</td>
+                <td class="rightcol">$125.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Sch E - Supplemental Income/ losses</td>
+                <td class="rightcol">$100.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">1099-C - Cancellation of debt</td>
+                <td class="rightcol">$100.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Form 4562 - Depreciation/ Amortization Spreadsheet</td>
+                <td class="rightcol">$65.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol">Form 4684 - Casualties & Thefts Worksheet</td>
+                <td class="rightcol">$50.00</td>
+             </tr>
+             <tr>
+                <td class="leftcol" style="border-bottom:1px solid #000;">Other Income Statement - Usually this is b/c of gambling winnings, but it can be many other things</td>
+                <td class="rightcol" style="border-bottom:1px solid #000;">$35.00</td>
+             </tr>
+        </table>   
+       
+        <ul class="custom-start">
+           <li>In the event, the Client discovers that they fail to provide all documentation and the tax return has already been completed (before filing), a fee of $100.00 will be assessed to make the necessary changes.</li>
+           <li>If the client's discovery is made following the filing of said tax return an amendment tax return will be required to include the additional information. Amendments are $250.00 per return.</li>
+        </ul>
+        <p style="font-size:15px;font-weight: bold;">Privacy Policy of Republic Tax</p>
+        <p>It has always been the policy of Republic Tax, Inc. to keep all information that we collect from you confidential from all sources. We restrict access to all nonpublic personal information about you to members of our firm who need to know that information to provide services to you. We do collect nonpublic personal information about you from the following sources:</p>    
+        <ul style="padding-left:40px;">
+            <li>Information we receive from you on tax preparation organizers, worksheets, Federal and State tax reporting forms, and from other documents we use in tax preparation or other financial and related services.</li>
+            <li>Information about your transactions with us, our affiliates, and others, and </li>
+            <li>Information we may receive from outside agencies such as banks and brokerage houses.</li>
+        </ul>
+        <p>We do not disclose any nonpublic personal information about our clients or former clients, except as permitted, required by law or approved by you in writing as listed below:</p>  
+        <ul style="padding-left:40px;">
+            <li>Requirements to comply with Federal, state or local law.</li>
+            <li>Requirements to comply with National, State or local licensing rules.</li>
+            <li>Requirements to disclose information in response to legal subpoenas.</li>
+            <li>Items you permit or request us to disclose, as authorized by you in writing.</li>
+        </ul>
+        <p></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">
+        <table style="width:100%;">
+            <tr>
+             <td class="w50" style="height: 50px;"><img src="https://taxprep.republictax.com/static/images/logob.png"> </td>
+             <td></td>
+            </tr> 
+        </table>
+      <ul style="padding-left:40px;">
+            <li>Information, which you authorize us to disclose by signing this engagement letter, to electronically file your tax return, when applicable.</li>
+       </ul>  
+       <p style="margin-left:30px;">
+          By signing the below, you as the client are certifying you acknowledge that you have read and agree to the terms and conditions set forth above. You are also confirming you have provided and disclosed all information truthfully, accurately & complete. In the event, it was discovered you provided fraudulent and/or misrepresented information to Republic Tax or ANY tax reporting agencies, all monies paid will be forfeited, tax preparation services will be discontinued, and you will take full responsibility for any fines, penalties, or other legalities.
+       </p> 
+       <p style="font-size:15px;font-weight: bold;margin-left:30px;">Taxpayer (s) Acknowledgement:</p>    
+            <table class="ftable" style="width:60%;margin-left:30px;">  
+               <tr>
+                 <td>{{NM}}</td>
+                 <td>{{currentdate}}</td>
+               </tr>
+               <tr>
+                 <td><hr style="border-bottom:1px solid #000;"></td>
+                 <td><hr style="border-bottom:1px solid #000;"></td>
+               </tr>
+               <tr>
+                 <td>Print Name</td>
+                 <td>Date</td>
+               </tr>
+               <tr>
+                 <td><br><br><br>{{signature1}}</td>
+                 <td></td>
+               </tr>
+               <tr>
+                 <td><hr style="border-bottom:1px solid #000;"></td>
+                 <td></td>
+               </tr>
+               <tr>
+                 <td>Signature</td>
+                 <td></td>
+               </tr>
+            </table>
+            <p style="text-align: center;margin-top:300px;margin-bottom:200px;">{{HID}}</p>
+          <p></p>
+    </div>   
+    <div class="pagebreak"></div> 
+    <div class="pagepdf">   
+         <!-- <table style="width:100%;">
+            <tr>
+             <td class="w50" style="height: 50px;"><img src="https://taxprep.republictax.com/static/images/logob.png"> </td>
+             <td></td>
+            </tr> 
+        </table> -->
+           <p style="font-size: 12px;margin-top:260px;">*Please note that if payment falls on a Saturday or Sunday or Bank Holiday, Republic Tax will process the payment the previous business day automatically. In order to avoid any declines, please make note of this policy and contact Republic Tax's accounts recievable department to make your change of preference. <span class="underline">There will be a $25 fee for declined Credit Card payments and a $50 fee for ACH or check NSF (Non Sufficient Funds) payments scheduled on the agreed upon payment date to cover administrative and service fees.</span> It is the clients responsibility to ensure funds are available on the scheduled date.</p>
+           <p style="margin-top:40px;">For <span style="text-decoration: underline;">Credit Card</span>, please complete the following:</p>
+            <div style="margin:0 auto;width:93%;">
+           <table style="width:100%; border-collapse: collapse;margin: 10px 0;">
+              <tr class="tline"> 
+                <td  class="paddingbottom">{{inputCCT}}</td>
+                <td class="paddingbottom">{{inputCCN}}</td>
+              </tr>
+              <tr style="vertical-align: top;"> <!-- 关键4: 顶部对齐 -->
+                <td  style="padding-top: 2px;">Type (Visa/MC/Amex)</td>
+                <td style="padding-top: 2px;">Card-holder Name</td>
+              </tr>
+            </table>
+             <table style="width:100%;border-collapse: collapse;margin: 10px 0;"> 
+                <tr class="tline"> 
+                    <td class="paddingbottom">{{inputCCNU}}</td>
+                    <td class="paddingbottom">{{inputCCE}}</td>
+                    <td class="paddingbottom">{{inputCCV}}</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="padding-top: 2px;">Credit Card Number</td>
+                    <td style="padding-top: 2px;">Exp. Date</td>
+                    <td style="padding-top: 2px;">CVV2</td>
+                </tr>
+              </table> 
+               <table style="width:100%;border-collapse: collapse;margin: 10px 0;"> 
+                <tr class="tline"> 
+                   
+                    <td class="paddingbottom">{{inputCCA}}</td>
+                    <td class="paddingbottom">{{inputCCC}}</td>
+                    <td class="paddingbottom">{{inputCCST}}</td>
+                    <td class="paddingbottom">{{inputCCZ}}</td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 2px;">Billing Address</td>
+                    <td style="padding-top: 2px;">City</td>
+                    <td  style="padding-top: 2px;">State</td>
+                    <td style="padding-top: 2px;">Zip Code</td>
+                </tr>
+              </table>
+              </div>
+          <h2>Billing Schedule</h2>
+          <p style="min-height: 300px;font-size:12px;" >{{SPM}}</p>
+          <div>{{signature2}}</div>
+          <p><div style="border-bottom:1px solid #000;width:200px;height:1px;"></div></p>
+          <p style="font-size:12px;">{{CCN}}</p>
+          <p style="height:100px;"></p>
+    </div>
+    
+     </div>
+      </div> 

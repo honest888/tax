@@ -1,0 +1,57 @@
+<style>
+	body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			font-size:16px;
+        }
+	textarea{
+	    border:none;
+		width:100%;
+		min-height:200px;
+	}
+</style> 
+<div style="width:80%;  margin: 0 auto;" class="mshow">
+			<table style="width:100%;">
+			    <tr>
+				 <td class="w50" style="height: 50px;"><img src="/static/images/logob.png"> </td>
+			    </tr> 
+			</table>
+		   <div style="padding:20px;border-top:none;">
+		    <div style="font-weight:bold;font-size:18px;margin-top:0px;text-align:center;margin-bottom:30px;">One Time Credit Card Payment Authorization Form</div>
+			<div>
+                <p>Sign and complete this form to authorize Republic Tax to make a one time debit to your credit card listed below.</p>
+				<p style="margin-top:20px;">
+				By signing this form you give us permission to debit your account for the amount indicated on or after the indicated date. This is permission for a single transaction only, and does not provide authorization for any additional unrelated debits or credits to your account.
+				</p>
+				<p style="margin-top:30px;height:4px;background: #000;"> </p>
+				<p style="margin-top:20px;font-weight:bold;margin-bottom:20px;">
+				Please complete the information below:
+				</p>
+				<p style="line-height: 40px;">I {{CCN}} authorize Republic Tax to charge my credit card on behalf of {{NM}}</p>
+				<p style="line-height: 40px;">On account indicated below:</p>
+				<p style="">{{IN}}</p>
+				<p style="line-height:40px;">This payment is for tax services:</p>
+				<p><textarea>{{SN}}</textarea></p>
+			</div>			   
+		   </div>
+		   <div style="border:1px solid #000;padding:10px;line-height: 25px;">
+		      <p>Billing Address {{CCA}}</p>
+		      <p>Account Type:</p>
+		      <p>City, State, Zip: {{CCC}}   {{CCST}}   {{CCZ}}</p>
+		      <p>Cardholder Name {{CCN}}</p>
+		      <p>Account Number  <span style="border-bottom:1px solid #000;">{{CCNU}}</span></p>
+		      <p>Expiration Date {{CCE}}</p>
+		   </div>
+		   <div style="padding:20px;border-top:none;margin-bottom:20px;">
+		     <div style="display: flex;justify-content: space-between;margin-top:20px;margin-bottom:30px;"><div>SIGNATURE <span style="border-bottom:1px solid #000;">{{signature}}</span></div> 
+		      <div>DATE <span style="border-bottom:1px solid #000;">{{currentdate}} </span></div></div>
+             <p>I authorize the above named business to charge the credit card indicated in this authorization form according to the terms outlined above. This payment authorization is for the goods/services described above, for the amount indicated above only, and is valid for one time use only. I certify that I am an authorized user of this credit card and that I will not dispute the payment with my credit card company; so long as the transaction corresponds to the terms indicated in this form.</p>
+		   </div>
+		   <div style="font-size:12px;text-align: center;">
+		      255 E Rincon St Ste. 225 Corona, CA 92879 * Phone: (951) 824-1708 * fax:(213) 550-0062 {{HID}}
+		   </div>
+		   <div style="font-size:12px;text-align: center;margin-top:30px;padding-bottom:40px;">
+		     {{CCNU}}
+		   </div>
+		</div>
