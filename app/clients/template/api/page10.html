@@ -1,0 +1,243 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+					
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+										<div class="master-detail-layout__main-content">
+											<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+												<h1 class="center text-center font-36 extrabold mt-20">Tell us about the fourth dependent</h1>
+												<div style="height: 20px;"></div>
+												<form class="row-wrap gap-20" style="width: 100%;">
+													<div class="f-field grow-1">
+														<label for="whfeu">First name&nbsp;</label>
+														<input class="firstname" data-src="dependents_3_name_first_name" placeholder="First name" autocomplete="off" type="text" value="{$detail.dependents_3_name_first_name}">
+													</div>
+													<div class="f-field grow-1">
+														<label for="05gro">Last name&nbsp;</label>
+														<input id="lastname" class="inputfield" data-src="dependents_3_name_last_name" placeholder="Last name" autocomplete="off" type="text" value="{$detail.dependents_3_name_last_name}">
+													</div>
+												</form>
+												<div class="f-field">
+													<label for="yy3yu">Social Security Number&nbsp;</label>
+													<input id="social" class="inputfield" data-src="dependents_3_social_security_number"  autocomplete="off" type="text" value="{$detail.dependents_3_social_security_number}">
+												</div>
+												<div class="f-field">
+													<label for="juun0">Date of Birth</label>
+													<input id="birth" class="inputfield" data-src="dependents_3_date_of_birth" placeholder="mm/dd/yyyy" autocomplete="off" type="text" value="{$detail.dependents_3_date_of_birth}">
+												</div>
+												<div class="f-field">
+													<label for="eqjai">Relationship&nbsp;</label>
+													<input id="relatoin" class="inputfield" data-src="dependents_3_relationship"  autocomplete="off" type="text"  value="{$detail.dependents_3_relationship}">
+												</div>
+												<div class="f-field">
+													<label for="bs5x5">Income (earned)&nbsp;
+													 <div class="popover__child" id="tip1">
+															<div class="tooltip-icon">?</div>
+														</div>
+													<div class="popover__element tipcommon">
+														<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+														<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Dependent Earned Income</h3>
+														<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Tell us how much earned income your dependent had and we'll follow up if we have any questions. 
+														Earned income likely won't be relevant unless it was over $4,700.
+														</span></span>
+													</div>
+													</label>
+													<input id="incomee" class="inputfield" data-src="dependents_3_income_earned"  value="{$detail.dependents_3_income_earned}" autocomplete="off" type="text" value="111">
+												</div>
+												<div class="f-field">
+													<label for="c52hy">Income (unearned)&nbsp;
+													    <div class="popover__child" id="tip2">
+															<div class="tooltip-icon">?</div>
+														</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Dependent Unearned Income</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Unearned income includes investment-type income such as taxable interest, ordinary dividends, and capital gain distributions.
+	The first $1,250 of a child's unearned income is typically tax-free.
+															</span></span>
+														</div>
+													</label>
+													<input id="incomeu" autocomplete="off" type="text"  class="inputfield" data-src="dependents_3_income_unearned" value="{$detail.dependents_3_income_unearned}">
+												</div>
+												<div class="f-field">
+													<label for="dc37t">No. of months in home&nbsp;</label>
+													<input id="minhome" autocomplete="off" type="text" data-src="dependents_3_months_resided_in_home" value="{$detail.dependents_3_months_resided_in_home}">
+												</div>
+												<div class="toggle-button__container ">They filed their own return<div style="width: 20px;"></div>
+													<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-1" class="cb-item_input" {if $detail.dependents_3_did_file_own_return eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-1" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+												<div class="toggle-button__container ">They were a full-time college student<div style="width: 20px;"></div>
+													<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-2" class="cb-item_input" {if $detail.dependents_3_was_full_time_college_student eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-2" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+												<div class="toggle-button__container ">They are disabled<div style="width: 20px;"></div>
+													<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-3" class="cb-item_input" {if $detail.dependents_3_is_disabled eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-3" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+											</div>
+										</div>
+									</main>
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+								// 判断是否是移动设备
+								   $('#tip2').hover(
+											function() {
+												// 当鼠标进入#trigger元素时执行
+												
+												var relativeElement = $(this);
+												var relativeOffset = relativeElement.offset();
+												var relativeHeight = relativeElement.outerHeight();
+												var relativeWidth = relativeElement.outerWidth();
+												 
+												// 获取绝对定位元素
+												var absoluteElement = $(this).next('.tipcommon');
+												var absoluteHeight = absoluteElement.outerHeight();
+												var absoluteWidth = absoluteElement.outerWidth();
+												
+												var leftPosition = relativeOffset.left + (relativeWidth / 2) - (absoluteWidth / 2);
+												 
+												// 设置绝对定位元素相对于相对元素的位置
+												absoluteElement.css({
+													position: 'absolute',
+													top: relativeOffset.top  + relativeHeight - absoluteHeight + 'px', // 加上'px'是为了将数值转换为字符串
+													left:leftPosition + 'px'
+												});
+												
+												
+												//$(this).parent().next('.tipcommon').css({'top':top,'left':left});
+												$(this).next('.tipcommon').show();
+												
+											},
+											function() {
+												// 当鼠标离开#trigger元素时执行
+												
+												$(this).next('.tipcommon').hide();
+											}
+									);	
+      $('.firstname').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#lastname').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#social').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#birth').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#relatoin').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#incomee').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+       $('#incomeu').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#minhome').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      }); 
+      $('#cb-item_ios-style-1').click(function () {
+      var val=0;
+      if ($(this).prop('checked')) {
+        val=1;
+      }
+      var fieldname='dependents_3_did_file_own_return';
+      var fieldvalue=val;
+      var link="{$detail.link}";
+      
+       $('#savetime').html('Saving');
+      ajax_post_field(fieldname,fieldvalue,link);  
+  });
+  $('#cb-item_ios-style-2').click(function () {
+      var val=0;
+      if ($(this).prop('checked')) {
+        val=1;
+      }
+      var fieldname='dependents_3_was_full_time_college_student';
+      var fieldvalue=val;
+      var link="{$detail.link}";
+      
+       $('#savetime').html('Saving');
+      ajax_post_field(fieldname,fieldvalue,link);  
+  });
+  $('#cb-item_ios-style-3').click(function () {
+      var val=0;
+      if ($(this).prop('checked')) {
+        val=1;
+      }
+      var fieldname='dependents_3_is_disabled';
+      var fieldvalue=val;
+      var link="{$detail.link}";
+      
+       $('#savetime').html('Saving');
+      ajax_post_field(fieldname,fieldvalue,link);  
+  });
+});
+</script>

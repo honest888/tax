@@ -1,0 +1,75 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<!--内容s-->
+<div class="circle">
+  <div class="common-tab">
+    <a class="tab act" data-type="1">圈子</a>
+    <a class="tab" data-type="2">美好世家</a>
+  </div>
+  <div class="circle-list"></div>
+  <a href="{:url('Circle/issue')}" class="iconfont iconwujilu issue"></a>
+  <div style="height: 50px"></div>
+</div>
+<!--内容e-->
+<!--底部导航s-->
+{include file='public:bottom'/}
+<!--底部导航e-->
+</body>
+{load href="__MOBILE__/css/zoomify.min.css"/}
+{load href="__MOBILE__/js/zoomify.min.js"/}
+<script>
+    var flag=true;
+    $(function () {
+        $('.common-tab .tab').on('click',function () {
+            if($(this).hasClass('act'))return;
+          var type=$(this).attr('data-type');
+          $(this).addClass('act').siblings().removeClass('act');
+          $('.circle-list').empty();
+          get_more(type);
+        });
+        get_more('{$type}');
+        $(document).on('click','.icondel',function () {
+          var id=$(this).attr('data-id');
+          if (!flag)return false;
+          confirmmsg('确定删除?',function () {
+            var url="{:url('Circle/circle_del')}";
+            var data={'id':id};
+            flag=false;
+            $.ajax({
+              url:url,
+              type:'post',
+              data:data,
+              dataType:'json',
+              success:function (res) {
+                if (res.code===1){
+                  msg(res.msg);
+                  $('.list'+id).remove();
+                }else{
+                  msg(res.msg);
+                }
+                flag=true;
+              },error:function () {
+                msg('网络错误,请稍后再试!')
+              }
+            });
+          });
+        })
+    });
+    function get_more(type) {
+      public_ajax('.circle-list',"{:url('Circle/ajax_get_circle')}",'&type='+type,'暂无相关记录');
+    }
+    function share(targetUrl) {
+      BSL.ShareImgWithTxt('WEIXIN','详情','', targetUrl, '详情' ,'Share1')
+    }
+    function Share(result){
+      if(result == '1'){
+        alert('分享成功');
+      }else{
+        alert('分享失败');
+      }
+    }
+</script>
+</html>

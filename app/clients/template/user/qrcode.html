@@ -1,0 +1,30 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header" style="position: unset">
+	<a class="back iconfont iconback"></a>
+	<div class="title">我的推广</div>
+	<a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="container">
+	<img class="tg-img" src="/upload/qrcode/tg_{$img_name}.png">
+</div>
+<!--内容区e-->
+</body>
+<style>
+	body{
+		height: 100%;
+	}
+	.container{
+		height: calc(100% - 45px);
+	}
+	.tg-img{
+		width: 100%;
+		height: 100%;
+	}
+</style>
+</html>

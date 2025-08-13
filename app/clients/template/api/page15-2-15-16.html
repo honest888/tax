@@ -1,0 +1,108 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Tell us about the expenses associated with your vehicle</h1>
+                                    			<p class="text-center">
+                                    				<span>Please do not include any expenses that are already on your P&L statement.</span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Gas &nbsp;</label>
+                                    				<input id="gas" autocomplete="off" type="text"  data-src="self_employment_1_vehicles_0_expenses_gas" value="{$detail.self_employment_1_vehicles_0_expenses_gas}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    				<label for="bxwt5">Repairs &nbsp;</label>
+                                    				<input id="repairs" autocomplete="off" type="text"  data-src="self_employment_1_vehicles_0_expenses_repairs" value="{$detail.self_employment_1_vehicles_0_expenses_repairs}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Insurance &nbsp;</label>
+                                    				<input id="insurance" autocomplete="off" type="text"  data-src="self_employment_1_vehicles_0_expenses_insurance" value="{$detail.self_employment_1_vehicles_0_expenses_insurance}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Licenses  &nbsp;</label>
+                                    				<input id="licenses" autocomplete="off" type="text"  data-src="self_employment_1_vehicles_0_expenses_licenses" value="{$detail.self_employment_1_vehicles_0_expenses_licenses}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Parking and tolls &nbsp;</label>
+                                    				<input id="tolls" autocomplete="off" type="text"  data-src="self_employment_1_vehicles_0_expenses_parking_and_tolls" value="{$detail.self_employment_1_vehicles_0_expenses_parking_and_tolls}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Other expenses &nbsp;</label>
+                                    				<input id="expenses" autocomplete="off" type="text"  data-src="self_employment_1_vehicles_0_expenses_other" value="{$detail.self_employment_1_vehicles_0_expenses_other}">
+                                    			</div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      $('#gas').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+     $('#repairs').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#insurance').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#licenses').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#tolls').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#expenses').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+});
+</script>

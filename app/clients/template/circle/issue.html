@@ -1,0 +1,106 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">发布</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="issue">
+    <form id="public-form" style="padding-top: 0">
+        <div class="textarea">
+            <textarea name="content" placeholder="想说点什么..." id="text"></textarea>
+            <div class="tishi">不超过500字</div>
+        </div>
+        <div class="images">
+            <div class="img-item" id="upload">
+                <img src="__MOBILE__/img/upload.png">
+            </div>
+        </div>
+        <div class="visible">
+            <div class="visible-item">
+                <div class="left">
+                    <img src="__MOBILE__/img/weizhi.png">
+                    <span>定位</span>
+                </div>
+                <div class="right iconfont iconjiantou"></div>
+            </div>
+            <div class="visible-item">
+                <div class="left">圈子可见</div>
+                <div class="right">
+                    <div class="switch act" data-field="qz_open">
+                        <div class="yuan"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="visible-item">
+                <div class="left">美好世家可见</div>
+                <div class="right">
+                    <div class="switch" data-field="sj_open">
+                        <div class="yuan"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-list">
+            {:token_field()}
+            <input type="hidden" name="qz_open" value="1">
+            <input type="hidden" name="sj_open" value="0">
+            <button id="submit" data-style="expand-left" type="button">发布</button>
+        </div>
+    </form>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: "{:url('User/upload_pic')}?path=circle" //上传接口
+            ,done: function(res){
+                if (res.code==1){
+                    var html='<div class="img-item">';
+                    html+='<img src="'+res.img+'">';
+                    html+='<input type="hidden" name="images[]" value="'+res.img+'">';
+                    html+='</div>';
+                    $('#upload').before(html);
+                }
+            }
+        });
+    });
+    $(function () {
+        $('.switch').on('click',function () {
+            $(this).toggleClass('act');
+            var field=$(this).attr('data-field');
+            if ($(this).hasClass('act')){
+                $('[name='+field+']').val(1);
+            }else {
+                $('[name='+field+']').val(0);
+            }
+        });
+        $('#submit').on('click',function () {
+            var content=$('[name=content]').val();
+            var qz_open=$('[name=qz_open]').val();
+            var sj_open=$('[name=sj_open]').val();
+            if (content===''){
+                msg("请输入内容");
+                return false;
+            }
+            if (qz_open=='0' && sj_open=='0'){
+                msg("至少一种圈子可见");
+                return false;
+            }
+            var url="{:url('Circle/issue')}";
+            var data=$('#public-form').serialize();
+            public_submit(url,data,this);
+        });
+    })
+</script>
+</html>

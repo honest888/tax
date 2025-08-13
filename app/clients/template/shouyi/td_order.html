@@ -1,0 +1,45 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">订单管理</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="goodslist order">
+    <div class="public-tab">
+        <a class="tab {if $status=='all'}act{/if}" data-type="all">全部</a>
+        <a class="tab {if $status=='-1'}act{/if}" data-type="-1">待付款</a>
+        <a class="tab {if $status=='1'}act{/if}" data-type="1">待发货</a>
+        <a class="tab {if $status=='2'}act{/if}" data-type="2">待收货</a>
+        <a class="tab {if $status=='3'}act{/if}" data-type="3">已完成</a>
+    </div>
+    <div id="quyu">
+        <div class="inner" style="padding: 0 10px;">
+            <div id="demo1" class="list-container"></div>
+        </div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        $('.public-tab .tab').on('click',function () {
+            if($(this).hasClass('act'))return;
+            var type=$(this).attr('data-type');
+            $(this).addClass('act').siblings().removeClass('act');
+            $('#demo1').empty();
+            get_more(type);
+        });
+        get_more('{$status}');
+    });
+    function get_more(status) {
+        public_ajax('#demo1',"{:url('Shouyi/ajax_td_order')}",'&status='+status,'暂无相关订单');
+    }
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">资金明细</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="pto45 order">
+    <div class="public-view-list">
+        <div id="container"></div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        $('.public-tab .tab').on('click',function () {
+            if($(this).hasClass('act'))return;
+            var type=$(this).attr('data-type');
+            $(this).addClass('act').siblings().removeClass('act');
+            $('#container').empty();
+            get_more(type);
+        });
+        get_more('{$type}');
+    });
+    function get_more(type) {
+        public_ajax('#container',"{:url('User/ajax_points')}",'&type='+type,'暂无相关记录');
+    }
+</script>
+</html>

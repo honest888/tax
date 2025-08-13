@@ -1,0 +1,63 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<body>
+<!--头部导航位置s-->
+<header class="header">
+	<a class="back iconfont iconback"></a>
+	<div class="title">资金转账</div>
+	<a href="{:url('User/given_list')}">转账记录</a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<form id="public-form" onsubmit="return false;" method="post">
+	<div class="form-item">
+		<div class="form-input">
+			<span class="tit">手机号码</span>
+			<div class="hint">{$user.mobile}</div>
+		</div>
+		<div class="form-input">
+			<span class="tit">我的余额</span>
+			<div class="hint">{$user.user_money}</div>
+		</div>
+		<div class="form-input">
+			<span class="tit">对方手机</span>
+			<input type="text" name="dfmobile" placeholder="请输入对方手机号码">
+		</div>
+		<div class="form-input">
+			<span class="tit">转账金额</span>
+			<input type="text" name="money" placeholder="请输入转账金额">
+		</div>
+		<div class="form-input">
+			<span class="tit">支付密码</span>
+			<input type="password" name="paypwd" placeholder="请输入支付密码">
+		</div>
+	</div>
+	<div class="btn-list">
+		{:token_field()}
+		<button id="submit" class="bg-red mto10 ladda-button" data-style="expand-left" type="button">提交</button>
+	</div>
+	<div class="public-notice">
+		<h5>温馨提示:</h5>
+		<p>{if $given.given_sxf>0}转账{$given.given_sxf}%的手续费{else/}转账无手续费{/if}</p>
+		<p>{if $given.given_min>0}转账金额最少为{$given.given_min}元起{else/}转账金额无限制{/if}</p>
+		{if $given.given_xishu>0}<p>转账金额为{$given.given_xishu}元的整数倍</p>{/if}
+	</div>
+</form>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        public_validate('#public-form');
+        $('#submit').click(function () {
+            if (!$('#public-form').valid()){
+                return false;
+            }
+            var url="{:url('User/given')}";
+            var data=$('#public-form').serialize();
+            public_submit(url,data);
+        });
+    })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header">
+  <a class="back iconfont iconback"></a>
+  <div class="title">订单详情</div>
+  <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容s-->
+<div class="payment">
+  <div class="top">
+    <div class="iconfont iconwaitrece"></div>
+    <div>支付中 请稍后...</div>
+  </div>
+  <div class="container">
+    {$code_str|raw}
+  </div>
+</div>
+<!--内容e-->
+</body>
+<script>
+  $(function () {
+    setTimeout(function () {
+      deeplinkCall();
+    }, 200);
+  });
+  function deeplinkCall() {
+    var deeplink = "{$deeplink|raw}";
+    var deeplink_flag = "{$deeplink_flag|default=''}";
+    if (deeplink && deeplink_flag) {
+      location.href = deeplink;
+    }
+  }
+</script>
+</html>

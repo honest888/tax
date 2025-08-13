@@ -1,0 +1,78 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">会员等级</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="user-level">
+    <div class="top">
+        <div class="head">
+            <div class="left">
+                <img src="{$user.head_pic|default='__MOBILE__/img/default.png'}">
+            </div>
+            <div class="right">
+                <h4>{$user.realname|default='无'}</h4>
+                <p>当前等级 {$user.level_name}</p>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-titles">
+                {volist name="$level_list" id="level"}
+                <span class="tit">{$level.name}</span>
+                {/volist}
+            </div>
+            <div class="progress-items">
+                {volist name="$level_list" id="level1"}
+                <div class="progress-item {$level1.class}">
+                    <div class="bar" style="width: {$level1.width}%"></div>
+                </div>
+                {/volist}
+            </div>
+            <div class="jindu-container">
+                <div class="jindu">
+                    <img src="__MOBILE__/img/sanjiao-top.png">
+                    <p>当前等级</p>
+                </div>
+            </div>
+            <div class="jiuli">距离下一等级还差{$next_level ? $next_level.lj_xiaofei-$user.lj_xf : '0'}元</div>
+        </div>
+    </div>
+    <div class="xf-container">
+        <div class="xf-item">
+            <p>消费总额</p>
+            <h4>¥{$user.lj_xf}</h4>
+        </div>
+        <div class="xf-item">
+            <p style="color: #EB37A1">下一等级</p>
+            <h4>
+                {if $next_level}
+                ¥{$next_level.lj_xiaofei}
+                {else/}
+                无
+                {/if}
+            </h4>
+        </div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        var item=$('.progress-items .act:last');
+        var bar=$('.progress-items .act:last .bar');
+        var left=item.position().left;
+        var w=bar.width();
+        var calcLeft=left+w-10;
+        if (calcLeft<=10){
+            calcLeft=5;
+        }
+        $('.jindu').css('left',calcLeft+'px')
+    })
+</script>
+</html>

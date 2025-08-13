@@ -1,0 +1,221 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Which of the following did you receive from your brokerage accounts?</h1>
+                                    			<p class="text-center"><span>If you sold stocks, bonds, or other securities, you should have received a 1099-B, Consolidated 1099, or other year-end brokerage statement. If you sold cryptocurrency across different crypto services, you can generate a year-end summary using a service such as </span><a href="https://www.cointracker.io/" target="_blank" rel="noreferrer">CoinTracker</a><span>.</span></p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="column justify-start align-stretch w-full gap-20">
+                                    			    <?php
+                                    			    $nec=0;
+                                    			    $misc=0;
+                                    			    $k=0;
+                                    			    $none=0;
+                                    			    if($detail['stocks_mutual_funds_bonds_which_documents']!=''&&$detail['stocks_mutual_funds_bonds_which_documents']!='null'){
+                                    			        $ary22=json_decode($detail['stocks_mutual_funds_bonds_which_documents'],true);
+                                        			    foreach($ary22 as $key=>$val){
+                                        			        switch($val){
+                                        			          case 'consolidated_1099':
+                                        			          $nec=1;
+                                        			          break;
+                                        			          case '1099_b':
+                                        			          $misc=1;
+                                        			          break;
+                                        			          case 'brokerage_statement':
+                                        			          $k=1;
+                                        			          break;
+                                        			          case 'none':
+                                        			          $none=1;
+                                        			          break;
+                                        			        }
+                                        			    }
+                                    			    }
+                                    			    if($none){
+                                                        $nextpage="page15-3-4";  
+                                                    }else{
+                                                        if($nec){
+                                                            $nextpage="page15-3-1";
+                                                        }else{
+                                                            if($misc){
+                                                                $nextpage="page15-3-2";
+                                                            }else{
+                                                               if($k){
+                                                                  $nextpage="page15-3-3"; 
+                                                               }else{
+                                                                  $nextpage="page15-3-4";  
+                                                               }
+                                                            }
+                                                        }
+                                                    }
+                                                  
+                                    			    ?>
+                                    				<div class="multi-select-option {if $nec}multi-select-option--selected dark-theme{/if} row align-center" data-src="consolidated_1099">
+                                    					<label class="option-label font-16">Consolidated 1099</label>
+                                    					<span>&nbsp;</span>
+                                    					<div class="popover__child" id="tip1">
+                                    						<div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Consolidated 1099</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">
+															A consolidated 1099 combines multiple 1099 forms—such as 1099-INT, 1099-DIV, 1099-OID, 1099-B, and 1099-MISC—into a single document.
+															Most brokerages send out consolidated statements by late February.
+															</span></span>
+													    </div>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option {if $misc}multi-select-option--selected dark-theme{/if} row align-center" data-src="1099_b">
+                                    					<label class="option-label font-16">1099-B</label>
+                                    					<span>&nbsp;</span>
+														<!--
+                                    					<div class="popover__child">
+                                    						<div class="tooltip-icon">?</div>
+                                    					</div>-->
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option {if $k}multi-select-option--selected dark-theme{/if} row align-center" data-src="brokerage_statement">
+                                    					<label class="option-label font-16">Other Brokerage Statement </label>
+                                    					<span>&nbsp;</span>
+                                    					<div class="popover__child" id="tip2">
+                                    						<div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Brokerage statement</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">
+															Select this option if you received a year-end statement from your brokerage account which is not a Consolidated 1099. 
+															Also select this option if you received or generated a summary of your crypto transactions.
+															</span></span>
+													    </div>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option row align-center {if $none}multi-select-option--selected dark-theme{/if}" data-src="none">
+                                    					<label class="option-label font-16">None of the above</label>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-grey"></span>
+                                    				</div>
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 <input type="hidden" name="curfield" value="stocks_mutual_funds_bonds_did_confirm">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+							    {include file='public:footer_nojs'/}
+								<script>
+								     $('.action-button').click(function () {
+                                       var url=$(this).attr('data-src');
+                                       if(url=='nextform'||url=="lastform"){
+                                           var tag=0;
+                                           if(url=='nextform'){
+                                               $('.multi-select-option').each(function () {
+                                                   if($(this).hasClass("multi-select-option--selected dark-theme")){
+                                                       tag=1;
+                                                   }
+                                               });
+                                               if(tag==0){
+                                                   $('.banner--error').show();
+                                                   return false;
+                                               }
+                                           }
+                                           $('#'+url).submit();
+                                       }else{
+                                           if(url!='')location.href=url;else return false;
+                                       }
+                                    });
+
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+</iframe>
+<script>
+$(document).ready(function() {
+      $('.multi-select-option').click(function () {
+          var tt=$(this).attr('data-src');
+          var fieldvalue=tt;
+           if($(this).hasClass('multi-select-option--selected dark-theme')){
+                $(this).removeClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-white');
+                $(this).find('span').addClass('color-grey');
+                var action="cancel";
+            }else{
+                $(this).addClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-grey');
+                $(this).find('span').addClass('color-white');
+                var action="select";
+                if(tt=='none'){
+                    //选中none其中都不选
+                       $('.multi-select-option').each(function(){
+                           if($(this).attr('data-src')!='none'){
+                               $(this).removeClass('multi-select-option--selected dark-theme');
+                                $(this).find('span').removeClass('color-white');
+                                $(this).find('span').addClass('color-grey');
+                           } 
+                        });
+                        
+                  }else{
+                      $('.multi-select-option').each(function(){
+                           if($(this).attr('data-src')=='none'){
+                               $(this).removeClass('multi-select-option--selected dark-theme');
+                                $(this).find('span').removeClass('color-white');
+                                $(this).find('span').addClass('color-grey');
+                           } 
+                        });
+                  }
+            }
+           if(fieldvalue!=''){
+               var fieldname="stocks_mutual_funds_bonds_which_documents";
+             // alert($('#page').val());
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,action);  
+           }
+      });
+     function ajax_post_field(fieldname,fieldvalue,action) {
+         var pagename="{$pagename}";
+         var link="{$detail.link}";
+         $.ajax({
+           url:"{:url('api/pagesave_form')}",
+           type:'post',
+           data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename,'action':action},
+           dataType:'json',
+           success:function (res) {
+               if (res.code==1){
+                   $('#page').val(res.pagenext);
+                   console.log('sucess');
+                   var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                  $('#savetime').html(html);
+               }else {
+                   console.log('sucess');
+                 //  msg(res.msg);
+               }
+           },error:function () {
+               msg('Try it again later')
+           }
+      });
+   }
+});
+</script>

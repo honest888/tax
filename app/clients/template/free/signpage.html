@@ -1,0 +1,396 @@
+<!--头部css位置s-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="__STATIC__/plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="__MOBILE__/css/ladda.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/swiper.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/dialog.css">
+    <link rel="stylesheet" href="__MOBILE__/css/animate.css">
+    <link rel="stylesheet" href="__MOBILE__/font/iconfont.css">
+    <link rel="stylesheet" href="__MOBILE__/css/hui.css">
+    <link rel="stylesheet" href="__MOBILE__/css/public.css">
+    <link rel="stylesheet" href="__MOBILE__/css/style.css">
+    <title>{$tpshop_config.basic_store_title}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{$tpshop_config.basic_store_ico|default='__MOBILE__/img/default.png'}" media="screen"/>
+    <script src="__MOBILE__/js/jquery.js"></script>
+    <script src="__MOBILE__/js/dialog.min.js"></script>
+    <script src="__MOBILE__/js/hui.js"></script>
+    <script src="__MOBILE__/js/popup.js"></script>
+    <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+    <script src="__MOBILE__/js/validate.js"></script>
+    <script src="__MOBILE__/js/spin.min.js"></script>
+    <script src="__MOBILE__/js/ladda.min.js"></script>
+    <script src="__STATIC__/plugin/layer/layer.js"></script>
+</head>
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<style>
+    
+    .btn-theme {
+		display: inline-block;
+		border-radius: 2px;
+		letter-spacing: 1px;
+		font-size: 14px;
+		padding: 8px 15px;
+		line-height: 18px;
+		transition: 0.15s linear;
+		vertical-align: middle;
+		border: 1px solid transparent;
+		cursor: pointer;
+			background-color: #007aff;
+		/*border-color: #007aff;*/
+		color: #fff !important;
+    }
+	.column {
+	  flex-direction: row!important;
+
+	}
+	.dialog>.close{
+	 top:10px!important;
+	 right:10px!important;
+	}
+	.dialog {
+	  padding:50px 10px!important;
+	  width:430px!important;
+	  height:272px!important;
+	}
+  /*
+	.signature-pad{
+		 width:310px;
+		 height:172px;
+	}*/
+	
+	
+	.signature-pad {
+		position: relative;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		font-size: 10px;
+		width: 100%;
+		height: 100%;
+		max-width: 700px;
+		max-height: 300px;
+		border: 1px solid #e8e8e8;
+		background-color: #fff;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
+		border-radius: 4px;
+		padding: 2px 10px 20px 10px;
+	}
+.signature-pad--body {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border: 1px dashed #29a93f;
+    border-radius: 4px;
+}
+.signature-pad--body canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+}
+	
+</style>
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">Taxpayer Signature</div>
+    <a ></a><!--id="popup" class="iconfont iconmenu"-->
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<!--页面主要内容-->
+        <link rel="stylesheet" href="__STATIC__/js/signature/popstyle.css">
+        <script src="__STATIC__/js/signature/snature.js"></script>
+         <!--合同 弹出页-->
+        <div class="modal-barrier" id="comtip" style="display:;">
+			   <!--new-->
+			   <div id="signature-pad" class="signature-pad">
+			    <div class="close close3" style="display: flex; justify-content: flex-end;"> 
+				<!--<svg class="close close3" width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">'
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>-->
+				<svg t="1722332199742" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6873" width="32" height="32"><path d="M512 102.4A409.6 409.6 0 1 0 921.6 512 409.6 409.6 0 0 0 512 102.4z m181.248 518.144a51.2 51.2 0 0 1-72.704 72.704L512 584.192 403.456 693.248a51.2 51.2 0 0 1-72.704-72.704L439.808 512 330.752 403.456a51.2 51.2 0 0 1 72.704-72.704L512 439.808l108.544-109.056a51.2 51.2 0 0 1 72.704 72.704L584.192 512z" p-id="6874" fill="#8a8a8a"></path></svg>
+				</div>
+				<div id="canvas-wrapper" class="signature-pad--body">
+				  <canvas></canvas>
+				</div>
+				<div class="signature-pad--footer">
+				  <div class="row align-center" style="display:flex;margin-top:20px;justify-content: space-between; ">                        
+                        <button onclick="clearSignature()" class="action-button action-button--secondary " style="margin-left:10px;">Clear</button>
+                        <button onclick="saveSignature()"  class="action-button action-button--primary save">Save</button>                        
+                    </div>
+				</div>
+			  </div>
+			  <div style="display: block;position: absolute;bottom: 0;width: 100%; background-color: #262626; color: #fff;text-align: center; padding: 10px 25px;" id="tipshow">
+			  <p><img src="__STATIC__/images/rotate2x.gif" width="80"></p>
+			  <p>Tip: Rotate your device to landscape for a larger signing area.</p></div>
+			   <!--new-->
+       </div>  
+	
+
+<!--内容区e-->
+</body>
+<script type="text/javascript">
+
+    $(function () {
+      var link="{$detail.link}";
+        $('.sign').click(function () {
+            $("#comtip").show();
+        })
+        $('.return').click(function () {
+            var url="https://taxprep.republictax.com/clients/free/"+link;
+             location.href=url;
+        })
+        $('.close3').click(function () {
+             var url="https://taxprep.republictax.com/clients/free/"+link;
+             location.href=url;
+        });
+    });
+     function sign_show(){
+         $("#comtip").show();
+     }
+	
+/*
+	  window.addEventListener('resize', function() {
+		// 检查screen.orientation属性来判断屏幕方向
+		// 注意：screen.orientation可能在某些浏览器中不可用，尤其是旧版浏览器
+		if ('orientation' in screen) {
+			switch (screen.orientation.type) {
+				case 'portrait-primary':
+					alert('竖屏（自然方向）');
+					break;
+				case 'portrait-secondary':
+					alert('竖屏（反向）');
+					break;
+				case 'landscape-primary':
+					alert('横屏（自然方向）');
+					break;
+				case 'landscape-secondary':
+					alert('横屏（自然方向）');
+					break;
+				default:
+					alert('未知方向');
+			}
+		} else {
+			// 对于不支持screen.orientation的浏览器，你可能需要回退到使用宽度和高度的比较
+			if (window.innerWidth > window.innerHeight) {
+				alert('横屏1');
+			} else {
+				alert('竖屏1');
+			}
+		}
+	});*/
+
+ $(document).ready(function() {
+ 	var timeoutId = null;
+ 	var tt='';
+ 	tt=detectOrientation();
+   
+  $(window).on('resize', function() {
+   var  tt2=detectOrientation();
+   	if(tt2==1||tt2==3){
+       resizeCanvas();
+	   $('#tipshow').show();
+	}
+	if(tt2==2||tt2==4){
+	   resizeCanvas();
+	   $('#tipshow').hide();
+	}
+ 	
+  });
+
+  function detectOrientation() {
+  	 if (timeoutId !== null) {
+      clearTimeout(timeoutId);
+    }
+  	var tag='';//
+ 
+    if ('orientation' in screen) {
+			switch (screen.orientation.type) {
+				case 'portrait-primary':
+					//alert('竖屏（自然方向）');
+					tag=1;
+					break;
+				case 'portrait-secondary':
+					//alert('竖屏（反向）');
+					tag=3;
+					break;
+				case 'landscape-primary':
+					//alert('横屏（自然方向）');
+					tag=2;
+					break;
+				case 'landscape-secondary':
+					//alert('横屏（自然方向）');
+					tag=4;
+					break;
+				default:
+					alert('未知方向');
+			}
+		} else {
+			// 对于不支持screen.orientation的浏览器，你可能需要回退到使用宽度和高度的比较
+			if (window.innerWidth > window.innerHeight) {
+				//alert('横屏1');
+				tag=2;
+			} else {
+				//alert('竖屏1');
+				tag=1;
+			}
+		}
+		if(tag) return tag;
+      
+		
+  }
+});
+	$(document).ready(function() {
+	 
+			angle = 90; // 每次点击增加90度
+			if (angle >= 360) {
+				angle = 0; // 重置角度到0度
+			}
+			
+			// 使用 CSS3 transform 属性来旋转元素
+			/*$('.signature').css({
+				'transform': 'rotate(' + angle + 'deg)',
+				// 添加浏览器前缀以确保兼容性
+				'-ms-transform': 'rotate(' + angle + 'deg)', 
+				'-webkit-transform': 'rotate(' + angle + 'deg)',
+				'-o-transform': 'rotate(' + angle + 'deg)', 
+				'-moz-transform': 'rotate(' + angle + 'deg)' 
+			});*/
+	});
+	const wrapper = document.getElementById("signature-pad");
+const canvasWrapper = document.getElementById("canvas-wrapper");
+
+let undoData = [];
+const canvas = wrapper.querySelector("canvas");
+const signaturePad = new SignaturePad(canvas, {
+  // It's Necessary to use an opaque color when saving image as JPEG;
+  // this option can be omitted if only saving as PNG or SVG
+ // backgroundColor: 'rgb(255, 255, 255)'
+});
+
+<?php if($detail[$field]){ ?>
+         window.onload = function() {
+            var ctx = canvas.getContext('2d');
+            var img = new Image(); // 创建新的Image对象
+            img.src = "<?php echo $detail[$field];?>"; // 设置图片源路径
+          /*
+         // 清除画布（可选）
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 保存当前画布状态
+        ctx.save();
+
+        // 将坐标原点移动到图片的中心点
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+
+        // 旋转图片90度（顺时针）
+        ctx.rotate(Math.PI / 2);*/
+      
+        var x = -(img.width / 2); // 相对于旋转中心的x坐标
+        var y = -(img.height / 2); // 相对于旋转中心的y坐标
+        ctx.drawImage(img, x, y, img.width/2, img.height/2);
+
+        // 恢复画布到之前保存的状态（移除旋转变换）
+        ctx.restore();
+         
+        };
+  <?php }?>
+function resizeCanvas() {
+  // When zoomed out to less than 100%, for some very strange reason,
+  // some browsers report devicePixelRatio as less than 1
+  // and only part of the canvas is cleared then.
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+
+  // This part causes the canvas to be cleared
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  canvas.getContext("2d").scale(ratio, ratio);
+
+  // This library does not listen for canvas changes, so after the canvas is automatically
+  // cleared by the browser, SignaturePad#isEmpty might still return false, even though the
+  // canvas looks empty, because the internal data of this library wasn't cleared. To make sure
+  // that the state of this library is consistent with visual state of the canvas, you
+  // have to clear it manually.
+  //signaturePad.clear();
+
+  // If you want to keep the drawing on resize instead of clearing it you can reset the data.
+  signaturePad.fromData(signaturePad.toData());
+}
+
+// On mobile devices it might make more sense to listen to orientation change,
+// rather than window resize events.
+window.onresize = resizeCanvas;
+resizeCanvas();
+
+	
+   
+        function saveSignature() {
+            if (signaturePad.isEmpty()) {              
+              msg('Please sign first');
+                return;
+            }
+			$('.save').css('background-color','#8a8a8a');
+			$('.save').attr('disabled',true);
+            var dataURL = signaturePad.toDataURL();
+            ///*以下进行缩小
+              var signatureCanvas = signaturePad.canvas;
+              var signatureContext = signatureCanvas.getContext('2d');
+              
+              // 创建一个新的、尺寸减半的画布
+              var resizedCanvas = document.createElement('canvas');
+              resizedCanvas.width = signatureCanvas.width / 2;
+              resizedCanvas.height = signatureCanvas.height / 2;
+              var resizedContext = resizedCanvas.getContext('2d');
+              
+              // 将原始签名绘制到新的画布上，并缩小一倍
+              resizedContext.drawImage(signatureCanvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+              //以下进行缩小结束
+             
+              // 使用新的画布来保存签名（这里以PNG格式为例）
+              var dataURL = resizedCanvas.toDataURL('image/png');/**/
+             var link="{$detail.link}";
+            var field="{$field}";
+          //  var url="{:url('Order/signature',['id'=>2])}";
+            fetch("{:url('free/signaturet')}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link+'&rotate=0'+'&f='+field
+            })
+            .then(response => response.text())
+            .then(data => {
+                var da=JSON.parse(data);
+				$('.save').css('background-color','#536cf1');
+				$('.save').attr('disabled',false);
+                msg('You signature has been saved');
+               // $('#comtip').hide();
+                var url="https://taxprep.republictax.com/clients/free/"+link;
+              location.href=url
+              //  console.log(da.img);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+        function clearSignature() {
+            signaturePad.clear();
+        }
+    </script>
+</html>

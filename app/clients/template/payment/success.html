@@ -1,0 +1,49 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header">
+  <a class="back iconfont iconback"></a>
+  <div class="title">订单详情</div>
+  <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容s-->
+<div class="payment">
+  <div class="top">
+    <div class="iconfont iconpay-success1"></div>
+    <div>支付成功</div>
+  </div>
+  <div class="bot">
+    <div class="item">
+      <span class="title">订单编号</span>
+      <span class="desc">{$order.order_sn}</span>
+    </div>
+    {if $is_cz==1}
+    <div class="item">
+      <span class="title">充值金额</span>
+      <span class="desc">￥{$order.order_amount}</span>
+    </div>
+    <div class="item">
+      <span class="title">充值时间</span>
+      <span class="desc">{:date('Y-m-d H:i:s',$order.add_time)}</span>
+    </div>
+    {else/}
+    <div class="item">
+      <span class="title">订单金额</span>
+      <span class="desc">￥{$order.order_amount}</span>
+    </div>
+    <div class="item">
+      <span class="title">下单时间</span>
+      <span class="desc">{:date('Y-m-d H:i:s',$order.add_time)}</span>
+    </div>
+    {/if}
+  </div>
+  <div class="btn-container">
+    <a href="{:url('User/index')}">返回</a>
+  </div>
+</div>
+<!--内容e-->
+</body>
+</html>

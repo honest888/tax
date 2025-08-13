@@ -1,0 +1,783 @@
+{include file='public:header-css'/}
+<style>
+.icon-button--small {
+    height: 40px;
+    width: 100px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-width: 1px;
+}
+.icon-button--small:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+ .icon-button--small:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.icon-button--selected {
+    background: linear-gradient(32.97deg,#526bf0 24.61%,#8572ff 96.04%);
+    border: 2px solid var(--color-blue);
+    color: #fff;
+}   
+</style>
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+								        <div class="f-theme banner column align-center justify-center banner--sticky banner--error " style="margin-bottom: -48px;display:none;"><div>Please complete the question to continue</div></div>
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                        	<h1 class="center text-center font-36 extrabold mt-20">Please answer the questions below</h1>
+                                        	<div style="height: 20px;"></div>
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Did you make any gifts in excess of $17,000, or $34,000 together with a spouse?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_1 {if $detail.other_questions_did_make_large_gifts eq 1}icon-button--selected {/if}" data-src="other_questions_did_make_large_gifts" data-val="1">
+                                        			    {if $detail.other_questions_did_make_large_gifts eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_make_large_gifts eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_make_large_gifts eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_1 {if $detail.other_questions_did_make_large_gifts eq 2}icon-button--selected {/if}" data-src="other_questions_did_make_large_gifts" data-val="2">
+                                        			    {if $detail.other_questions_did_make_large_gifts eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_make_large_gifts eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        			    {elseif $detail.other_questions_did_make_large_gifts eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_1" value="{$detail.other_questions_did_make_large_gifts}">
+                                        	<!--start-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Did you receive, sell, exchange, gift, or dispose of any digital assets?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_2 {if $detail.other_questions_did_trade_digital_assets eq 1}icon-button--selected {/if}" data-src="other_questions_did_trade_digital_assets" data-val="1">
+                                        			    {if $detail.other_questions_did_trade_digital_assets eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_trade_digital_assets eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_trade_digital_assets eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_2 {if $detail.other_questions_did_trade_digital_assets eq 2}icon-button--selected {/if}" data-src="other_questions_did_trade_digital_assets" data-val="2">
+                                        			    {if $detail.other_questions_did_trade_digital_assets eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_trade_digital_assets eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_trade_digital_assets eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_2" value="{$detail.other_questions_did_trade_digital_assets}">
+                                        	<!--end-->
+                                        	<!--start-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Did you have any foreign income or pay any foreign taxes?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_3 {if $detail.other_questions_did_have_foreign_income eq 1}icon-button--selected {/if}" data-src="other_questions_did_have_foreign_income" data-val="1">
+                                        			    {if $detail.other_questions_did_have_foreign_income eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_have_foreign_income eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_have_foreign_income eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_3 {if $detail.other_questions_did_have_foreign_income eq 2}icon-button--selected {/if}" data-src="other_questions_did_have_foreign_income" data-val="2">
+                                        			    {if $detail.other_questions_did_have_foreign_income eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_have_foreign_income eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_have_foreign_income eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_3" value="{$detail.other_questions_did_have_foreign_income}">
+                                        	<!--end-->
+                                        	<!--start 4-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Did you own or have an interest in any foreign assets or accounts?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_4 {if $detail.other_questions_did_own_foreign_assets eq 1}icon-button--selected {/if}" data-src="other_questions_did_own_foreign_assets" data-val="1">
+                                        			    {if $detail.other_questions_did_own_foreign_assets eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_own_foreign_assets eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_own_foreign_assets eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_4 {if $detail.other_questions_did_own_foreign_assets eq 2}icon-button--selected {/if}" data-src="other_questions_did_own_foreign_assets" data-val="2">
+                                        			    {if $detail.other_questions_did_own_foreign_assets eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_own_foreign_assets eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_own_foreign_assets eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_4" value="{$detail.other_questions_did_own_foreign_assets}">
+                                        	<!--end-->
+                                        	<!--start 5-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Did you receive a distribution from, or were you a grantor or transferor for a foreign trust?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_5 {if $detail.other_questions_did_receive_distribution_from_foreign_trust eq 1}icon-button--selected {/if}" data-src="other_questions_did_receive_distribution_from_foreign_trust" data-val="1">
+                                        			    {if $detail.other_questions_did_receive_distribution_from_foreign_trust eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_receive_distribution_from_foreign_trust eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_receive_distribution_from_foreign_trust eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_5 {if $detail.other_questions_did_receive_distribution_from_foreign_trust eq 2}icon-button--selected {/if}" data-src="other_questions_did_receive_distribution_from_foreign_trust" data-val="2">
+                                        			    {if $detail.other_questions_did_receive_distribution_from_foreign_trust eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_receive_distribution_from_foreign_trust eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_did_receive_distribution_from_foreign_trust eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                 <input type="hidden" id="button_5" value="{$detail.other_questions_did_receive_distribution_from_foreign_trust}">
+                                        	<!--end-->
+                                        	<!--start 6-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Do you expect a large fluctuation in income or withholding in 2024?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_6 {if $detail.other_questions_do_expect_income_fluctuation eq 1}icon-button--selected {/if}" data-src="other_questions_do_expect_income_fluctuation" data-val="1">
+                                        			    {if $detail.other_questions_do_expect_income_fluctuation eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_expect_income_fluctuation eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_expect_income_fluctuation eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_6 {if $detail.other_questions_do_expect_income_fluctuation eq 2}icon-button--selected {/if}" data-src="other_questions_do_expect_income_fluctuation" data-val="2">
+                                        			    {if $detail.other_questions_do_expect_income_fluctuation eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_expect_income_fluctuation eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_expect_income_fluctuation eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                       	<input type="hidden" id="button_6" value="{$detail.other_questions_do_expect_income_fluctuation}">
+                                        	<!--end-->
+                                        	<!--start 7-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Would you like to contribute $3 to the presidential election campaign fund?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_7 {if $detail.other_questions_contribute_to_presidential_campaign_fund eq 1}icon-button--selected {/if}" data-src="other_questions_contribute_to_presidential_campaign_fund" data-val="1">
+                                        			    {if $detail.other_questions_contribute_to_presidential_campaign_fund eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_contribute_to_presidential_campaign_fund eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_contribute_to_presidential_campaign_fund eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_7 {if $detail.other_questions_contribute_to_presidential_campaign_fund eq 2}icon-button--selected {/if}" data-src="other_questions_contribute_to_presidential_campaign_fund" data-val="2">
+                                        			    {if $detail.other_questions_contribute_to_presidential_campaign_fund eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_contribute_to_presidential_campaign_fund eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_contribute_to_presidential_campaign_fund eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_7" value="{$detail.other_questions_contribute_to_presidential_campaign_fund}">
+                                        	<!--end-->
+                                        	<!--start 8-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Do you grant the IRS permission to discuss your return with our firm, for example about the status of your tax refund?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_8 {if $detail.other_questions_do_you_give_us_power_of_attorney eq 1}icon-button--selected {/if}" data-src="other_questions_do_you_give_us_power_of_attorney" data-val="1">
+                                        			    {if $detail.other_questions_do_you_give_us_power_of_attorney eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_you_give_us_power_of_attorney eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_you_give_us_power_of_attorney eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_8 {if $detail.other_questions_do_you_give_us_power_of_attorney eq 2}icon-button--selected {/if}" data-src="other_questions_do_you_give_us_power_of_attorney" data-val="2">
+                                        			    {if $detail.other_questions_do_you_give_us_power_of_attorney eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_you_give_us_power_of_attorney eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_do_you_give_us_power_of_attorney eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_8" value="{$detail.other_questions_do_you_give_us_power_of_attorney}">
+                                        	<!--end-->
+                                        	<!--start 9-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Have you, your spouse, or dependents received an Identity Protection PIN or been victims of identity theft?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_9 {if $detail.other_questions_has_received_ip_pin eq 1}icon-button--selected {/if}" data-src="other_questions_has_received_ip_pin" data-val="1">
+                                        			    {if $detail.other_questions_has_received_ip_pin eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_has_received_ip_pin eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_has_received_ip_pin eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_9 {if $detail.other_questions_has_received_ip_pin eq 2}icon-button--selected {/if}" data-src="other_questions_has_received_ip_pin" data-val="2">
+                                        			    {if $detail.other_questions_has_received_ip_pin eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_has_received_ip_pin eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.other_questions_has_received_ip_pin eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                        	<input type="hidden" id="button_9" value="{$detail.other_questions_has_received_ip_pin}">
+                                        	<!--end-->
+                                        	<!--start 10-->
+                                        	<div class="row mobile-column gap-20 justify-between mt-20 mb-20">
+                                        		<p class="font-16">Have you received any notices from the IRS or state tax authority, including about your IP PIN?</p>
+                                        		<div class="row justify-center">
+                                        			<button class="icon-button icon-button--small buttonyn_10 {if $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 1}icon-button--selected {/if}" data-src="catch_all_deductions_did_receive_notice_from_irs_or_state" data-val="1">
+                                        			    {if $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 1}
+                                        			    <svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse>
+                                        					<circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle>
+                                        					<path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg> 
+                                        				{/if}
+                                        				<span class="font-14">Yes</span>
+                                        			</button>
+                                        			<button class="icon-button icon-button--small  buttonyn_10 {if $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 2}icon-button--selected {/if}" data-src="catch_all_deductions_did_receive_notice_from_irs_or_state" data-val="2">
+                                        			    {if $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 2}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 1}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        					<circle cx="36" cy="36" r="36" fill="#D0474B"></circle>
+                                        					<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path>
+                                        				</svg>
+                                        				{elseif $detail.catch_all_deductions_did_receive_notice_from_irs_or_state eq 0}
+                                        				<svg width="24" height="24" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+                                        				{/if}
+                                        				<span class="font-14">No</span>
+                                        			</button>
+                                        		</div>
+                                        	</div>
+                                     <input type="hidden" id="button_10" value="{$detail.catch_all_deductions_did_receive_notice_from_irs_or_state}">
+                                        	<!--end-->
+                                        
+                                        </div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+							    {include file='public:footer_nojs'/}
+								<script>
+								     $('.action-button').click(function () {
+                                            var url=$(this).attr('data-src');
+                                            if(url=='nextform'||url=="lastform"){
+                                                var tag=0;
+                                                if(url=='nextform'){
+                                                    for(i=1;i<=10;i++){
+                                                        var obj="#button_"+i;
+                                                   
+                                                        if($(obj).val()!=1&&$(obj).val()!=2){
+                                                           tag=1; 
+                                                        }
+                                                    }
+                                                    if(tag==1){
+                                                        $('.banner--error').show();
+                                                        return false;
+                                                    }
+                                                }
+                                                $('#'+url).submit();
+                                            }else{
+                                                if(url!='')location.href=url;else return false;
+                                            }
+                                    });
+                                     function ajax_post_field(fieldname,fieldvalue,link) {
+                                         var pagename="{$pagename}";
+                                      $.ajax({
+                                                url:"{:url('api/pagesave')}",
+                                                type:'post',
+                                                data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename},
+                                                dataType:'json',
+                                                success:function (res) {
+                                                    if (res.code==1){
+                                                        console.log('sucess');
+                                                        var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                                                       $('#savetime').html(html);
+                                                    }else {
+                                                        console.log('sucess');
+                                                      //  msg(res.msg);
+                                                    }
+                                                },error:function () {
+                                                    msg('Try it again later')
+                                                }
+                                     });
+                                  }
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+     /* for(var i=1;i<=1;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }*/
+     
+    $('.buttonyn_1').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_1').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_1').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_1').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_1').val(fieldvalue);
+         $(this).addClass('icon-button--selected');
+         $(this).find('circle').removeAttr('fill');
+         $(this).find('circle').attr('stroke','white');
+         $(this).find('svg').attr('fill','none'); 
+        $(this).find('ellipse').remove();
+      }); 
+   
+     $('.buttonyn_2').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_2').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_2').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_2').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_2').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_3').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_3').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_3').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_3').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_3').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_4').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_4').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_4').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_4').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_4').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_5').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_5').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_5').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_5').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_5').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_6').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_6').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_6').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_6').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_6').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_7').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_7').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_7').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_7').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_7').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_8').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_8').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_8').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_8').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_8').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_9').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_9').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_9').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_9').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_9').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+      $('.buttonyn_10').click(function () {
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $('.buttonyn_10').removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $('.buttonyn_10').find('circle').attr('fill',"#D0474B");
+             $('.banner--error').hide();
+         }
+         if(fieldvalue==2){
+             $('.buttonyn_10').find('circle').attr('fill',"#5ABE8E");
+             $('.banner--error').hide();
+         }
+         $('#button_10').val(fieldvalue);
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+            $(this).find('ellipse').remove();
+      }); 
+   /*
+    for(var i=1;i<=2;i++){
+        var obj="buttonyn_"+i;
+      $("."+obj).click(function () {
+           alert(obj);
+         var fieldname=$(this).attr('data-src');
+         var fieldvalue=$(this).attr('data-val');
+         var link="{$detail.link}";
+         $('#savetime').html('Saving');
+         ajax_post_field(fieldname,fieldvalue,link);  
+         $(obj).removeClass('icon-button--selected');  
+         if(fieldvalue==1){
+             $(obj).find('circle').attr('fill',"#D0474B");
+         }
+         if(fieldvalue==2){
+             $(obj).find('circle').attr('fill',"#5ABE8E");
+         }
+             $(this).addClass('icon-button--selected');
+             $(this).find('circle').removeAttr('fill');
+             $(this).find('circle').attr('stroke','white');
+             $(this).find('svg').attr('fill','none'); 
+             $(this).find('ellipse').remove();
+         
+      });  
+    }*/
+});
+</script>

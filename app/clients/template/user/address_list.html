@@ -1,0 +1,182 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">收货地址</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="address" class="">
+    {empty name="lists"}
+        <div id="empty">
+        <div class="empty iconfont iconzanwushuju"></div>
+        <h4>暂无收货地址</h4>
+        </div>
+        {else/}
+        {volist name="lists" id="vo"}
+    <div class="address-item list{$vo.address_id}">
+        <div class="top">
+            <div class="left">
+                <h5>{$vo.consignee}</h5>
+                <p>{$vo.mobile}</p>
+            </div>
+            <div class="bot">{$vo.province}{$vo.city}{$vo.district}{$vo.address}</div>
+        </div>
+        <div class="toolbar">
+            <div class="left">
+                {if $Request.param.from == 'cart'}
+                <div class="button" onclick="cart('{$vo.address_id}')">
+                    选择
+                </div>
+                {elseif $Request.param.from == 'jifen' /}
+                <div class="button" onclick="jifen('{$vo.address_id}')">
+                    选择
+                </div>
+                {else/}
+                <div class="left-item {if $vo.is_default == 1}theme{/if}">
+                    <span data-id="{$vo.address_id}" class="iconfont {if $vo.is_default == 1}icondanxuanact{else/}icondanxuan{/if}"></span>
+                    <i>默认</i>
+                </div>
+                {/if}
+            </div>
+            <div class="right">
+                <a onclick="edit('{$vo.address_id}')">
+                    <span class="iconfont iconedit"></span>
+                    <span>编辑</span>
+                </a>
+                <a onclick="del('{$vo.address_id}')">
+                    <span class="iconfont icondel"></span>
+                    <span>删除</span>
+                </a>
+            </div>
+        </div>
+    </div>
+        {/volist}
+    {/empty}
+</div>
+<!--内容区e-->
+<div class="btn-bottom" style="height: 60px">
+    <a onclick="add()" class="btn">
+        <span class="iconfont iconadd"></span>
+        <span>新建地址</span>
+    </a>
+</div>
+{if $Request.param.from == 'cart'}
+<form action="" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+    <input type="hidden" name="goods_num" value="{$Request.param.goods_num}">
+    <input type="hidden" name="item_id" value="{$Request.param.item_id}">
+    <input type="hidden" name="action" value="{$Request.param.action}">
+    <input type="hidden" name="address_id" value="{$Request.param.address_id}">
+</form>
+{/if}
+{if $Request.param.from == 'jifen'}
+<form action="" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+    <input type="hidden" name="goods_num" value="{$Request.param.goods_num}">
+    <input type="hidden" name="address_id" value="">
+</form>
+{/if}
+</body>
+<script>
+    var from='{$Request.param.from}';
+    var flag=true;
+    function add() {
+        if (from){
+            if (from==='cart'){
+                var add="{:url('User/add_edit_address',['from'=>'cart'])}";
+            }else {
+                var add="{:url('User/add_edit_address',['from'=>'jifen'])}";
+            }
+            $('[name=address_id]').val('');
+            $('#form').attr('action',add).submit();
+        }else {
+            var add="{:url('User/add_edit_address')}";
+            location.href=add;
+        }
+    }
+    function edit(address_id) {
+        if (from){
+            if (from==='cart'){
+                var edit="{:url('User/add_edit_address',['from'=>'cart'])}";
+            }else {
+                var edit="{:url('User/add_edit_address',['from'=>'jifen'])}";
+            }
+            $('[name=address_id]').val(address_id);
+            $('#form').attr('action',edit).submit();
+        }else {
+            var edit="{:url('User/add_edit_address')}?address_id="+address_id;
+            location.href=edit;
+        }
+    }
+    function cart(address_id) {
+        var cart="{:url('Cart/cart')}";
+        $('[name=address_id]').val(address_id);
+        $('#form').attr('action',cart).submit();
+    }
+    function jifen(address_id) {
+        var deal="{:url('Shop/jifen_goods_buy',['goods_id'=>$Request.param.goods_id])}";
+        $('[name=address_id]').val(address_id);
+        $('#form').attr('action',deal).submit();
+    }
+    function del(address_id){
+        if (flag==false){
+            return false;
+        }
+        confirmmsg('确定删除?',function () {
+            flag=false;
+            $.ajax({
+                url:"{:url('User/del_address')}",
+                type:'post',
+                data:{address_id:address_id},
+                dataType:'json',
+                success:function (res) {
+                    if (res.code==1){
+                        msg(res.msg);
+                        $('.list'+address_id).remove();
+                        setTimeout(function () {
+                            location.reload();
+                        },1500)
+                    }else {
+                        msg(res.msg);
+                    }
+                },error:function () {
+                    msg('网络错误,请稍后再试!')
+                }
+            });
+            setTimeout(function () {
+                flag=true;
+            },2000)
+        })
+    }
+    $('.icondanxuan').click(function () {
+        var address_id=$(this).data('id');
+        if (flag==false){
+            return false;
+        }
+        flag=false;
+        $.ajax({
+            url:"{:url('User/set_default')}",
+            type:'post',
+            data:{address_id:address_id},
+            dataType:'json',
+            success:function (res) {
+                if (res.code==1){
+                    msg(res.msg,res.url);
+                }else {
+                    msg(res.msg);
+                }
+            },error:function () {
+                msg('网络错误,请稍后再试!')
+            }
+        });
+        setTimeout(function () {
+            flag=true;
+        },2000)
+    });
+</script>
+</html>

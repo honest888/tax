@@ -1,0 +1,38 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+  <a class="back iconfont iconback"></a>
+  <div class="title">附近代理</div>
+</header>
+<!--头部导航位置e-->
+<!--内容s-->
+<div class="nearby">
+  <div class="nearby-container"></div>
+</div>
+<!--内容e-->
+</body>
+<script>
+  $(function () {
+    get_more('{$longitude}','{$latitude}');
+  });
+  function appFinishiLoad() {
+    //写要自动运行的JS，如横屏
+    BSL.GPS('gps')
+  }
+  //定位
+  function gps(result){
+    var val= JSON.parse(result);
+    var latitude=val.Latitude;
+    var longitude=val.Longitude;
+    $('.nearby-container').empty();
+    get_more(longitude,latitude);
+  }
+  function get_more(longitude='',latitude='') {
+    public_ajax('.nearby-container',"{:url('Index/get_nearby')}",'&latitude='+latitude+'&longitude='+longitude,'暂无相关数据');
+  }
+</script>
+</html>

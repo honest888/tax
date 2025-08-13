@@ -1,0 +1,99 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">店铺管理</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="userinfo" class="public">
+    <div class="userinfo-list">
+        <a  class="userinfo-list-item">
+            <dl>
+                <dt>头像</dt>
+                <dd class="rot-nav">
+                    <img src="{$user.head_pic|default='__MOBILE__/img/default.png'}" id="img">
+                    <input type="hidden" name="head_pic" value="{$user.head_pic}">
+                </dd>
+            </dl>
+        </a>
+        <a href="{:url('User/realname')}" class="userinfo-list-item">
+            <dl>
+                <dt>真实姓名</dt>
+                <dd class="rot-nav">{$user.realname}</dd>
+            </dl>
+        </a>
+        <a  class="userinfo-list-item">
+            <dl>
+                <dt>手机</dt>
+                <dd class="ccc">{$user.mobile}</dd>
+            </dl>
+        </a>
+        <a href="{:url('User/info')}" class="userinfo-list-item">
+            <dl>
+                <dt>提现账户</dt>
+                <dd class="rot-nav"></dd>
+            </dl>
+        </a>
+    </div>
+    <div class="userinfo-list mto10">
+        <a href="{:url('User/password')}" class="userinfo-list-item">
+            <dl>
+                <dt>登录密码</dt>
+                <dd class="rot-nav"></dd>
+            </dl>
+        </a>
+        <a href="{:url('User/paypwd')}" class="userinfo-list-item">
+            <dl>
+                <dt>支付密码</dt>
+                <dd class="rot-nav"></dd>
+            </dl>
+        </a>
+        <a href="{:url('User/address_list')}" class="userinfo-list-item">
+            <dl>
+                <dt>收货地址</dt>
+                <dd class="rot-nav"></dd>
+            </dl>
+        </a>
+    </div>
+    <button id="submit" class="btn-public" style="display:none" type="button">保存头像</button>
+    <button id="submit1" class="btn-public bg-danger" onclick="logout()" type="button">安全退出</button>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#img' //绑定元素
+            ,url: "{:url('User/upload_pic')}?path=head_pic" //上传接口
+            ,done: function(res){
+                if (res.code==1){
+                    $('[name=head_pic]').val(res.img);
+                    $('#img').attr('src',res.img);
+                    $('.btn-public').show();
+                }
+            }
+        });
+    });
+    $('#submit').click(function () {
+        var head_pic=$('[name=head_pic]').val();
+        if (head_pic==''){
+            msg('请选择图片上传');
+            return false;
+        }
+        public_submit("{:url('User/head_pic_upload')}",{head_pic:head_pic})
+    });
+    function logout() {
+        confirmmsg('确定退出？',function () {
+            window.location.href="{:url('User/logout')}";
+        })
+    }
+</script>
+</html>

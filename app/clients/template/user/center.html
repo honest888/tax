@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+{include file='public:header-css'/}
+<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+        <style>
+            /*复制后的弹出层*/
+            .layui-layer-hui{
+               background:transparent;
+            }
+            .layui-layer-content{
+                padding: 18px 24px;
+                color: #fff;
+                font-size: 18px!important;
+                pointer-events: auto;
+                touch-action: auto;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                background-color: #323232;
+                will-change: transform;
+                z-index: 100002;
+                border-radius: 4px;
+                left: 24px;
+                bottom: 24px
+                --text-input-padding: 20px;
+                --text-input-height: 60px;
+                --text-input-border: 1px solid #e3e3e3;
+                font-family: Gilroy;
+            }
+            .layui-layer-hui .layui-layer-content{
+                padding:12px 18px!important;
+            }
+            /*复制后的弹出层 结束*/
+        </style>
+<body>
+<div class="master-detail-layout f-theme column align-center">
+	{include file='public:top'/}
+	
+<div class="scaffold column f-theme scaffold--normal">	
+	    <!--main-->
+		<main>
+        	<div style="height: 50px;"></div>
+        	<div class="row justify-between align-center">
+        		<div class="row align-center gap-12">
+        			<h1>
+        				Clients
+        			</h1>
+        			<form action="{:url('user/center')}" id="searchform" method="post">
+        			<div class="row gap-20" style="margin-right: 20px;">
+        				<input class="f-input f-input--search" name="keyword" placeholder="Search clients" type="text"	value="" style="max-height: 40px; border-radius: 4px;">
+        				<div class="row align-center gap-6">
+        					<label class="font-14 color-grey-dark">
+        						Tax Year
+        					</label>
+        					<select class="select color-grey-dark select--empty" name="taxyear">
+        						<option value="-1" label="All"></option>
+        						<option value="2023">
+        							2023
+        						</option>
+        						<!--<option value="2022">
+        							2022
+        						</option>
+        						<option value="2021">
+        							2021
+        						</option>-->
+        					</select>
+        				</div>
+        				<div class="row align-center gap-6">
+        					<label class="font-14 color-grey-dark">
+        						Return type
+        					</label>
+        					<select class="select color-grey-dark select--empty" name="type">
+        						<option value="-1" label="All"></option>
+        						<option value="1040">
+        							1040
+        						</option>
+        					</select>
+        				</div>
+        				<div class="row align-center gap-6">
+        					<label class="font-14 color-grey-dark">
+        						Status
+        					</label>
+        					<select class="select color-grey-dark select--empty" name="status">
+        						<option value="-1" label="All"></option>
+        						<option value="0">
+        							Not seen yet
+        						</option>
+        						<option value="1">
+        							In progress
+        						</option>
+        						<option value="2">
+        							Submitted
+        						</option>
+        					</select>
+        				</div>
+        			
+        			</div>
+        				</form>
+        		<!--	<a class="link-button">
+        				CSV
+        			</a>-->
+        		</div>
+        		<div class="button-group justify-center gap-20 wrap row">
+        			<button type="button" class="action-button action-button--primary" data-src="search" style="font-family: Gilroy;">
+        				Search
+        			</button>
+        		</div>
+        		<div class="button-group justify-center gap-20 wrap row">
+        			<button type="button" class="action-button action-button--primary" data-src="{:url('user/addclient')}" style="font-family: Gilroy;">
+        				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        				fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        				stroke-linejoin="round" class="feather feather-plus">
+        					<line x1="12" y1="5" x2="12" y2="19"></line>
+        					<line x1="5" y1="12" x2="19" y2="12"></line>
+        				</svg>
+        				Add clients
+        			</button>
+        		</div>
+        	</div>
+        	<div style="height: 60px;"></div>
+        	<table class="w-full border-collapse transparent-bg">
+        		<thead>
+        			<tr>
+        				<th class="text-align-left uppercase font-14 normal color-grey" style="width: 30%;">
+        					Client
+        				</th>
+        				<th class="text-align-left uppercase font-14 normal color-grey" style="width: 200px;">
+        					Tax Year
+        				</th>
+        				<th class="text-align-left uppercase font-14 normal color-grey" style="width: 200px;">
+        					Return Type
+        				</th>
+        				<th class="text-align-left uppercase font-14 normal color-grey" style="width: 200px;">
+        					Status
+        				</th>
+        				<th class="text-align-left uppercase font-14 normal color-grey" style="width: 200px;">
+        					Updated At
+        				</th>
+        				<th class="text-align-left uppercase font-14 normal color-grey" style="width: 350px;"></th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        		    {if $list->isEmpty()}
+        		   <tr>
+                      <td class="no-data" colspan="50" style="height:50px;line-height:50px;">
+                          <i class="mdi mdi-alert-decagram"></i>No clients now
+                       </td>
+                   </tr>
+        		   {else/}
+                   {volist name="$list" id="vo"}
+        			<tr id="submission-row-clr4jarue0000tdkv2je7clf9" class="h-90 cursor-pointer table-row"
+        			style="border-bottom: 1px solid rgb(240, 240, 240);">
+        				<td>
+        					<div class="row align-start">
+        						<div class="user-avatar" style="width: 40px; height: 40px;">
+        							{$vo.first}
+        						</div>
+        						<div style="width: 10px;"></div>
+        						<div class="client-name column justify-center">
+        							<div class="row-wrap align-center">
+        								<h3>
+        									{$vo.firstname} {$vo.lastname}
+        								</h3>
+        								<div style="width: 12px;"></div>
+        								<div class="row-wrap gap-6"></div>
+        							</div>
+        							<p class="flex" style="color: var(--color-darkgrey);">
+        								{$vo.email}
+        							</p>
+        						</div>
+        					</div>
+        				</td>
+        				<td>
+        					{$vo.taxyear}
+        				</td>
+        				<td>
+        					1040
+        				</td>
+        				<td>
+        					<div class="submission-status-cell column align-start submission-status-cell--not_seen_yet">
+        						<div style="height: 12px;">
+        							&nbsp;
+        						</div>
+        						{if $vo.status eq 0} <span class="status-label status-label--white">Not seen yet</span>{/if}
+        						{if $vo.status eq 1} <span class="status-label status-label status-label--orange">In progress</span>{/if}
+        						{if $vo.status eq 2} <span class="status-label status-label status-label--green">Submitted</span>{/if}
+        					</div>
+        				</td>
+        				<td class="font-14 color-grey"></td>
+        				<td>
+        					<div class="row gap-20 align-center justify-end">
+        						<!--<button type="button" class="action-button action-button--secondary action-button--icon-only"
+        						style="font-family: Gilroy;">
+        							<svg width="16" height="16" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        								<path d="M3.50503 8.08076L0.919239 5.49497C0.645872 5.22161 0.645871 4.77839 0.919238 4.50503L4.85858 0.565685C5.01438 0.409888 5.23443 0.336536 5.45255 0.367695L8.08634 0.743952C8.17434 0.756523 8.24348 0.825662 8.25605 0.913656L8.6323 3.54745C8.66346 3.76557 8.59011 3.98562 8.43431 4.14142L4.49497 8.08076C4.22161 8.35413 3.77839 8.35413 3.50503 8.08076Z"
+        								stroke="currentColor" fill="white" stroke-width="0.6">
+        								</path>
+        								<circle r="0.5625" transform="matrix(1 0 0 -1 6.1875 2.8125)" stroke="currentColor"
+        								stroke-width="0.6">
+        								</circle>
+        							</svg>
+        						</button>-->
+        						<div class="button-group justify-center gap-20 wrap row">
+        							<button type="button" class="action-button action-button--secondary" style="font-family: Gilroy;">
+        								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail">
+        									<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        									<polyline points="22,6 12,13 2,6"></polyline>
+        								</svg>
+        								Send
+        							</button>
+        						</div>
+        						<div class="popover__child">
+        							<button type="button" class=" action-button--mini action-button--icon-only cursor-pointer" style="font-family: Gilroy; ">
+        								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        									<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z"
+        									fill="#5D5F6B">
+        									</path>
+        								</svg>
+        							</button>
+        						</div>
+        					
+        						<div class="popover__element" style="display:none;"><div class="menu-button__dropdown column">
+        						    <button class="menu-button__option fuzhi"  data-text="{$vo.link}">Copy Shareable Link</button>
+        						    <button class="menu-button__option deletelink" data-text="{$vo.id}">Delete</button></div></div>
+        						<div class="popover__barrier" style="display:none;"></div>
+        					</div>
+        				</td>
+        			</tr>
+        			{/volist}
+        			{/if}
+        			<tr>
+        			    <td colspan="6">
+        			    <div class="page">
+                            {$page|raw}
+                        </div>
+                        </td>
+                    </tr>
+        		</tbody>
+        	</table>
+        </main>
+		<!--main end-->
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="__STATIC__/js/clipboard.js"></script>
+<script>
+     $(function () {
+       $(document).click(function(event){
+	          var _con = $('.popover__child');   // 设置目标区域
+	          if(!_con.is(event.target) && _con.has(event.target).length === 0){ 
+	            $('.popover__element').slideUp('slow');   //滑动消失
+	          }
+	   });
+	         
+        $('.action-button').click(function () {
+            var url=$(this).attr('data-src');
+            if(url=='search'){
+                $('#searchform').submit();
+            }else{
+                if(url!='') location.href=url;else return false;
+            }
+        });
+        $('.popover__child').click(function(){
+            $('.popover__element').hide();
+            $(this).nextAll('.popover__element').toggle();
+              /* if($(this).nextAll('.popover__element').is(':hidden')){
+        			$(this).nextAll('.popover__element').show();
+        		}else{
+              		$(this).nextAll('.popover__element').hide();	
+        		}*/
+        });
+        $('.deletelink').click(function(){
+            var id=$(this).attr('data-text');
+             $.ajax({
+                url:"{:url('user/delClient')}",
+                type:'post',
+                data:{'id':id},
+                dataType:'json',
+                success:function (res) {
+                    if (res.code==1){
+                        msg(res.msg,res.url);
+                    }else {
+                        msg(res.msg);
+                    }
+                },error:function () {
+                    msg('Try it again later')
+                }
+            });
+            setTimeout(function () {
+                $(obj).attr('disabled',false);
+                flag=true;
+            },2000) 
+        });
+        $('#submit').click(function () {
+            if (!$('#public-form').valid()){
+                return false;
+            }
+            var url="{:url('User/do_login')}";
+            var data=$('#public-form').serialize();
+            public_submit(url,data);
+        });
+        var clipboard = new ClipboardJS('.fuzhi', {
+            text: function(e) {
+                var text=$(e).attr('data-text');
+                return text;
+            }
+        });
+        clipboard.on('success', function(e) {
+            msg('Copied shareable link to clipboard','',3000);return;
+        });
+        clipboard.on('error', function(e) {
+            showMsg('Failed to copy');
+        });
+    })
+</script>
+</html>

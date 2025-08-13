@@ -1,0 +1,132 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__MOBILE__/js/swiper.min.js"></script>
+<script src="__STATIC__/plugin/layer/layer.js"></script>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header trs">
+    <a class="back iconfont iconback"></a>
+    <div class="title">商品详情</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--轮播位置s-->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="{$goods.goods_img}">
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<!--轮播位置e-->
+<!--商品s-->
+<div id="goodsInfo">
+    <div class="title">
+        <div class="good-name">{$goods.goods_name}</div>
+        {if $goods.goods_remark}<div class="desc">{$goods.goods_remark}</div>{/if}
+        <div class="price">
+            <span class="red">所需积分：￥{$goods.goods_price}</span>
+            <span style="text-decoration:line-through;color:#888;">零售价：￥{$goods.retail_price}</span>
+        </div>
+    </div>
+    <div class="goodsnum">
+        <div class="left">数量</div>
+        <div class="right">
+            <div class="number-box">
+                <div class="reduce" onclick="cartnum(this,-1)">-</div>
+                <input type="number" data-max="{$goods.store_count}" id="goods_num" value="1">
+                <div class="add" onclick="cartnum(this,1)">+</div>
+            </div>
+        </div>
+    </div>
+    <div class="content mto10 bg-fff">
+        <div class="public_title">商品详情</div>
+        <div class="info">
+            {$goods.goods_content|raw}
+        </div>
+    </div>
+</div>
+<!--商品e-->
+<div class="public-bottom buy">
+    <div class="public-bottom-item">
+        <a class="right btn-two">
+            <button id="buy" class="bg-red fff">立即兑换</button>
+        </a>
+    </div>
+</div>
+<form action="{:url('Shop/jifen_goods_buy',['goods_id'=>$goods.goods_id])}" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$goods.goods_id}">
+    <input type="hidden" name="goods_num" value="1">
+</form>
+</body>
+<style>
+    .swiper-container {
+        height: 360px;
+    }
+    .public-bottom{
+        bottom: 20px;
+        background: transparent;
+    }
+    .public-bottom .public-bottom-item{
+        background: transparent;
+    }
+    .buy .public-bottom-item{
+        justify-content: center;
+    }
+    .buy .public-bottom-item .btn-two{
+        width: 80%;
+        flex: unset;
+    }
+    #buy{
+        display: block;
+        width: 100%;
+        height: 43px;
+        background: #DD524D;
+        color: #fff;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: -webkit-gradient(linear,left top,right top,from(#f35447),to(#ff8e3c));
+        background: linear-gradient(90deg,#f35447 0,#ff8e3c);
+        background: -moz-linear-gradient(to right,#f35447 0,#ff8e3c 100%);
+        border-radius: 20px;
+    }
+</style>
+<script>
+    $(function () {
+        $('#buy').click(function () {
+            $('#form').submit();
+        });
+        $('#goods_num').blur(function () {
+            var val=$(this).val();
+            var re = /^[0-9]+$/ ;
+            if (re.test(val)==false){
+                $(this).val(1);
+            }
+            cartnum('',0);
+        });
+        cartnum('',0);
+    });
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+    function cartnum(obj='',number) {
+        var num=parseInt($('#goods_num').val());
+        var max=$('#goods_num').attr('data-max') || 0;
+        if ($(obj).hasClass('dis')){
+            return false;
+        }
+        num+=number;
+        if (num<=1){
+            num=1;
+        }
+        $('[name=goods_num]').val(num);
+        $('#goods_num').val(num);
+    }
+</script>
+</html>

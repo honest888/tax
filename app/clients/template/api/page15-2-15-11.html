@@ -1,0 +1,64 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">What is the size of your home office?</h1>
+                                    			<p class="text-center">
+                                    				<span>If you're not sure, it's ok to estimate. If we've taken this deduction in the past then we likely already have this information on file. Also, depending on how we decide to claim this deduction, we may ask you to provide additional information.</span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Square footage of home office &nbsp;</label>
+                                    				<input id="office" autocomplete="off" type="text"  data-src="self_employment_1_home_office_square_footage_of_office" value="{$detail.self_employment_1_home_office_square_footage_of_office}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    				<label for="bxwt5">Square footage of entire home &nbsp;</label>
+                                    				<input id="home" autocomplete="off" type="text"  data-src="self_employment_1_home_office_square_footage_of_home" value="{$detail.self_employment_1_home_office_square_footage_of_home}">
+                                    			</div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      $('#office').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+     $('#home').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+});
+</script>

@@ -1,0 +1,2021 @@
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style2.css" data-precedence="next" />
+		<link rel="stylesheet" href="__ST__/checkbox.css" data-precedence="next" /> 
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+		<!-- <link rel="stylesheet" href="__STATIC__/js/signature/popstyle.css"> -->
+         <script src="__STATIC__/js/signature/snature.js"></script>
+</head>
+
+<body style="margin:0 auto;">
+	<div class="pcshow" style="width:100%; background: #323639;justify-content:space-evenly;position:fixed;z-index: 99999;padding: 0px 100px;color:#fff;padding:20px 0px;display: flex;">
+	    <svg id="ZoomIn" t="1743072351268" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5134" width="30" height="30"><path d="M779.093333 473.6H544.085333v-228.693333c0-17.749333-14.336-32.085333-32.085333-32.085334s-32.085333 14.336-32.085333 32.085334v235.008h-228.693334c-17.578667-3.242667-34.474667 8.192-37.888 25.770666-0.341333 2.048-0.512 4.096-0.512 6.144-1.024 16.725333 11.605333 31.061333 28.330667 32.085334h232.277333v228.693333c0 17.749333 14.336 32.085333 32.085334 32.085333s32.085333-14.336 32.085333-32.085333v-228.693333h228.693333c16.725333 1.024 31.061333-11.605333 32.085334-28.330667V512c-0.170667-19.114667-0.170667-38.4-19.285334-38.4zM512 0C229.205333 0 0 229.205333 0 512s229.205333 512 512 512 512-229.205333 512-512C1023.146667 229.546667 794.453333 0.853333 512 0z m0 953.685333C268.117333 953.685333 70.485333 755.882667 70.485333 512S268.117333 70.485333 512 70.485333 953.685333 268.117333 953.685333 512c-0.512 243.712-197.973333 441.173333-441.685333 441.685333z" fill="#ffffff" p-id="5135"></path></svg>
+	    <svg  id="ZoomOut"  t="1743072247244" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3808" width="32" height="32"><path d="M512 1024C229.205333 1024 0 794.794667 0 512S229.205333 0 512 0s512 229.205333 512 512c-0.853333 282.453333-229.546667 511.146667-512 512z m0-953.685333C268.117333 70.314667 70.314667 268.117333 70.314667 512S268.117333 953.514667 512 953.514667 953.685333 755.882667 953.685333 512c-0.512-243.712-197.973333-441.173333-441.685333-441.685333zM778.752 537.6H245.418667c-17.749333 0-32.085333-14.336-32.085334-32.085333v-4.266667c0-17.749333 14.336-32.085333 32.085334-32.085333h533.333333c17.749333 0 32.085333 14.336 32.085333 32.085333v4.266667c-0.170667 17.749333-14.506667 32.085333-32.085333 32.085333z" fill="#ffffff" p-id="3809"></path></svg>
+	    <button class="action-button action-button--secondary submit">Submit</button>		
+    </div>
+    <div class="mobileshow" style="background: #323639;justify-content:space-evenly;position:fixed;align-items: center;">
+       <div class="submit"><svg t="1722049553403" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7727" width="32" height="32"><path d="M510.976 971.264c-114.176 0-227.84-43.52-314.368-130.048-83.968-83.968-130.56-195.584-130.56-314.368s46.08-230.4 130.56-314.368S392.192 81.92 510.976 81.92c118.784 0 230.4 46.08 314.368 130.56 83.968 83.968 130.56 195.584 130.56 314.368s-46.08 230.4-130.56 314.368c-86.528 87.04-200.192 130.048-314.368 130.048z m0-827.904c-102.4 0-198.656 39.936-271.36 112.128s-112.128 168.96-112.128 271.36 39.936 198.656 112.128 271.36c74.752 74.752 173.056 112.128 271.36 112.128s196.608-37.376 271.36-112.128c72.192-72.192 112.128-168.96 112.128-271.36s-39.936-198.656-112.128-271.36-168.96-112.128-271.36-112.128z" p-id="7728" fill="#ffffff"></path><path d="M511.488 798.72c-16.896 0-30.72-13.824-30.72-30.72V340.992c0-16.896 13.824-30.72 30.72-30.72s30.72 13.824 30.72 30.72V768c0 16.896-13.824 30.72-30.72 30.72z" p-id="7729" fill="#ffffff"></path><path d="M358.4 509.952c-7.68 0-15.872-3.072-21.504-9.216-11.776-11.776-11.776-31.232 0-43.52l153.088-153.088c11.776-11.776 31.232-11.776 43.52 0 11.776 11.776 11.776 31.232 0 43.52l-153.6 153.088c-5.632 6.144-13.824 9.216-21.504 9.216z" p-id="7730" fill="#ffffff"></path><path d="M674.304 509.952c-7.68 0-15.872-3.072-21.504-9.216L499.2 347.648c-11.776-11.776-11.776-31.232 0-43.52 11.776-11.776 31.232-11.776 43.52 0l153.088 153.088c11.776 11.776 11.776 31.232 0 43.52-5.632 6.144-13.824 9.216-21.504 9.216z" p-id="7731" fill="#ffffff"></path></svg></div>
+    </div>
+    <!--签名 弹出页-->
+    <?php if($signary!=''){
+      foreach($signary as $key=>$val){
+      $idname="comtip".$key;
+      $padname="signature-pad".$key;
+      $fieldimg=$key."img";
+      $objclose="close".$key;
+     ?>
+        <div class="modal-barrier" id="{$idname}" style="display:none;">
+		       <?php if(!is_mobile_device()){ ?> 
+				   <div class="dialog f-theme column  position-relative gap-20 dialog--normal">
+                		<svg class="close {$objclose}" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>
+						<canvas id="{$padname}" width="930" height="272" style="border: 1px dashed green;"></canvas>
+                		<div class="row align-center justify-end" style="display:flex;margin-top:40px;  width: 100%; justify-content: space-evenly">
+                        <button onclick="clearSignature22('{$key}')" class="action-button action-button--secondary signbutton" style="margin-left:10px;">Clear</button><!--onclick="clearSignature('{$padname}')" -->
+                        <button onclick="saveSignature22('{$key}')" class="action-button action-button--primary signbutton">Save</button><!--onclick="saveSignature('{$key}','{$fieldimg}','{$idname}')"-->
+                        </div>
+                	</div>
+				<?php }?>
+       </div>  
+       <?php } }?>
+	
+		<div style="padding-top:100px;">
+	   	   <!--<iframe src="" width="100%" height="100%" frameborder="0"></iframe>-->
+
+		  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+        .pagepdf {
+            margin-bottom: 30px;
+            page-break-after: always;
+            width: 692px; margin: 0 auto;background: #fff;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+           /* margin-bottom: 10px;*/
+        }
+       
+        .underline {
+            text-decoration: underline;
+        }
+      
+        .indent {
+            margin-left: 20px;
+        }
+        .signature-line {
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            width: 300px;
+        }
+        .form-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-number {
+            text-align: right;
+            font-style: italic;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+         .form-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-field span {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            min-width: 300px;
+            padding-bottom: 3px;
+        }
+        .form-checkbox {
+            margin-right: 5px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .form-table th, .form-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .form-table th {
+            background-color: #f2f2f2;
+        }
+        .form-footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-box {
+            width: 300px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+       p{
+        margin:8px 0;
+        }
+        input{
+            vertical-align: middle;
+        }
+        body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                   /* font-size:14px;*/
+                }
+            textarea{
+                border:none;
+                width:100%;
+                min-height:200px;
+            }
+            table,td{
+                font-size: 13px;
+            }
+            .innerpage{
+              background: #9e9e9e;
+            }
+             .italic{
+                font-style: italic;
+            }
+            .f14{
+                font-size:14px;
+            }
+            .leftm{
+                padding-left: 4.4rem;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            .leftm2{
+                padding-left: 3.2rem;
+            }
+            .titlespan{
+                margin-right:20px;
+            }
+            .stitlespan{
+                margin-right:16px;
+            }
+            .paddingbottom{
+                padding-bottom: 3px;
+            }
+            .tline{
+                border-bottom: 1px solid black; vertical-align: bottom;
+                height:30px;
+            }
+            .pagebreak{
+                   background: #9e9e9e;
+                    width: 100%;
+                    height: 5px;
+                   margin-top: 30px;
+                     margin-bottom: 50px;
+            }
+            .arrow-list {
+               list-style: none;
+               padding-left: 0;   
+            }
+               
+            .arrow-list li::before {
+               content: "\25BA";
+               margin-right: 8px;
+               color: #000; 
+            }
+            .ftable table,th{
+               
+            }
+            .ftable{
+                border-collapse: collapse;
+                 font-size:12px;
+            }
+            .arrow::before{
+               content: "\25BA";
+            }
+            .fourcols{
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+            }
+            .fcolsright{
+                border-bottom: 1px solid #000;
+                vertical-align:top;
+                text-align: center;
+                padding:5px;
+             }
+             .onecols{
+                border-bottom: 1px solid #000;
+               /* font-size:1.17em;*/
+                padding:3px 0;
+                text-indent: -12px;
+                padding-left: 12px;
+                line-height: 18px;
+                
+             }
+             .font12{
+               font-size:12px;
+             }
+             .tleft{
+                    margin-left:13%;
+                }
+                .tline1{
+                    border-bottom:1px solid #000;width: 56%;padding-left:13%;
+                }
+                .tline2{
+                    border-bottom:1px dashed #000;width: 50%;padding-left:18%;
+                }
+                .tline3{
+                border-bottom:1px solid #000;width: 47.2%;padding-left:4%;
+                }
+                .tline4{
+                border-bottom:1px solid #000;width: 57.8%;padding-left:14%;
+                }
+        .tabletitlespan{
+          width:20px;display:inline-block;
+        }
+        .mtable{
+          width:820px;
+        }
+        @media screen and (max-width: 600px) {
+             .mtable{
+              zoom:1
+            }
+        }
+        </style> 
+     <div class="innerpage">
+        <div style="width: 940px;margin: 0 auto;background: #fff;" class="mshow">   
+        <!--content start-->
+            <div class="pagepdf mtable" style="padding-top:80px;">
+                <table class="ftable" style="width:100%">   
+                    <tbody><tr>
+                        <td style="border-bottom: 2px solid #000;border-right: 2px solid #000;width:15%;">
+                            <p style="width:100%;font-size:0.6rem">Form <span style="font-size:1.6rem;font-weight:800">8821</span>
+                            <br>(Rev. January 2021)
+                            Department of the Treasury Internal Revenue Service
+                            </p>
+                        </td>
+                        <td style="border-bottom: 2px solid #000;text-align: center;width:70%;">
+                           <p style="font-size: 16px; font-weight: 800;">Tax Information Authorization</p>
+                            <ul class="arrow-list">
+                                <li><b>Go to www.irs.gov/Form8821 for instructions and the latest information.</b></li>
+                                <li><b>Don't sign this form unless all applicable lines have been completed.</b></li>
+                                <li><b>Don't use Form 8821 to request copies of your tax returns or to authorize someone to represent you. See instructions.</b></li>
+                            </ul>
+                        </td>
+                        <td style="width:15%;border-bottom: 2px solid #000;border-left: 2px solid #000;">
+                           <p style="width:100%;border-bottom: 1px solid;margin-bottom: 2px;text-align: center;font-size:12px;">OMB No. 1545-1165</p>
+                            <p style="margin-top: 2px;text-align: center;font-weight: bold;font-size:12px;">For IRS Use Only</p>
+                            <p style="font-size:10px;margin-left:3px;line-height: 13px;">Received by:<br>
+                            Name<span style="width:70%;display: inline-block;border-bottom: 1px solid #000; margin-left: 3px;"> </span><br>
+                            Telephone<span style="width:55%;display: inline-block;border-bottom: 1px solid #000; margin-left: 3px;"> </span><br>
+                            Function<span style="width:60%;display: inline-block;border-bottom: 1px solid #000; margin-left: 3px;"> </span><br>
+                            Date</p>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="text-indent:5px;">
+                        <span style="font-weight:bold;">1 <span class="titlespan"> </span>Taxpayer information.</span> Taxpayer must sign and date this form on line 6. </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="55%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;">
+                           Taxpayer name and address<br>
+                            {{NM}}<br>
+                            {{BA1}}<br>
+                            {{BA2}}
+                        </td>
+                        <td width="45%" style="border-bottom: 1px solid #000;">
+                            <div style="padding:3px 0 3px 6px">Taxpayer identification number(s)<br>
+                            {{EI}}
+                            </div>
+                            <div style="display:flex;border-top:1px solid #000;padding-left: 6px;justify-content: space-between;">
+                              <div style="padding-top:3px;">Daytime telephone number<br><span class="bold">951-473-2874</span></div>
+                              <div style="border-left:1px solid #000;padding-left:3px;padding-top:3px;">Plan number (if applicable)</div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="text-indent:5px;">
+                        <span style="font-weight:bold;">2<span class="titlespan"> </span>Designee(s).</span> If you wish to name more than two designees, attach a list to this form. <span style="font-weight:bold;">Check here if a list of additional<br><span style="text-indent:35px;display:inline-block;"> designees is attached <span class="arrow"> </span></span></span><input type="checkbox" checked></td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;line-height: 17px;">
+                           Name and address<br>
+                           <span class="bold">Vanessa Hernandez<br>
+                           255 E Rincon # 225<br>
+                           Corona CA 92879<br><br>
+                           Check if to be sent copies of notices and communications </span><input type="checkbox" checked>
+                        </td>
+                        <td width="50%" style="border-bottom: 1px solid #000;line-height: 20px;padding: 6px 0 0 6px;">
+                            <div style="display: flex;">
+                               <div>CAF No.</div> 
+                               <div style="border-bottom:1px solid #000;width: 86%;text-align: center;">0312-16771R</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div>PTIN</div> 
+                               <div style="border-bottom:1px solid #000;width: 95%;text-align: center;">P01973722</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div>Telephone No.</div> 
+                               <div style="border-bottom:1px solid #000;width: 77.2%;;text-align: center;">(951)339-3561</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div>Fax No.</div> 
+                               <div style="border-bottom:1px solid #000;width: 87.8%;text-align: center;">(949)268-1615</div>
+                            </div>
+                            <div style="display: flex;">
+                            Check if new: &nbsp;&nbsp;
+                                 <div>
+                                  Address <input type="checkbox">&nbsp; 
+                                  Telephone No. <input type="checkbox">&nbsp; 
+                                  Fax No. <input  type="checkbox"></div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;line-height: 17px;">
+                           Name and address<br>
+                           <span class="bold">Jennifer Knapp - Republic Tax<br>
+                           255 E Rincon St #225<br>
+                           Corona, CA 92879<br><br>
+                           Check if to be sent copies of notices and communications </span><input type="checkbox" checked>
+                        </td>
+                        <td width="50%" style="border-bottom: 1px solid #000;line-height: 20px;padding: 6px 0 0 6px;">
+                            <div style="display: flex;">
+                               <div>CAF No.</div> 
+                               <div style="border-bottom:1px solid #000;width: 86%;text-align: center;">0313-17463R</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div>PTIN</div> 
+                               <div style="border-bottom:1px solid #000;width: 95%;text-align: center;">P02161353</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div>Telephone No.</div> 
+                               <div style="border-bottom:1px solid #000;width: 77.2%;;text-align: center;">(951)339-3561</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div>Fax No.</div> 
+                               <div style="border-bottom:1px solid #000;width: 87.8%;text-align: center;">(949)268-1615</div>
+                            </div>
+                            <div style="display: flex;">
+                            Check if new: &nbsp;&nbsp;
+                                 <div>
+                                  Address <input type="checkbox">&nbsp; 
+                                  Telephone No. <input type="checkbox">&nbsp; 
+                                  Fax No. <input  type="checkbox"></div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="text-indent:5px;">
+                        <span style="font-weight:bold;">3 <span class="titlespan"> </span>Tax information.</span>Each designee is authorized to inspect and/or receive confidential tax information for the type of tax, forms, <br><span style="text-indent:35px;display:inline-block;">periods, and specific matters you list below. See the line 3 instructions.</span> 
+                        <br>
+                        <span style="text-indent:35px;display:inline-block;">   <input type="checkbox" checked>
+                        By checking here, I authorize access to my IRS records via an Intermediate Service Provider.</span>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="33%" class="fourcols">
+                           <span class="bold">(a)</span><br>
+                           Type of Tax Information (Income,<br>Employment, Payroll, Excise, Estate, Gift,Civil Penalty, Sec. 4980H Payments, etc.)
+                        </td>
+                        <td width="21%" class="fourcols">
+                           <span class="bold">(b)</span><br>
+                           Tax Form Number<br>
+                    (1040, 941, 720, etc.)
+                        </td>
+                        <td width="23%" class="fourcols">
+                         <span class="bold"> (c)</span><br>
+                            Year(s) or Period(s)
+                        </td>
+                        <td width="23%" class="fcolsright">
+                        <span class="bold">(d)</span><br>
+                           Specific Tax Matters
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="25%" class="fourcols" style="text-align: left;">
+                           Income
+                        </td>
+                        <td width="25%" class="fourcols">
+                           1040,1099's,W-2's
+                        </td>
+                        <td width="25%" class="fourcols">
+                          1992-2028
+                        </td>
+                        <td width="25%"  class="fcolsright">
+                          NOT APPLICABLE
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="25%" class="fourcols" style="text-align: left;">
+                          Separate Assessment
+                        </td>
+                        <td width="25%" class="fourcols">
+                           1040
+                        </td>
+                        <td width="25%" class="fourcols">
+                          1992-2028
+                        </td>
+                        <td width="25%"  class="fcolsright">
+                          NOT APPLICABLE
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="25%" class="fourcols" style="text-align: left;">
+                          Civil Penalities
+                        </td>
+                        <td width="25%" class="fourcols">
+                           1040
+                        </td>
+                        <td width="25%" class="fourcols">
+                          1992-2028
+                        </td>
+                        <td width="25%" class="fcolsright">
+                          NOT APPLICABLE
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="text-indent:5px;">
+                        <span style="font-weight:bold;">4 <span class="titlespan"></span>Specific use not recorded on the Centralized Authorization File (CAF).</span> If the tax information authorization is for a <br><span style="display:inline-block;text-indent:38px;">specific use not recorded on CAF, check this box. See the instructions. If you check this box, skip line 5 . . . . . .</span><span class="arrow"> </span> <input type="checkbox" >
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="text-indent:5px;">
+                        <span style="font-weight:bold;">5<span class="titlespan"></span> Retention/revocation of prior tax information authorizations.</span> If the line 4 box is checked, skip this line. If the line 4 box <span style="display:inline-block;text-indent:38px;">isn't checked, the IRS will automatically revoke all prior tax information authorizations on file unless you check the line 5</span> <span style="display:inline-block;text-indent:38px;">box and attach a copy of the tax information authorization(s) that you want to retain . . . . . . . . . . . . . . . . . . . . . .</span><span class="arrow"> </span> <input type="checkbox" >
+                        <br>
+                        <span style="display:inline-block;text-indent:38px;">To revoke a prior tax information authorization(s) without submitting a new authorization, see the line 5 instructions.</span>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="border-bottom:0px;text-indent:5px;">
+                        <span style="font-weight:bold;">6 <span class="titlespan"></span>Taxpayer signature.</span>If signed by a corporate officer, partner, guardian, partnership representative (or designated <span style="display:inline-block;text-indent:38px;">individual, if applicable), executor, receiver, administrator, trustee, or individual other than the taxpayer, I certify that I have</span> <span style="display:inline-block;text-indent:38px;">the legal authority to execute this form with respect to the tax matters and tax periods shown on line 3 above.</span><br><br>
+                        <span class="arrow" style="display:inline-block;text-indent:38px;"> </span>                      
+                        <span class="bold">IF NOT COMPLETED, SIGNED, AND DATED, THIS TAX INFORMATION AUTHORIZATION WILL BE RETURNED.</span><br><br>
+                        <span class="arrow" style="display:inline-block;text-indent:38px;"> </span>
+                        <span class="bold">DON'T SIGN THIS FORM IF IT IS BLANK OR INCOMPLETE.</span><br>
+                        <br>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:90%;margin:0 auto">
+                    <tr>
+                        <td width="60%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;height:30px;">
+                          {{signature}}
+                        </td>
+                        <td width="40%" style="border-bottom: 1px solid #000;padding-left:10px;">
+                          {{currentdate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60%" style="vertical-align:top;">
+                           Signature
+                        </td>
+                        <td width="40%" style="padding-left:10px;">
+                            Date
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60%" style="border-bottom: 1px solid #000;padding-bottom:3px;">
+                        <br>
+                          {{NM}}
+                        </td>
+                        <td width="40%" style="border-bottom: 1px solid #000;padding-left:10px;padding-bottom:3px;">
+                        <br>
+                          {{JB}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60%" style="vertical-align:top;">
+                           Print Name
+                        </td>
+                        <td width="40%" style="padding-left:10px;">
+                         Title(if applicable)
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  style="onecols">
+                        <hr style=" height: 2px; background-color: black; border: none; ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <div style="display: flex;justify-content: space-between;">
+                              <div>
+                              <span class="bold">For Privacy Act and Paperwork Reduction Act Notice, see the instructions.</span>
+                              </div>
+                              <div>
+                              Cat. No. 11596P
+                              </div>
+                              <div>
+                              Form <span class="bold">8821</span> (Rev.01-2021)
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+        <div class="pagebreak"></div>
+        <div class="pagepdf mtable">
+            <table class="ftable" style="width:100%;"> 
+                    <tr>
+                        <td>
+                          <div style="display: flex;justify-content: space-between;font-weight: bold;">
+                              <div>
+                              Tax Information Authorization
+                              </div>
+                              <div>
+                              Form 8821 - Page 2
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             Name:{{BN}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             SSN:{{EI}}
+                        </td>
+                    </tr>
+            </table>
+            <h2 style="margin-bottom:20px;">Additional Appointee(s)</h2>
+            <table class="ftable" style="width:100%;font-size:12px;">
+                    <tr>
+                        <td width="50%" style="border-top: 5px solid #000;border-right: 1px solid #000;height:30px;text-align: center;vertical-align: bottom;">
+                         Name and Address
+                        </td>
+                        <td width="50%" style="border-top: 5px solid #000;padding-left:10px;text-align: center;vertical-align: bottom;">
+                         Other Info
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 1px solid #000;border-right: 1px solid #000;">
+                            Angela Coloma - Republic Tax Relief<br>
+                            255 E Rincon Ste 225,<br>
+                            Corona, CA 92879
+                        </td>
+                        <td width="50%" style="border-top: 1px solid #000;padding: 5px 0 5px 10px;">
+                            CAF No: <span class="underline">0316-53456R</span><br>
+                            PTIN: <span class="underline">P03243991</span><br>
+                            Telephone No: <span class="underline">(951)707-4296</span><br>
+                            Fax No: <span class="underline">(951)707-4676</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 5px solid #000;border-right: 1px solid #000;height:30px;text-align: center;vertical-align: bottom;">
+                         Name and Address
+                        </td>
+                        <td width="50%" style="border-top: 5px solid #000;padding-left:10px;text-align: center;vertical-align: bottom;">
+                         Other Info
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 1px solid #000;border-right: 1px solid #000;">
+                            Antranette Mccutcheon - Republic Tax Relief<br>
+                            255 E Rincon Ste 225,<br>
+                            Corona, CA 92879
+                        </td>
+                        <td width="50%" style="border-top: 1px solid #000;padding: 5px 0 5px 10px;">
+                            CAF No: <span class="underline">0314-87509R</span><br>
+                            PTIN: <span class="underline">P02464799</span><br>
+                            Telephone No: <span class="underline">(949)276-3800</span><br>
+                            Fax No: <span class="underline">(949)245-6138</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 5px solid #000;border-right: 1px solid #000;height:30px;text-align: center;vertical-align: bottom;">
+                         Name and Address
+                        </td>
+                        <td width="50%" style="border-top: 5px solid #000;padding-left:10px;text-align: center;vertical-align: bottom;">
+                         Other Info
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 1px solid #000;border-right: 1px solid #000;">
+                        </td>
+                        <td width="50%" style="border-top: 1px solid #000;padding-left:10px;text-align: center;">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 5px solid #000;border-right: 1px solid #000;height:30px;text-align: center;vertical-align: bottom;">
+                         Name and Address
+                        </td>
+                        <td width="50%" style="border-top: 5px solid #000;padding-left:10px;text-align: center;vertical-align: bottom;">
+                         Other Info
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="border-top: 1px solid #000;border-bottom: 1px solid #000;border-right: 1px solid #000;">
+                        </td>
+                        <td width="50%" style="border-top: 1px solid #000;border-bottom: 1px solid #000;padding-left:10px;">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </td>
+                    </tr>
+            </table>
+            <p style="margin-top:500px;"></p>
+        </div>
+        <div class="pagebreak"></div>
+        <div class="pagepdf mtable">
+                <table class="ftable">   
+                    <tr>
+                        <td style="border-bottom: 2px solid #000;border-right: 2px solid #000;">
+                            <span style="width:130px;font-size:10px;">Form <span style="font-size:26px;font-weight:800;font-family:sans-serif">2848</span>
+                            <br>(Rev. January 2021)<br>
+                            Department of the Treasury<br>Internal Revenue Service
+                            </span>
+                        </td>
+                        <td style="border-bottom: 2px solid #000;text-align: center;width: 65%">
+                           <p style="font-size: 16px; font-weight: 800;">Power of Attorney<br>and Declaration of Representative</p>
+                            <ul class="arrow-list">
+                                <li><b>Go to <i>www.irs.gov/Form2848</i> for instructions and the latest information.</b></li>
+                            </ul>
+                        </td>
+                        <td style="width:10%;border-bottom: 1px solid #000;border-left: 2px solid #000;" rowspan="2">
+                           <p style="width:140px;border-bottom: 1px solid;margin-bottom: 2px;text-align: center;font-size:12px;">OMB No. 1545-0150</p>
+                            <p style="margin-top: 2px;text-align: center;font-weight: bold;font-size:12px;">For IRS Use Only</p>
+                            <p style="font-size:10px;margin-left:3px;line-height: 16px;"><span>Received by:<br>
+                            Name<span style="width:105px;display: inline-block;border-bottom: 1px solid #000; margin-left: 3px;"> </span><br>
+                            Telephone<span style="width:85px;display: inline-block;border-bottom: 1px solid #000; margin-left: 3px;"> </span><br>
+                            Function<span style="width:85px;display: inline-block;border-bottom: 1px solid #000; margin-left: 3px;"> </span><br>
+                            Date<span style="width:85px;display: inline-block;margin-left: 3px;text-align: center;"> // </span></span>
+                            </p>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td style="border-bottom: 1px solid #000;border-right: 1px solid #000;" colspan="2">
+                            <div style="font-size: 15px; font-weight: 800;"><span style="background: #000;color:#fff;margin-right: 20px;"> Part I </span> Power of Attorney</div>
+                            <div style="margin-left:70px">
+                            <span class="bold">Caution:</span> A separate Form 2848 must be completed for each taxpayer. Form 2848 will not be honored <br>for any purpose other than representation before the IRS.</div>
+                        </td>
+                    </tr>
+                </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td class="onecols" style="text-indent:10px;">
+                        <div><span style="font-weight:bold;">1 <span class="titlespan"></span>Taxpayer information.</span> Taxpayer must sign and date this form on page 2, line 7. </div></td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="55%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;">
+                           Taxpayer name and address<br>
+                            {{BN}}<br>
+                            {{BA1}}<br>
+                            {{BA2}}
+                        </td>
+                        <td width="45%" style="border-bottom: 1px solid #000;line-height: 18px;">
+                            <div style="padding:3px 0 3px 6px">Taxpayer identification number(s)<br>
+                            {{EI}}
+                            </div>
+                            <div style="display:flex;border-top:1px solid #000;padding-left: 6px;justify-content: space-between;">
+                              <div style="padding-top:3px;">Daytime telephone number<br><span class="bold">951-473-2874</span></div>
+                              <div style="border-left:1px solid #000;padding-left:3px;padding-top:3px;">Plan number (if applicable)</div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  style="border-bottom: 1px solid #000; font-size: 1.17em; padding: 3px 0;">
+                        <span>hereby appoints the following representative(s) as attorney(s)-in-fact:</span><br>
+                        <div style="text-indent:22px;"><span style="font-weight:bold;">2<span class="titlespan"></span> Representative(s)</span> must sign and date this form on page 2, Part II.</div></td>
+                    </tr>
+            </table>
+            
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;line-height: 17px;">
+                           Name and address<br>
+                           <span class="bold">
+                           Obi Ugochukwu - Republic Tax Relief<br>
+                            255 E Rincon St Ste. 225<br>
+                            Corona, CA 92879<br></span>
+                           Check if to be sent copies of notices and communications <input type="checkbox" checked>
+                        </td>
+                        <td width="50%" style="border-bottom: 1px solid #000;line-height: 20px;padding: 6px 0 0 6px;">
+                            <div style="display: flex;">
+                               <div class="tleft">CAF No.</div> 
+                               <div class="tline1">0307-90212R</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">PTIN</div> 
+                               <div class="tline2">P00875660</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Telephone No.</div> 
+                               <div class="tline3">(951) 473-2874</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Fax No.</div> 
+                               <div class="tline4">(951) 707-4605</div>
+                            </div>
+                            <div style="display: flex;">
+                            Check if new: &nbsp;&nbsp;
+                                 <div>
+                                  Address <input type="checkbox">&nbsp; 
+                                  Telephone No. <input type="checkbox">&nbsp; 
+                                  Fax No. <input  type="checkbox"></div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;line-height: 17px;">
+                           Name and address<br>
+                           <span class="bold">Behdad Farzaneh - Republic Tax Relief<br>
+                           255 E Rincon St Ste. 225<br>
+                           Corona, CA 92879<br><br></span>
+                           Check if to be sent copies of notices and communications <input type="checkbox" checked>
+                        </td>
+                        <td width="50%" style="border-bottom: 1px solid #000;line-height: 20px;padding: 6px 0 0 6px;">
+                            <div style="display: flex;">
+                               <div class="tleft">CAF No.</div> 
+                               <div class="tline1">0313-12134R</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">PTIN</div> 
+                               <div class="tline2">P00744722</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Telephone No.</div> 
+                               <div class="tline3">(951) 473-2874</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Fax No.</div> 
+                               <div class="tline4">(949) 238-4228</div>
+                            </div>
+                            <div style="display: flex;">
+                            Check if new: &nbsp;&nbsp;
+                                 <div>
+                                  Address <input type="checkbox">&nbsp; 
+                                  Telephone No. <input type="checkbox">&nbsp; 
+                                  Fax No. <input  type="checkbox"></div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;line-height: 17px;">
+                           Name and address<br>
+                           <span class="bold">Sally Rosenblum - Republic Tax Relief<br>
+                           255 E Rincon St Ste. 225<br>
+                           Corona, CA 92879<br><br></span>
+                           <span style="font-size:12px;">(Note: IRS sends notices and communications to only two representatives.)</span>
+                        </td>
+                        <td width="50%" style="border-bottom: 1px solid #000;line-height: 20px;padding-left:6px;">
+                            <div style="display: flex;">
+                               <div class="tleft">CAF No.</div> 
+                               <div class="tline1">0313-12556R</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">PTIN</div> 
+                               <div class="tline2">P00648103</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Telephone No.</div> 
+                               <div class="tline3">(951) 473-2874</div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Fax No.</div> 
+                               <div class="tline4">(951) 707-4294</div>
+                            </div>
+                            <div style="display: flex;">
+                            Check if new: &nbsp;&nbsp;
+                                 <div>
+                                  Address <input type="checkbox">&nbsp; 
+                                  Telephone No. <input type="checkbox">&nbsp; 
+                                  Fax No. <input  type="checkbox"></div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" style="border-bottom: 1px solid #000;border-right: 1px solid #000;vertical-align:top;line-height: 17px;">
+                           Name and address<br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <span style="font-size:12px;">(Note: IRS sends notices and communications to only two representatives.)</span>
+                        </td>
+                        <td width="50%" style="border-bottom: 1px solid #000;line-height: 20px;padding-left:6px;">
+                            <div style="display: flex;">
+                               <div class="tleft">CAF No.</div> 
+                               <div class="tline1"> </div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">PTIN</div> 
+                               <div class="tline2"> </div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Telephone No.</div> 
+                               <div class="tline3"> </div>
+                            </div>
+                            <div style="display: flex;">
+                               <div class="tleft">Fax No.</div> 
+                               <div class="tline4"> </div>
+                            </div>
+                            <div style="display: flex;">
+                            Check if new: &nbsp;&nbsp;
+                                 <div>
+                                  Address <input type="checkbox">&nbsp; 
+                                  Telephone No. <input type="checkbox">&nbsp; 
+                                  Fax No. <input  type="checkbox"></div>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td style="border-bottom: 1px solid #000; font-size:12px; padding: 3px 0;">
+                        to represent the taxpayer before the Internal Revenue Service and perform the following acts:<br>
+                        <p style="text-indent: -28px;padding-left: 28px;margin-left: 15px;font-size:12px;"><span style="font-weight:bold;">3<span style="width: 15px;display:inline-block;"></span> Acts authorized (you are required to complete this line 3).</span>With the exception of the acts described in line 5b, I authorize my representative(s) to receive and inspect my confidential tax information and to perform acts that I can perform with respect to the tax matters described below. For example, my representative(s) shall have the authority to sign any agreements, consents, or similar documents (see instructions for line 5a for authorizing a representative to sign a return).</p>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="50%" class="fourcols font12">
+                           Description of Matter (Income, Employment, Payroll, Excise, Estate, Gift,Whistleblower, Practitioner Discipline, PLR, FOlA, Civil Penalty, Sec.4980H Shared Responsibility Payment, etc.)(seeinstructions)
+                        </td>
+                        <td width="25%" class="fourcols font12">
+                           Tax Form Number<br>
+                          (1040, 941, 720, etc.) (if applicable)
+                        </td>
+                        <td width="25%" class="fcolsright font12">
+                          Year(s) or Period(s) (if applicable)<br>
+                          (see instructions)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" class="fourcols" style="text-align: left;">
+                           Income
+                        </td>
+                        <td width="25%" class="fourcols">
+                           1040, 1099, W2
+                        </td>
+                        <td width="25%" class="fcolsright">
+                          1992 - 2028
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" class="fourcols" style="text-align: left;">
+                          Civil Penalties
+                        </td>
+                        <td width="25%" class="fourcols">
+                           N/A
+                        </td>
+                        <td width="25%" class="fcolsright">
+                          1992 - 2028
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" class="fourcols" style="text-align: left;">
+                         
+                        </td>
+                        <td width="25%" class="fourcols">
+                         
+                        </td>
+                        <td width="25%" class="fcolsright">
+                         
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols">
+                        <span style="font-weight:bold;margin-left: 15px;">4 <span style="width: 15px;display:inline-block;"></span>Specific use not recorded on Centralized Authorization File (CAF).</span>If the power of attorney is for a specific use not recorded on <span style="display:inline-block;text-indent:30px;">CAF,check this box.See Line4. <span class="bold">Specific Use Not Recorded on CAF in the instructions</span>. . . . . . . . . . . . . . .. . . . . . . . . . . . . . .</span><span class="arrow"> </span> <input type="checkbox">
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="line-height: 18px;border-bottom:none;">
+                        <span style="font-weight:bold;margin-left: 15px;">5a Additional acts authorized. </span>
+                        In addition to the acts listed on line 3 above, I authorize my representative(s) to perform the following acts (see instructions for line 5a for more information): 
+                        &nbsp;&nbsp;&nbsp; <input type="checkbox" checked> Access my IRS records via an Intermediate Service Provider;<br>
+                        <input type="checkbox" checked> Authorize disclosure to third parties;
+                        <span style="width:75px;display:inline-block;"></span><input type="checkbox"> Substitute or add representative(s);
+                        &nbsp;&nbsp;&nbsp;<input type="checkbox"> Sign a return;<span style="width:20%;display:inline-block;border-bottom:1px solid #000;"></span><br>
+                        <span style="width:100%;display:inline-block;border-bottom:1px solid #000;height:22px;"> </span>    <br>
+                       <span style="width:100%;display:inline-block;border-bottom:1px solid #000;height:22px;"> </span><br>
+                      <span style="">  <input type="checkbox"> Other acts authorized:<span style="width:80%;display:inline-block;border-bottom:1px solid #000;height:22px;">  </span></span>
+                             <span style="width:100%;display:inline-block;border-bottom:1px solid #000;height:22px;"> </span><br>
+                        </td>
+                    </tr>
+            </table>
+            
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td><br>
+                        <hr style=" height: 2px; background-color: black; border: none; ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <div style="display: flex;justify-content: space-between;">
+                              <div>
+                              <span class="bold">For Privacy Act and Paperwork Reduction Act Notice, see the instructions.</span>
+                              </div>
+                              <div>
+                              Cat. No. 11980J
+                              </div>
+                              <div>
+                              Form <span class="bold">2848 </span>(Rev.1-2021)
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+         <div class="pagebreak"></div>
+        <div class="pagepdf mtable" >
+         <table class="ftable" style="width:100%;">  
+                   <tr>
+                        <td>
+                          <div style="display: flex;justify-content: space-between;font-size:10px;">                             
+                              <div>
+                              Form 2848 (Rev.1-2021)
+                              </div>
+                              <div>
+                              Page <span class="bold" style="font-size:14px;">2</span>
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:0px;">
+                        <hr style=" height: 2px; background-color: black; border: none; ">
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="line-height: 18px;border-bottom:none;padding-left:15px;">
+                        <span style="font-weight:bold;">b Specific acts not authorized</span>
+                        My representative(s) is (are) not authorized to endorse or otherwise negotiate any check (including directing or accepting payment by any means, electronic or otherwise, into an account owned or controlled by the representative(s) or any firm or other entity with whom the representative(s) is (are) associated) issued by the government in respect of a federal tax liability.
+                        <br>
+                        List any other specific deletions to the acts otherwise authorized in this power of attorney (see instructions for line 5b): <span style="width:13%;display:inline-block;border-bottom:1px solid #000;height:12px;"> </span><br>
+          <span style="width:100%;display:inline-block;border-bottom:1px solid #000;height:22px;"> </span>               
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="line-height: 18px;border-bottom:none;padding-left:15px;">
+                        <span style="font-weight:bold;">6 Retention/revocation of prior power(s) of attorney.</span>
+                        The filing of this power of attorney automatically revokes all earlier power(s) of attorney on file with the Internal Revenue Service for the same matters and years or periods covered by this document. If you do not want to revoke a prior power of attorney, check here <span style="width:53%;display:inline-block;border-bottom:1px dashed #000;height:12px;"> </span> <span class="arrow"> </span><input type="checkbox">
+                        <br>
+                        <span class="bold underline">YOU MUST ATTACH A COPY OF ANY POWER OF ATTORNEY YOU WANT TO REMAIN IN EFFECT.</span>
+                        </td>
+                    </tr>
+            </table>
+            <table class="ftable" style="width:100%;">  
+                    <tr>
+                        <td  class="onecols" style="line-height: 18px;border-bottom:none;margin-left:15px;">
+                        <span style="font-weight:bold;">7 Signature of taxpayer.</span>
+                        If a tax matter concerns a year in which a joint return was filed, each spouse must file a separate power of attorney even if they are appointing the same representative(s). If signed by a corporate officer, partner, guardian, tax matters partner, partnership representative, executor, receiver, administrator, or trustee on behalf of the taxpayer, I certify that I have the legal authority to execute this form on behalf of the taxpayer.
+                        <br>
+                        <span class="arrow"> </span><span class="bold">IF NOT COMPLETED, SIGNED, AND DATED, THE IRS WILL RETURN THIS POWER OF ATTORNEY TO THE TAXPAYER.</span>
+                        <br>
+                        <br>
+                        </td>
+                    </tr>
+            </table>
+             <table  style="width:100%;font-size: 12px;">
+                    <tr>
+                        <td width="40%" style="text-align: center;padding-top: 5px;height: 50px;vertical-align: bottom;">
+                         {{signature}}
+                         <div style="height:1px;width:90%;border-bottom:1px solid #000;"> </div>
+                        </td>
+                        <td width="20%" style="text-align: center;padding-top: 5px;vertical-align: bottom;">
+                          {{currentdate}}
+                         <div style="height:1px;width:90%;border-bottom:1px solid #000;"> </div>
+                        </td>
+                        <td width="40%" style="text-align: center;padding-top: 5px;vertical-align: bottom;">
+                         {{JB}}
+                        <div style="height:1px;width:90%;border-bottom:1px solid #000;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" style="text-align: center;padding-bottom:10px;">
+                         Signature
+                        </td>
+                        <td width="20%" style="text-align: center;padding-bottom:10px;">
+                          Date
+                        </td>
+                        <td width="40%" style="text-align: center;padding-bottom:10px;">
+                         Title (if applicable)
+                        </td>
+                    </tr>
+            </table>
+            <table  style="width:100%;font-size: 12px;">
+                    <tr>
+                        <td width="40%" style="text-align: center;padding-bottom:0">
+                         {{NM}}
+                         <div style="height:1px;width:90%;border-bottom:1px solid #000;"> </div>
+                        </td>
+                        <td width="60%" style="text-align: center;padding-bottom:0">
+                          {{BN}}
+                         <div style="height:1px;width:93%;border-bottom:1px solid #000;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" style="text-align: center;padding: 0px;">
+                         Print Name
+                        </td>
+                        <td width="60%" style="text-align: center;padding: 0px;">
+                         Print name of taxpayer from line 1 if other than individual
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom: 1px solid #000;border-top: 1px solid #000;" colspan="2">
+                            <div style="font-size: 15px; font-weight: 800;"><span style="background: #000;color:#fff;margin-right: 20px;">Part II </span>Declaration of Representative</div>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td  colspan="2">
+                        Under penalties of perjury, by my signature below I declare that:<br>
+                        <ul style="margin-left:17px;">
+                            <li>I am not currently suspended or disbarred from practice, or ineligible for practice, before the Internal Revenue Service;</li>
+                            <li>I am subject to regulations contained in Circular 230 (31 CFR, Subtitle A, Part 10), as amended, governing practice before the Internal Revenue Service;</li>
+                            <li>I am authorized to represent the taxpayer identified in Part I for the matter(s) specified there, and I am one of the following:</li>
+                        </ul>
+                        <ul style="margin-left:17px;list-style: none;">
+                            <li><span class="bold">a</span> Attorney-a member in good standing of the bar of the highest court of the jurisdiction shown below.</li>
+                            <li><span class="bold">b</span> Certified Public Accountant-a holder of an active license to practice as a certified public accountant in the jurisdiction shown below.</li>
+                            <li><span class="bold">c</span> Enrolled Agent-enrolled as an agent by the Internal Revenue Service per the requirements of Circular 230.</li>
+                            <li><span class="bold">d</span> Officer-a bona fide officer of the taxpayer organization.</li>
+                            <li><span class="bold">e</span> Full-Time Employee-a full-time employee of the taxpayer.</li>
+                            <li><span class="bold">f</span>  Family Member-a member of the taxpayer’s immediate family (spouse, parent, child, grandparent, grandchild, step-parent, step-child, brother, or sister).</li>
+                            <li><span class="bold">g</span> Enrolled Actuary-enrolled as an actuary by the Joint Board for the Enrollment of Actuaries under 29 U.S.C. 1242 (the authority to practice before the Internal Revenue Service is limited by section 10.3(d) of Circular 230).</li>
+                            <li><span class="bold">h</span> Unenrolled Return Preparer-Authority to practice before the IRS is limited. An unenrolled return preparer may represent, provided the preparer (1) prepared and signed the return or claim for refund (or prepared if there is no signature space on the form); (2) was eligible to sign the return or claim for refund; (3) has a valid PTIN; and (4) possesses the required Annual Filing Season Program Record of Completion(s). <span class="bold" style="font-style:italic;">See Special Rules and Requirements for Unenrolled Return Preparers in the instructions for additional information.</span></li>
+                            <li><span class="bold">k</span> Qualifying Student-receives permission to represent taxpayers before the IRS by virtue of his/her status as a law, business, or accounting student working in an LITC or STCP. See instructions for Part II for additional information and requirements.</li>
+                            <li><span class="bold">r</span> Enrolled Retirement Plan Agent-enrolled as a retirement plan agent under the requirements of Circular 230 (the authority to practice before the Internal Revenue Service is limited by section 10.3(e)).</li>
+                        </ul>
+                        <br>
+                        <span class="arrow" style="margin-left:12px;"> </span><span class="bold">IF THIS DECLARATION OF REPRESENTATIVE IS NOT COMPLETED, SIGNED, AND DATED, THE IRS WILL RETURN THE <br><span style="margin-left:12px;">POWER OF TTORNEY. REPRESENTATIVES MUST SIGN IN THE ORDER LISTED IN PART I, LINE 2.</span></span>
+                        <br><br>
+                        <div><span class="bold">Note:</span> For designations d-f, enter your title, position, or relationship to the taxpayer in the "Licensing jurisdiction" column.</div>
+                        <!-- <div style="border-bottom:1px solid #000;width:100%;"></div> -->
+                      </td>
+                     </tr>
+            </table>
+            <table class="ftable" style="width:100%;">
+                    <tr>
+                        <td width="10%" class="fourcols" style="border-top: 1px solid #000;">
+                           Designation-Insert above letter (a-r).
+                        </td>
+                        <td width="20%" class="fourcols" style="border-top: 1px solid #000;">
+                          Licensing jurisdiction (State) or other licensing authority (if applicable).
+                        </td>
+                        <td width="30%" class="fourcols" style="border-top: 1px solid #000;">
+                          Bar, license, certification,registration, or enrollment number (if applicable).
+                        </td>
+                        <td width="25%" class="fourcols" style="border-top: 1px solid #000;">
+                          Signature
+                        </td>
+                        <td width="15%" class="fcolsright" style="border-top: 1px solid #000;">
+                          Date
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                           A
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          NM
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          151680
+                        </td>
+                        <td width="40%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          <img src="https://taxprep.republictax.com/static/images/signa.png" style="width:100px;">
+                        </td>
+                        <td width="15%" class="fcolsright" style="border-top: 1px solid #000;vertical-align: middle;">
+                          {{currentdate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                           C
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          IRS
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          00103341
+                        </td>
+                        <td width="40%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          <img src="https://taxprep.republictax.com//static/images/signb.png">
+                        </td>
+                        <td width="15%" class="fcolsright" style="border-top: 1px solid #000;vertical-align: middle;">
+                          {{currentdate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                           C
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          IRS
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          00064943
+                        </td>
+                        <td width="40%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          <img src="https://taxprep.republictax.com/static/images/signc.png" >
+                        </td>
+                        <td width="15%" class="fcolsright" style="border-top: 1px solid #000;vertical-align: middle;">
+                          {{currentdate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;height:40px;">
+                        
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          
+                        </td>
+                        <td width="15%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                        
+                        </td>
+                        <td width="40%" class="fourcols" style="border-top: 1px solid #000;vertical-align: middle;">
+                          
+                        </td>
+                        <td width="15%" class="fcolsright" style="border-top: 1px solid #000;vertical-align: middle;">
+                         
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td width="100%" colspan="5" style="text-align: right;">
+                         Form <span class="bold">2848</span> (Rev. 1-2021)
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td width="100%" colspan="5" style="text-align: right;">
+                        &nbsp;
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td width="100%" colspan="5" style="text-align: right;">
+                         {{HID}}
+                        </td>
+                    </tr>          
+            </table>
+           <p style="height:15px;"></p>
+        </div>
+     </div>
+      </div>   
+		   	<style>
+               #page-container {
+			margin-top:70px;
+             }
+             #sidebar{
+             	display: none;
+             }
+		</style>
+		</div>
+	
+</body>
+</html>
+<script>
+      var curfield="{$detail.curfield}";       
+      var inputs = document.querySelectorAll('input[type="text"]');
+    
+	   var link="{$detail.link}";
+	   var currentIndex=getIndex(curfield);
+	   var currentIndex2=getIndex2(curfield);
+	   var specificInput = $('input[data-src="'+curfield+'"]');
+	   var scaleVal=0.3;
+	   ////////////
+	   	   var $inputs = $('input').sort(function(a, b) {
+	        return $(a).attr('tabindex') - $(b).attr('tabindex');
+		    });
+		    $inputs = $($inputs);
+		
+		    // 初始化当前焦点的索引
+		   // var currentIndex =currentIndex;
+		    // 当点击Prev或Next按钮时
+		    $('#prevButton, #nextButton').click(function() {
+		        var direction = $(this).is('#prevButton') ? -1 : 1;
+		        // 更新当前索引，并确保它在有效范围内
+		      //  currentIndex2 = (currentIndex2 + direction + $inputs.length) % $inputs.length;
+				if(currentIndex2<=$inputs.length+1){
+				  currentIndex2=parseInt(currentIndex2)+parseInt(direction);
+				}else{
+				  currentIndex2=0;
+				}
+				if($(this).is('#nextButton')){
+				   if(currentIndex2==65||currentIndex2==67||currentIndex2==69||currentIndex2==71||currentIndex2==73||currentIndex2==75){
+					   currentIndex2=parseInt(currentIndex2)+1;
+					}
+					if(currentIndex2==44){
+					   currentIndex2=parseInt(currentIndex2)+1;
+					}
+					if(currentIndex2>=106){ 
+					   $('#nextButton').attr('disabled',true);
+					}else{
+					   $('#nextButton').attr('disabled',false);
+					}
+					$('#prevButton').attr('disabled',false);
+					
+				}
+				if($(this).is('#prevButton')){
+				   if(currentIndex2==66||currentIndex2==68||currentIndex2==70||currentIndex2==72||currentIndex2==74||currentIndex2==76){
+					   currentIndex2=parseInt(currentIndex2)-1;
+					}
+					if(currentIndex2==45){
+					   currentIndex2=parseInt(currentIndex2)-1;
+					}
+					if(currentIndex2<=0){ 
+					   $('#prevButton').attr('disabled',true);
+					}else{
+						$('#prevButton').attr('disabled',false);
+					}
+					$('#nextButton').attr('disabled',false);
+				}
+				
+				
+				
+				 positionTo2(currentIndex2);
+				 return false;
+				if(currentIndex2==106){
+				  positionTo2(currentIndex2);
+				  
+				}
+				
+		        // 将焦点设置到新的input元素上 
+		       // positionTo2(currentIndex2);
+				//判断是不是radio元素，如果是则高亮显示其td\
+				var obj=$('input[tabindex="'+currentIndex2+'"]');	
+				curfield=obj.attr('data-src');
+				
+				if(obj.attr('type')=='checkbox'){
+				   var $ancestor = obj.parent();
+                   $ancestor.css('backgroud-color', 'green');
+				}else{
+				  obj.focus();
+				}
+		    });
+			
+		      	//  end
+	  
+	 
+	  <?php if($detail['status']==2&&!$islogin){ ?>
+	  	$('.savetime').attr('disabled', true);
+	  	$('#nextButton').attr('disabled', true);
+	  	$('#prevButton').attr('disabled', true);
+	    $('input').attr('readonly', true);
+	  <?php }?>
+	
+        function getIndex(findelement){
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = findelement;
+			var targetIndex = -1; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (inputs[i].getAttribute('data-src') === targetValue) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetIndex = i;
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetIndex;
+        }
+        function getIndex2(curfield){
+        	var obj=$('input[data-src="'+curfield+'"]');
+        	var num=obj.attr('tabindex');
+		
+        	return num;
+        }
+        function getDataSrc(curIndex){
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = '';
+			var targetIndex = curIndex; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (i === targetIndex) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetValue = inputs[i].getAttribute('data-src');
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetValue;
+        }
+        function scrollToElement(curfield2) {
+            //const element = document.getElementById('target');
+            const element =document.querySelector('input[data-src="'+curfield2+'"]');
+            const rect = element.getBoundingClientRect();
+
+            // 获取元素相对于视口的位置
+            const elementTop = rect.top + window.pageYOffset;
+            const elementLeft = rect.left + window.pageXOffset;
+           
+            // 计算目标滚动位置
+            const scrollToPositionY = elementTop - (window.innerHeight / 2)/0.7; // 垂直滚动到视口中间位置
+            const scrollToPositionX = elementLeft - (window.innerWidth / 2)/0.7; // 水平滚动到视口中间位置
+
+            // 执行滚动操作
+            window.scrollTo({
+                top: scrollToPositionY,
+               
+                behavior: 'smooth' // 平滑滚动
+            });
+             const currentScrollLeft = window.pageXOffset;
+
+            const deltaX = scrollToPositionX - currentScrollLeft;
+              
+            window.scrollBy({
+                left: deltaX,
+                behavior: 'smooth' // 平滑滚动
+            });
+        }
+        function start() {
+		  
+        	if(currentIndex2>=0){
+				positionTo2(currentIndex2,1);
+        		return false;
+			   if(isMobile()){
+			      $inputs.eq(currentIndex2).focus();
+			   }else{
+			   	 positionTo(currentIndex);
+			    inputs[currentIndex].focus();
+			 }
+        	}else{
+        		$('#a1').focus();
+        	}  
+        }
+         
+        function positionTo(cindex){
+        	    var curfield2=getDataSrc(cindex);
+
+        	 if(isMobile()){
+
+		
+        	  $('.page').css('transform', 'scale(0.7)');
+        	   //  $('.page').css('transformOrigin','left top');
+				 var scaledElement=$('.page');
+				// var scaledElement=$('input[data-src="'+curfield2+'"]');
+				  var originalWidth = scaledElement.width();
+				  var originalHeight = scaledElement.height();
+                   
+				  // 计算新宽度和高度
+				  var newWidth = originalWidth * scaleVal;
+				  var newHeight = originalHeight * scaleVal;
+				  
+				  // 可能需要调整滚动位置以确保元素在视口中可见
+				  // 这里只是一个简单的例子，你可能需要根据实际情况来计算滚动偏移
+				  var container = $('html, body');
+				  var rect = scaledElement[0].getBoundingClientRect();
+				  
+				  // 检查元素是否超出容器，并相应地调整滚动位置
+				  if (rect.top < 0) {
+					// 元素顶部超出容器顶部，滚动容器以显示它
+					container.scrollTop += rect.top;
+				  }
+				  if (rect.bottom > container.offsetHeight) {
+					// 元素底部超出容器底部，滚动容器以显示它
+					container.scrollTop += rect.bottom - container.offsetHeight;
+				  }
+				  if (rect.left < 0) {
+					// 元素左侧超出容器左侧，滚动容器以显示它
+					container.scrollLeft += rect.left;
+				  }
+				  if (rect.right > container.offsetWidth) {
+					// 元素右侧超出容器右侧，滚动容器以显示它
+					container.scrollLeft += rect.right - container.offsetWidth;
+				  }
+
+				inputs[currentIndex].focus(); 
+              return false;
+				
+        	 }else{
+        	 	var offsetTop= $('input[data-src="'+curfield2+'"]').offset().top;
+			    $('html, body').animate({
+			        scrollTop: offsetTop-130
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+			    /*
+			    viewport = document.querySelector('meta[name="viewport"]');
+		         if (viewport) {
+		            viewport.setAttribute('content', 'width=device-width, initial-scale=0.5');
+		          }*/
+		       // inputs[currentIndex].focus(); 
+        	 } 
+                
+		        return true;
+        }
+        function positionTo2(currentIndex2,isstart=0){
+		       if(isMobile()){
+			     if(mobileType()!="Android"){
+        	       $('.page').css('transform', 'scale(0.7)');
+				 }else{
+				 	// $('.page').css({
+	     //                'transform': 'scale(0.9)',
+	     //                'transform-origin': 'top center'
+	     //            });
+				 }
+        	    }
+		       if(currentIndex2==106){
+				   $('#sign').css('border',"1px solid #0d7119");	  
+				   var offsetTop=$('#sign').offset().top;
+				  $('#sign')[0].scrollIntoView({ behavior: 'smooth' });
+				}else{
+				   $('#sign').css('border',"none");
+				   $('#sign').css('border-bottom','1px solid #000');
+				   var obj=$('input[tabindex="'+currentIndex2+'"]');
+                   $('input[type="checkbox"]').each(function() {
+						$(this).parent().css('background', '#dadada');
+					});				   
+				  if(obj.attr('type')=='checkbox'){
+					   var $ancestor = obj.parent();
+					   $ancestor.css('background', '#8bda5b');
+					   var offsetTop=$ancestor.offset().top;
+					   $ancestor[0].scrollIntoView({ behavior: 'smooth' });
+				  }else{
+					 //  $('input[type="text"]').css('backgroud', '#dadada');
+					  var offsetTop=obj.offset().top;
+					  var offsetLeft=obj.offset().left;
+					   obj.focus();
+					  $('.page').animate({
+					        scrollTop: offsetTop,
+					        scrollLeft: offsetLeft
+					    }, 500); 
+					  // obj[0].scrollIntoView({ behavior: 'smooth' });
+					  
+				  }
+				}
+			
+				
+			//	 var targetElementOffset = $('#targetElement').offset().top;
+					// 然后，使用 window.scrollTo() 滚动到该位置
+					// 注意：可能需要加上或减去一些值来调整滚动位置
+				
+				if(isMobile()){
+					if(isstart==1){
+					  /*
+						var inputOffset = obj.offset();
+					    var inputTop = inputOffset.top;
+					    var inputLeft = inputOffset.left
+					    // 获取页面的缩放比例
+					    var scale = parseFloat($('.page').css('transform').split(',')[3]) || 1;
+					    // 计算缩放后的实际位置
+					    var scaledTop = inputTop / scale;
+					    var scaledLeft = inputLeft / scale;
+					 //  alert(scaledTop);
+					    // 移动页面并定位到 input 元素
+					    $('html, body').animate({
+					        scrollTop: scaledTop,
+					        scrollLeft: scaledLeft
+					    }, 500); // 1000 毫秒的动画时间
+					    $('.page').css('transform', 'scale(0.7)');
+						*/
+						
+						const scale = parseFloat($('.page').css('transform').split(',')[3]) || 1;
+						const container = document.querySelector('.page');
+
+						container.addEventListener('click', () => {
+						  const rect = container.getBoundingClientRect();
+						  console.log(rect);
+						  container.scrollTo({
+							top: rect.top * scale,
+							left: rect.left * scale,
+							behavior: 'smooth' // 可选，平滑滚动
+						  });
+						});
+					}
+				 }
+				 return true;
+					/*
+				$('html, body').animate({
+			        scrollTop: offsetTop
+			    }, 1000); */
+			//	alert(offsetTop);
+				
+        	 if(isMobile()){
+        	    $('.page').css('transform', 'scale(0.7)');
+				//$inputs.eq(currentIndex2).focus();
+                return false;
+        	 }else{
+			    
+			    $('html, body').animate({
+			        scrollTop: offsetTop
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+		       // $inputs.eq(currentIndex2).focus();
+        	 } 
+		        return true;
+        }
+		
+
+
+		function ajax_post_field(fieldname,fieldvalue,link,plan) {
+         $.ajax({
+               url:"{:url('free/save')}",
+               type:'post',
+               data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'plan':plan},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+                      curfield=fieldname;
+                   	  specificInput = $('input[data-src="'+curfield+'"]'); // Replace 'specificInputId' with the actual ID or reference	
+                   }else {
+                       console.log('sucess');
+                     //  msg(res.msg);
+                   }
+               },error:function () {
+                   msg('Try it again later')
+               }
+         });
+        }
+	    function isValidNumber(value) {
+            // 匹配整数或浮点数的正则表达式
+            var pattern = /^\d+(\.\d+)?$/;
+            return pattern.test(value);
+        }
+        <?php if($signary!=''){?>
+        	var objclose='';
+        	var comtip='';
+          	var padname='';
+        	var fname='';
+        	var canvas = {};
+	        var signaturePad = '';
+	        var signobj='';
+			var dynamicVars = {};
+			var spad = {};
+        <?php  foreach($signary as $key=>$val){?>    
+          	objclose=".close"+"{$key}";
+          	padname="signature-pad"+"{$key}";
+            $(objclose).click(function () {
+			    comtip='#comtip'+"{$key}";
+	            $(comtip).hide();
+	        });
+	        spad["{$key}"]="#"+"{$key}";	       
+	        $(spad["{$key}"]).click(function () {
+		    	 if (isMobile()) {
+		    	 	
+	               var link="{$detail.link}";
+	               var field=$(spad["{$key}"]).attr('data-src');
+	               var dlink=$(spad["{$key}"]).attr('data-link');
+				  // var url=dlink;
+				  
+				   location.href=dlink;
+	            } else {
+				   comtip='#comtip'+"{$key}";
+	               $(comtip).show();
+	            }
+	        })  
+			
+        	fname="{$key}";
+        	if (!isMobile()) {
+        		canvas[fname] = document.getElementById(padname);
+        	    dynamicVars[fname]= new SignaturePad(canvas[fname]);
+        	}
+        	
+			
+        <?php }}?>
+		    function saveSignature22(fname2){
+		        saveSignature(fname2, fname2+"img", dynamicVars[fname2]);
+			}
+			function clearSignature22(fname2){
+			    dynamicVars[fname2].clear(dynamicVars[fname2]);
+			}
+	        function saveSignature(field,fieldimg,signaturePad) {
+	            if (signaturePad.isEmpty()) {
+	                msg('Please sign you name');
+	                return;
+	            }
+	         //   var dataURL = signaturePad.toDataURL();
+	          //以下进行缩小
+	              var signatureCanvas = signaturePad.canvas;
+	              var signatureContext = signatureCanvas.getContext('2d');
+	              
+	              // 创建一个新的、尺寸减半的画布
+	              var resizedCanvas = document.createElement('canvas');
+	              resizedCanvas.width = signatureCanvas.width / 2;
+	              resizedCanvas.height = signatureCanvas.height / 2;
+	              var resizedContext = resizedCanvas.getContext('2d');
+	              
+	              // 将原始签名绘制到新的画布上，并缩小一倍
+	              resizedContext.drawImage(signatureCanvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+	              //以下进行缩小结束
+	              // 使用新的画布来保存签名（这里以PNG格式为例）
+	            var dataURL = resizedCanvas.toDataURL('image/png');
+	            var link="{$detail.link}";
+	            var obj="#"+field;
+	            var field=$(obj).attr('data-src');//"{$field}";$(this).attr('data-src');
+	            var ct="#comtip"+field;
+	            var ctimg="#"+field+"img";
+	        
+	          //  var url="{:url('Order/signature',['id'=>2])}";
+	            fetch("{:url('free/signaturet')}", {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link+"&f="+field
+	            })
+	            .then(response => response.text())
+	            .then(data => {
+	                var da=JSON.parse(data);
+	                msg('Signature is saved',1);
+	                $(ct).hide();
+	                var id="{$contract.id}";
+	                $(ctimg).attr('src',da.img);
+	            })
+	            .catch((error) => {
+	                console.error('Error:', error);
+	            });
+	        }
+			function saveSignature___(field,fieldimg,signaturePad) {
+				if (signaturePad.isEmpty()) {  
+				     msg('Please sign first');
+					return;
+				}
+				$('.save').css('background-color','#8a8a8a');
+				$('.save').attr('disabled',true);
+				var dataURL = signaturePad.toDataURL();
+				var link="{$detail.link}";
+				var obj="#"+field;
+	            var field=$(obj).attr('data-src');//"{$field}";$(this).attr('data-src');
+	            var ct="#comtip"+field;
+	            var ctimg="#"+field+"img";
+				//var field="{$field}";
+				fetch("{:url('free/signaturet')}", {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link+"&f="+field
+				})
+				.then(response => response.text())
+				.then(data => {
+					var da=JSON.parse(data);
+	                msg('Signature is saved',1);
+	                $(ct).hide();
+	                var id="{$contract.id}";
+	                $(ctimg).attr('src',da.img);
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+				});
+           }
+	        function clearSignature(signaturePad) {
+	            signaturePad.clear();
+	        }
+        
+		
+        function isMobile() {
+           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+           // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) && window.innerWidth < 768;
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+       }
+	   function getScaleValue(element) {
+			// 获取元素的transform属性的值
+			var transform = $(element).css('transform') || $(element).css('-webkit-transform') || 'none';
+
+			// 使用正则表达式来匹配scale值
+			// 这里的正则表达式假设transform属性可能包含多个变换，我们只关心第一个scale变换
+			// 注意：这个正则表达式可能需要根据实际情况进行调整
+			var match = transform.match(/scale\(([^)]+)\)/);
+
+			if (match) {
+				// 如果找到了scale变换，则进一步分割字符串以获取具体的scale值
+				// 这里假设scale值可能是一个或多个由逗号分隔的数字（例如scale(2)或scale(2, 3)）
+				var values = match[1].split(',').map(function(value) {
+					return parseFloat(value);
+				});
+
+				// 返回scale值，这里返回一个数组，因为可能有多个scale值（如X轴和Y轴分别设置）
+				return values;
+			}
+
+			// 如果没有找到scale变换，则返回null或者一个默认值
+			return null;
+		}
+		function mobileType(){
+		 var userAgent = navigator.userAgent.toLowerCase();
+            var deviceType = "unknown";
+
+            if (userAgent.indexOf('android') > -1) {
+                deviceType = "Android";
+            } else if (userAgent.indexOf('iphone') > -1 || userAgent.indexOf('ipad') > -1 || userAgent.indexOf('ipod') > -1) {
+                deviceType = "iOS";
+            }
+              return deviceType;
+		}
+	   function msg(msg,ss=0,url='',time=2000) { 
+			if(ss==1){
+				//$('.layui-layer-hui').css('backgroud-color','#536cf1');
+				layer.msg(msg,{time:time,skin:'layui-layer-hui2'},function () {
+			    });
+			}else{
+				layer.msg(msg,{time:time},function () {
+			  });
+			}
+		}
+        // Set the initial scale when the page loads
+    //  window.onload = setInitialScale;
+	   
+      $(document).ready(function() {
+   //    	if(isMobile()){
+		 // if(mobileType()!="Android"){
+   //      	  $('body').css('max-width', '420px');
+		 // }
+   //    }
+      
+      	 var scaleFactor = 1; // 初始缩放比例
+		 $('.zoom').click(function() {
+		 	if(isMobile()){
+			     if(mobileType()!="Android"){
+			     	$('.page').css('transform', 'scale(0.3)');
+			        	scale=0.3;
+			     }else{
+			     //	$('.page').css('transform', 'scale(0.28)');
+			     }
+		    }
+		  });
+		 $('.zoom2').click(function() {
+		 	if(isMobile()){
+			     if(mobileType()=="Android"){
+			     $('#page-container').css('transform', 'scale(0.7)');
+			     }
+		    }
+		  });
+		  $('#ZoomIn').click(function() {
+		  	if(scaleFactor<1.5){
+		  		 scaleFactor += 0.1; // 增加缩放比例
+		  	}else{
+		  		return false;
+		  	}
+		    scaleFactor += 0.1; // 增加缩放比例
+		    $('#page-container').css('transform', 'scale(' + scaleFactor + ')');
+		  });
+		 
+		  $('#ZoomOut').click(function() {
+		  	if(isMobile()){
+		  		if(scaleFactor>0.5){
+		  		 scaleFactor -= 0.1; // 减少缩放比例
+			  	}else{
+			  		return false;
+			    }
+		  	}else{
+		  		if(scaleFactor>1){
+		  		 scaleFactor -= 0.1; // 减少缩放比例
+			  	}else{
+			  		return false;
+			    }
+		  	}
+		  	
+		    $('#page-container').css('transform', 'scale(' + scaleFactor + ')');
+		  });
+		
+      	if(isMobile()){
+      		 $('#page-container').css('zoom', 0.46);
+            /*
+		     if(mobileType()=="Android"){
+			  $('#page-container').css('transform', 'scale(0.46)');
+				//$('html, body').css('transform', 'scale(1)');
+			 }else{
+			   $('.page').css('transform', 'scale(0.3)');
+			 }
+      		const viewport = document.querySelector('meta[name="viewport"]');			 
+            if (viewport) {
+               scaleVal=0.3;
+            }*/
+      	}
+      
+	    
+		
+	  //即时保存input
+
+
+	   $('input:checkbox').click(function () {
+          var val=$(this).val();
+          var fieldname=$(this).attr('data-src');
+          
+          if($(this).prop("checked")==true){
+          	 $('input[name='+fieldname+']').each(function() {
+              //$(this).prop("checked", !$(this).is(":checked"));
+              $(this).prop("checked",false);
+             });
+          	$(this).prop("checked",true);
+          }
+         /* $('input[name='+fieldname+']').each(function() {
+              $(this).prop("checked", !$(this).is(":checked"));
+           });
+
+          if($(this).prop("checked")==true){
+          	$(this).prop("checked",true);
+          }else{
+          	$(this).prop("checked",false);
+          }
+          */
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          var plan="{$detail.plan}";
+          var all=0;
+          $('input[name='+fieldname+']').each(function() {
+              if($(this).prop("checked")==true){
+                   all=fieldvalue;
+              }
+          });
+          ajax_post_field(fieldname,all,link,plan);  
+       });
+	   
+	   /*
+	   //鼠标移到下一个input
+	   $('input').each(function(index) {
+        $(this).mouseleave(function() {
+            if ($(this).next('input').length > 0) {
+                $(this).next('input').focus();
+            }
+        });
+       });*/
+	    $('.submit').click(function () {
+		   //必填项
+		   
+			//查看是否签名了，没签名也不能提交
+			var link="{$detail.link}";
+			var signcheck=0;
+			 $.ajax({
+               url:"{:url('free/signcheck')}",
+               type:'post',
+               data:{'link':link},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+					 signcheck=1;
+					    $('.submit').css('background-color','#8a8a8a');
+						$('.submit').attr('disabled',true);
+						var link="{$detail.link}";
+						 $.ajax({
+						   url:"{:url('free/submit')}",
+						   type:'post',
+						   data:{'link':link},
+						   dataType:'json',
+						   success:function (res) {
+							   if (res.status=='success'){
+								 msg('Successfully submitted',1);
+								 setTimeout(function() {
+								   var url="https://taxprep.republictax.com/clients/free/"+link;
+								   location.href=url;
+								}, 2000);
+								  
+							   }else {
+								  $('.submit').css('background-color','#536cf1');
+								  $('.submit').attr('disabled',false);
+								  msg(res.message);
+								  // console.log('sucess');
+								 //  msg(res.msg);
+							   }
+						   },error:function () {
+							   msg('Try it again later');
+							   $('.submit').css('background-color','#536cf1');
+							   $('.submit').attr('disabled',false);
+
+						   }
+					 });
+                   }else{
+				     msg('Please sign your name');
+			         return false;
+				   }
+               },error:function () {
+               }
+            });
+		    
+		});
+		
+	
+		  $('.download').click(function () {
+				   // $(this).html('Generating...');
+					//$(this).css('background-color','#b1b1b1');
+					$(this).attr('disabled',true);
+					var obj=$(this);
+					//交给后端处理
+					// 触发下载并监控进度
+					var link="{$detail.link}";
+					var url="https://taxprep.republictax.com/clients/pl_topdf?link="+link;
+				
+					location.href=url;
+					//obj.css('background-color','#fff');
+							obj.attr('disabled',false);
+							//obj.html('Download');
+					return false;
+					var xhr = new XMLHttpRequest();
+					xhr.open('GET', url, true);
+					xhr.responseType = 'blob';
+					xhr.onload = function(e) {
+						if (this.status == 200) {
+							// 下载完成
+							var blob = this.response;
+							var link = document.createElement('a');
+							link.href = window.URL.createObjectURL(blob);
+							link.download = 'profitlossfiles.pdf'; // 设置下载文件的名称和扩展名
+							link.click();
+							obj.css('background-color','#536cf1');
+							obj.attr('disabled',false);
+							obj.html('Download PDF');
+						}
+					};
+		   });
+		 
+      });
+</script>

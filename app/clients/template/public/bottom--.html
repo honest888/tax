@@ -1,0 +1,42 @@
+<div class="bottom">
+    <a href="{:url('Index/index')}" {if CONTROLLER_NAME == 'Index'}class="active"{/if}>
+        <dl>
+            <dt>
+                <img src="__MOBILE__/img/index{if CONTROLLER_NAME == 'Index'}-s{/if}.png">
+            </dt>
+            <dd>首页</dd>
+        </dl>
+    </a>
+    <a href="{:url('Circle/index')}" {if CONTROLLER_NAME == 'Circle'}class="active"{/if}>
+    <dl>
+        <dt>
+            <img src="__MOBILE__/img/shequ{if CONTROLLER_NAME == 'Circle'}-s{/if}.png">
+        </dt>
+        <dd>社区</dd>
+    </dl>
+    </a>
+    <a href="{:url('Goods/category_list')}" {if CONTROLLER_NAME == 'Goods'}class="active"{/if}>
+        <dl>
+            <dt>
+                <img src="__MOBILE__/img/fenlei{if CONTROLLER_NAME == 'Goods'}-s{/if}.png">
+            </dt>
+            <dd>分类</dd>
+        </dl>
+    </a>
+    <a href="{:url('Cart/index')}" {if CONTROLLER_NAME == 'Cart'}class="active"{/if}>
+    <dl>
+        <dt>
+            <img src="__MOBILE__/img/cart{if CONTROLLER_NAME == 'Cart'}-s{/if}.png">
+        </dt>
+        <dd>购物车</dd>
+    </dl>
+    </a>
+    <a href="{:url('User/index')}" {if CONTROLLER_NAME == 'User'}class="active"{/if}>
+        <dl>
+            <dt>
+                <img src="__MOBILE__/img/wode{if CONTROLLER_NAME == 'User'}-s{/if}.png">
+            </dt>
+            <dd>我的</dd>
+        </dl>
+    </a>
+</div>

@@ -1,0 +1,44 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">{$title}</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="pto45">
+    <div class="money-top">
+        <a class="top-item">
+            <p>现金</p>
+            <h5>{$user.xian_jin}</h5>
+        </a>
+        <a class="top-item">
+            <p>积分</p>
+            <h5>{$user.user_money}</h5>
+        </a>
+    </div>
+    <div class="public-view-list">
+        <div class="title">
+            <span>说明</span>
+            <span>金额</span>
+            <span>日期</span>
+        </div>
+        <div id="container"></div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        get_more('{$type}');
+    });
+    function get_more(type) {
+        public_ajax('#container',"{:url('User/ajax_jl_log')}",'&type='+type,'暂无相关记录');
+    }
+</script>
+</html>

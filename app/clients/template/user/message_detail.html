@@ -1,0 +1,84 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<style>
+    .public-list .public-list-list .public-list-item:nth-last-child(2){
+        border-bottom: 1px solid #d5d5d5;
+    }
+</style>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">消息详情</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="cart" style="padding-bottom: 10px">
+    <div class="info">
+        <dl class="yongjin">
+            <dt>赚取佣金</dt>
+            <dd>¥ {$order.money}</dd>
+        </dl>
+        <dl>
+            <dt>订单状态</dt>
+            <dd>{$order.jifen_order.order_status_text}</dd>
+        </dl>
+        <dl>
+            <dt>购买者</dt>
+            <dd>{$order.jifen_order.user.realname}</dd>
+        </dl>
+        <dl>
+            <dt>销售店铺</dt>
+            <dd>
+                {if $order.jifen_order.suser.realname}
+                {$order.jifen_order.suser.realname}
+                {else/}
+                平台
+                {/if}
+            </dd>
+        </dl>
+        <dl>
+            <dt>购买时间</dt>
+            <dd>{$order.jifen_order.add_time}</dd>
+        </dl>
+        <dl>
+            <dt>订单编号</dt>
+            <dd class="order-sn">
+                <span>{$order.order_sn}</span>
+                <span data-text="{$order.order_sn}" class="iconfont iconfuzhi fuzhi"></span>
+            </dd>
+        </dl>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<style>
+    .yongjin dt{
+        font-size: 14px;
+    }
+    .yongjin dd{
+        font-size: 15px;
+        color: var(--grey-333)!important;
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript" src="__STATIC__/js/clipboard.js"></script>
+<script>
+    $(function () {
+    });
+    var clipboard = new ClipboardJS('.fuzhi', {
+        text: function(e) {
+            var text=$(e).attr('data-text');
+            return text;
+        }
+    });
+    clipboard.on('success', function(e) {
+        msg('复制成功');
+    });
+    clipboard.on('error', function(e) {
+        msg('复制失败');
+    });
+</script>
+</html>

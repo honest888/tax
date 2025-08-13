@@ -1,0 +1,115 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+						
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Tell us about your out-of-pocket medical and dental expenses</h1>
+                                    			<p class="text-center">
+                                    				<span>If you don't believe your medical and dental expenses exceeded 7.5% of your adjusted gross income then skip this section.</span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Medical Professionals  &nbsp;</label>
+                                    				<input id="a1" autocomplete="off" type="text" data-src="medical_expenses_doctors_and_dentists" value="{$detail.medical_expenses_doctors_and_dentists}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Prescription Drugs   &nbsp;</label>
+                                    				<input id="a2" autocomplete="off" type="text" data-src="medical_expenses_prescription_medications" value="{$detail.medical_expenses_prescription_medications}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Labs and X-rays   &nbsp;</label>
+                                    				<input id="a3" autocomplete="off" type="text" data-src="medical_expenses_labs_and_xrays" value="{$detail.medical_expenses_labs_and_xrays}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Medical Facilities   &nbsp;</label>
+                                    				<input id="a4" autocomplete="off" type="text" data-src="medical_expenses_medical_facilities" value="{$detail.medical_expenses_medical_facilities}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Medical Supplies    &nbsp;</label>
+                                    				<input id="a5" autocomplete="off" type="text" data-src="medical_expenses_medical_supplies" value="{$detail.medical_expenses_medical_supplies}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Glasses & Contacts    &nbsp;</label>
+                                    				<input id="a6" autocomplete="off" type="text" data-src="medical_expenses_glasses_and_contacts" value="{$detail.medical_expenses_glasses_and_contacts}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Medical & Dental Ins.   &nbsp;</label>
+                                    				<input id="a7" autocomplete="off" type="text" data-src="medical_expenses_amount_spent_on_premiums" value="{$detail.medical_expenses_amount_spent_on_premiums}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Long-Term Care Insurance (You)  &nbsp;</label>
+                                    				<input id="a8" autocomplete="off" type="text" data-src="medical_expenses_ltc_ins" value="{$detail.medical_expenses_ltc_ins}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Long-Term Care Insurance (Spouse)   &nbsp;</label>
+                                    				<input id="a9" autocomplete="off" type="text" data-src="medical_expenses_ltc_ins_spouse" value="{$detail.medical_expenses_ltc_ins_spouse}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Travel Expenses  &nbsp;</label>
+                                    				<input id="a1" autocomplete="off" type="text" data-src="medical_expenses_travel" value="{$detail.medical_expenses_travel}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">No. of Miles Traveled   &nbsp;</label>
+                                    				<input id="a10" autocomplete="off" type="text" data-src="medical_expenses_miles_traveled" value="{$detail.medical_expenses_miles_traveled}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Other  &nbsp;</label>
+                                    				<input id="a11" autocomplete="off" type="text" data-src="medical_expenses_other" value="{$detail.medical_expenses_other}">
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+								</div>
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 <input type="hidden" name="curfield" value="medical_expenses_did_confirm">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									<input type="hidden" name="finishpage" id="finishpage" value="medical_expenses_did_confirm" >
+								
+								</form>
+								{include file='public:footer2'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+    $(document).ready(function() {
+     
+       for(i=1;i<=11;i++){
+        var obj="#a"+i;
+        $(obj).blur(function(){
+          // alert($(this).val());
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+          });  
+       }
+     
+    })
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="__ST__/style.css" crossorigin=""	data-precedence="next" />
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+</head>
+<body>
+<div class="master-detail-layout f-theme column align-center">
+	<header>
+		<div class="navigation navigation--header row align-center w-full">
+			<div class="navigation__inner">
+				<a href="https://taxprep.republictax.com/">
+					<p style="font-family: Gilroy; font-weight: 900; font-size: 28px; color: rgb(72, 79, 117); margin: 0px;">
+						Republic Ta<span style="color: rgb(83, 108, 241);">x</span>
+					</p>
+				</a>
+				<div class="grow-1"></div>
+				<nav class="row align-self-stretch gap-20 font-14">
+					<a href="/login" class="active link-active">
+						Log In
+					</a>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<div class="master-detail-layout__body">
+		<main class="master-detail-layout__main-container">
+			<div class="master-detail-layout__main-content column align-center pv-60">
+				<form class="w-full w-max-400 column gap-40"  id="public-form">
+					<h1 class="font-30 text-center mv-12 w-max-500">
+						Log in
+					</h1>
+					<div class="column align-stretch gap-20">
+						<input class="f-input condensed" placeholder="Email" name="account" type="text" value="">
+						<input placeholder="Password" name="password" class="f-input condensed" autocomplete="false" type="password" value="">
+						<button class="action-button action-button--expand" type="button" id="submit">
+							Log In
+						</button>
+					</div>
+					<!--<div class="text-center">
+						Don't have an account?
+						<a href="/sign-up" class="">
+							Sign up
+						</a>
+					</div>-->
+				</form>
+			</div>
+		</main>
+	</div>
+</div>
+</body>
+<script>
+    $(function () {
+        $('#submit').click(function () {
+            if (!$('#public-form').valid()){
+                return false;
+            }
+           /* var len=$('.icondanxuanact').length;
+            if (len==0){
+                msg('请阅读并勾选注册协议!');
+                return false;
+            }*/
+            var url="{:url('User/do_login')}";
+            var data=$('#public-form').serialize();
+            public_submit(url,data);
+        });
+    })
+</script>
+</html>

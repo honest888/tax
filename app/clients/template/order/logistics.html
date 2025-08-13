@@ -1,0 +1,86 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<style>
+    .public-list .public-list-list .public-list-item:nth-last-child(2){
+        border-bottom: 1px solid #d5d5d5;
+    }
+</style>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">物流信息</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="cart" style="padding-bottom: 10px">
+    <div class="info" style="margin-top: 0">
+        <dl>
+            <dt>订单编号</dt>
+            <dd class="order-sn">
+                <span>{$order.order_sn}</span>
+                <span data-text="{$order.order_sn}" class="iconfont iconfuzhi fuzhi"></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>订单状态</dt>
+            <dd>{$order.order_status_text}</dd>
+        </dl>
+        {if $order.shipping_code && $order.shipping_name}
+        <dl>
+            <dt>快递公司</dt>
+            <dd>{$order.shipping_name}</dd>
+        </dl>
+        <dl>
+            <dt>快递单号</dt>
+            <dd class="order-sn">
+                <span>{$order.shipping_number}</span>
+                <span data-text="{$order.shipping_number}" class="iconfont iconfuzhi fuzhi"></span>
+            </dd>
+        </dl>
+        {/if}
+        {if $order.shipping_time}
+        <dl>
+            <dt>发货时间</dt>
+            <dd>{:date('Y-m-d H:i:s',$order.shipping_time)}</dd>
+        </dl>
+        {/if}
+    </div>
+    {if $list}
+    <div class="ship">
+        {volist name="$list" id="list"}
+        <div class="ship-item">
+            <h5>{$list.context}</h5>
+            <p>{$list.time}</p>
+        </div>
+        {/volist}
+    </div>
+    {else/}
+    <div id="empty">
+        <div class="empty iconfont iconzanwushuju"></div>
+        <h4>没有查询到物流信息</h4>
+    </div>
+    {/if}
+</div>
+<!--内容区e-->
+</body>
+<script type="text/javascript" src="__STATIC__/js/clipboard.js"></script>
+<script>
+    $(function () {
+    });
+    var clipboard = new ClipboardJS('.fuzhi', {
+        text: function(e) {
+            var text=$(e).attr('data-text');
+            return text;
+        }
+    });
+    clipboard.on('success', function(e) {
+        msg('复制成功');
+    });
+    clipboard.on('error', function(e) {
+        msg('复制失败');
+    });
+</script>
+</html>

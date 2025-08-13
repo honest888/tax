@@ -1,0 +1,179 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+						
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Tell us about your third foreign account</h1>
+                                    			<p class="text-center">
+                                    				<span></span>
+                                    			</p>
+                                    			<?php 
+                                    			if($detail['foreign_accounts_count']>3){
+                                    			   $nextpage="page15-8-4";
+                                    			}
+                                    			?>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Name of Foreign Bank&nbsp;</label>
+                                    				<input id="a8" autocomplete="off" type="text" data-src="foreign_accounts_2_institution_name" value="{$detail.foreign_accounts_2_institution_name}">
+                                    			</div>
+                                    			<form class="address-input row-wrap gap-20" style="width: 100%;">
+                                    				<div class="w-full row-wrap gap-20">
+                                    					<div class="f-field w-300 grow-2">
+                                    						<label for="ae6q9">Address&nbsp;</label>
+                                    						<input id="a1" autocomplete="off" type="text"  data-src="foreign_accounts_2_address_street" value="{$detail.foreign_accounts_2_address_street}">
+                                    					</div>
+                                    					<div class="f-field w-150 grow-1">
+                                    						<label for="b76y5">City&nbsp;</label>
+                                    						<input id="a2" autocomplete="off" type="text"  data-src="foreign_accounts_2_address_city" value="{$detail.foreign_accounts_2_address_city}">
+                                    					</div>
+                                    				</div>
+                                    				<div class="w-full row-wrap gap-20">
+                                    					<div class="f-field w-150 grow-2">
+                                    						<label for="cerci">State&nbsp;</label>
+                                    						<input id="a3" autocomplete="off" type="text"  data-src="foreign_accounts_2_address_state" value="{$detail.foreign_accounts_2_address_state}">
+                                    					</div>
+                                    					<div class="f-field w-150 grow-2">
+                                    						<label for="nts77">Country</label>
+                                    						<select class="f-input" id="country">
+                                    							<option label="Select an option"></option>
+                                    							<?php foreach($country_ary as $key=>$val){ ?>
+                                    						     	<option value="{$key}" {if $key eq $detail.foreign_accounts_2_address_country} selected{/if}>{$val}</option>
+                                    							<?php }?>
+                                    						</select>
+                                    					</div>
+                                    					<div class="f-field w-75 grow-1">
+                                    						<label for="b7c0w">ZIP code&nbsp;</label>
+                                    						<input id="a4" autocomplete="off" type="text"  data-src="foreign_accounts_2_address_zip" value="{$detail.foreign_accounts_2_address_zip}">
+                                    					</div>
+                                    				</div>
+                                    			</form>
+                                    			<div class="f-field">
+                                    				<label for="fi6zm">Account Type</label>
+                                    				<select class="f-input" id="accounttype">
+                                    					<option label="Select an option"></option>
+                                    					<option value="bank" {if $detail.foreign_accounts_2_account_type eq 'bank'}selected {/if}>Bank Account</option>
+                                    					<option value="securities" {if $detail.foreign_accounts_2_account_type eq 'securities'}selected {/if}>Securities Account</option>
+                                    					<option value="other"  {if $detail.foreign_accounts_2_account_type eq 'other'}selected {/if}>Other</option>
+                                    				</select>
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="e82kd">Account Number&nbsp;</label>
+                                    				<input id="a5" autocomplete="off" type="text"  data-src="foreign_accounts_2_account_number" value="{$detail.foreign_accounts_2_account_number}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="q9jph">Maximum value (include currency)&nbsp;<div class="popover__child">
+                                    						<div class="tooltip-icon">?</div>
+                                    					</div>
+                                    				</label>
+                                    				<input id="a6" autocomplete="off" type="text"  data-src="foreign_accounts_2_maximum_value" value="{$detail.foreign_accounts_2_maximum_value}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="gi8ky">End Year Balance (Include Currency)&nbsp;</label>
+                                    				<input id="a7" autocomplete="off" type="text"  data-src="foreign_accounts_2_end_year_balance" value="{$detail.foreign_accounts_2_end_year_balance}">
+                                    			</div>
+                                    			<div class="toggle-button__container ">The account is owned jointly<div style="width: 20px;"></div>
+                                    				<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-1" class="cb-item_input" data-src="foreign_accounts_2_account_is_joint" {if $detail.foreign_accounts_2_account_is_joint eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-1" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+                                    			</div>
+                                    			<div class="toggle-button__container ">The account was opened or closed in {$detail.taxyear}<div style="width: 20px;"></div>
+                                    				<div class="cb-item_ios-style">
+                   <input type="checkbox" id="cb-item_ios-style-2" class="cb-item_input"  data-src="foreign_accounts_2_account_was_opened_or_closed" {if $detail.foreign_accounts_2_account_was_opened_or_closed eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-2" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+								</div>
+							<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 {if $detail.foreign_accounts_count eq 3}
+									 <input type="hidden" name="finishpage" id="finishpage" value="foreign_accounts_did_confirm" >
+									 {/if}
+									 <!--<input type="hidden" id="choose" name="basic_info_did_address_change" >-->
+								</form>
+								{include file='public:footer2'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+    $(document).ready(function() {
+      $("#country").change(function(){
+           var fieldname='foreign_accounts_2_address_country';
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+      $("#accounttype").change(function(){
+           var fieldname='foreign_accounts_2_account_type';
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+       for(i=1;i<=8;i++){
+        var obj="#a"+i;
+        $(obj).blur(function(){
+          // alert($(this).val());
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+          });  
+       }
+     for(i=1;i<=2;i++){
+      var obj2="#cb-item_ios-style-"+i;
+      $(obj2).click(function () {
+          var val=0;
+          if ($(this).prop('checked')) {
+            val=1;
+          }
+          var fieldname=$(this).attr('data-src');//'basic_info_taxpayer_dependent_by_other';
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          
+           $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link);  
+      });
+     }
+    })
+</script>

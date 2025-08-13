@@ -1,0 +1,30 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+	<a class="back iconfont iconback"></a>
+	<div class="title">我的钱包</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="lingqian">
+	<div class="top">
+		<p>账户余额</p>
+		<h4>
+			<i>¥&nbsp;</i>{$user.user_money}
+		</h4>
+	</div>
+	<div class="btn-container">
+		<a href="{:url('User/recharge')}" class="bg-danger">充值</a>
+		<a href="{:url('User/withdrawals')}" class="bg-white-btn">提现</a>
+	</div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+    })
+</script>
+</html>

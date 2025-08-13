@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style.css" crossorigin=""	data-precedence="next" />
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+</head>
+<body>
+<div class="master-detail-layout f-theme">
+	<header>
+		<div class="app-bar app-bar--white app-bar--inline font-theme">
+			<b class="text-color" style="position: absolute; left: 30px;">
+				Add clients
+			</b>
+			<div class="grow-1"></div>
+			<div class="grow-1"></div>
+			<svg class="close close2" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+				<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2"
+				stroke-linecap="round">
+				</path>
+				<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2"
+				stroke-linecap="round">
+				</path>
+			</svg>
+		</div>
+	</header>
+	<div class="master-detail-layout__body">
+		<main class="master-detail-layout__main-container">
+			<div class="master-detail-layout__main-content ph-30 pv-30">
+				<div style="height: 30px;"></div>
+				<h1 class="font-30 center">
+					Select your tax software
+				</h1>
+				<div style="height: 20px;"></div>
+				<h3 class="font-16 center normal text-center" style="max-width: 450px; margin: auto;">
+					We use prior year tax return data to generate personalized questionnaires
+					for each client.
+				</h3>
+				<div style="height: 40px;"></div>
+				<div class="button-group justify-center gap-20 wrap m-auto row" style="max-width: 640px;">
+					<button type="button" id="openlayer" class="action-button action-button--secondary w-full"	style="font-family: Gilroy; max-width: 100%;">
+						I want to add clients one by one - no integration
+					</button>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
+<!--弹出层开始-->
+<div class="modal-barrier" style="display:none">
+	<div class="dialog f-theme column position-relative gap-20 dialog--normal">
+		<svg class="close" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2"
+			stroke-linecap="round">
+			</path>
+			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2"
+			stroke-linecap="round">
+			</path>
+		</svg>
+		<h1 class="font-30">
+			Add client
+		</h1>
+		<main>
+			<form class="column gap-20 formsubmit" id="formsubmit">
+				<div style="width: 10px;"></div>
+				<div class="f-field">
+					<select class="select" name="plan">
+						<option value="1040">
+							1040
+						</option>
+						<!--
+						<option value="2023-1120">
+							1120
+						</option>
+						<option value="2023-1120s">
+							1120s
+						</option>
+						<option value="2023-1065">
+							1065
+						</option>-->
+					</select>
+				</div>
+				<div class="f-field row gap-12">
+					<div class="flex-1">
+						<input class="f-input condensed w-full" placeholder="First name" name="firstname" tabindex="1" type="text" value="">
+						<span class="error-message firstname">Must provide a first name</span>
+					</div>
+					<div class="flex-1">
+						<input class="f-input condensed w-full" placeholder="Last name" name="lastname" tabindex="2" type="text" value="">
+						<span class="error-message lastname">Must provide a last name</span>
+					</div>
+				</div>
+				<div class="f-field">
+					<input class="f-input condensed" placeholder="Email" tabindex="3" name="email" type="email" value="">
+					<span class="error-message email">Email is required</span>
+				</div>
+				<div class="f-field">
+					<input class="f-input condensed" placeholder="CaseID" tabindex="4" name="caseid"  type="text" value="">
+					<span class="error-message caseid">Caseid is required</span>
+				</div>
+				<div style="height: 10px;"></div>
+			</form>
+		</main>
+		<div class="row align-center justify-end">
+			<button type="button" class="action-button action-button--primary submitform" style="font-family: Gilroy;" tabindex="5" >
+				Add client
+			</button>
+		</div>
+	</div>
+</div>
+<!--弹出层结束-->
+</body>
+<script>
+     $(function () {
+         $('.error-message').hide();
+        $('#openlayer').click(function () {
+           // var url=$(this).attr('data-src');
+            $('.modal-barrier').show();
+        });
+        $('.close').click(function () {
+            $('.modal-barrier').hide();
+        });
+        $('.close2').click(function () {
+            location.href='{:url("user/center")}';
+        });
+        
+        $('.submitform').click(function () {
+            $(this).html('Adding');
+            $('.error-message').hide();
+            if(!$('input[name="firstname"]').val()){
+                 $('.firstname').show();
+                 return false;
+            }else{
+               $('.firstname').hide(); 
+            }
+            if(!$('input[name="lastname"]').val()){
+                 $('.lastname').show();
+                 return false;
+            }else{
+               $('.lastname').hide(); 
+            }
+            if(!$('input[name="email"]').val()){
+                 $('.email').show();
+                 return false;
+            }else{
+               $('.email').hide(); 
+            }
+            if(!$('input[name="caseid"]').val()){
+                 $('.caseid').show();
+                 return false;
+            }else{
+               $('.caseid').hide(); 
+            }
+            var url="{:url('User/addclient')}";
+            var data=$('#formsubmit').serialize();
+            public_submit(url,data,document.getElementById('formsubmit'),3000);
+           /*
+            setTimeout(function (){
+                    $('.modal-barrier').hide();
+                   location.href='{:url("user/center")}';
+            },2000);*/
+            
+        });
+        
+    })
+</script>
+</html>

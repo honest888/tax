@@ -1,0 +1,96 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">我的订单</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="goodslist order">
+    <div class="public-tab">
+        <a class="tab {if $status=='all'}act{/if}" data-type="all">全部</a>
+        <a class="tab {if $status=='-1'}act{/if}" data-type="-1">待付款</a>
+        <a class="tab {if $status=='1'}act{/if}" data-type="1">待发货</a>
+        <a class="tab {if $status=='2'}act{/if}" data-type="2">待收货</a>
+        <a class="tab {if $status=='3'}act{/if}" data-type="3">已完成</a>
+    </div>
+    <div id="demo">
+
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        $('.public-tab .tab').on('click',function () {
+            if($(this).hasClass('act'))return;
+            var type=$(this).attr('data-type');
+            $(this).addClass('act').siblings().removeClass('act');
+            $('#demo').empty();
+            get_more(type);
+        });
+        get_more('{$status}');
+    });
+    function get_more(status) {
+        public_ajax('#demo',"{:url('Order/ajax_order')}",'&status='+status,'暂无相关订单');
+    }
+    var flag=true;
+    function cancel_order(order,obj) {
+        if (flag==false)return false;
+        confirmmsg('确定取消?',function () {
+            flag=false;
+            $(obj).attr('disabled',true);
+            $.ajax({
+                url:"{:url('Order/cancel_order')}",
+                type:'post',
+                data:{'id':order},
+                dataType:'json',
+                success:function (res) {
+                    if (res.code==1){
+                        msg(res.msg,res.url);
+                    }else {
+                        msg(res.msg);
+                    }
+                },error:function () {
+                    msg('网络错误,请稍后再试!')
+                }
+            });
+            setTimeout(function () {
+                $(obj).attr('disabled',false);
+                flag=true;
+            },2000)
+        })
+    }
+    function orderConfirm(order_id,obj) {
+        if (flag==false)return false;
+        confirmmsg('确定已收到商品?',function () {
+            flag=false;
+            $(obj).attr('disabled',true);
+            $.ajax({
+                url:"{:url('Order/order_confirm')}",
+                type:'post',
+                data:{id:order_id},
+                dataType:'json',
+                success:function (res) {
+                    if (res.code==1){
+                        msg(res.msg,res.url);
+                    }else {
+                        msg(res.msg);
+                    }
+                },error:function () {
+                    msg('网络错误,请稍后再试!')
+                }
+            });
+            setTimeout(function () {
+                $(obj).attr('disabled',false);
+                flag=true;
+            },2000)
+        })
+    }
+</script>
+</html>

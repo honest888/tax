@@ -1,0 +1,126 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">What type of property is it?</h1>
+                                    			<p class="text-center">
+                                    				<span>Select all that apply</span>
+                                    			</p>
+                                    			<?php
+                                    			$fname="rental_properties_".$detail['cur_property']."_property_type";
+                                    			if($detail[$fname]=="vacation_or_short_term"){
+                                    			   $nextpage="page15-13-3";
+                                    			}else{
+                                    			   $nextpage="page15-13-5";
+                                    			}
+                                    			
+                                    			?>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="column align-stretch gap-20" style="width: 100%; padding: 2px;">
+                                    			  
+													<div class="radio-select-option row align-center <?php if($detail[$fname]=='single_family'){?> radio-select-option--selected dark-theme <?php }?>"  data-src="single_family">
+														<input id="m0oqu" type="radio" <?php if($detail[$fname]=='single_family'){?> checked="" <?php }?>>
+														<label class="row align-center font-16 bold ml-8" for="m0oqu">
+															<span>Single_family</span>
+														</label>
+													</div>
+													<div class="radio-select-option row align-center <?php if($detail[$fname]=='multi_family'){?> radio-select-option--selected dark-theme <?php }?>"  data-src="multi_family">
+														<input id="u3t0j" type="radio" <?php if($detail[$fname]=='multi_family'){?> checked="" <?php }?>>
+														<label class="row align-center font-16 bold ml-8" for="u3t0j">
+															<span>Multi-family</span>
+														</label>
+													</div>
+													<div class="radio-select-option row align-center <?php if($detail[$fname]=='vacation_or_short_term'){?> radio-select-option--selected dark-theme <?php }?>"  data-src="vacation_or_short_term">
+														<input id="iv8mt" type="radio"  <?php if($detail[$fname]=='vacation_or_short_term'){?> checked="" <?php }?>>
+														<label class="row align-center font-16 bold ml-8" for="iv8mt">
+															<span>Short-term</span>
+															<div class="popover__child" id="tip1">
+															   <div class="tooltip-icon">?</div>
+															</div>
+															<div class="popover__element tipcommon">
+																<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Vacation or short-term</h3>
+																<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">
+																Select this option if you rented your property for short stays (for example, Airbnb, Vrbo, etc.)
+																</span></span>
+															</div>	
+														</label>
+													</div>
+													<div class="radio-select-option row align-center <?php if($detail[$fname]=='land'){?>radio-select-option--selected dark-theme  <?php }?>"  data-src="land">
+														<input id="d3z2b" type="radio" <?php if($detail[$fname]=='land'){?> checked="" <?php }?>>
+														<label class="row align-center font-16 bold ml-8" for="d3z2b">
+															<span>Land</span>
+														</label>
+													</div>
+													<div class="radio-select-option row align-center <?php if($detail[$fname]=='commercial'){?> radio-select-option--selected dark-theme  <?php }?>" data-src="commercial">
+														<input id="xjtrc" type="radio"  <?php if($detail[$fname]=='commercial'){?> checked="" <?php }?>>
+														<label class="row align-center font-16 bold ml-8" for="xjtrc">
+															<span>Commercial</span>
+														</label>
+													</div>
+													<div class="radio-select-option row align-center <?php if($detail[$fname]=='royalties'){ echo 'radio-select-option--selected dark-theme'; }?>" data-src="royalties">
+														<input id="xjtrc" type="radio" <?php if($detail[$fname]=='royalties'){?> checked="" <?php }?>>
+														<label class="row align-center font-16 bold ml-8" for="xjtrc">
+															<span>Royalties</span>
+														</label>
+													</div>
+												</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+							    {include file='public:footer2'/}
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+</iframe>
+<script>
+$(document).ready(function() {
+      $('.radio-select-option').click(function () {
+            $(".radio-select-option").each(function(){
+               $(this).find("input[type='radio']").prop('checked',false);
+               $(this).removeClass('radio-select-option--selected dark-theme');
+            });
+           var fieldname='{$fname}';
+           var fieldvalue=$(this).attr('data-src');
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+              if(fieldvalue=='vacation_or_short_term'){
+                  $('#page').val("page15-13-3");
+              }else{
+                  $('#page').val("page15-13-5");
+              }
+             // alert($('#page').val());
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+           $(this).addClass('radio-select-option--selected dark-theme');
+           $(this).find("input[type='radio']").prop('checked',true);
+      });
+});
+</script>

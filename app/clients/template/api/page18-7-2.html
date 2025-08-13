@@ -1,0 +1,127 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Tell us about your second non-cash donations</h1>
+                                    			<p class="text-center">
+                                    				<span></span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<?php 
+                                    			$nextpage="page18-7-4";
+                                    			?>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Organization name   &nbsp;</label>
+                                    				<input id="a1" autocomplete="off" type="text"  data-src="non_cash_donations_1_organization_name" value="{$detail.non_cash_donations_1_organization_name}">
+                                    			</div>
+                                    		   <div class="f-field">
+                                    				<label for="bxwt5">Organization address  &nbsp;</label>
+                                    				<input id="a2" autocomplete="off" type="text"  data-src="non_cash_donations_1_organization_address" value="{$detail.non_cash_donations_1_organization_address}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Description &nbsp; 
+													<div class="popover__child" id="tip1">
+                                    					   <div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Description</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Give us a short description of the property you donated.</span></span>
+														</div>
+													</label>
+                                    				<input id="a3" autocomplete="off" type="text"  data-src="non_cash_donations_1_description" value="{$detail.non_cash_donations_1_description}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Date of contribution  &nbsp;</label>
+                                    				<input id="a4" autocomplete="off" type="text"  data-src="non_cash_donations_1_date_donated" value="{$detail.non_cash_donations_1_date_donated}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Donation value &nbsp; 
+													<div class="popover__child" id="tip2">
+                                    					   <div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Donation Value</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">If you donated clothes, furniture, or other items, an estimate is acceptable. Stock donations (ESPP's, RSU's, common stock, etc.) are valued at the average high/low of the stock on the date of contribution.</span></span>
+														</div>
+													</label>
+                                    				<input id="a5" autocomplete="off" type="text"  data-src="non_cash_donations_1_amount" value="{$detail.non_cash_donations_1_amount}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Cost basis &nbsp;
+													<div class="popover__child" id="tip3">
+                                    					   <div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Cost Basis</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">The cost/adjusted basis is the amount you originally paid for the donated item (an estimate is acceptable). This information is only needed if the value of the donated item exceeds $500.</span></span>
+														</div>
+													</label>
+                                    				<input id="a6" autocomplete="off" type="text"  data-src="non_cash_donations_1_cost_basis" value="{$detail.non_cash_donations_1_cost_basis}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Date acquired &nbsp; 
+													<div class="popover__child" id="tip4">
+                                    					   <div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Date Acquired</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">This refers to the date you originally acquired the property (an estimate is acceptable). This information is only needed if the value of the donated item exceeds $500.</span></span>
+														</div>
+													</label>
+                                    				<input id="a7" autocomplete="off" type="text"  data-src="non_cash_donations_1_date_acquired" value="{$detail.non_cash_donations_1_date_acquired}">
+                                    			</div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								{include file='public:footer2'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      for(var i=1;i<=7;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+});
+</script>

@@ -1,0 +1,117 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--内容区s-->
+<div id="member">
+    <div class="top">
+        <div class="title">
+            <h5>个人中心</h5>
+            <a href="{:url('User/user_info')}">
+                <img src="__MOBILE__/img/set.png">
+            </a>
+        </div>
+        <div class="info">
+            <div class="info-top">
+                <div class="left">
+                    <img src="{$user.head_pic|default='__MOBILE__/img/default.png'}">
+                </div>
+                <div class="right">
+                    <h4>
+                        <span>{$user.realname|default='无'}</span>
+                        <a href="{:url('User/level')}">
+                            <img src="{$user.level_img}">
+                        </a>
+                    </h4>
+                    <p>{$user.mobile}</p>
+                </div>
+                <a href="{:url('User/jifen')}" class="sign">
+                    <img src="__MOBILE__/img/sign.png">
+                </a>
+            </div>
+            <div class="info-bot">
+                <a href="{:url('User/lingqian')}">
+                    <h4>{$user.user_money}</h4>
+                    <p>余额</p>
+                </a>
+                <a href="{:url('User/points',['type'=>2])}">
+                    <h4>{$user.jifen}</h4>
+                    <p>积分</p>
+                </a>
+                <a href="javascript:;">
+                    <h4>{$user.lj_sy}</h4>
+                    <p>收益</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="order">
+        <div class="title">
+            <h4>我的订单</h4>
+            <a href="{:url('Order/order_list')}" class="right">
+                <span>查看全部订单</span>
+                <span class="iconfont iconjiantou"></span>
+            </a>
+        </div>
+        <div class="order-info">
+            <a href="{:url('Order/order_list',['status'=>-1])}">
+                <img src="__MOBILE__/img/daifukuan.png">
+                <p>待付款</p>
+            </a>
+            <a href="{:url('Order/order_list',['status'=>1])}">
+                <img src="__MOBILE__/img/daifahuo.png">
+                <p>待发货</p>
+            </a>
+            <a href="{:url('Order/order_list',['status'=>2])}">
+                <img src="__MOBILE__/img/daishouhuo.png">
+                <p>待收货</p>
+            </a>
+            <a href="{:url('Order/order_list',['status'=>3])}">
+                <img src="__MOBILE__/img/yiwancheng.png">
+                <p>已完成</p>
+            </a>
+        </div>
+    </div>
+    <div class="nav">
+        <a href="{:url('Shouyi/index')}" class="nav-item">
+            <div class="left">
+                <img src="__MOBILE__/img/tuandui.png">
+                <p>我的团队</p>
+            </div>
+            <span class="right iconfont iconjiantou"></span>
+        </a>
+        <a href="{:url('Cart/index')}" class="nav-item">
+            <div class="left">
+                <img src="__MOBILE__/img/gouwuche.png">
+                <p>购物车</p>
+            </div>
+            <span class="right iconfont iconjiantou"></span>
+        </a>
+        <a href="{:url('User/address_list')}" class="nav-item">
+            <div class="left">
+                <img src="__MOBILE__/img/dizhi.png">
+                <p>地址管理</p>
+            </div>
+            <span class="right iconfont iconjiantou"></span>
+        </a>
+        <a href="javascript:;" class="nav-item">
+            <div class="left">
+                <img src="__MOBILE__/img/kefu.png">
+                <p>客服热线</p>
+            </div>
+            <span class="right iconfont iconjiantou"></span>
+        </a>
+    </div>
+    <div style="height: 50px"></div>
+</div>
+<!--内容区e-->
+<!--底部导航位置s-->
+{include file='public:bottom'/}
+<!--底部导航位置e-->
+</body>
+<script>
+    $(function () {
+    });
+</script>
+</html>

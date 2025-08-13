@@ -1,0 +1,26 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">佣金变动提醒</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="message">
+</div>
+<!--内容区e-->
+</body>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<script>
+    $(function () {
+        get_more();
+    });
+    function get_more() {
+        public_ajax('.message',"{:url('User/ajax_message')}",'','暂无相关记录');
+    }
+</script>
+</html>

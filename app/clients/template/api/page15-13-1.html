@@ -1,0 +1,179 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">
+                                    			    <?php 
+                                    			    switch($detail['cur_property']){
+                                    			          case 0: 
+                                        			          if($detail['rental_properties_count']==1){
+                                        			             $name="Tell us the address of your rental property";
+                                        			          }else{
+                                        			             $name="Tell us the address of your first rental property";
+                                        			          }
+                                    			          break;
+                                    			          case 1: 
+                                    			            $name="Tell us the address of your second rental property";
+                                    			          break;
+                                    			          case 2: 
+                                    			            $name="Tell us the address of your third rental property";
+                                    			          break;
+                                    			          case 3: 
+                                    			            $name="Tell us the address of your fourth rental property";
+                                    			          break;
+                                    			          case 3: 
+                                    			            $name="Tell us the address of your fifth rental property";
+                                    			          break;
+                                    			        }
+                                    			      echo $name; 
+                                    			      if($detail['cur_property']>=1){
+                                    			         $last=$detail['cur_property']-1;
+                                    			         $lastpage="page15-13-19-".$last;
+                                    			      }
+                                    			    ?></h1>
+                                    			<p class="text-center">
+                                    				<span></span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<form class="address-input row-wrap gap-20" style="width: 100%;">
+                                                	<div class="w-full row-wrap gap-20">
+                                                		<div class="f-field w-300 grow-2">
+                                                			<label for="nre6y">Address&nbsp;</label>
+                                                			<input id="a1" autocomplete="off" type="text" data-src="rental_properties_{$detail.cur_property}_address_street" value='<?php $fname="rental_properties_".$detail['cur_property']."_address_street"; echo $detail[$fname];?>'>
+                                                		</div>
+                                                		<div class="f-field w-150 grow-1">
+                                                			<label for="rrpeu">City&nbsp;</label>
+                                                			<input id="a2" autocomplete="off" type="text"  data-src="rental_properties_{$detail.cur_property}_address_city" value='<?php $fname="rental_properties_".$detail['cur_property']."_address_city"; echo $detail[$fname];?>'>
+                                                		</div>
+                                                	</div>
+                                                	<div class="w-full row-wrap gap-20">
+                                                		<div class="f-field w-150 grow-2">
+                                                			<label for="m0ibf">State&nbsp;</label>
+                                                			<input id="a3" autocomplete="off" type="text"  data-src="rental_properties_{$detail.cur_property}_address_state" value='<?php $fname="rental_properties_".$detail['cur_property']."_address_state"; echo $detail[$fname];?>'>
+                                                		</div>
+                                                		<div class="f-field w-150 grow-2">
+                                                			<label for="64fvp">Country</label>
+                                                			<?php  $fname="rental_properties_".$detail['cur_property']."_address_country"; ?>
+                                                			<select class="f-input" id="country">
+                                    							<option label="Select an option"></option>
+                                    							<?php foreach($country_ary as $key=>$val){ ?>
+                                    						     	<option value="{$key}" <?php if($key==$detail[$fname]){ ?> selected <?php }?> >{$val}</option>
+                                    							<?php }?>
+                                    						</select>
+                                                		</div>
+                                                		<div class="f-field w-75 grow-1">
+                                                			<label for="zwufn">ZIP code&nbsp;</label>
+                                                			<input id="a4" autocomplete="off" type="text" data-src="rental_properties_{$detail.cur_property}_address_zip" value='<?php $fname="rental_properties_".$detail['cur_property']."_address_zip"; echo $detail[$fname];?>'>
+                                                		</div>
+                                                	</div>
+                                                </form>
+                                                <div class="toggle-button__container ">I purchased this property in {$detail.taxyear}<div style="width: 20px;"></div>
+                                                	<div class="cb-item_ios-style">
+                                                	    <?php  $fname="rental_properties_".$detail['cur_property']."_purchased_in_past_year"; ?>
+                                                        <input type="checkbox" id="cb-item_ios-style-1" class="cb-item_input"  <?php if($detail[$fname]==1){ ?>checked="" <?php }?>>
+                                                        <label for="cb-item_ios-style-1" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-button__container ">I sold this property in {$detail.taxyear}<div style="width: 20px;"></div>
+                                                	 <div class="cb-item_ios-style">
+                                                	     <?php  $fname="rental_properties_".$detail['cur_property']."_sold_in_past_year"; ?>
+                                                        <input type="checkbox" id="cb-item_ios-style-2" class="cb-item_input"  <?php if($detail[$fname]==1){ ?>checked="" <?php }?>>
+                                                        <label for="cb-item_ios-style-2" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div   
+                                                </div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									   <?php if($detail['cur_property']>=1){  $num=$detail['cur_property']-1; ?>
+								         <input type="hidden" id="cur_property" name="cur_property" value="{$num}">
+								       <?php }?>
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									  <input type="hidden" id="page" name="page" value="{$nextpage}">
+								    
+									  <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								 {include file='public:footer2'/}
+								<!--需要选择的单独写footer-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+     $("#country").change(function(){
+           var fieldname="rental_properties_"+"{$detail.cur_property}"+"_address_country";
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+      for(var i=1;i<=4;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+      $('#cb-item_ios-style-1').click(function () {
+          var val=0;
+          if ($(this).prop('checked')) {
+            val=1;
+          }
+         // var fieldname='rental_properties_0_purchased_in_past_year';
+          var fieldname="rental_properties_"+"{$detail.cur_property}"+"_purchased_in_past_year";
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          
+           $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link);  
+     });
+     $('#cb-item_ios-style-2').click(function () {
+          var val=0;
+          if ($(this).prop('checked')) {
+            val=1;
+          }
+         // var fieldname='rental_properties_0_sold_in_past_year';
+          var fieldname="rental_properties_"+"{$detail.cur_property}"+"_sold_in_past_year";
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          
+           $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link);  
+     });
+});
+</script>

@@ -1,0 +1,135 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">浏览记录</div>
+    <a  class="edit">编辑</a>
+</header>
+<!--头部导航位置e-->
+<style>
+    .public-list .public-list-list .public-list-item:nth-last-child(2){
+        border-bottom:1px solid var(--border);
+    }
+    .public-list .public-list-list .public-list-item:nth-last-child(1){
+        border-bottom:none;
+    }
+</style>
+<!--内容区s-->
+<div class="collect public">
+    <div class="public-list">
+    </div>
+</div>
+<div class="public-bottom">
+    <div class="public-bottom-item">
+        <a class="left">
+            <span class="iconfont icondanxuan  danxuan-all"></span>
+            <span>全选</span>
+        </a>
+        <a class="right">
+            <button data-style="slide-right" id="submit" class="btn-block bg-red fff">删除</button>
+        </a>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        public_ajax('.public-list',"{:url('User/ajax_visit')}",'','暂无浏览记录');
+    });
+    $('#submit').click(function () {
+        var ids=[];
+        $('.danxuan-fa .danxuan').each(function () {
+            if ($(this).hasClass('icondanxuanact')){
+                ids.push($(this).data('id'));
+            }
+        })
+        if (ids==''){
+            msg('请勾选要删除的列表');
+            return false;
+        }
+        confirmmsg('确定删除?',function () {
+            public_submit("{:url('User/visit_del')}",{ids:ids});
+        })
+    });
+    $(function () {
+        $('.edit').click(function () {
+            if ($('.layui-flow-more').is(':hidden')){
+                msg('暂无浏览记录');
+                return false;
+            }
+            if ($('.public-bottom').is(':hidden')){
+                $(this).text('取消');
+            }else {
+                $(this).text('编辑');
+            }
+            $('.public-bottom').toggle();
+            $('.danxuan-fa').toggle();
+            $('.title-danxuan').toggle();
+        });
+        $(document).on('click','.title-danxuan',function () {
+            var items=$(this).parents().next('.public-list-list').find('.danxuan');
+            if ($(this).hasClass('icondanxuan')){
+                items.removeClass('icondanxuan').addClass('icondanxuanact');
+                $(this).removeClass('icondanxuan').addClass('icondanxuanact');
+            }else {
+                items.removeClass('icondanxuanact').addClass('icondanxuan');
+                $(this).removeClass('icondanxuanact').addClass('icondanxuan');
+            }
+            danxuanAll();
+        });
+        $(document).on('click','.danxuan',function () {
+            if ($(this).hasClass('icondanxuan')){
+                $(this).removeClass('icondanxuan').addClass('icondanxuanact');
+            }else {
+                $(this).removeClass('icondanxuanact').addClass('icondanxuan');
+            }
+            titleAll(this);
+            danxuanAll();
+        });
+        $(document).on('click','.danxuan-all',function () {
+            var item=$('.danxuan-fa .danxuan');
+            if ($(this).hasClass('icondanxuanact')){
+                item.removeClass('icondanxuanact').addClass('icondanxuan');
+                $(this).removeClass('icondanxuanact').addClass('icondanxuan');
+                $('.title-danxuan').removeClass('icondanxuanact').addClass('icondanxuan');
+            }else {
+                item.removeClass('icondanxuan').addClass('icondanxuanact');
+                $(this).removeClass('icondanxuan').addClass('icondanxuanact');
+                $('.title-danxuan').removeClass('icondanxuan').addClass('icondanxuanact');
+            }
+        });
+    });
+    function titleAll(obj) {
+        var title=true;
+        var par=$(obj).parents().parents().parents('.public-list-list');
+        $(par).find('.danxuan').each(function () {
+            if ($(this).hasClass('icondanxuan')){
+                title=false;
+            }
+        });
+        if (title){
+            $(par).prev('.title').find('.title-danxuan').removeClass('icondanxuan').addClass('icondanxuanact');
+        }else {
+            $(par).prev('.title').find('.title-danxuan').removeClass('icondanxuanact').addClass('icondanxuan');
+        }
+    }
+    function danxuanAll() {
+        var danxuan=true;
+        var item=$('.danxuan-fa .danxuan');
+        item.each(function () {
+            if ($(this).hasClass('icondanxuan')){
+                danxuan=false;
+            }
+        });
+        if (danxuan){
+            $('.danxuan-all').removeClass('icondanxuan').addClass('icondanxuanact');
+        }else {
+            $('.danxuan-all').removeClass('icondanxuanact').addClass('icondanxuan');
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,117 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">If you had any of the following work-related expenses, please let us know</h1>
+                                    			<p class="text-center">
+                                    				<span>Please do not include any expenses that are already on your P&L statement.</span>
+                                    			</p>
+                                    			<?php if($detail['self_employment_0_did_have_vehicle_expenses']==1){
+                                    			  $lastpage="page15-2-10-3";
+                                    			}else{
+                                    			  $lastpage="page15-2-10";
+                                    			}?>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Advertising &nbsp;</label>
+                                    				<input id="a1" autocomplete="off" type="text"  data-src="self_employment_0_expenses_advertising" value="{$detail.self_employment_0_expenses_advertising}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    				<label for="bxwt5">Commissions and fees &nbsp;</label>
+                                    				<input id="a2" autocomplete="off" type="text"  data-src="self_employment_0_expenses_commissions" value="{$detail.self_employment_0_expenses_commissions}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Insurance (other than health) &nbsp;</label>
+                                    				<input id="a3" autocomplete="off" type="text"  data-src="self_employment_0_expenses_business_insurance" value="{$detail.self_employment_0_expenses_business_insurance}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Interest - mortgage (Form 1098) &nbsp;</label>
+                                    				<input id="a4" autocomplete="off" type="text"  data-src="self_employment_0_expenses_mortgage_interest" value="{$detail.self_employment_0_expenses_mortgage_interest}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Interest - other &nbsp;</label>
+                                    				<input id="a5" autocomplete="off" type="text"  data-src="self_employment_0_expenses_other_interest" value="{$detail.self_employment_0_expenses_other_interest}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Legal & professional fees &nbsp;</label>
+                                    				<input id="a6" autocomplete="off" type="text"  data-src="self_employment_0_expenses_legal_and_professional" value="{$detail.self_employment_0_expenses_legal_and_professional}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Office expenses &nbsp;</label>
+                                    				<input id="a7" autocomplete="off" type="text"  data-src="self_employment_0_expenses_office" value="{$detail.self_employment_0_expenses_office}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Rent - vehicles, equipment, etc. &nbsp;</label>
+                                    				<input id="a8" autocomplete="off" type="text"  data-src="self_employment_0_expenses_equipment_rental" value="{$detail.self_employment_0_expenses_equipment_rental}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Rent - other business property &nbsp;</label>
+                                    				<input id="a9" autocomplete="off" type="text"  data-src="self_employment_0_expenses_building_or_land_rental" value="{$detail.self_employment_0_expenses_building_or_land_rental}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    				<label for="bxwt5">Repairs and maintenance &nbsp;</label>
+                                    				<input id="a10" autocomplete="off" type="text"  data-src="self_employment_0_expenses_repairs_and_maintenance" value="{$detail.self_employment_0_expenses_repairs_and_maintenance}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Supplies &nbsp;</label>
+                                    				<input id="a11" autocomplete="off" type="text"  data-src="self_employment_0_expenses_supplies" value="{$detail.self_employment_0_expenses_supplies}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Taxes and licenses &nbsp;</label>
+                                    				<input id="a12" autocomplete="off" type="text"  data-src="self_employment_0_expenses_tax_and_license" value="{$detail.self_employment_0_expenses_tax_and_license}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Travel &nbsp;</label>
+                                    				<input id="a13" autocomplete="off" type="text"  data-src="self_employment_0_expenses_business_travel" value="{$detail.self_employment_0_expenses_business_travel}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Meals &nbsp;</label>
+                                    				<input id="a14" autocomplete="off" type="text"  data-src="self_employment_0_deductible_meal_expenses" value="{$detail.self_employment_0_deductible_meal_expenses}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Utilities &nbsp;</label>
+                                    				<input id="a15" autocomplete="off" type="text"  data-src="self_employment_0_expenses_utilities" value="{$detail.self_employment_0_expenses_utilities}">
+                                    			</div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      for(var i=1;i<=15;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+});
+</script>

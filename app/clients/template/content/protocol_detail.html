@@ -1,0 +1,33 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header">
+    <a class="iconfont iconback" onclick="window.parent.read()"></a>
+    <div class="title">注册协议</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="notice">
+    <div class="content">
+        <div class="notice-content">
+            {$art.content|raw}
+        </div>
+    </div>
+    <div class="notice-time ccc">{:date('Y-m-d H:i',$art.update_time)}</div>
+</div>
+<!--内容区e-->
+</body>
+<style>
+    .notice-time{
+        margin-top: 10px;
+        text-align: right;
+    }
+    .notice-content video{
+        width: 100%;
+    }
+</style>
+<script>
+</script>
+</html>

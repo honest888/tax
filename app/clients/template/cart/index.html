@@ -1,0 +1,287 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<style>
+    .danxuan-fa,.public-bottom{
+        display: block;
+        bottom: 50px;
+    }
+    .public-list .public-list-list .public-list-item:nth-last-child(2){
+        border-bottom: 1px solid var(--border);
+    }
+    .price1{
+        flex: 1;
+        text-align: center
+    }
+    .price1 em{
+        font-size: 16px;
+    }
+</style>
+<!--头部导航位置s-->
+<header class="header">
+    <a href="javascript:;"></a>
+    <div class="title">购物车</div>
+    <a class="edit">编辑</a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="cart">
+    {empty name="cartList"}
+        <div id="empty">
+            <div class="empty iconfont iconzanwushuju"></div>
+            <h4>购物车暂无商品</h4>
+        </div>
+        {else/}
+            <div class="public-list">
+                <div class="public-list-list">
+                    {volist name="cartList" id="cart"}
+                    <div class="public-list-item">
+                        <div class="danxuan-fa">
+                            <div class="danxuan-item">
+                                <span class="iconfont {if $cart.selected eq 1}icondanxuanact{else/}icondanxuan{/if} danxuan sel{$cart.id}" data-id="{$cart.id}"></span>
+                            </div>
+                        </div>
+                        <a  class="public-list-item-a">
+                            <div class="img">
+                                <img src="{$cart.img}">
+                            </div>
+                            <div class="good">
+                                <p>{$cart.goods_name}</p>
+                                {if $cart.item_name}
+                                    <p class="ccc">{$cart.item_name}</p>
+                                {/if}
+                                <div class="price flex-between">
+                                    <span>￥{$cart.goods_price}</span>
+                                    <div class="number-box">
+                                        <div class="reduce" onclick="cartnum(this,-1)">-</div>
+                                        <input type="number" data-id="{$cart.id}" data-max="{$cart.max}" class="goods_num goods_num{$cart.id}" value="{$cart.goods_num}">
+                                        <div class="add" onclick="cartnum(this,1)">+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+    {/empty}
+</div>
+{notempty name="$cartList"}
+    <div class="public-bottom">
+        <div class="public-bottom-item">
+            <a class="left flex-between">
+                <div class="selectall">
+                    <span class="iconfont icondanxuan danxuan-all"></span>
+                    <span>全选</span>
+                </div>
+                <div class="price1">
+                    合计: <em>￥{$amount}</em>
+                </div>
+            </a>
+            <a  class="right">
+                <button data-style="slide-right" id="submit" class="new-btn">去结算</button>
+                <button  style="display: none" id="del" class="new-btn">删除</button>
+            </a>
+        </div>
+    </div>
+{/notempty}
+<!--内容区e-->
+<!--底部导航位置s-->
+{include file='public:bottom'/}
+<!--底部导航位置e-->
+</body>
+<script>
+    var item=$('.danxuan-fa .danxuan');
+    $(function () {
+        $('.danxuan').click(function () {
+            if ($(this).hasClass('icondanxuan')){
+                $(this).removeClass('icondanxuan').addClass('icondanxuanact');
+            }else {
+                $(this).removeClass('icondanxuanact').addClass('icondanxuan');
+            }
+            danxuanAll();
+            initCart();
+        });
+        $('.danxuan-all').click(function () {
+            if ($(this).hasClass('icondanxuanact')){
+                item.removeClass('icondanxuanact').addClass('icondanxuan');
+                $(this).removeClass('icondanxuanact').addClass('icondanxuan');
+            }else {
+                item.removeClass('icondanxuan').addClass('icondanxuanact');
+                $(this).removeClass('icondanxuan').addClass('icondanxuanact');
+            }
+            initCart();
+        });
+        $('.goods_num').blur(function () {
+            cartnum(this,0)
+        });
+        $('.goods_num').each(function () {
+            if ($(this).val()==1){
+                $(this).parent().find('.reduce').addClass('dis')
+            }
+            if ($(this).data('max')==1){
+                $(this).parent().find('.add').addClass('dis')
+            }
+        });
+        danxuanAll();
+        // initCart();
+        $('#submit').click(function () {
+            var flag=false;
+            item.each(function () {
+                if ($(this).hasClass('icondanxuanact')){
+                    flag=true;
+                }
+            });
+            if (!flag){
+                msg('请选择商品');
+                return false;
+            }
+            //跳转订单页面
+            window.location.href = "{:url('Cart/cart')}"
+        });
+        $('.edit').click(function () {
+            var text=$(this).text();
+            var len=$('.public-bottom').length;
+            if (len==0){
+                msg('购物车暂无商品');
+                return false;
+            }
+            if (text=='编辑'){
+                $(this).text('取消');
+                $('.price').hide();
+                $('#submit').hide();
+                $('#del').show();
+            } else {
+                $(this).text('编辑');
+                $('.price').show();
+                $('#submit').show();
+                $('#del').hide();
+            }
+        });
+        $('#del').click(function () {
+            var ids=[];
+            item.each(function () {
+                if ($(this).hasClass('icondanxuanact')){
+                    ids.push($(this).data('id'));
+                }
+            });
+            if (ids==''){
+                msg('请选择商品');
+                return false;
+            }
+            confirmmsg('确定删除?',function () {
+                $.ajax({
+                    url:"{:url('Cart/delete')}",
+                    type:'post',
+                    data:{ids:ids},
+                    dataType:'json',
+                    success:function (res) {
+                        if (res.code==1){
+                            msg(res.msg,res.url);
+                        }else if (res.code==-100) {
+                            msg(res.msg,res.url);
+                        }else {
+                            msg(res.msg);
+                        }
+                    },error:function () {
+                        msg('网络错误,请稍后再试!')
+                    }
+                });
+            })
+        });
+    })
+    function initCart() {
+        var arr=[];
+        var items=$('.danxuan-item .danxuan');
+        var len=items.length;
+        if (len==0) return false;
+        for (var i=0;i<len;i++){
+            if ($(items[i]).hasClass('icondanxuanact')){
+                var selected=1;
+            }else {
+                var selected=0;
+            }
+            var id=$(items[i]).data('id');
+            var num=$('.goods_num'+id).val();
+            arr[i]=new goodsItem(id,num,selected);
+        }
+        $.ajax({
+            url:"{:url('Cart/do_cart')}",
+            type:'post',
+            data:{arr:arr},
+            dataType:'json',
+            success:function (res) {
+                if (res.code==1){
+                    $('.price1 em').text('￥'+res.amount);
+                }else if (res.code==-100) {
+                    msg(res.msg,res.url);
+                }else {
+                    msg(res.msg);
+                }
+            },error:function () {
+                msg('网络错误,请稍后再试!')
+            }
+        });
+    }
+    function goodsItem(cart_id,goods_num,selected) {
+        this.cart_id   =    cart_id;
+        this.goods_num  =   goods_num;
+        this.selected   =   selected;
+    }
+    function cartnum(obj='',number) {
+        var goods_num=$(obj).parent().find('.goods_num');
+        var num=parseInt(goods_num.val());
+        var max=parseInt(goods_num.data('max'));
+        var check=/[1-9]\d*/;
+        if ($(obj).hasClass('dis')) return false;
+        if(!check.test(num)){
+            num=1;
+        }
+        num+=number;
+        if (num<=1){
+            num=1;
+        }
+        if (num>max){
+            num=max;
+        }
+        var reduce=$(obj).parent().find('.reduce');
+        var add=$(obj).parent().find('.add');
+        if (max==1){
+            reduce.addClass('dis');
+            add.addClass('dis');
+        }else if (num==1){
+            reduce.addClass('dis');
+            add.removeClass('dis');
+        }else if (num<max){
+            reduce.removeClass('dis');
+            add.removeClass('dis');
+        }else {
+            reduce.removeClass('dis');
+            add.addClass('dis');
+        }
+        if (number!=0){
+            var id=goods_num.data('id');
+            if (!$('.sel'+id).hasClass('icondanxuanact')) {
+                $('.sel'+id).removeClass('icondanxuan').addClass('icondanxuanact');
+            }
+        }
+        goods_num.val(num);
+        initCart();
+        danxuanAll();
+    }
+    function danxuanAll() {
+        var danxuan=true;
+        item.each(function () {
+            if ($(this).hasClass('icondanxuan')){
+                danxuan=false;
+            }
+        });
+        if (danxuan){
+            $('.danxuan-all').removeClass('icondanxuan').addClass('icondanxuanact');
+        }else {
+            $('.danxuan-all').removeClass('icondanxuanact').addClass('icondanxuan');
+        }
+    }
+</script>
+</html>

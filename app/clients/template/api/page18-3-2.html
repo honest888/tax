@@ -1,0 +1,153 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+						
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Tell us about the care of the 3rd child</h1>
+                                    			<p class="text-center">
+                                    				<span></span>
+                                    			</p>
+                                    			<?php 
+                                    			if($detail['child_care_credit_count']<=3){
+                                    			 
+                                    			}else{
+                                    			   $nextpage="page18-3-3";
+                                    			}
+                                    			?>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="y3usm">Child's name &nbsp;</label>
+                                    				<input id="a1" autocomplete="off" type="text" data-src="child_care_credit_2_child_name" value="{$detail.child_care_credit_2_child_name}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    				<label for="y3usm">Care provider name &nbsp;</label>
+                                    				<input id="a2" autocomplete="off" type="text" data-src="child_care_credit_2_daycare_caretaker_name" value="{$detail.child_care_credit_2_daycare_caretaker_name}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="e82kd">Care provider SSN/EIN&nbsp;
+													<div class="popover__child" id="tip1">
+                                    						<div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Daycare Provider SSN/EIN</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">If your child attended a daycare center, they should be able to provide you with an EIN (Federal ID number or FEIN).</span></span>
+														</div>
+													</label>
+                                    				<input id="a3" autocomplete="off" type="text"  data-src="child_care_credit_2_daycare_caretaker_ssn_or_ein" value="{$detail.child_care_credit_2_daycare_caretaker_ssn_or_ein}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="q9jph">Care provider address &nbsp;
+                                    				</label>
+                                    				<input id="a4" autocomplete="off" type="text"  data-src="child_care_credit_2_daycare_caretaker_address" value="{$detail.child_care_credit_2_daycare_caretaker_address}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="gi8ky">Total amount paid&nbsp;
+													<div class="popover__child" id="tip2">
+                                    						<div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Total amount paid</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">If you have multiple children at one daycare and the statements don’t break out the cost, please split the amount equally between the children.</span></span>
+														</div>
+														</label>
+                                    				<input id="a5" autocomplete="off" type="text"  data-src="child_care_credit_2_total_amount_paid" value="{$detail.child_care_credit_2_total_amount_paid}">
+                                    			</div>
+                                    			<div class="toggle-button__container ">This child had additional care providers in {$detail.taxyear}<div style="width: 20px;"></div>
+                                    				<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-1" class="cb-item_input" data-src="child_care_credit_2_had_additional_care_providers" {if $detail.child_care_credit_2_had_additional_care_providers eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-1" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+								</div>
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									{if $detail.child_care_credit_count eq 3}
+									 <input type="hidden" name="finishpage" id="finishpage" value="child_care_credit_did_confirm" >
+									 {/if}
+									 <!--<input type="hidden" id="choose" name="basic_info_did_address_change" >-->
+								</form>
+								{include file='public:footer2'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+    $(document).ready(function() {
+      $("#country").change(function(){
+           var fieldname='';
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+      $("#accounttype").change(function(){
+           var fieldname='';
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+       for(i=1;i<=5;i++){
+        var obj="#a"+i;
+        $(obj).blur(function(){
+          // alert($(this).val());
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+          });  
+       }
+     for(i=1;i<=1;i++){
+      var obj2="#cb-item_ios-style-"+i;
+      $(obj2).click(function () {
+          var val=0;
+          if ($(this).prop('checked')) {
+            val=1;
+          }
+          var fieldname=$(this).attr('data-src');//'basic_info_taxpayer_dependent_by_other';
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          
+           $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link);  
+      });
+     }
+    })
+</script>

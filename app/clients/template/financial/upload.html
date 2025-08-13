@@ -1,0 +1,1196 @@
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style.css" crossorigin=""	data-precedence="next" />
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+</head>
+section3 personal bank account
+         Investment Accounts
+Life Insurance Policies
+Real Property Owned or Being Purchased 
+Purchased and Leased Automobiles, Trucks, and other Licensed Assets
+Other Valuable Items
+Credit Cards 
+section 4 special circumstance
+section 7 Business Bank Accounts 
+ Accounts/Notes Receivable
+Other Assets
+Business Expenses 
+<style>
+.table--app {
+    min-width: 700px;
+}
+    progress {  vertical-align: baseline; }
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+.button, .uploader__file-label, .uploader__submit-button {
+  background-color: white;
+  background-color: transparent;
+  border: 2px solid #ff8598;
+  border-radius: 5px;
+  color: #ff8598;
+  display: block;
+  font-size: 0.8em;
+  padding: 1em 2em;
+  max-width: 15em;
+  text-transform: uppercase;
+  transition: background-color 0.2s; }
+
+.button:hover, .uploader__file-label:hover, .uploader__submit-button:hover,
+.button:active,
+.uploader__file-label:active,
+.uploader__submit-button:active,
+.button:focus,
+.uploader__file-label:focus,
+.uploader__file-input:focus + .uploader__file-label,
+.uploader__submit-button:focus {
+  background-color: #ff8598;
+  color: white; }
+
+.button--secondary {
+  color: #ff8598;
+  border-color: #ff8598;
+  padding: 0.5em 1em;
+  max-width: 15em; }
+
+.button--secondary:hover,
+.button--secondary:active,
+.button--secondary:focus,
+.uploader__file-input:focus + .uploader__file-label {
+  background-color: #ff8598;
+  color: white; }
+
+.button--inline {
+  display: inline-block; }
+
+.button--big-bottom, .uploader__submit-button {
+  max-width: none;
+  width: 100%;
+  text-align: center;
+  border-radius: 0;
+  background-color: #ff8598;
+  color: white; }
+
+.button--big-bottom:hover, .uploader__submit-button:hover,
+.button--big-bottom:active,
+.uploader__submit-button:active,
+.button--big-bottom:focus,
+.uploader__submit-button:focus {
+  background-color: #ffb8c3; }
+
+.icon-button, .uploader__icon-button {
+  background: transparent;
+  border: 0;
+  color: #d2d2d2; }
+
+.icon-button:hover, .uploader__icon-button:hover {
+  color: #424242; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background-color: #e6e6e6; }
+
+.site-header::after {
+  content: '';
+  clear: both;
+  display: table; }
+
+.uploader__file-input {
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  z-index: -1; }
+
+.hide, .uploader__hide {
+  display: none; }
+
+.show {
+  display: block; }
+
+.error, .uploader__error {
+  color: #ff3264; }
+
+.file-list, .uploader__file-list {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0; }
+
+.file-list__item, .uploader__file-list__item {
+  display: table;
+  padding: 0.5em;
+  width: 100%; }
+
+
+.file-list__thumbnail, .uploader__file-list__thumbnail,
+.file-list__text,
+.uploader__file-list__text,
+.file-list__size,
+.uploader__file-list__size,
+.file-list__button,
+.uploader__file-list__button {
+  display: table-cell;
+  vertical-align: middle; }
+
+.file-list__thumbnail, .uploader__file-list__thumbnail {
+  width: 10%; }
+
+.file-list__text, .uploader__file-list__text {
+  width: 60%;
+  word-break: break-word; }
+
+.file-list__size, .uploader__file-list__size {
+  width: 25%; }
+
+.file-list__button, .uploader__file-list__button {
+  width: 5%; }
+
+.icon, .uploader__icon {
+  font-size: 2em;
+  margin: 10px;
+  text-decoration: none; }
+
+.icon--close {
+  color: #d2d2d2; }
+
+.icon--spinner, .uploader__icon--spinner {
+  margin: 1em; }
+
+.thumbnail {
+  max-height: 50px;
+  max-width: 50px;
+  height: auto;
+  width: auto;
+  padding: 0.2em; }
+
+.text--important, .uploader__instructions {
+  font-size: 1.2em; }
+
+.l-main {
+  max-width: 64em;
+  margin-left: auto;
+  margin-right: auto; }
+  .l-main:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
+.l-site-title {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-left: 8.47458%; }
+
+.l-center-box {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  margin-left: 16.94915%; }
+
+.site-header {
+  margin-bottom: 3em; }
+
+.site-title {
+  color: #ff8598;
+  font-size: 0.8em;
+  padding: 1.5em 0;
+  text-transform: uppercase; }
+
+.uploader__box {
+  /*animation: appear 1s;*/
+  /*background-color: white;*/
+  /*box-shadow: -2px 2px 20px #d2d2d2;*/
+  /*text-align: center;*/
+  /*transition: all 0.5s;*/
+  /*margin-bottom: 1em; */
+}
+
+@keyframes appear {
+  from {
+    margin-top: 3em;
+    opacity: 0; }
+  to {
+    margin-top: 0;
+    opacity: 1; } }
+
+.uploader__contents {
+  padding: 3em;
+  margin-top: 0;
+  opacity: 1;
+  transition: all 0.4s; }
+
+.uploader__file-label,
+.uploader__box .button--secondary {
+  margin: 2em auto; }
+
+.uploader__file-label--secondary {
+  display: inline-block;
+  margin: 0 0.5em; }
+
+.uploader__further-instructions {
+  margin-left: 16.94915%;
+  clear: both;
+  color: #969696;
+  font-size: 0.9em;
+  padding: 0.5em; }
+.popover__element{
+    position:absolute!important;
+}
+a.action-button2 {
+    text-decoration: none
+}
+
+.action-button2 {
+    position: relative;
+    min-height: 40px;
+    min-width: 90px;
+    max-width: 200px;
+    padding: 0 16px;
+    font-weight: 700;
+    background: var(--primary-button-background);
+    border: var(--primary-button-border);
+    color: var(--primary-button-color);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    border-radius: 4px
+}
+
+.action-button2:hover {
+    background: var(--primary-button-background-hover);
+    border: var(--primary-button-border-hover)
+}
+
+.action-button2>img,.action-button>svg {
+    width: 30px;
+    max-height: 30px;
+    color: var(--primary-button-icon-color)
+}
+
+.action-button--icon-only {
+    min-width: auto;
+    padding: 0
+}
+
+.action-button--secondary {
+    background: var(--secondary-button-background);
+    border: var(--secondary-button-border);
+    color: var(--secondary-button-color)
+}
+
+.action-button--secondary>svg {
+    color: var(--secondary-button-icon-color)
+}
+
+.action-button--secondary:hover {
+    background: var(--secondary-button-background-hover);
+    border: var(--secondary-button-border-hover)
+}
+
+.action-button--large_icon,.action-button--medium_icon {
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+    min-width: 200px;
+    background: var(--secondary-button-background);
+    border: var(--secondary-button-border);
+    color: var(--secondary-button-color)
+}
+
+.action-button--large_icon>img,.action-button--large_icon>svg,.action-button--medium_icon>img,.action-button--medium_icon>svg {
+    width: 60px;
+    max-height: 60px;
+    color: var(--secondary-button-icon-color)
+}
+
+.action-button--large_icon:hover,.action-button--medium_icon:hover {
+    background: var(--secondary-button-background-hover);
+    border: var(--secondary-button-border-hover)
+}
+
+.action-button--medium_icon {
+    min-width: 120px;
+    min-height: 120px
+}
+
+.action-button--mini {
+    min-width: 24px;
+    min-height: 24px;
+    background: var(--mini-button-background);
+    border: var(--mini-button-border);
+    color: var(--mini-button-color)
+}
+
+.action-button--mini>svg {
+    color: var(--mini-button-icon-color)
+}
+
+.action-button--mini:hover {
+    background: var(--mini-button-background-hover);
+    border: var(--mini-button-border-hover)
+}
+
+.action-button--mini:hover,.action-button--mini:hover>svg {
+    color: var(--mini-button-color-hover)
+}
+
+.action-button--expand {
+    max-width: none
+}
+
+.action-button--disabled,.action-button:disabled {
+    cursor: not-allowed;
+    opacity: .6
+}
+
+.action-button2>input[type=file] {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    border: none
+}
+
+.action-button2>label {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer
+}
+.checklist-item__container{
+    cursor:pointe;
+}
+</style>
+<body>
+	<?php 
+      $topary='';
+      $filecount=0;
+     if($detail['filename']){
+           $filearytop=json_decode($detail['filename'],true);
+           foreach($filearytop as $key=>$val){
+             $filecount=$filecount+count($val);
+           }
+      }
+    ?>    
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<header>
+			<div class="app-bar app-bar--white app-bar--inline font-theme">
+				<div class="row align-center gap-12">
+				    {if $islogin eq 1}
+				    <a href="/republic/center" class="link-active" style="margin-right: 20px;"><svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.29549 1.28406C8.6889 0.896434 9.32205 0.901123 9.70967 1.29453C10.0973 1.68793 10.0926 2.32108 9.6992 2.7087L4.3289 8.00004L18 8.00004C18.5523 8.00004 19 8.44776 19 9.00004C19 9.55233 18.5523 10 18 10L4.33539 10L9.6992 15.285C10.0926 15.6726 10.0973 16.3058 9.70967 16.6992C9.32205 17.0926 8.6889 17.0973 8.29549 16.7096L1.3713 9.88725C0.87439 9.39764 0.87439 8.59605 1.3713 8.10644L8.29549 1.28406Z" fill="currentColor"></path></svg></a>
+				    {/if}
+					<!--<img src="/storage/organizations/clqzwbo6500006iqim0mipw9z/public/教育行业.jpg" style="max-width: 80px; height: 40px; object-fit: contain;">-->
+					<span class="mobile-hide">Republic Tax</span>
+				</div>
+				<div class="grow-1"></div>
+				<div class="grow-1"></div>
+				<div class="popover__child">
+					<div class="row align-center cursor-pointer">
+						<div class="user-avatar" style="background: rgb(255, 233, 213); color: rgb(230, 117, 13); width: 40px; height: 40px;">{$shortname}</div>
+						<div style="width: 12px;"></div>
+						<span class="font-14 font-family-inherit">{$questions.firstname} {$questions.lastname}</span>
+						<div style="width: 12px;"></div>
+						<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 1L7 7L13 1" stroke="#5D5F6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="master-detail-layout__body">
+		<nav class="master-detail-layout__nav mobile-hide">
+	<div class="f-theme folder-sidebar column gap-20 position-relative">
+		<div class="column gap-12" style="flex: 1 1 0%; overflow-y: auto; padding-top: 20px; padding-bottom: 120px;">
+			<div class="row justify-between align-center" style="margin: 0px 10px;">
+				<div class="folder-section-badge color-grey font-12 uppercase row align-center gap-6">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3.35357 2.39646C3.54882 2.59172 3.54881 2.9083 3.35355 3.10356L1.60355 4.85347C1.41451 5.04251 1.11021 5.04939 0.91281 4.8691L0.162811 4.1841C-0.0410874 3.99788 -0.055413 3.68162 0.130814 3.47772C0.31704 3.27382 0.633298 3.2595 0.837196 3.44572L1.23436 3.80847L2.64646 2.39644C2.84173 2.20118 3.15831 2.20119 3.35357 2.39646ZM3.35355 8.10356C3.54881 7.90831 3.54882 7.59172 3.35357 7.39646C3.15831 7.20119 2.84173 7.20118 2.64646 7.39644L1.23436 8.80847L0.837196 8.44572C0.633298 8.2595 0.31704 8.27382 0.130814 8.47772C-0.055413 8.68162 -0.0410874 8.99788 0.162811 9.1841L0.91281 9.8691C1.11021 10.0494 1.41451 10.0425 1.60355 9.85347L3.35355 8.10356ZM4.5 8.5C4.5 8.22386 4.72386 8 5 8H11.5C11.7761 8 12 8.22386 12 8.5C12 8.77614 11.7761 9 11.5 9H5C4.72386 9 4.5 8.77614 4.5 8.5ZM5 3C4.72386 3 4.5 3.22386 4.5 3.5C4.5 3.77614 4.72386 4 5 4H11.5C11.7761 4 12 3.77614 12 3.5C12 3.22386 11.7761 3 11.5 3H5Z" fill="#5D5F6B"></path>
+					</svg>Tasks
+				</div>
+			</div>
+		
+			<div style="height: 20px;"></div>
+			<div class="uploader__box js-uploader__box">
+                                			   
+		    </div>
+		</div>
+	
+		{if $islogin eq 1}
+		<div class="button-group justify-center gap-20 wrap column" style="padding: 0px 10px 0px; margin-bottom: 80px;">
+			<div class="button-group justify-center gap-20 wrap column">
+				<button type="button" class="action-button action-button--secondary" data-src="download" style="font-family: Gilroy; max-width: 100%;">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M5.4693 9.71891L5.55342 9.64629C5.84703 9.42844 6.2637 9.45264 6.52996 9.71891L9.24934 12.4382L9.24963 5.74854L9.25648 5.64676C9.30614 5.28069 9.61994 4.99854 9.99963 4.99854L10.1014 5.00538C10.4675 5.05504 10.7496 5.36884 10.7496 5.74854L10.7493 12.4402L13.47 9.71831L13.5541 9.64567C13.8477 9.42776 14.2644 9.45189 14.5307 9.7181C14.8236 10.0109 14.8237 10.4858 14.5309 10.7788L10.5309 14.7803L10.4468 14.8529C10.1532 15.0709 9.73643 15.0467 9.47013 14.7804L5.4693 10.7796L5.39669 10.6955C5.17883 10.4018 5.20304 9.98518 5.4693 9.71891ZM20 9.99902C20 15.5219 15.5228 19.999 10 19.999C4.47715 19.999 0 15.5219 0 9.99902C0 4.47618 4.47715 -0.000976562 10 -0.000976562C15.5228 -0.000976562 20 4.47618 20 9.99902ZM1.5 9.99902C1.5 14.6934 5.30558 18.499 10 18.499C14.6944 18.499 18.5 14.6934 18.5 9.99902C18.5 5.3046 14.6944 1.49902 10 1.49902C5.30558 1.49902 1.5 5.3046 1.5 9.99902Z" fill="currentColor"></path>
+					</svg>Download
+				</button>
+			</div>
+		</div>
+		{/if}
+		
+	</div>
+</nav>
+           
+		</div>
+	</div>
+</div>
+</body>
+<script>
+$('#pdfdownload').click(function(){
+      var link="{$detail.link}";
+      var listary='';
+      var url="/clients/topdf_wkhtmltopdf?link="+link+"&listary="+listary;
+      location.href=url;
+      return false;
+});
+$('#unlockbutton').click(function(){
+    $('#comtip9').show();
+});
+
+$('#content').click(function () {
+    $('#imgright').hide();
+   $('#contentshow').show();
+});
+$('#topclick').click(function () {
+    $('#completeq2').show();
+    $('#completeq').show();
+});
+ $('#topclick').hover(
+      function() {
+        // 鼠标悬浮时的回调函数
+        $('#completeq2').show();
+        $('#completeq').show();
+      },
+      function() {
+        // 鼠标移出时的回调函数
+        
+        /*setTimeout(function() {
+           $('#completeq2').hide();
+           $('#completeq').hide();
+        }, 1500); // 延迟500毫秒*/
+      }
+ );
+
+ 
+// 使用示例
+// var filename = 'example.jpg';
+// var isImage = checkFileExtension(filename, 'jpg'); // 返回 true
+// var isVideo = checkFileExtension(filename, 'mp4'); // 返回 false folder-list-item
+$('.folder-list-item-actions').click(function () {
+    if($(this).attr('data-src')=='noref'){
+        return false;
+    }
+   var pagename=$(this).find('.fdownload').attr('data-id');
+   var filename=$(this).find('.fdownload').attr('data-src');
+   var link="/upload/clients/"+"{$detail.link}"+"/"+pagename+"/"+filename;
+   //名字 
+   var fileExtension = filename.split('.').pop().toLowerCase(); // 获取文件扩展名
+
+      // 判断文件扩展名  else if (fileExtension === 'mp4' || fileExtension === 'webm') {    alert('这是一个视频文件');     } else if (fileExtension === 'mp3' ||fileExtension === 'wav') {        alert('这是一个音频文件');      } 
+      if (fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png') {
+         $("#imgs").html('<img src="'+link+'" height="auto" style="width: 850px; display: block; margin: 100px auto; box-shadow: rgba(0, 0, 0, 0.5) 0px -2px 10px;">');
+      } else if (fileExtension === 'pdf') {
+        $("#imgs").html('<embed src="'+link+'" type="application/pdf" style="width: 850px;height:900px;  display: block; margin: 100px auto; box-shadow: rgba(0, 0, 0, 0.5) 0px -2px 10px;"> ');  
+      }
+   //名字
+   $("#imgs").html('<img src="'+link+'" height="auto" style="width: 850px; display: block; margin: 100px auto; box-shadow: rgba(0, 0, 0, 0.5) 0px -2px 10px;">');
+   $('#imgright').show();
+   $('#contentshow').hide();
+});
+$('#top1').click(function () {
+  $("#top2").show();
+}); 
+$('#checkall').click(function () {
+    if ($(this).prop('checked')) {
+         $('.listcheckbox').prop("checked",true); 
+         //按钮去掉disabled
+          $('#dpdf').removeClass('action-button--disabled');
+          $('#dpdf').attr('disabled',false);
+          $('#dzip').removeClass('action-button--disabled');
+          $('#dzip').attr('disabled',false);
+     }else{
+        $('.listcheckbox').prop("checked",false); 
+        //按钮变灰不可选
+          $('#dpdf').addClass('action-button--disabled');
+          $('#dpdf').attr('disabled',true);
+          $('#dzip').addClass('action-button--disabled');
+          $('#dzip').attr('disabled',true);
+      }
+    //$(this).prop("checked", !$(this).is(":checked"));
+   // $(this).prop("checked", !$(this).is(":checked"));
+});
+
+     for(var i=1;i<=580;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+   $('.js-upload-remove-button').click(function () {
+      var src=$(this).attr('data-src2');
+     
+   });
+    
+    $('.action-button').click(function () {
+            var url=$(this).attr('data-src');
+            if(url=="noref"){
+                return false;
+            }
+            if(url=='unlock'){
+                 var link="{$detail.link}";
+                $.ajax({
+                     url:"{:url('api/unlock')}",
+                     type:'post',
+                     data:{'link':link},
+                     dataType:'json',
+                     success:function (res) {
+                        if (res.code==1){
+                             msg('Successfully unlocked!',1500);
+                             setTimeout(function() {
+                               var url='/clients/folders/'+link;
+                               location.href=url;
+                            }, 1500);
+                            
+                         }else {
+                             msg('Try it again later');
+                         }
+                       },error:function () {
+                          msg('Try it again later');
+                    }
+                });
+                return false;
+            }
+            if(url=="download"){
+                var link="{$detail.link}";
+                //即时获取所有文件
+                $.ajax({
+                     url:"{:url('api/getNewDetail')}",
+                     type:'post',
+                     data:{'link':link},
+                     dataType:'json',
+                     success:function (res) {
+                         if (res.code==1){
+                  		    if(res.data){ 
+                  		        $('#myForm').empty();
+                      		    var ary=res.data;
+                      		    var fileary=$.parseJSON(ary);
+                      		    var pagetovalary=$.parseJSON('<?php  echo json_encode($upload_pname_ary);?>');
+                      		    // var str='<form id="myForm">';//index
+                      		    
+                      		     var str='';
+                      		     str=str+'<tr style="height: 40px;">'+
+                    						'<td>'+
+                    							'<input type="checkbox" checked="" class="listcheckbox" name="listary[]" value="republicOrganization">'+
+                    						'</td>'+
+                    						'<td>Organizer.pdf</td>'+
+                    						'<td>Organizer</td>'+
+                    					//	'<td></td>'+
+                    					'</tr>';
+                  		       $.each(fileary, function (index, value) {
+                  		          console.log(pagetovalary[index]);
+                  		           var showname=index;
+                  		          if(pagetovalary[index]&&pagetovalary[index]!=''){
+                  		              showname=pagetovalary[index];
+                  		          }
+                                  for (var i = 0; i < value.length; i++) {
+                                        var val=index+"|"+value[i];
+                                        str=str+'<tr style="height: 40px;">'+
+                    						'<td>'+
+                    							'<input type="checkbox" checked="" class="listcheckbox" name="listary[]" value="'+val+'">'+
+                    						'</td>'+
+                    						'<td>'+value[i]+'</td>'+
+                    						'<td>'+showname+'</td>'+
+                    					//	'<td></td>'+
+                    					'</tr>';
+                                   }
+                                    });
+                              //  alert(str);
+                                       $('#myForm').append(str);
+                                       $('.listcheckbox').click(function () {
+                                        if ($(this).prop('checked')) {
+                                            var tag=1;
+                                            $(".listcheckbox").each(function(){
+                                                if (!$(this).prop('checked')) {
+                                                     tag=0;
+                                                }
+                                            });
+                                            if(tag){
+                                                $('#checkall').prop('checked',true);
+                                            }
+                                            $('#dpdf').removeClass('action-button--disabled');
+                                                  $('#dpdf').attr('disabled',false);
+                                                  $('#dzip').removeClass('action-button--disabled');
+                                                  $('#dzip').attr('disabled',false);  
+                                         }else{
+                                             $('#checkall').prop('checked',false);
+                                             var tag=1;
+                                             $(".listcheckbox").each(function(){
+                                                if ($(this).prop('checked')) {
+                                                     tag=0;
+                                                }
+                                            });
+                                            if(tag){
+                                                //都没选中，则都是disabled
+                                                  $('#dpdf').addClass('action-button--disabled');
+                                                  $('#dpdf').attr('disabled',true);
+                                                  $('#dzip').addClass('action-button--disabled');
+                                                  $('#dzip').attr('disabled',true);
+                                            }
+                                         }
+                                    });
+                                 
+                                  }
+                               }else {
+                              console.log('sucess');
+                                //  msg(res.msg);
+                             }
+                         },error:function () {
+                               msg('Try it again later');
+                        }
+                });
+                $('#comtip8').show();
+                //location.href="{:url('api/downloadzip',['link'=>$detail.link])}";
+                return false;
+            }
+            if(url=='submittoapi'){
+               $(this).addClass('action-button--disabled');
+               $(this).css('background-color','#dbdbdb');
+               $(this).html('Submitting...');
+               var obj=$(this);
+               var link="{$detail.link}";
+               $.ajax({
+                     url:"{:url('api/reSubmit')}",
+                       type:'post',
+                       data:{'link':link},
+                       dataType:'json',
+                       success:function (res) {
+                           console.log(res);
+                           if(res.status=='success'){
+                              // $(this).html('Complete');
+                               obj.html('Completed');
+                               msg('Successfully submitted');
+                           }else{
+                               obj.html('<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.4693 9.71891L5.55342 9.64629C5.84703 9.42844 6.2637 9.45264 6.52996 9.71891L9.24934 12.4382L9.24963 5.74854L9.25648 5.64676C9.30614 5.28069 9.61994 4.99854 9.99963 4.99854L10.1014 5.00538C10.4675 5.05504 10.7496 5.36884 10.7496 5.74854L10.7493 12.4402L13.47 9.71831L13.5541 9.64567C13.8477 9.42776 14.2644 9.45189 14.5307 9.7181C14.8236 10.0109 14.8237 10.4858 14.5309 10.7788L10.5309 14.7803L10.4468 14.8529C10.1532 15.0709 9.73643 15.0467 9.47013 14.7804L5.4693 10.7796L5.39669 10.6955C5.17883 10.4018 5.20304 9.98518 5.4693 9.71891ZM20 9.99902C20 15.5219 15.5228 19.999 10 19.999C4.47715 19.999 0 15.5219 0 9.99902C0 4.47618 4.47715 -0.000976562 10 -0.000976562C15.5228 -0.000976562 20 4.47618 20 9.99902ZM1.5 9.99902C1.5 14.6934 5.30558 18.499 10 18.499C14.6944 18.499 18.5 14.6934 18.5 9.99902C18.5 5.3046 14.6944 1.49902 10 1.49902C5.30558 1.49902 1.5 5.3046 1.5 9.99902Z" fill="currentColor"></path></svg>Submit');
+                               if(res.status==0){
+                                  msg(res.msg); 
+                               }else{
+                                 msg('Failed to submit');  
+                               }
+                           }
+                           obj.html('<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.4693 9.71891L5.55342 9.64629C5.84703 9.42844 6.2637 9.45264 6.52996 9.71891L9.24934 12.4382L9.24963 5.74854L9.25648 5.64676C9.30614 5.28069 9.61994 4.99854 9.99963 4.99854L10.1014 5.00538C10.4675 5.05504 10.7496 5.36884 10.7496 5.74854L10.7493 12.4402L13.47 9.71831L13.5541 9.64567C13.8477 9.42776 14.2644 9.45189 14.5307 9.7181C14.8236 10.0109 14.8237 10.4858 14.5309 10.7788L10.5309 14.7803L10.4468 14.8529C10.1532 15.0709 9.73643 15.0467 9.47013 14.7804L5.4693 10.7796L5.39669 10.6955C5.17883 10.4018 5.20304 9.98518 5.4693 9.71891ZM20 9.99902C20 15.5219 15.5228 19.999 10 19.999C4.47715 19.999 0 15.5219 0 9.99902C0 4.47618 4.47715 -0.000976562 10 -0.000976562C15.5228 -0.000976562 20 4.47618 20 9.99902ZM1.5 9.99902C1.5 14.6934 5.30558 18.499 10 18.499C14.6944 18.499 18.5 14.6934 18.5 9.99902C18.5 5.3046 14.6944 1.49902 10 1.49902C5.30558 1.49902 1.5 5.3046 1.5 9.99902Z" fill="currentColor"></path></svg>Submit');
+                           obj.css('background-color','#fff');
+                           obj.removeClass('action-button--disabled');
+                            return false;
+                       },error:function () {
+                           obj.html('<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.4693 9.71891L5.55342 9.64629C5.84703 9.42844 6.2637 9.45264 6.52996 9.71891L9.24934 12.4382L9.24963 5.74854L9.25648 5.64676C9.30614 5.28069 9.61994 4.99854 9.99963 4.99854L10.1014 5.00538C10.4675 5.05504 10.7496 5.36884 10.7496 5.74854L10.7493 12.4402L13.47 9.71831L13.5541 9.64567C13.8477 9.42776 14.2644 9.45189 14.5307 9.7181C14.8236 10.0109 14.8237 10.4858 14.5309 10.7788L10.5309 14.7803L10.4468 14.8529C10.1532 15.0709 9.73643 15.0467 9.47013 14.7804L5.4693 10.7796L5.39669 10.6955C5.17883 10.4018 5.20304 9.98518 5.4693 9.71891ZM20 9.99902C20 15.5219 15.5228 19.999 10 19.999C4.47715 19.999 0 15.5219 0 9.99902C0 4.47618 4.47715 -0.000976562 10 -0.000976562C15.5228 -0.000976562 20 4.47618 20 9.99902ZM1.5 9.99902C1.5 14.6934 5.30558 18.499 10 18.499C14.6944 18.499 18.5 14.6934 18.5 9.99902C18.5 5.3046 14.6944 1.49902 10 1.49902C5.30558 1.49902 1.5 5.3046 1.5 9.99902Z" fill="currentColor"></path></svg>Submit');
+                           msg('Try it again later');
+                           obj.css('background-color','#fff');
+                           obj.removeClass('action-button--disabled');
+                           return false;
+                       }
+                });
+                return false;
+            }
+            if(url=="downloadzip"){
+                /* var link="{$detail.link}";
+                 var postdata=$(".listcheckbox").serialize();
+                //location.href="{:url('api/downloadzip',['link'=>$detail.link])}";
+                var url="/clients/downloadzip?link="+link+"&"+postdata;
+                location.href=url;
+                return false;
+                */
+                $(this).html('Generating...');
+                $(this).css('background-color','#b1b1b1');
+                var obj=$(this);
+                //交给后端处理
+                // 触发下载并监控进度
+                var link="{$detail.link}";
+                var postdata=$(".listcheckbox").serialize();
+                var url="/clients/downloadzip?link="+link+"&"+postdata;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'blob';
+                xhr.onload = function(e) {
+                    if (this.status == 200) {
+                        // 下载完成
+                        var blob = this.response;
+                        var link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = 'republic.zip'; // 设置下载文件的名称和扩展名
+                        link.click();
+                        obj.css('background-color','#536cf1');
+                        obj.html('Download Zip');
+                    }
+                };
+                xhr.send();
+                return false;
+            }
+            
+            if(url=="downloadpdf"){
+             /*
+               $(this).html('Generating');
+                var filename=$(this).attr('data-src');
+                var pagename=$(this).attr('data-id');
+                var link="{$detail.link}";
+                var postdata=$(".listcheckbox").serialize();
+                var url="/clients/topdf_wkhtmltopdf?link="+link+"&"+postdata;
+                location.href=url;
+                $(this).html('Download PDF');
+                return false;*/
+                $(this).html('Generating...');
+                $(this).css('background-color','#b1b1b1');
+				$('#dzip').css('background-color','#b1b1b1');
+				$('#dzip').attr('disabled',true);
+				$(this).attr('disabled',true);
+                var obj=$(this);
+                //交给后端处理
+                // 触发下载并监控进度
+                var link="{$detail.link}";
+                var postdata=$(".listcheckbox").serialize();
+                var url="/clients/topdf_wkhtmltopdf?link="+link+"&"+postdata;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'blob';
+                xhr.onload = function(e) {
+                    if (this.status == 200) {
+                        // 下载完成
+                        var blob = this.response;
+                        var link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = 'republic.pdf'; // 设置下载文件的名称和扩展名
+                        link.click();
+                        obj.css('background-color','#536cf1');
+						obj.attr('disabled',false);
+						$('#dzip').css('background-color','#536cf1');
+						$('#dzip').attr('disabled',false);
+                        obj.html('Download PDF');
+                    }
+                };
+               /*
+                xhr.upload.onprogress = function(e) {
+                    if (e.lengthComputable) {
+                        var percentComplete = (e.loaded / e.total) * 100;
+                        // 更新进度条
+                        obj.html('Generating '+percentComplete + '%');
+                       // $('#progressBar').width(percentComplete + '%');
+                    }
+                };*/
+                /*
+                fetch(url)
+                  .then(response => {
+                    const reader = response.body.getReader();
+                    let total = 0;
+                
+                    return new ReadableStream({
+                      start(controller) {
+                        read();
+                
+                        function read() {
+                          reader.read().then(({ done, value }) => {
+                            if (done) {
+                              controller.close();
+                              return;
+                            }
+                
+                            total += value.length;
+                            const percent = (total / response.headers.get('Content-Length')) * 100;
+                           // alert(`Downloaded: ${percent.toFixed(2)}%`);
+                
+                            controller.enqueue(value);
+                            read();
+                          });
+                        }
+                      }
+                    });
+                  })
+                  .then(stream => {
+                    // 处理流数据，例如写入Blob或转换为其他格式
+                  });*/
+        
+                xhr.send();
+        
+                // 显示进度条容器
+               // $('#progressContainer').show();
+                //交给后端处理
+                return false;
+            }
+            if(url=="comtip3"){
+                //弹出checklist 提示框 
+                $('#comtip3').show();
+                return false;
+            }
+            if(url=="markincomplete"){
+                //解除 绑定 
+                var id=$('#mark_incom').val();
+                var link="{$detail.link}";
+                $.ajax({
+                     url:"{:url('api/removeChecklist')}",
+                       type:'post',
+                       data:{'link':link,'id':id},
+                       dataType:'json',
+                       success:function (res) {
+                           //处理页面删除
+                           $("ul li[data-index='" + id + "']").removeClass('checklist-item--complete');//删除样式
+                           $("ul li[data-index='" + id + "']").find('.checklist-item__container').find('.inline-tag').remove();  
+                           //更改显示数
+                           $(".color-grey-dark").html(res.per);
+                       },error:function () {
+                           msg('Try it again later');
+                       }
+                });
+                $("#comtip5").hide();
+                return false;
+            }
+            if(url=="editCheckList"){
+                var link="{$detail.link}";
+                //弹出框 edit check 框
+                var id=$(this).attr('data-val');
+                 $.ajax({
+                       url:"{:url('api/getCheckDetail')}",
+                       type:'post',
+                       data:{'link':link,'id':id},
+                       dataType:'json',
+                       success:function (res) {
+                           if (res.code==1){
+                                $('#editSelection').append("<option >"+res.detail.listname+"</option>");
+                                $('#editNote').val(res.detail.note);
+                                $('#editId').val(id);
+                                $('#comtip6').show();  
+                           }else {
+                              msg('Try it again later');
+                           }
+                       },error:function () {
+                           msg('Try it again later');
+                       }
+               });
+                
+                return false;
+            }
+            if(url=="saveEditCheck"){
+                 var link="{$detail.link}";
+                 var note=$('#editNote').val();
+                 var id=$('#editId').val();
+                $.ajax({
+                       url:"{:url('api/editCheck')}",
+                       type:'post',
+                       data:{'note':note,'link':link,'id':id},
+                       dataType:'json',
+                       success:function (res) {
+                           if (res.code==1){
+                               //扩展列表 //修改相应list中的note值 
+                              var obj="#list_"+id;
+                              var showname=res.detail.listname+"("+res.detail.note+")";
+                              $('#editNote').val(res.detail.note);
+                              $(obj).html(showname);
+                           }else {
+                               console.log('sucess');
+                              msg(res.msg);
+                           }
+                       },error:function () {
+                           msg('Try it again later')
+                       }
+                 });
+                $('#comtip6').hide();
+                return false;
+             }
+            if(url=="delCheckList"){  //显示删除弹出框
+                var link="{$detail.link}";
+                //弹出框 edit check 框
+                var id=$(this).attr('data-val');
+                 $.ajax({
+                       url:"{:url('api/getCheckDetail')}",
+                       type:'post',
+                       data:{'link':link,'id':id},
+                       dataType:'json',
+                       success:function (res) {
+                           if (res.code==1){
+                               var txt="Are you sure you would like to delete "+res.detail.listname+"?";
+                                $('#delMain').text(txt);
+                                $('#delItemId').val(id);
+                                $('#comtip7').show();  
+                           }else {
+                              msg('Try it again later');
+                           }
+                       },error:function () {
+                           msg('Try it again later');
+                       }
+               });
+                return false;
+            }
+            if(url=="delCheck"){  //进行删除操作
+               var link="{$detail.link}";
+                //弹出框 edit check 框
+                var id=$('#delItemId').val();
+                 $.ajax({
+                       url:"{:url('api/removeCheck')}",
+                       type:'post',
+                       data:{'link':link,'id':id},
+                       dataType:'json',
+                       success:function (res) {
+                           if (res.code==1){
+                             
+                               $("ul li[data-index='" + id + "']").remove();
+                               //$('.checklist-item').find('li[data-index="' + id + '"]').remove();
+                           }else {
+                              msg('Try it again later');
+                           }
+                       },error:function () {
+                           msg('Try it again later');
+                       }
+               });
+               $('#comtip7').hide();
+                return false; 
+            }
+          
+            if(url=='search'){
+                $('#searchform').submit();
+            }else{
+                if(url!='') location.href=url;else return false;
+            }
+    });
+    $('.close6').click(function () {
+         $('#comtip6').hide();
+    });
+    $('.close7').click(function () {
+         $('#delItemId').val();
+         $('#comtip7').hide();
+    });
+    $('.close8').click(function () {
+         $('#comtip8').hide();
+    });
+     $('.close9').click(function () {
+         $('#comtip9').hide();
+    });
+    $("#saveEditCheck").click(function () {
+         
+    });
+	 $('.align-top').click(function () {
+        //$(".align-top").each(function() {
+          // $(this).addClass('active');
+       // });
+        $('.radio-tabs').find('.active').removeClass('active'); //获取 ul 元素下带有 class="active" 的所有元素
+        $(this).addClass('active');
+        if($(this).html()=="Answers"){
+            $('.Answers').show();
+            $('.Questionnaire').hide();
+        }
+        if($(this).html()=="Questionnaire"){
+            $('.Questionnaire').show();
+            $('.Answers').hide();
+        }
+    });
+    $('#comtip').click(function () {
+         $("#comtip").hide();
+     });
+    $('#comtip2').click(function () {
+         $("#comtip2").hide();
+     });  
+    
+    $('.close10').click(function () {
+          $("#comtip").hide();
+     }); 
+     $('.close3').click(function () {
+          $("#comtip3").hide();
+     }); 
+     
+     $('#comclose2').click(function () {
+          $("#comtip2").hide();
+     });
+     $('#alreadytip').click(function () {
+          $("#comtip2").show();
+     });
+     $('#oktag').click(function () {
+          $("#comtip").hide();
+     });
+     $('#oktag2').click(function () {
+          $("#comtip2").hide();
+     });
+  $('#mark_com_list').change(function () {
+      var fieldvalue=$(this).val();
+      if(fieldvalue!=''){
+          $('#combutton').removeClass('action-button--disabled');
+          $('#combutton').attr('disabled',false);
+      }else{
+          $('#combutton').addClass('action-button--disabled');
+          $('#combutton').attr('disabled',true);
+      }
+  });   
+  $('#listsel').change(function () {
+      var fieldvalue=$(this).val();
+      if(fieldvalue!=''){
+          $('#listadd').removeClass('action-button--disabled');
+          $('#listadd').attr('disabled',false);
+      }else{
+          $('#listadd').addClass('action-button--disabled');
+          $('#listadd').attr('disabled',true);
+      }
+  });
+  
+   $(".checklist-item__container").click(function (){
+  //$(".checklist-item__checkbox").click(function (){
+       var link="{$detail.link}";
+       var id=$(this).attr('data-src');
+       var status=$(this).attr('data-val');
+       var listname=$(this).attr('data-name');
+       //获得即时的status
+        $.ajax({
+               url:"{:url('api/getChecklistDetail')}",
+               type:'post',
+               data:{'id':id},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+                       var status=res.data.status;
+                      if(status==1){
+                           $('#mark_incom').val(id);
+                           $("#comtip5").show();
+                       }else{
+                           $('#mark_com_id').val(id);
+                           var txt="To mark "+listname+ "as completed, please select the relevant document.";
+                           $('#comtext').text(txt);
+                           //$('#editSelection').append("<option >"+res.detail.listname+"</option>");
+                           //获得最新的filename
+                          
+                           $.ajax({
+                               url:"{:url('api/getNewDetail')}",
+                               type:'post',
+                               data:{'link':link},
+                               dataType:'json',
+                               success:function (res) {
+                                   if (res.code==1){
+                            		    if(res.data){ 
+                            		        $('#mark_com_list').empty();
+                                		    var ary=res.data;
+                                		    var fileary=$.parseJSON(ary);
+                                		    var pagetovalary=$.parseJSON('<?php  echo json_encode($upload_pname_ary);?>');
+                            		       $.each(fileary, function (index, value) {
+                            		          console.log(pagetovalary[index]);
+                            		           var showname=index;
+                            		          if(pagetovalary[index]&&pagetovalary[index]!=''){
+                            		              showname=pagetovalary[index];
+                            		          }
+                                              var str="<optgroup label="+showname+">";//index
+                                              for (var i = 0; i < value.length; i++) {
+                                                  var val=index+"|"+value[i];
+                                                   str=str+"<option value='"+val+"'>"+value[i]+"</option>";
+                                              }
+                                              str=str+"</optgroup>";
+                                              console.log(str);
+                                              $('#mark_com_list').append(str);
+                                              $('#combutton').removeClass('action-button--disabled');
+                                              $('#combutton').attr('disabled',false);
+                                           });
+                            		    }
+                                   }else {
+                                       console.log('sucess');
+                                     //  msg(res.msg);
+                                   }
+                               },error:function () {
+                                   msg('Try it again later')
+                               }
+                       });
+                           $("#comtip4").show();
+						   $("#input-cngya").attr('data-src',id);
+                       } 
+                   }else{
+                       msg('Try it again later');
+                   }
+               },error:function () {
+                    msg('Try it again later');
+               }
+       });
+   });
+
+
+</script>
+	<script src="__STATIC__/stanford/jquery-1.11.0.min.js"></script>
+	<script src="__STATIC__/stanford/jquery.imageuploader_cm.js"></script>
+	<script type="text/javascript">
+	$(document).click(function(event){
+	          var _con = $('.popover__child');   // 设置目标区域
+	          if(!_con.is(event.target) && _con.has(event.target).length === 0){ 
+	            $('.popover__element').slideUp('slow');   //滑动消失
+	          }
+	   });
+	  
+		(function(){
+		     var pagetovalary2=$.parseJSON('<?php  echo json_encode($upload_pname_ary);?>');
+		    <?php 
+		     $ary=$detail['filename'];
+		    if($ary){ ?>
+		    var str=$.parseJSON('{$ary|raw}');
+		    var fileary=str;
+		    <?php }else{ ?>
+		    var fileary=[];
+		    <?php }?>
+	            var options = {};
+	            $('.js-uploader__box').uploader({
+	            	'selectButtonCopy':'请选择或拖拽文件',
+	            	'instructionsCopy':'你可以选择或拖拽多个文件',
+	            	'submitButtonCopy':'上传选择的文件',
+	            	'furtherInstructionsCopy':'你可以选择或拖拽更多的文件',
+	            	'secondarySelectButtonCopy':'More',
+	            	'pagename':'{$pagename}',
+	            	'link':'{$detail.link}',
+	            	'fileary': fileary,
+	            	'pagetovalary':pagetovalary2
+	            });
+	            
+	  $('.popover__child').click(function(){
+            $('.popover__element').hide();
+            $(this).nextAll('.popover__element').toggle();
+        });
+        function download(){
+            var link="{$detail.link}";
+            location.href="{:url('api/downloadzip',['link'=>"+link+"])}";
+        }
+        $('.fdownload').click(function(){
+            var filename=$(this).attr('data-src');
+            var pagename=$(this).attr('data-id');
+       
+            var link="{$detail.link}";
+            var url="/clients/downloadfile?filename="+filename+"&pagename="+pagename+"&link="+link;
+            location.href=url;
+        }); 
+        /*
+        $('#formhtml').click(function(){
+            var filename=$(this).attr('data-src');
+            var pagename=$(this).attr('data-id');
+            var link="{$detail.link}";
+            var url="/clients/topdf";
+          location.href=url;
+        });*/
+	   }());
+
+	</script>

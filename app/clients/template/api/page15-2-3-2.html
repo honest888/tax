@@ -1,0 +1,65 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+                                    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">How much income did you earn for your work or business?</h1>
+                                    			<p class="text-center">
+                                    				<span>Tell us the total amount without subtracting any costs or expenses.</span>
+                                    			</p>
+                                    			<?php 
+                                    			if($detail['farm_income_did_confirm']==1){
+                                    			   if($detail['self_employment_0_are_all_expenses_on_p_and_l']!=1){
+                                    			      $lastpage="page15-2-3-1";
+                                    			   }
+                                    			}else{
+                                    			     $lastpage="page15-2-2";
+                                    			}?>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="ej14p">Total revenue&nbsp;</label>
+                                    				<input id="ej14p" autocomplete="off" type="text" id="totalr" data-src="self_employment_0_gross_sales" value="{$detail.self_employment_0_gross_sales}">
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      $('#ej14p').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+});
+</script>

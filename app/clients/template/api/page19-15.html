@@ -1,0 +1,265 @@
+{include file='public:header-css'/}
+{include file='public:upload'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<!--<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>-->
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+                                	<main class="master-detail-layout__main-container">
+                                		<div class="master-detail-layout__main-content">
+                                			<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                				<h1 class="center text-center font-36 extrabold mt-20">You're almost done!</h1>
+                                				<p class="text-center"><span>You have completed the questionnaire. Press the button below to submit it.</span></p>
+                                				
+                                				<div style="height: 20px;"></div>
+                                              <div class="column align-center"><img class="category-icon" alt="category icon" src="/static/stanford/images/congratulations.svg" style="height: 200px; margin: 120px 0px 40px;"></div>
+                                			</div>
+                                		</div>
+                                	</main>
+                                </div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 <input type="hidden" name="action" value="finish">
+									<!-- <input type="hidden" name="finishpage" value="wages_and_salaries_did_confirm" >每个选项的最后一个步骤需要填写-->
+								</form>
+								 <footer>
+									<div class="app-bar app-bar--white app-bar--inline font-theme box-shadow">
+									    {if $percent eq 0}
+										<button type="button" class="action-button action-button--primary action-button--disabled"  disabled="" style="font-family: Gilroy;">
+											<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M8.29549 1.28406C8.6889 0.896434 9.32205 0.901123 9.70967 1.29453C10.0973 1.68793 10.0926 2.32108 9.6992 2.7087L4.3289 8.00004L18 8.00004C18.5523 8.00004 19 8.44776 19 9.00004C19 9.55233 18.5523 10 18 10L4.33539 10L9.6992 15.285C10.0926 15.6726 10.0973 16.3058 9.70967 16.6992C9.32205 17.0926 8.6889 17.0973 8.29549 16.7096L1.3713 9.88725C0.87439 9.39764 0.87439 8.59605 1.3713 8.10644L8.29549 1.28406Z" fill="currentColor"></path>
+											</svg>Back
+										</button>
+										{else/}
+										<button type="button" class="action-button action-button--primary" data-src="lastform" style="font-family: Gilroy;"><svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.29549 1.28406C8.6889 0.896434 9.32205 0.901123 9.70967 1.29453C10.0973 1.68793 10.0926 2.32108 9.6992 2.7087L4.3289 8.00004L18 8.00004C18.5523 8.00004 19 8.44776 19 9.00004C19 9.55233 18.5523 10 18 10L4.33539 10L9.6992 15.285C10.0926 15.6726 10.0973 16.3058 9.70967 16.6992C9.32205 17.0926 8.6889 17.0973 8.29549 16.7096L1.3713 9.88725C0.87439 9.39764 0.87439 8.59605 1.3713 8.10644L8.29549 1.28406Z" fill="currentColor"></path></svg>Back</button>
+										{/if}
+										<div class="grow-1"></div>
+										<div class="progress-bar progress-bar--large flex-1">
+											<div class="progress-bar__meter" style="width: {$percent}%;"></div>
+										</div>
+										<div class="grow-1"></div>
+										<button type="button" class="action-button action-button--primary"  data-src="finish" style="font-family: Gilroy;">Next<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M10.7045 1.28406C10.3111 0.896434 9.67795 0.901123 9.29033 1.29453C8.90271 1.68793 8.9074 2.32108 9.3008 2.7087L14.6711 8.00004L1 8.00004C0.447714 8.00004 -3.73713e-07 8.44776 -3.49572e-07 9.00004C-3.25431e-07 9.55233 0.447715 10 1 10L14.6646 10L9.3008 15.285C8.9074 15.6726 8.90271 16.3058 9.29033 16.6992C9.67795 17.0926 10.3111 17.0973 10.7045 16.7096L17.6287 9.88725C18.1256 9.39764 18.1256 8.59605 17.6287 8.10644L10.7045 1.28406Z" fill="currentColor"></path>
+											</svg>
+										</button>
+									</div>
+								</footer>
+								<!--完成提示-->
+								{if $showlist eq 0}
+								<div class="modal-barrier" style="display:none;">
+                            	<div class="dialog f-theme column position-relative gap-20 dialog--normal">
+                            		<svg class="close" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                            			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                            			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                            		</svg>
+                            		<h1 class="font-30">Submit questionnaire</h1>
+                            		<p class="font-16">Please submit this questionnaire only if you have provided all of your info and documents.</p>
+                            		<main>
+                            			<div class="column gap-20 flex-1 h-min-0 overflow-hidden">
+                            				<ul class="checklist overflow-y-scroll"></ul>
+                            			</div>
+                            		</main>
+                            		<div class="row align-center justify-end">
+                            			<div class="button-group justify-center gap-20 wrap row">
+                            				<button type="button" class="action-button action-button--secondary close" data-src="noref" style="font-family: Gilroy;">Go Back</button>
+                            				<button type="button" class="action-button action-button--primary psubmit" data-src="noref"  style="font-family: Gilroy;">Submit</button>
+                            			</div>
+                            		</div>
+                            	</div>
+                            </div>
+                            {/if}
+                            <!--完成提示-->
+                            <!--checklist 提示-->
+                            {if $showlist eq 1}
+                            <div class="modal-barrier" style="display:none;">
+                            	<div class="dialog f-theme column position-relative gap-20 dialog--normal">
+                            		<svg class="close" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                            			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                            			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                            		</svg>
+                            		<h1 class="font-30">Submit questionnaire</h1>
+                            		<p class="font-16">You are about to submit the questionnaire with some incomplete checklist items. Please indicate why each one is incomplete before submitting.</p>
+                            		<main>
+                            		    <style>
+                            		        .checklist{
+                            		            width: calc(100%)!important;
+                            		        }
+                            		        .overflow-y-scroll {
+                            		           overflow-y: auto;
+                            		        }
+                            		    </style>
+                            			<div class="column gap-20 flex-1 h-min-0 overflow-hidden">
+                            				<ul class="checklist overflow-y-scroll">
+                            				    {volist name="$checklist" id="vo"}
+                            				    <li class="{if $vo.status eq 1} checklist-item checklist-item--complete {else/} checklist-item checklist-item--incomplete{/if}" data-src="{$vo.id}"><!-- checklist-item--error-->
+                            						<div class="checklist-item__container">
+                            							<div class="checklist-item__checkbox"></div>
+                            							<div class="checklist-item__content">{$vo.listname}</div>
+                            							{if $vo.status eq 0}
+                            							<select class="select">
+                            								<option value="" label="Select reason"></option>
+                            								<option value="not_relevant">Not relevant</option>
+                            								<option value="organization_has_it">Firm has this info</option>
+                            								<option value="later">Will provide later</option>
+                            								<option value="not_sure">I'm not sure</option>
+                            								<option value="other">Other</option>
+                            							</select>
+                            							{/if}
+                            						</div>
+                            						<!--<div class="checklist-item__actions"></div>-->
+                            					</li>
+                            					{/volist}
+                            					
+                            				</ul>
+                            			</div>
+                            		</main>
+                            		<div class="row align-center justify-end">
+                            			<div class="button-group justify-center gap-20 wrap row">
+                            				<button type="button" class="action-button action-button--secondary close" data-src="noref"  style="font-family: Gilroy;">Go Back</button>
+                            				<button type="button" class="action-button action-button--primary psubmit2" data-src="noref" style="font-family: Gilroy;">Submit</button>
+                            			</div>
+                            		</div>
+                            	</div>
+                            </div>
+                            {/if}
+                            <!--checklist 提示-->
+								<script>
+								    $('.action-button--secondary').click(function () {
+                                           $(".modal-barrier").hide();
+                                    });
+                                    $('.close').click(function () {
+                                           $(".modal-barrier").hide();
+                                    });
+                                    $('.psubmit').click(function () {
+                                        $(this).html('Submitting...');
+                                        $(this).css('background-color','#b1b1b1');
+                                        var link="{$detail.link}";
+                                        var pagename="{$pagename}";
+                                          $.ajax({
+                                                    url:"{:url('api/finishpage')}",
+                                                    type:'post',
+                                                    data:{'link':link,'pagename':pagename},
+                                                    dataType:'json',
+                                                    success:function (res) {
+                                                        if (res.code==1){
+                                                           var url="/clients/folders/"+link+"/ftag/1";
+                                                           location.href=url;
+                                                        }else {
+                                                           $(".modal-barrier").hide();
+                                                        }
+                                                    },error:function () {
+                                                        msg('Try it again later')
+                                                    }
+                                         }); 
+                                    });
+                                    $('.psubmit2').click(function () {
+                                        //检查所有list status为1r 是否选择了原因
+                                       var tag=0;
+                                       var par='';
+                                        $('.checklist-item--incomplete').each(function(){
+                                            //$("ul li[data-index='" + id + "']").find('.checklist-item__container').
+                                            var val =$(this).find('.select').val();
+                                            if(val==''){
+                                                $(this).addClass('checklist-item--error');
+                                                tag=1;  
+                                            }
+                                            if(par){
+                                              par=par+"-"+$(this).attr('data-src')+"|"+val;
+                                            }else{
+                                              par=$(this).attr('data-src')+"|"+val;
+                                            }
+                                        });
+                                        if(tag==1) return false;
+                                        $(this).html('Submitting...');
+                                        $(this).css('background-color','#b1b1b1');
+                                        var obj=$(this);
+                                        var link="{$detail.link}";
+                                        var pagename="{$pagename}";
+                                          $.ajax({
+                                                    url:"{:url('api/finishpage')}",
+                                                    type:'post',
+                                                    data:{'link':link,'pagename':pagename,'par':par},
+                                                    dataType:'json',
+                                                    success:function (res) {
+                                                        if (res.code==1){
+                                                           var url="/clients/folders/"+link+"/ftag/1";
+                                                           location.href=url;
+                                                           obj.css('background-color','#536cf1');
+                                                           obj.html('Submit');
+                                                        }else {
+                                                           $(".modal-barrier").hide();
+                                                        }
+                                                    },error:function () {
+                                                        msg('Try it again later')
+                                                    }
+                                         }); 
+                                    });
+								     $('.action-button').click(function () {
+                                            var url=$(this).attr('data-src');
+                                            if(url=="noref") return false;
+                                            if(url=='nextform'||url=="lastform"){
+                                                $('#'+url).submit();
+                                            }else{
+                                                if(url=="finish"){
+                                                    $(".modal-barrier").show();
+                                                }else{
+                                                    if(url!='')location.href=url; return false;
+                                                }
+                                                
+                                            }
+                                    });
+                                     function ajax_post_field(fieldname,fieldvalue,link) {
+                                         var pagename="{$pagename}";
+                                      $.ajax({
+                                                url:"{:url('api/pagesave')}",
+                                                type:'post',
+                                                data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename},
+                                                dataType:'json',
+                                                success:function (res) {
+                                                    if (res.code==1){
+                                                        console.log('sucess');
+                                                        var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                                                       $('#savetime').html(html);
+                                                    }else {
+                                                        console.log('sucess');
+                                                      //  msg(res.msg);
+                                                    }
+                                                },error:function () {
+                                                    msg('Try it again later')
+                                                }
+                                     });
+                                  }
+								</script>
+								<!--需要选择的单独写footer-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      
+});
+</script>

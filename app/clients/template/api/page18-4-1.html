@@ -1,0 +1,105 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<!--<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>-->
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+                                    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">Does your adopted child have special needs?</h1>
+                                    			<p class="text-center">
+                                    				<span>This includes children that are classified as special needs due to extenuating circumstances.<span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="column gap-20">
+                                    				<div class="row justify-center gap-20">
+                                    					<button class="icon-button icon-button--large icon-right {if $detail.adoption_credit_child_has_special_needs eq 1}icon-button--selected{/if}">
+													        {if $detail.adoption_credit_child_has_special_needs eq 1}
+													        <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg>{else/}
+													        <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg>
+													        {/if}<span class="font-14">Yes</span></button>
+														<button class="icon-button icon-button--large  icon-wrong {if $detail.adoption_credit_child_has_special_needs eq 2}icon-button--selected{/if}">
+														    {if $detail.adoption_credit_child_has_special_needs eq 2}
+															<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path></svg>
+															{else/}
+															<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg>
+															{/if}
+															<span class="font-14">No</span>
+														</button>
+                                    				</div>
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+										    <input type="hidden" name="page" value="{$lastpage}">
+										    <input type="hidden" name="link" value="{$detail.link}">
+										</form>
+										<form actoin="{$actionpage}" id="nextform" method="post">
+										    <input type="hidden" id="page" name="page" value="{$nextpage}">
+										    <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								 {include file='public:footer2'/}
+								<!--需要选择的单独写footer-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      $('.icon-right').click(function () {
+          $('#adoption_credit_child_has_special_needs').val(1);
+        
+          var fieldname='adoption_credit_child_has_special_needs';
+           var fieldvalue=1;
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+        $(this).html('<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg>'
+															+'<span class="font-14">Yes</span>');
+		$(this).addClass('icon-button--selected');
+		$('.icon-wrong').html('<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="36" cy="36" r="36" fill="#D0474B"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M44.8388 25.0398C45.4246 24.4541 46.3743 24.4541 46.9601 25.0398C47.5459 25.6256 47.5459 26.5754 46.9601 27.1612L38.1213 36L46.9602 44.8388C47.546 45.4246 47.546 46.3744 46.9602 46.9602C46.3744 47.5459 45.4246 47.5459 44.8389 46.9602L36 38.1213L27.1611 46.9601C26.5754 47.5459 25.6256 47.5459 25.0398 46.9601C24.454 46.3744 24.454 45.4246 25.0398 44.8388L33.8787 36L25.0399 27.1612C24.4541 26.5754 24.4541 25.6256 25.0399 25.0398C25.6257 24.4541 26.5754 24.4541 27.1612 25.0398L36 33.8787L44.8388 25.0398Z" fill="white"></path></svg><span class="font-14">No</span>');
+		$('.icon-wrong').removeClass('icon-button--selected');
+    });
+    $('.icon-wrong').click(function () {
+        $('#adoption_credit_child_has_special_needs').val(2);
+      
+          var fieldname='adoption_credit_child_has_special_needs';
+           var fieldvalue=2;
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+        $(this).html('<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="37" cy="37" r="36" stroke="white" stroke-width="2"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M45.8388 26.0398C46.4246 25.4541 47.3743 25.4541 47.9601 26.0398C48.5459 26.6256 48.5459 27.5754 47.9601 28.1612L39.1213 37L47.9602 45.8388C48.546 46.4246 48.546 47.3744 47.9602 47.9602C47.3744 48.5459 46.4246 48.5459 45.8389 47.9602L37 39.1213L28.1611 47.9601C27.5754 48.5459 26.6256 48.5459 26.0398 47.9601C25.454 47.3744 25.454 46.4246 26.0398 45.8388L34.8787 37L26.0399 28.1612C25.4541 27.5754 25.4541 26.6256 26.0399 26.0398C26.6257 25.4541 27.5754 25.4541 28.1612 26.0398L37 34.8787L45.8388 26.0398Z" fill="white"></path></svg>'
+															+'<span class="font-14">No</span>');
+		$(this).addClass('icon-button--selected');	
+		$('.icon-right').html('<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="35.7348" cy="35.1486" rx="22.1606" ry="22.1606" fill="white"></ellipse><circle cx="36" cy="36" r="36" fill="#5ABE8E"></circle><path d="M29.1582 36.5968C28.6317 35.9571 27.6864 35.8654 27.0468 36.3918C26.4071 36.9183 26.3154 37.8636 26.8418 38.5032L29.1582 36.5968ZM49.2964 26.7545C49.7131 26.0385 49.4705 25.1203 48.7545 24.7036C48.0385 24.2869 47.1203 24.5295 46.7036 25.2455L49.2964 26.7545ZM34.8644 45.8902L33.7062 46.8435L34.8644 45.8902ZM36.5008 45.7578L37.7972 46.5123L36.5008 45.7578ZM26.8418 38.5032L33.7062 46.8435L36.0226 44.937L29.1582 36.5968L26.8418 38.5032ZM37.7972 46.5123L49.2964 26.7545L46.7036 25.2455L35.2044 45.0032L37.7972 46.5123ZM33.7062 46.8435C34.813 48.1882 36.9211 48.0175 37.7972 46.5123L35.2044 45.0032C35.3796 44.7022 35.8012 44.6681 36.0226 44.937L33.7062 46.8435Z" fill="white"></path></svg><span class="font-14">Yes</span>');
+		$('.icon-right').removeClass('icon-button--selected');
+    });
+});
+</script>

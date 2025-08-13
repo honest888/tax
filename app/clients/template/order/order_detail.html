@@ -1,0 +1,175 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">订单详情</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="cart">
+    <a class="address">
+        <div class="zuo">
+            <img src="__MOBILE__/img/dingwei.png">
+        </div>
+        <div class="left">
+            <p>
+                <span>{$order.consignee}</span>
+                <span class="cc">{$order.mobile}</span>
+            </p>
+            <p>{$order.all_address}</p>
+        </div>
+    </a>
+    <div class="public-list mto10">
+        <div class="public-list-list p5 bg-fff">
+            {volist name="$order.order_goods" id="vo"}
+                <div class="public-list-item">
+                    <a href="{$vo['url']}" class="public-list-item-a">
+                        <div class="img">
+                            <img src="{$vo.goods_img}">
+                        </div>
+                        <div class="good">
+                            <p class="word m4">{$vo.goods_name}</p>
+                            <if $vo.item_name>
+                                <p class="ccc">{$vo.item_name}</p>
+                            </if>
+                            <p class="price flex-between">
+                                <span>￥{$vo.goods_price}</span>
+                                <span>×{$vo.goods_num}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            {/volist}
+        </div>
+    </div>
+    <div class="note">
+        <div class="textarea">
+            <div class="left">订单备注</div>
+            <textarea id="user_note" disabled>{$order.user_note|default='无'}</textarea>
+        </div>
+    </div>
+    <div class="info">
+        <div class="public_title">订单信息</div>
+        <dl>
+            <dt>订单编号</dt>
+            <dd class="order-sn">
+                <span>{$order.order_sn}</span>
+                <span data-text="{$order.order_sn}" class="iconfont iconfuzhi fuzhi"></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>订单状态</dt>
+            <dd>{$order.order_status_text}</dd>
+        </dl>
+        <dl>
+            <dt>创建时间</dt>
+            <dd>{$order.add_time}</dd>
+        </dl>
+        <dl>
+            <dt>支付方式</dt>
+            <dd>{$order.pay_name}</dd>
+        </dl>
+        {if $order.pay_time}
+            <dl>
+                <dt>支付时间</dt>
+                <dd>{:date('Y-m-d H:i:s',$order.pay_time)}</dd>
+            </dl>
+        {/if}
+        {if $order.shipping_code && $order.shipping_name}
+        <dl>
+            <dt>快递公司</dt>
+            <dd>{$order.shipping_name}</dd>
+        </dl>
+        <dl>
+            <dt>快递单号</dt>
+            <dd class="order-sn">
+                <span>{$order.shipping_number}</span>
+                <a href="{:url('Order/logistics',['order_id'=>$order['order_id']])}" class="iconfont iconliulan"></a>
+            </dd>
+        </dl>
+        {/if}
+        {if $order.shipping_time}
+            <dl>
+                <dt>发货时间</dt>
+                <dd>{:date('Y-m-d H:i:s',$order.shipping_time)}</dd>
+            </dl>
+        {/if}
+        {if $order.confirm_time}
+            <dl>
+                <dt>收货时间</dt>
+                <dd>{:date('Y-m-d H:i:s',$order.confirm_time)}</dd>
+            </dl>
+        {/if}
+    </div>
+    <div class="info">
+        <div class="public_title">基本信息</div>
+        <dl>
+            <dt>应付总额</dt>
+            <dd>{$order.order_amount}</dd>
+        </dl>
+    </div>
+    {if $order.order_status==-1}
+    <div style="height: 10px"></div>
+    <div class="public-bottom buy" style="display:block">
+        <div class="public-bottom-item">
+            <a class="left" style="justify-content:center;">
+                <button type="button" class="cancle" onclick="cancel_order('{$order.order_id}',this)">取消订单</button>
+            </a>
+            <a href="{:url('Payment/get_code',['pay_code'=>$order.pay_code,'order_sn'=>$order.order_sn])}" class="right">
+                <button data-style="slide-right" id="submit" class="btn-block bg-red fff">立即支付</button>
+            </a>
+        </div>
+    </div>
+    {/if}
+</div>
+<!--内容区e-->
+</body>
+<script type="text/javascript" src="__STATIC__/js/clipboard.js"></script>
+<script>
+    var flag=true;
+    function cancel_order(order,obj) {
+        if (flag==false)return false;
+        confirmmsg('确定取消?',function () {
+            flag=false;
+            $(obj).attr('disabled',true);
+            $.ajax({
+                url:"{:url('Order/cancel_order')}",
+                type:'post',
+                data:{'id':order},
+                dataType:'json',
+                success:function (res) {
+                    if (res.code==1){
+                        msg(res.msg,res.url);
+                    }else {
+                        msg(res.msg);
+                    }
+                },error:function () {
+                    msg('网络错误,请稍后再试!')
+                }
+            });
+            setTimeout(function () {
+                $(obj).attr('disabled',false);
+                flag=true;
+            },2000)
+        })
+    }
+    $(function () {
+    });
+    var clipboard = new ClipboardJS('.fuzhi', {
+        text: function(e) {
+            var text=$(e).attr('data-text');
+            return text;
+        }
+    });
+    clipboard.on('success', function(e) {
+        msg('复制成功');
+    });
+    clipboard.on('error', function(e) {
+        msg('复制失败');
+    });
+</script>
+</html>

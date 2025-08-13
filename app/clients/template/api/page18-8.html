@@ -1,0 +1,258 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    	    <div class="f-theme banner column align-center justify-center banner--sticky banner--error" style="margin-bottom: -48px;display:none;"><div>Please complete the question to continue</div></div>
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">What types of retirement accounts did you or your spouse contribute to or plan to contribute to by April 15th?</h1>
+                                    			<p class="text-center">
+                                    				<span>Select all that apply. Do not include employer contributions made through payroll.</span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="column justify-start align-stretch w-full gap-20">
+                                    			    <?php
+                                    			    $nec=0;
+                                    			    $misc=0;
+                                    			    $sep=0;
+                                    			    $k=0;
+                                    			    $none=0;
+                                    			    if($detail['retirement_contributions_type_of_ira']!=''&&$detail['retirement_contributions_type_of_ira']!='null'){
+                                    			        $ary22=json_decode($detail['retirement_contributions_type_of_ira'],true);
+                                        			    foreach($ary22 as $key=>$val){
+                                        			        switch($val){
+                                        			          case 't_ira':
+                                        			          $nec=1;
+                                        			          break;
+                                        			          case 'r_ira':
+                                        			          $misc=1;
+                                        			          break;
+                                        			          case 'sep':
+                                        			          $sep=1;
+                                        			          break;
+                                        			          case '401k':
+                                        			          $k=1;
+                                        			          break;
+                                        			          case 'none':
+                                        			          $none=1;
+                                        			          break;
+                                        			        }
+                                        			    }
+                                    			    }
+                                    			    if($none){
+                                                       $nextpage="11";
+                                                    }else{
+                                                        if($nec){
+                                                            $nextpage="page18-8-1-tira";
+                                                        }else{
+                                                            if($misc){
+                                                                $nextpage="page18-8-1-rira";
+                                                            }else{
+                                                               if($sep){
+                                                                  $nextpage="page18-8-1-sep"; 
+                                                               }else{
+                                                                  if($k){
+                                                                      $nextpage="page18-8-1-k"; 
+                                                                  }else{
+                                                                      $nextpage="11";
+                                                                  }
+                                                               }
+                                                            }
+                                                        }
+                                                    }
+                                                    if($nextpage=="11"){
+                                                        $new_field_ary=array_reverse($field_ary_3);
+                                                          $nn='';
+                                                          foreach($new_field_ary as $key=>$val){
+                                                              if($val['endpage']==$pagename||$val['endpage2']==$pagename){ 
+                                                                  break;
+                                                              }
+                                                              if(isset($val['endpage1'])||isset($val['endpage3'])){
+                                                                  if($val['endpage1']==$pagename||$val['endpage3']==$pagename){ 
+                                                                       break;
+                                                                  }
+                                                              }
+                                                              if($res[$key]==1){
+                                                                  $nn='page17';
+                                                              }
+                                                          }
+                                                          if(!$nn){
+                                                              $nextpage="page19-1";
+                                                          }else{
+                                                              if($nextpage==$pagename){
+                                                                 $nextpage ="page19-1"; 
+                                                              }else{
+                                                                 $nextpage=$nn;  
+                                                              }
+                                                          }
+                                                    }
+                                    			    ?>
+                                    				<div class="multi-select-option {if $nec}multi-select-option--selected dark-theme{/if} row align-center" data-src="t_ira">
+                                    					<label class="option-label font-16">Traditional IRA</label>
+                                    					<span>&nbsp;</span>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option {if $misc}multi-select-option--selected dark-theme{/if} row align-center" data-src="r_ira">
+                                    					<label class="option-label font-16">Roth IRA</label>
+                                    					<span>&nbsp;</span>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option {if $sep}multi-select-option--selected dark-theme{/if} row align-center" data-src="sep">
+                                    					<label class="option-label font-16">Simplified Employee Pension Plan (SEP)&nbsp;</label>
+														<div class="popover__child" id="tip1">
+                                    					   <div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">implified Employee Pension Plan (SEP) </h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">SEP provides business owners with a simplified method to contribute toward their employees' retirement as well as their own retirement savings.</span></span>
+														</div>
+                                    					<span>&nbsp;</span>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option {if $k}multi-select-option--selected dark-theme{/if} row align-center" data-src="401k">
+                                    					<label class="option-label font-16">Solo 401(k)&nbsp;</label>
+                                    					<span>&nbsp;</span>
+														<div class="popover__child" id="tip2">
+                                    					   <div class="tooltip-icon">?</div>
+                                    					</div>
+														<div class="popover__element tipcommon">
+															<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+															<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Solo 401(k)</h3>
+															<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">A solo 401(k) is an individual 401(k) designed for a business owner with no employees.</span></span>
+														</div>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-white"></span>
+                                    				</div>
+                                    				<div class="multi-select-option row align-center {if $none}multi-select-option--selected dark-theme{/if}" data-src="none">
+                                    					<label class="option-label font-16">None of the above</label>
+                                    					<span class="font-14 font-weight-lighter text-align-right grow-1 color-grey"></span>
+                                    				</div>
+                                    			</div>
+                                    		</div>
+                                    	</div>
+                                    </main>
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 <input type="hidden" name="curfield" value="retirement_contributions_did_confirm">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 {if $nextpage eq 'page17'}
+									 <input type="hidden" name="finishpage" id="finishpage" value="retirement_contributions_did_confirm" >
+									 {/if}
+								</form>
+							    {include file='public:footer_nojs'/}
+								<script>
+								     $('.action-button').click(function () {
+                                       var url=$(this).attr('data-src');
+                                       if(url=='nextform'||url=="lastform"){
+                                           var tag=0;
+                                           if(url=='nextform'){
+                                               $('.multi-select-option').each(function () {
+                                                   if($(this).hasClass("multi-select-option--selected dark-theme")){
+                                                       tag=1;
+                                                   }
+                                               });
+                                               if(tag==0){
+                                                   $('.banner--error').show();
+                                                   return false;
+                                               }
+                                           }
+                                           $('#'+url).submit();
+                                       }else{
+                                           if(url!='')location.href=url;else return false;
+                                       }
+                                    });
+
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+</iframe>
+<script>
+$(document).ready(function() {
+      $('.multi-select-option').click(function () {
+          $('.banner--error').hide();
+          var tt=$(this).attr('data-src');
+          var fieldvalue=tt;
+           if($(this).hasClass('multi-select-option--selected dark-theme')){
+                $(this).removeClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-white');
+                $(this).find('span').addClass('color-grey');
+                var action="cancel";
+            }else{
+                $(this).addClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-grey');
+                $(this).find('span').addClass('color-white');
+                var action="select";
+                if(tt=='none'){
+                    $('#nextform').append("<input type='hidden' name='finishpage' id='finishpage' value='retirement_contributions_did_confirm'>");
+                    //选中none其中都不选
+                       $('.multi-select-option').each(function(){
+                           if($(this).attr('data-src')!='none'){
+                               $(this).removeClass('multi-select-option--selected dark-theme');
+                                $(this).find('span').removeClass('color-white');
+                                $(this).find('span').addClass('color-grey');
+                           } 
+                        });
+                        
+                  }else{
+                      $('#finishpage').remove();
+                      $('.multi-select-option').each(function(){
+                           if($(this).attr('data-src')=='none'){
+                               $(this).removeClass('multi-select-option--selected dark-theme');
+                                $(this).find('span').removeClass('color-white');
+                                $(this).find('span').addClass('color-grey');
+                           } 
+                        });
+                  }
+            }
+           if(fieldvalue!=''){
+               var fieldname="retirement_contributions_type_of_ira";
+             // alert($('#page').val());
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,action);  
+           }
+      });
+     function ajax_post_field(fieldname,fieldvalue,action) {
+         var pagename="{$pagename}";
+         var link="{$detail.link}";
+         $.ajax({
+           url:"{:url('api/pagesave_form')}",
+           type:'post',
+           data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename,'action':action},
+           dataType:'json',
+           success:function (res) {
+               if (res.code==1){
+                   $('#page').val(res.pagenext);
+                   console.log('sucess');
+                   var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                  $('#savetime').html(html);
+               }else {
+                   console.log('sucess');
+                 //  msg(res.msg);
+               }
+           },error:function () {
+               msg('Try it again later')
+           }
+      });
+   }
+});
+</script>

@@ -1,0 +1,51 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header bg-theme fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">我的代理</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="team-index">
+    <div class="top">
+        <h3>
+            <span class="iconfont icontuandui"></span>
+            <b>我的代理店铺数</b>
+        </h3>
+        <div class="number">
+            <h4>{$user.td_num} /</h4>
+            <h5>&nbsp;{$user.td_all_num}</h5>
+        </div>
+    </div>
+    <div class="team-bottom">
+        <div class="xiaoshou">
+            <p>我的销售额(元)</p>
+            <h5>{$user.td_yeji}</h5>
+        </div>
+        <div class="daili">
+            <div class="daili-item">
+                <p>我的代理店铺数</p>
+                <h5>{$user.td_num}/{$user.td_all_num}</h5>
+            </div>
+            <div class="daili-item">
+                <p>业绩</p>
+                <h5>{$user.td_yeji}</h5>
+            </div>
+        </div>
+        <div class="look">
+            <a href="{:url('User/team')}">查看我的代理</a>
+        </div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+
+    });
+</script>
+</html>

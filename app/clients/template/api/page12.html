@@ -1,0 +1,483 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+									   <div class="f-theme banner column align-center justify-center banner--sticky banner--error " style="margin-bottom: -48px;display:none;"><div>Please complete the question to continue</div></div>
+										<div class="master-detail-layout__main-content">
+											<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+												<h1 class="center text-center font-36 extrabold mt-20">Which of the following sources of income applied in {$detail.taxyear}?</h1>
+												<p class="text-center">
+													<span>Select all that apply.</span>
+												</p>
+												<div style="height: 20px;"></div>
+												<div class="categories column gap-40">
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Work Income</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.wages_and_salaries_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="wages_and_salaries_did_confirm">
+																<label class="option-label font-16">Job Income</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip1">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon" id="tip1">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Had a Job</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you had a job. You likely would have received a W-2 from your employer.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.wages_and_salaries_did_confirm eq 1}color-white{else/}color-grey{/if}">W-2</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.self_employment_did_confirm eq 1}multi-select-option--selected dark-theme{/if}"  data-src="self_employment_did_confirm">
+																<label class="option-label font-16">Self-Employment</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip2">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Self-Employment</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you were self-employed.This does not include business information which will be reported in a separate tax return.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.self_employment_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-K, 1099-NEC, 1099-MISC</span>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Investment &amp; Savings</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.stocks_mutual_funds_bonds_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="stocks_mutual_funds_bonds_did_confirm">
+																<label class="option-label font-16">Brokerage Accounts (Stocks, Bonds, Crypto)</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip3">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Traded Stocks, Bonds, or Crypto</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you earned any investment income from stocks, bonds, mutual funds, or cryptocurrency.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.stocks_mutual_funds_bonds_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-B, Consolidated 1099</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.interest_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="interest_did_confirm">
+																<label class="option-label font-16">Interest Income</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip4">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Interest</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you earned any interest reported on Form 1099-INT, including interest you earned on savings bonds you cashed in.
+If your interest was reported on a consolidated 1099 tax statement, select the "Brokerage Accounts" category instead.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.interest_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-INT</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.dividends_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="dividends_did_confirm">
+																<label class="option-label font-16">Dividend Income</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip5">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Dividends</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received any dividends from shares you own. Most dividends are reported on Form 1099-DIV.
+If your dividends were reported on a consolidated 1099 tax statement, select the
+"Brokerage Accounts" category instead.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.dividends_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-DIV</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.sold_real_estate_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="sold_real_estate_did_confirm">
+																<label class="option-label font-16">Sold Investment Real Estate</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip6">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Sold Investment Real Estate</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you sold any real estate besides your main home. If you sold your main home, select "Sold Main Home" in the section below.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.sold_real_estate_did_confirm eq 1}color-white{else/}color-grey{/if}">Closing Statement, 1099-S</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.incentive_stock_options_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="incentive_stock_options_did_confirm">
+																<label class="option-label font-16">Exercised Incentive Stock Options</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip7">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Exercised Incentive Stock Options</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you purchased shares of Incentive Stock Options, also known as ISO's. An ISO is a corporate benefit that gives employees the right to buy shares of company stock at a discounted price.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.incentive_stock_options_did_confirm eq 1}color-white{else/}color-grey{/if}">Form 3921</span>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Less Common Investment &amp; Savings</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.foreign_accounts_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="foreign_accounts_did_confirm">
+																<label class="option-label font-16">Foreign Accounts</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip8">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Foreign Accounts</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you have any foreign financial assets (including foreign trusts, bank or investment accounts) and we'll determine whether we need to file an FBAR (FinCEN Report 114) or Form 8938. This does not include mutual funds holding foreign assets, as those are not included in foreign reporting requirements.</span></span>
+																</div>
+															
+																<span class="font-14 font-weight-lighter text-align-right grow-1 color-grey"></span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.1099_oid_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="1099_oid_did_confirm">
+																<label class="option-label font-16">Received 1099-OID</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip9">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Received 1099-OID</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received Form 1099-OID. You might have received this form if you sold any bonds, notes, or certificates of deposit (CDs) at a discount from their maturity value.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.1099_oid_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-OID</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.undistributed_capital_gains_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="undistributed_capital_gains_did_confirm">
+																<label class="option-label font-16">Undistributed Capital Gains</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip10">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Undistributed Capital Gains</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received Form 2439 from any Regulated Investment Companies (RICs) or Real Estate Investment Trusts (REITs) for undistributed long-term capital gains.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.undistributed_capital_gains_did_confirm eq 1}color-white{else/}color-grey{/if}">Form 2439</span>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Retirement Plans and Social Security</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.ira_401k_pension_plan_withdrawals_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="ira_401k_pension_plan_withdrawals_did_confirm">
+																<label class="option-label font-16">IRA, 401(k), Pension Plan Withdrawals</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip11">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);"></h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">IRA, 401(k), and Pension Plan Withdrawals Select this option if you received income, distributions or rollovers from a pension plan, annuity, or Individual Retirement Account (IRA).</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.ira_401k_pension_plan_withdrawals_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-R</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.social_security_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="social_security_did_confirm">
+																<label class="option-label font-16">Social Security Benefits</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip12">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Social Security Benefits</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received Social Security or Railroad Retirement benefits.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.social_security_did_confirm eq 1}color-white{else/}color-grey{/if}">SSA-1099</span>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Rentals, Royalties, and Farm</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.rental_properties_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="rental_properties_did_confirm">
+																<label class="option-label font-16">Rental Properties &amp; Royalties</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip13">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Rental Properties</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you earned rental income from any real estate, regardless of whether the leases were long or short term.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.rental_properties_did_confirm eq 1}color-white{else/}color-grey{/if}">Form 1098, 1099-MISC</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.farm_income_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="farm_income_did_confirm">
+																<label class="option-label font-16">Farm Income &amp; Rental</label>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.farm_income_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-G, 1099-K, 1099-PATR, 1099-NEC, 1099-MISC</span>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Other Income</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center  {if $detail.unemployment_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="unemployment_did_confirm">
+																<label class="option-label font-16">Unemployment &amp; Government Payments</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip14">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Unemployment & Government Payments</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received government unemployment benefits or other government payments, such as agricultural program payments, taxable grants, etc.
+These payments are typically reported on a 1099-G.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.unemployment_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-G</span>
+															</div>
+															<div class="multi-select-option row align-center  {if $detail.schedule_k1_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="schedule_k1_did_confirm">
+																<label class="option-label font-16">Schedule K-1</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip15">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Schedule K-1</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received a K-1. This might apply if you invested in a partnership, S corp, or LLC as a partner, shareholder, or owner.
+You might also receive a K-1 if you're the beneficiary of an estate or trust.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.schedule_k1_did_confirm eq 1}color-white{else/}color-grey{/if}">K-1</span>
+															</div>
+															<div class="multi-select-option row align-center  {if $detail.withdrew_from_hsa_msa_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="withdrew_from_hsa_msa_did_confirm">
+																<label class="option-label font-16">HSA/MSA Distributions</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip16">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Health/Medical Savings Account</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received any distributions from a Health Saving Account
+(HSA) or Medical Savings Account (MSA).</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.withdrew_from_hsa_msa_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-SA</span>
+															</div>
+															<div class="multi-select-option row align-center  {if $detail.gambling_winnings_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="gambling_winnings_did_confirm">
+																<label class="option-label font-16">Gambling Winnings</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip17">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Gambling Winnings</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you had any gambling winnings. This includes lotteries, horse racing, raffles, bingo, or any other games of chance. If you did, you might have received a W2-G.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.gambling_winnings_did_confirm eq 1}color-white{else/}color-grey{/if}">W-2G</span>
+															</div>
+															<div class="multi-select-option row align-center  {if $detail.alimony_received_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="alimony_received_did_confirm">
+																<label class="option-label font-16">Received Alimony</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip18">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Received Alimony</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received any alimony from a spouse or former spouse.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 color-grey"></span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.jury_duty_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="jury_duty_did_confirm">
+																<label class="option-label font-16">Jury Duty</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip19">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Jury Duty</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you received jury duty pay while serving on jury duty.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 color-grey"></span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.sold_main_home_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="sold_main_home_did_confirm">
+																<label class="option-label font-16">Sold Main Home</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip20">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Sold Main Home</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you sold your main home during the current tax year (whether it was for a gain or loss). Generally, profits up to $250,000 (or $500,000 on a joint return) don't need to be reported to the IRS.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.sold_main_home_did_confirm eq 1}color-white{else/}color-grey{/if}">Closing Statement, 1099-S</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.home_foreclosure_debt_cancellation_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="home_foreclosure_debt_cancellation_did_confirm">
+																<label class="option-label font-16">Home Foreclosure or Debt Cancellation</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip21">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Home Foreclosure or Debt Cancellation</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if your lender foreclosed on your mortgage, or if one of your creditors canceled a debt you owe. If this applies, you might have received a 1099-A or 1099-C.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.home_foreclosure_debt_cancellation_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-A, 1099-C</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.withdrew_from_529_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="withdrew_from_529_did_confirm">
+																<label class="option-label font-16">529 Plan or Coverdell ESA Withdrawal</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip22">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Withdrew from 529 Plan or Coverdell ESA</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you withdrew funds from a 529 plan or a Coverdell Education Savings Account of which you were a beneficiary. If you withdrew funds from either a 529 plan or a Coverdell ESA, you likely received a 1099-Q.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.withdrew_from_529_did_confirm eq 1}color-white{else/}color-grey{/if}">1099-Q</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.miscellaneous_income_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="miscellaneous_income_did_confirm">
+																<label class="option-label font-16">Other</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip23">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Other Income</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you earned any income not listed above. This might include income reported on a form that wasn't mentioned (such as a 1099-LTC, etc.) or income not reported on any form.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 color-grey"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</main>
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+							    {include file='public:footer_nojs'/}
+								<script>	
+                                  
+									/*
+                                  $(".tooltip-icon").mouseenter(function() {
+									    //var offset=$(this).offset();
+										var pos=$(this).position();
+										var top=pos.top-100;
+										var left=pos.left-160;
+										
+										//var top=$(this).css('top')-160;
+										//var left=$(this).css('left')-110;
+										
+										
+									    $(this).parent().next('.tipcommon').show();
+										$(this).parent().next('.tipcommon').css({'top':top,'left':left});
+									}).mouseleave(function() {
+									  // $(this).parent().next('.tipcommon').hide();
+									});	*/							
+								     $('.action-button').click(function () {
+                                            var url=$(this).attr('data-src');
+                                            if(url=='nextform'||url=="lastform"){
+                                                var tag=0;
+                                                if(url=='nextform'){
+                                                    $('.multi-select-option').each(function () {
+                                                        if($(this).hasClass("multi-select-option--selected dark-theme")){
+                                                            tag=1;
+                                                        }
+                                                    });
+                                                    if(tag==0){
+                                                        $('.banner--error').show();
+                                                        return false;
+                                                    }
+                                                }
+                                                $('#'+url).submit();
+                                            }else{
+                                                if(url!='')location.href=url;else return false;
+                                            }
+                                    });
+                                     function ajax_post_field(fieldname,fieldvalue,link) {
+                                         var pagename="{$pagename}";
+                                      $.ajax({
+                                                url:"{:url('api/pagesave')}",
+                                                type:'post',
+                                                data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename},
+                                                dataType:'json',
+                                                success:function (res) {
+                                                    if (res.code==1){
+                                                        console.log('sucess');
+                                                        var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                                                       $('#savetime').html(html);
+                                                    }else {
+                                                        console.log('sucess');
+                                                      //  msg(res.msg);
+                                                    }
+                                                },error:function () {
+                                                    msg('Try it again later')
+                                                }
+                                     });
+                                  }
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+</iframe>
+<script>
+$(document).ready(function() {
+      $('.multi-select-option').click(function () {
+            // $(".radio-select-option").each(function(){
+            //   $(this).find("input[type='radio']").prop('checked',false);
+            //   $(this).removeClass('radio-select-option--selected dark-theme');
+            // });  row align-center
+            if($(this).hasClass('multi-select-option--selected dark-theme')){
+                $(this).removeClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-white');
+                $(this).find('span').addClass('color-grey');
+                var fieldvalue=2;
+            }else{
+                $(this).addClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-grey');
+                $(this).find('span').addClass('color-white');
+                var fieldvalue=1;//1选中 2未选中
+                $('.banner--error').hide();
+            }
+           var fieldname=$(this).attr('data-src');
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             // alert($('#page').val());
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+});
+</script>

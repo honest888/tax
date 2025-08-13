@@ -1,0 +1,104 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body class="bg-fff">
+<script src="__MOBILE__/js/swiper.min.js"></script>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+  <a class="back iconfont iconback"></a>
+  <div class="search-bar">
+    <span class="iconfont iconsousuo"></span>
+    <input type="text" class="search-input" placeholder="搜索">
+    <button type="button" class="search-btn">搜索</button>
+  </div>
+</header>
+<!--头部导航位置e-->
+<!--轮播位置s-->
+<div style="height: 45px"></div>
+<div class="swiper">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {volist name="$ad" id="ad"}
+      <div class="swiper-slide">
+        <a href="{$ad.ad_link}">
+          <img src="{$ad.image}">
+        </a>
+      </div>
+      {/volist}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+<!--轮播位置e-->
+<!--内容s-->
+<div class="shop">
+  <div class="cate shop-index-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide act" data-id="0">全部</div>
+      {volist name="$cate_list" id="cate"}
+      <div class="swiper-slide" data-id="{$cate.id}">{$cate.name}</div>
+      {/volist}
+    </div>
+  </div>
+</div>
+<!--内容e-->
+<!--商品列表s-->
+<div class="goods-list mto10">
+  <div class="goods-list-container" id="goodslist"></div>
+</div>
+<!--商品列表e-->
+</body>
+<style>
+  .search-bar{
+    flex: 1;
+    background-color: var(--bg-color);
+  }
+  .swiper{
+    padding: 10px;
+  }
+  .swiper .swiper-container img{
+      border-radius: 5px;
+  }
+</style>
+<script>
+    $(function () {
+      $('.search-btn').on('click',function () {
+          $('.goods-list-container').empty();
+          get_more();
+      });
+      get_more();
+    });
+    function get_more() {
+      var cate_id=$('.shop-index-swiper .swiper-wrapper .act').attr('data-id');
+      var keyword=$('.search-input').val();
+      public_ajax('.goods-list-container',"{:url('Shop/ajax_index')}",'&cate_id='+cate_id+'&keyword='+keyword,'暂无相关商品');
+    }
+    var swiper = new Swiper('.swiper-container', {
+        loop:true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        autoplay: {
+            delay: 3000,
+            stopOnLastSlide: false,
+            disableOnInteraction: false,
+        },
+    });
+    var swiper1 = new Swiper('.shop-index-swiper', {
+      slidesPerView:'auto',
+      freeMode: true,
+      on:{
+        tap:function () {
+          var item=$('.shop-index-swiper .swiper-slide').eq(this.clickedIndex);
+          if (item.hasClass('act'))return;
+          $('.shop-index-swiper .act').removeClass('act');
+          item.addClass('act');
+          swiper1.slideTo(this.clickedIndex);
+          $('.goods-list-container').empty();
+          get_more();
+        }
+      }
+    });
+</script>
+</html>

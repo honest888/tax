@@ -1,0 +1,86 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">每日签到</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="wallet">
+    <div class="sign">
+        <div class="sign-info">
+            <dl class="sign-info-container">
+                {volist name="$arr" id="arr"}
+                    <dt class="sign-info-container-item {if $arr.yet eq 1}selected{/if}"><span>{$arr.day}</span></dt>
+                {/volist}
+            </dl>
+            {if $edit == 1}
+                <button type="button" class="sign-btn">点击签到</button>
+                {else/}
+                <button disabled class="sign-btn">已签到</button>
+            {/if}
+        </div>
+    </div>
+    <div class="money-list-container">
+    </div>
+</div>
+<div id="video" style="display: none">
+    <div class="video-shade"></div>
+    <div class="video-info">
+        <div class="video-close">
+            <span class="iconfont iconguanbi"></span>
+        </div>
+        <video class="video-info-video" controls src="{$wap_sign_video}">您的浏览器不支持播放视频</video>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        $('.sign-btn').click(function () {
+            var url="{:url('User/do_sign')}";
+            var data='';
+            var obj=this;
+            var l = Ladda.create(obj);
+            l.start();
+            setTimeout(function () {
+                l.stop();
+                $(obj).attr('disabled',true);
+                $.ajax({
+                    url:url,
+                    type:'post',
+                    data:data,
+                    dataType:'json',
+                    success:function (res) {
+                        if (res.code==1){
+                            $('#video').toggle();
+                            $('.video-info-video').trigger('play');
+                            msg(res.msg);
+                        }else {
+                            msg(res.msg);
+                        }
+                    },error:function () {
+                        msg('网络错误,请稍后再试!')
+                    }
+                });
+                setTimeout(function () {
+                    $(obj).attr('disabled',false);
+                },2000)
+            },1000);
+        });
+        get_more();
+    });
+    $('.iconguanbi').on('click',function () {
+        $('.video-info-video').trigger('pause');
+        $('#video').toggle();
+        location.reload();
+    });
+    function get_more() {
+        public_ajax('.money-list-container',"{:url('User/ajax_get_sign')}",'','暂无签到记录');
+    }
+</script>
+</html>

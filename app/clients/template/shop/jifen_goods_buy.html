@@ -1,0 +1,136 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<style>
+    .public-list .public-list-list .public-list-item:nth-last-child(2) {
+        border-bottom: 1px solid var(--border);
+    }
+    .public-bottom .left{
+        height: auto;
+    }
+</style>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">提交订单</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="cart">
+    <a onclick="address()" class="address">
+        <div class="left">
+            <p>
+                <span>{$add.consignee}</span>
+                <span class="cc">{$add.mobile}</span>
+            </p>
+            <p>{$add.province}{$add.city}{$add.district}{$add.address}</p>
+        </div>
+        <div class="rot-nav"></div>
+    </a>
+    <div class="public-list mto10">
+        <div class="public-list-list p5 bg-fff">
+            <div class="public-list-item">
+                <a class="public-list-item-a">
+                    <div class="img">
+                        <img src="{$goods.goods_img}">
+                    </div>
+                    <div class="good">
+                        <p class="word m4">{$goods.goods_name}</p>
+                        <p class="theme flex-between">
+                            <span>￥{$goods.goods_price}</span>
+                            <span>×{$goods_num}</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="note">
+        <div class="public_title">用户备注(50字)</div>
+        <div class="textarea">
+            <textarea id="user_note" placeholder="用户备注(选填)"></textarea>
+        </div>
+    </div>
+    <div class="info">
+        <div class="public_title">基本信息</div>
+        <dl>
+            <dt>订单总额</dt>
+            <dd>{$total_amount}</dd>
+        </dl>
+        <dl>
+            <dt>运费</dt>
+            <dd>{$ship_price}</dd>
+        </dl>
+    </div>
+    {if $pay_list}
+    <div class="info pay">
+        <div class="public_title">支付运费</div>
+        {volist name="$pay_list" id="pay"}
+        <dl>
+            <dt class="{if $i eq 1}red{else/}black{/if}">
+                <span data-code='{$pay.code}' class="iconfont {if $i eq 1}icondanxuanact{else/}icondanxuan{/if}"></span>
+                <span class="m4-left">{$pay.name}</span>
+            </dt>
+        </dl>
+        {/volist}
+    </div>
+    {/if}
+</div>
+<div class="public-bottom buy" style="display:block">
+    <div class="public-bottom-item">
+        <a class="left" style="justify-content:center;">
+            应付金额
+            <span class="theme m2-left">￥<span id="order_amount">{$order_amount}</span></span>
+        </a>
+        <a class="right">
+            <button data-style="slide-right" style="font-size:14px" id="submit" class="btn-block bg-red fff">提交订单</button>
+        </a>
+    </div>
+</div>
+<!--内容区e-->
+<form action="{:url('Shop/jifen_goods_buy',['goods_id'=>$goods.goods_id])}" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+    <input type="hidden" name="goods_num" value="{$Request.param.goods_num}">
+    <input type="hidden" name="address_id" value="{$add.address_id}">
+    <input type="hidden" name="act" value="submit_order">
+    <input type="hidden" name="user_note" value="">
+    <input type="hidden" name="pay_code" value="{$pay_list[0]['code']}">
+    {:token_field()}
+</form>
+</body>
+<script>
+    var address_id = $('[name=address_id]').val();
+    var form = $('#form');
+    if (address_id == '') {
+        var attr = "{:url('User/address_list',['from'=>'jifen'])}";
+        msg('请先添加收货地址');
+        setTimeout(function () {
+            form.attr('action', attr).submit();
+        }, 1000);
+    }
+    var order_amount = '{$order_amount}';
+    function round(x, num) {
+        return Math.round(x * Math.pow(10, num)) / Math.pow(10, num);
+    }
+    $(function () {
+        $('.pay dl dt').click(function () {
+            if ($(this).hasClass('red'))return false;
+            $('.pay dl dt').removeClass('red').addClass('black');
+            $('.pay dl dt .icondanxuanact').removeClass('icondanxuanact').addClass('icondanxuan');
+            $(this).find('.iconfont').removeClass('icondanxuan').addClass('icondanxuanact');
+            $(this).addClass('red').removeClass('black');
+            $('[name=pay_code]').val($(this).find('.iconfont').data('code'));
+        });
+    });
+    $('#submit').click(function () {
+        var tt = $('#user_note').val();
+        $('[name=user_note]').val(tt);
+        public_submit("{:url('Shop/jifen_goods_buy',['goods_id'=>$goods.goods_id])}", $('#form').serialize());
+    });
+    function address() {
+        form.attr('action', "{:url('User/address_list',['from'=>'jifen'])}").submit();
+    }
+</script>
+</html>

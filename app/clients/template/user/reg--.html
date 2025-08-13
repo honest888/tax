@@ -1,0 +1,134 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<style>
+
+</style>
+<body>
+<!--内容区s-->
+<form id="public-form" style="padding-top: 0" class="login reg" method="post">
+    <div class="logo">
+        <img src="{$tpshop_config.basic_wap_login_logo}">
+    </div>
+    <div class="form-item">
+        <div class="form-input">
+            <div class="tit">手机号码</div>
+            <input type="text" name="mobile" placeholder="请输入手机号码">
+        </div>
+        {if $regis_sms_enable}
+        <div class="form-input code">
+            <div class="tit">验证码</div>
+            <input type="text" maxlength="6" name="code" placeholder="请输入验证码">
+            <button class="verify-code" type="button">获取验证码</button>
+        </div>
+        {/if}
+        <div class="form-input">
+            <div class="tit">姓名</div>
+            <input type="text" name="realname" placeholder="请输入姓名">
+        </div>
+        <div class="form-input">
+            <div class="tit">性别</div>
+            <select name="gender">
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+        </div>
+        <div class="form-input">
+            <div class="tit">生日</div>
+            <input type="text" name="birthday" id="birthday" readonly placeholder="请选择生日">
+        </div>
+        <div class="form-input">
+            <div class="tit">所在地区</div>
+            <div class="address">
+                <select name="province" id="province"></select>
+                <select name="city" id="city"></select>
+                <select name="district" id="district"></select>
+            </div>
+        </div>
+        <div class="form-input textarea">
+            <div class="tit">详细地址</div>
+            <textarea name="address" placeholder="请输入详细地址"></textarea>
+        </div>
+        <div class="form-input">
+            <div class="tit">开户银行</div>
+            <input type="text" name="bank_name" placeholder="请输入开户银行">
+        </div>
+        <div class="form-input">
+            <div class="tit">银行账号</div>
+            <input type="text" name="bank_card" placeholder="请输入银行账号">
+        </div>
+        <div class="form-input">
+            <div class="tit">密码</div>
+            <input type="password" id="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="form-input">
+            <div class="tit">确认密码</div>
+            <input type="password" name="conpassword" placeholder="请输入确认密码">
+        </div>
+        {if $reid}
+        <div class="form-input">
+            <div class="tit">推荐码</div>
+            <input type="text" value="{$rekey}" disabled>
+            <input type="hidden" name="rekey" value="{$rekey}">
+        </div>
+        {else/}
+        <div class="form-input">
+            <div class="tit">推荐码</div>
+            <input type="text" name="rekey" placeholder="请输入推荐码">
+        </div>
+        {/if}
+        <div class="xieyi">
+            <span class="iconfont icondanxuan"></span>
+            <div onclick="read()">同意注册协议</div>
+        </div>
+        <div class="btn-list">
+            {:token_field()}
+            <button id="submit" class="bg-red" data-style="expand-left" type="button">注册</button>
+            <div class="btn-list-bottom">
+                <span>已有账号?</span>
+                <a href="{:url('User/login')}">返回登录</a>
+            </div>
+        </div>
+    </div>
+    <iframe class="iframe" src="{:url('Content/protocol_detail',['artid'=>1])}"></iframe>
+</form>
+<!--内容区e-->
+</body>
+<script src="__STATIC__/plugin/laydate/laydate/laydate.js"></script>
+<script src="__STATIC__/js/jsaddress.js"></script>
+<script>
+    $(function () {
+        $('.xieyi .iconfont').on('click',function () {
+            if ($(this).hasClass('icondanxuan')){
+                $(this).attr('class','iconfont icondanxuanact')
+            }else {
+                $(this).attr('class','iconfont icondanxuan')
+            }
+        });
+        $('#birthday').layDate();
+        addressInit('province','city','district','请选择','请选择','请选择');
+        $('.verify-code').click(function () {
+            var mobile=$('[name=mobile]').val();
+            send_code(this,mobile,'reg',"{$tpshop_config.sms_sms_time_out|default=60}");
+        });
+        public_validate('#public-form');
+        $('#submit').click(function () {
+            if (!$('#public-form').valid()){
+                return false;
+            }
+            var len=$('.icondanxuanact').length;
+            if (len==0){
+                msg('请阅读并勾选注册协议!');
+                return false;
+            }
+            var url="{:url('User/reg')}";
+            var data=$('#public-form').serialize();
+            public_submit(url,data);
+        });
+    })
+    function read() {
+        $('.iframe').toggleClass('trans');
+    }
+</script>
+</html>

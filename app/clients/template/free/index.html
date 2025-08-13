@@ -1,0 +1,872 @@
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style2.css" data-precedence="next" />
+		<link rel="stylesheet" href="__ST__/checkbox.css" data-precedence="next" /> 
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+		<!-- <link rel="stylesheet" href="__STATIC__/js/signature/popstyle.css"> -->
+         <script src="__STATIC__/js/signature/snature.js"></script>
+</head>
+<style>
+    body {
+            font-family: Arial, sans-serif;
+   }   
+   @media (max-width: 576px) {
+   .mshow{
+			min-width: 750px;
+		    margin: 0 auto;
+		    zoom: 0.5;
+		}
+	}
+</style>
+<body style="margin:0 auto;">
+	<div class="pcshow" style="width:100%; background: #323639;justify-content:space-evenly;position:fixed;z-index: 99999;padding: 0px 100px;color:#fff;padding:20px 0px;display: flex;">
+	    <svg id="ZoomIn" t="1743072351268" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5134" width="30" height="30"><path d="M779.093333 473.6H544.085333v-228.693333c0-17.749333-14.336-32.085333-32.085333-32.085334s-32.085333 14.336-32.085333 32.085334v235.008h-228.693334c-17.578667-3.242667-34.474667 8.192-37.888 25.770666-0.341333 2.048-0.512 4.096-0.512 6.144-1.024 16.725333 11.605333 31.061333 28.330667 32.085334h232.277333v228.693333c0 17.749333 14.336 32.085333 32.085334 32.085333s32.085333-14.336 32.085333-32.085333v-228.693333h228.693333c16.725333 1.024 31.061333-11.605333 32.085334-28.330667V512c-0.170667-19.114667-0.170667-38.4-19.285334-38.4zM512 0C229.205333 0 0 229.205333 0 512s229.205333 512 512 512 512-229.205333 512-512C1023.146667 229.546667 794.453333 0.853333 512 0z m0 953.685333C268.117333 953.685333 70.485333 755.882667 70.485333 512S268.117333 70.485333 512 70.485333 953.685333 268.117333 953.685333 512c-0.512 243.712-197.973333 441.173333-441.685333 441.685333z" fill="#ffffff" p-id="5135"></path></svg>
+	    <svg  id="ZoomOut"  t="1743072247244" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3808" width="32" height="32"><path d="M512 1024C229.205333 1024 0 794.794667 0 512S229.205333 0 512 0s512 229.205333 512 512c-0.853333 282.453333-229.546667 511.146667-512 512z m0-953.685333C268.117333 70.314667 70.314667 268.117333 70.314667 512S268.117333 953.514667 512 953.514667 953.685333 755.882667 953.685333 512c-0.512-243.712-197.973333-441.173333-441.685333-441.685333zM778.752 537.6H245.418667c-17.749333 0-32.085333-14.336-32.085334-32.085333v-4.266667c0-17.749333 14.336-32.085333 32.085334-32.085333h533.333333c17.749333 0 32.085333 14.336 32.085333 32.085333v4.266667c-0.170667 17.749333-14.506667 32.085333-32.085333 32.085333z" fill="#ffffff" p-id="3809"></path></svg>
+	    <button class="action-button action-button--secondary submit">Submit</button>		
+    </div>
+    <div class="mobileshow" style="background: #323639;justify-content:space-evenly;position:fixed;align-items: center;">
+       <div class="submit"><svg t="1722049553403" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7727" width="32" height="32"><path d="M510.976 971.264c-114.176 0-227.84-43.52-314.368-130.048-83.968-83.968-130.56-195.584-130.56-314.368s46.08-230.4 130.56-314.368S392.192 81.92 510.976 81.92c118.784 0 230.4 46.08 314.368 130.56 83.968 83.968 130.56 195.584 130.56 314.368s-46.08 230.4-130.56 314.368c-86.528 87.04-200.192 130.048-314.368 130.048z m0-827.904c-102.4 0-198.656 39.936-271.36 112.128s-112.128 168.96-112.128 271.36 39.936 198.656 112.128 271.36c74.752 74.752 173.056 112.128 271.36 112.128s196.608-37.376 271.36-112.128c72.192-72.192 112.128-168.96 112.128-271.36s-39.936-198.656-112.128-271.36-168.96-112.128-271.36-112.128z" p-id="7728" fill="#ffffff"></path><path d="M511.488 798.72c-16.896 0-30.72-13.824-30.72-30.72V340.992c0-16.896 13.824-30.72 30.72-30.72s30.72 13.824 30.72 30.72V768c0 16.896-13.824 30.72-30.72 30.72z" p-id="7729" fill="#ffffff"></path><path d="M358.4 509.952c-7.68 0-15.872-3.072-21.504-9.216-11.776-11.776-11.776-31.232 0-43.52l153.088-153.088c11.776-11.776 31.232-11.776 43.52 0 11.776 11.776 11.776 31.232 0 43.52l-153.6 153.088c-5.632 6.144-13.824 9.216-21.504 9.216z" p-id="7730" fill="#ffffff"></path><path d="M674.304 509.952c-7.68 0-15.872-3.072-21.504-9.216L499.2 347.648c-11.776-11.776-11.776-31.232 0-43.52 11.776-11.776 31.232-11.776 43.52 0l153.088 153.088c11.776 11.776 11.776 31.232 0 43.52-5.632 6.144-13.824 9.216-21.504 9.216z" p-id="7731" fill="#ffffff"></path></svg></div>
+    </div>
+    <!--签名 弹出页-->
+    <?php if($signary!=''){
+      foreach($signary as $key=>$val){
+      $idname="comtip".$key;
+      $padname="signature-pad".$key;
+      $fieldimg=$key."img";
+      $objclose="close".$key;
+     ?>
+        <div class="modal-barrier" id="{$idname}" style="display:none;">
+		       <?php if(!is_mobile_device()){ ?> 
+				   <div class="dialog f-theme column  position-relative gap-20 dialog--normal">
+                		<svg class="close {$objclose}" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>
+						<canvas id="{$padname}" width="930" height="272" style="border: 1px dashed green;"></canvas>
+                		<div class="row align-center justify-end" style="display:flex;margin-top:40px;  width: 100%; justify-content: space-evenly">
+                        <button onclick="clearSignature22('{$key}')" class="action-button action-button--secondary signbutton" style="margin-left:10px;">Clear</button><!--onclick="clearSignature('{$padname}')" -->
+                        <button onclick="saveSignature22('{$key}')" class="action-button action-button--primary signbutton">Save</button><!--onclick="saveSignature('{$key}','{$fieldimg}','{$idname}')"-->
+                        </div>
+                	</div>
+				<?php }?>
+       </div>  
+       <?php } }?>
+	
+		<div class="page" style="padding-top:60px;">
+	       
+	   	   <!--<iframe src="" width="100%" height="100%" frameborder="0"></iframe>-->
+		   {$template|raw}
+		   	<style>
+               #page-container {
+			margin-top:70px;
+             }
+             #sidebar{
+             	display: none;
+             }
+		</style>
+		   <!--
+		    <div style="margin-left:30%;text-align:left;border:1px solid #000;line-height:28px;padding: 0 5px;background:#dadada;font-weight:bold;">
+				 I agree that all information contained<br>
+				 here is accurate and to the best<br>
+				 of my knowledge.
+				   <p style="background:#b4c6de;width: 250px;text-align: center;border-bottom:1px solid #000;" id="sign" tabindex="106">
+				     {if $detail.signimage}
+					   <img src="{$detail.signimage}" id="signimg" style="width:220px;">
+				     {else/}
+					   <img src="__STATIC__/images/sign.png" id="signimg" style="width:220px;">
+				     {/if}
+				   </p>
+				 <span style="font-size:14px;font-weight:bold;">CLIENT SIGNATURE</span>
+				 </div>-->
+		</div>
+	
+</body>
+</html>
+<script>
+      var curfield="{$detail.curfield}";       
+      var inputs = document.querySelectorAll('input[type="text"]');
+    
+	   var link="{$detail.link}";
+	   var currentIndex=getIndex(curfield);
+	   var currentIndex2=getIndex2(curfield);
+	   var specificInput = $('input[data-src="'+curfield+'"]');
+	   var scaleVal=0.3;
+	   ////////////
+	   	   var $inputs = $('input').sort(function(a, b) {
+	        return $(a).attr('tabindex') - $(b).attr('tabindex');
+		    });
+		    $inputs = $($inputs);
+		
+		    // 初始化当前焦点的索引
+		   // var currentIndex =currentIndex;
+		    // 当点击Prev或Next按钮时
+		    $('#prevButton, #nextButton').click(function() {
+		        var direction = $(this).is('#prevButton') ? -1 : 1;
+		        // 更新当前索引，并确保它在有效范围内
+		      //  currentIndex2 = (currentIndex2 + direction + $inputs.length) % $inputs.length;
+				if(currentIndex2<=$inputs.length+1){
+				  currentIndex2=parseInt(currentIndex2)+parseInt(direction);
+				}else{
+				  currentIndex2=0;
+				}
+				if($(this).is('#nextButton')){
+				   if(currentIndex2==65||currentIndex2==67||currentIndex2==69||currentIndex2==71||currentIndex2==73||currentIndex2==75){
+					   currentIndex2=parseInt(currentIndex2)+1;
+					}
+					if(currentIndex2==44){
+					   currentIndex2=parseInt(currentIndex2)+1;
+					}
+					if(currentIndex2>=106){ 
+					   $('#nextButton').attr('disabled',true);
+					}else{
+					   $('#nextButton').attr('disabled',false);
+					}
+					$('#prevButton').attr('disabled',false);
+					
+				}
+				if($(this).is('#prevButton')){
+				   if(currentIndex2==66||currentIndex2==68||currentIndex2==70||currentIndex2==72||currentIndex2==74||currentIndex2==76){
+					   currentIndex2=parseInt(currentIndex2)-1;
+					}
+					if(currentIndex2==45){
+					   currentIndex2=parseInt(currentIndex2)-1;
+					}
+					if(currentIndex2<=0){ 
+					   $('#prevButton').attr('disabled',true);
+					}else{
+						$('#prevButton').attr('disabled',false);
+					}
+					$('#nextButton').attr('disabled',false);
+				}
+				
+				
+				
+				 positionTo2(currentIndex2);
+				 return false;
+				if(currentIndex2==106){
+				  positionTo2(currentIndex2);
+				  
+				}
+				
+		        // 将焦点设置到新的input元素上 
+		       // positionTo2(currentIndex2);
+				//判断是不是radio元素，如果是则高亮显示其td\
+				var obj=$('input[tabindex="'+currentIndex2+'"]');	
+				curfield=obj.attr('data-src');
+				
+				if(obj.attr('type')=='checkbox'){
+				   var $ancestor = obj.parent();
+                   $ancestor.css('backgroud-color', 'green');
+				}else{
+				  obj.focus();
+				}
+		    });
+			
+		      	//  end
+	  
+	 
+	  <?php if($detail['status']==2&&!$islogin){ ?>
+	  	$('.savetime').attr('disabled', true);
+	  	$('#nextButton').attr('disabled', true);
+	  	$('#prevButton').attr('disabled', true);
+	    $('input').attr('readonly', true);
+	  <?php }?>
+	
+        function getIndex(findelement){
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = findelement;
+			var targetIndex = -1; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (inputs[i].getAttribute('data-src') === targetValue) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetIndex = i;
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetIndex;
+        }
+        function getIndex2(curfield){
+        	var obj=$('input[data-src="'+curfield+'"]');
+        	var num=obj.attr('tabindex');
+		
+        	return num;
+        }
+        function getDataSrc(curIndex){
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = '';
+			var targetIndex = curIndex; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (i === targetIndex) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetValue = inputs[i].getAttribute('data-src');
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetValue;
+        }
+        function scrollToElement(curfield2) {
+            //const element = document.getElementById('target');
+            const element =document.querySelector('input[data-src="'+curfield2+'"]');
+            const rect = element.getBoundingClientRect();
+
+            // 获取元素相对于视口的位置
+            const elementTop = rect.top + window.pageYOffset;
+            const elementLeft = rect.left + window.pageXOffset;
+           
+            // 计算目标滚动位置
+            const scrollToPositionY = elementTop - (window.innerHeight / 2)/0.7; // 垂直滚动到视口中间位置
+            const scrollToPositionX = elementLeft - (window.innerWidth / 2)/0.7; // 水平滚动到视口中间位置
+
+            // 执行滚动操作
+            window.scrollTo({
+                top: scrollToPositionY,
+               
+                behavior: 'smooth' // 平滑滚动
+            });
+             const currentScrollLeft = window.pageXOffset;
+
+            const deltaX = scrollToPositionX - currentScrollLeft;
+              
+            window.scrollBy({
+                left: deltaX,
+                behavior: 'smooth' // 平滑滚动
+            });
+        }
+        function start() {
+		  
+        	if(currentIndex2>=0){
+				positionTo2(currentIndex2,1);
+        		return false;
+			   if(isMobile()){
+			      $inputs.eq(currentIndex2).focus();
+			   }else{
+			   	 positionTo(currentIndex);
+			    inputs[currentIndex].focus();
+			 }
+        	}else{
+        		$('#a1').focus();
+        	}  
+        }
+         
+        function positionTo(cindex){
+        	    var curfield2=getDataSrc(cindex);
+
+        	 if(isMobile()){
+
+		
+        	  $('.page').css('transform', 'scale(0.7)');
+        	   //  $('.page').css('transformOrigin','left top');
+				 var scaledElement=$('.page');
+				// var scaledElement=$('input[data-src="'+curfield2+'"]');
+				  var originalWidth = scaledElement.width();
+				  var originalHeight = scaledElement.height();
+                   
+				  // 计算新宽度和高度
+				  var newWidth = originalWidth * scaleVal;
+				  var newHeight = originalHeight * scaleVal;
+				  
+				  // 可能需要调整滚动位置以确保元素在视口中可见
+				  // 这里只是一个简单的例子，你可能需要根据实际情况来计算滚动偏移
+				  var container = $('html, body');
+				  var rect = scaledElement[0].getBoundingClientRect();
+				  
+				  // 检查元素是否超出容器，并相应地调整滚动位置
+				  if (rect.top < 0) {
+					// 元素顶部超出容器顶部，滚动容器以显示它
+					container.scrollTop += rect.top;
+				  }
+				  if (rect.bottom > container.offsetHeight) {
+					// 元素底部超出容器底部，滚动容器以显示它
+					container.scrollTop += rect.bottom - container.offsetHeight;
+				  }
+				  if (rect.left < 0) {
+					// 元素左侧超出容器左侧，滚动容器以显示它
+					container.scrollLeft += rect.left;
+				  }
+				  if (rect.right > container.offsetWidth) {
+					// 元素右侧超出容器右侧，滚动容器以显示它
+					container.scrollLeft += rect.right - container.offsetWidth;
+				  }
+
+				inputs[currentIndex].focus(); 
+              return false;
+				
+        	 }else{
+        	 	var offsetTop= $('input[data-src="'+curfield2+'"]').offset().top;
+			    $('html, body').animate({
+			        scrollTop: offsetTop-130
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+			    /*
+			    viewport = document.querySelector('meta[name="viewport"]');
+		         if (viewport) {
+		            viewport.setAttribute('content', 'width=device-width, initial-scale=0.5');
+		          }*/
+		       // inputs[currentIndex].focus(); 
+        	 } 
+                
+		        return true;
+        }
+        function positionTo2(currentIndex2,isstart=0){
+		       if(isMobile()){
+			     if(mobileType()!="Android"){
+        	       $('.page').css('transform', 'scale(0.7)');
+				 }else{
+				 	// $('.page').css({
+	     //                'transform': 'scale(0.9)',
+	     //                'transform-origin': 'top center'
+	     //            });
+				 }
+        	    }
+		       if(currentIndex2==106){
+				   $('#sign').css('border',"1px solid #0d7119");	  
+				   var offsetTop=$('#sign').offset().top;
+				  $('#sign')[0].scrollIntoView({ behavior: 'smooth' });
+				}else{
+				   $('#sign').css('border',"none");
+				   $('#sign').css('border-bottom','1px solid #000');
+				   var obj=$('input[tabindex="'+currentIndex2+'"]');
+                   $('input[type="checkbox"]').each(function() {
+						$(this).parent().css('background', '#dadada');
+					});				   
+				  if(obj.attr('type')=='checkbox'){
+					   var $ancestor = obj.parent();
+					   $ancestor.css('background', '#8bda5b');
+					   var offsetTop=$ancestor.offset().top;
+					   $ancestor[0].scrollIntoView({ behavior: 'smooth' });
+				  }else{
+					 //  $('input[type="text"]').css('backgroud', '#dadada');
+					  var offsetTop=obj.offset().top;
+					  var offsetLeft=obj.offset().left;
+					   obj.focus();
+					  $('.page').animate({
+					        scrollTop: offsetTop,
+					        scrollLeft: offsetLeft
+					    }, 500); 
+					  // obj[0].scrollIntoView({ behavior: 'smooth' });
+					  
+				  }
+				}
+			
+				
+			//	 var targetElementOffset = $('#targetElement').offset().top;
+					// 然后，使用 window.scrollTo() 滚动到该位置
+					// 注意：可能需要加上或减去一些值来调整滚动位置
+				
+				if(isMobile()){
+					if(isstart==1){
+					  /*
+						var inputOffset = obj.offset();
+					    var inputTop = inputOffset.top;
+					    var inputLeft = inputOffset.left
+					    // 获取页面的缩放比例
+					    var scale = parseFloat($('.page').css('transform').split(',')[3]) || 1;
+					    // 计算缩放后的实际位置
+					    var scaledTop = inputTop / scale;
+					    var scaledLeft = inputLeft / scale;
+					 //  alert(scaledTop);
+					    // 移动页面并定位到 input 元素
+					    $('html, body').animate({
+					        scrollTop: scaledTop,
+					        scrollLeft: scaledLeft
+					    }, 500); // 1000 毫秒的动画时间
+					    $('.page').css('transform', 'scale(0.7)');
+						*/
+						
+						const scale = parseFloat($('.page').css('transform').split(',')[3]) || 1;
+						const container = document.querySelector('.page');
+
+						container.addEventListener('click', () => {
+						  const rect = container.getBoundingClientRect();
+						  console.log(rect);
+						  container.scrollTo({
+							top: rect.top * scale,
+							left: rect.left * scale,
+							behavior: 'smooth' // 可选，平滑滚动
+						  });
+						});
+					}
+				 }
+				 return true;
+					/*
+				$('html, body').animate({
+			        scrollTop: offsetTop
+			    }, 1000); */
+			//	alert(offsetTop);
+				
+        	 if(isMobile()){
+        	    $('.page').css('transform', 'scale(0.7)');
+				//$inputs.eq(currentIndex2).focus();
+                return false;
+        	 }else{
+			    
+			    $('html, body').animate({
+			        scrollTop: offsetTop
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+		       // $inputs.eq(currentIndex2).focus();
+        	 } 
+		        return true;
+        }
+		
+
+
+		function ajax_post_field(fieldname,fieldvalue,link,plan) {
+         $.ajax({
+               url:"{:url('free/save')}",
+               type:'post',
+               data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'plan':plan},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+                      curfield=fieldname;
+                   	  specificInput = $('input[data-src="'+curfield+'"]'); // Replace 'specificInputId' with the actual ID or reference	
+                   }else {
+                       console.log('sucess');
+                     //  msg(res.msg);
+                   }
+               },error:function () {
+                   msg('Try it again later')
+               }
+         });
+        }
+	    function isValidNumber(value) {
+            // 匹配整数或浮点数的正则表达式
+            var pattern = /^\d+(\.\d+)?$/;
+            return pattern.test(value);
+        }
+        <?php if($signary!=''){?>
+        	var objclose='';
+        	var comtip='';
+          	var padname='';
+        	var fname='';
+        	var canvas = {};
+	        var signaturePad = '';
+	        var signobj='';
+			var dynamicVars = {};
+			var spad = {};
+        <?php  foreach($signary as $key=>$val){?>    
+          	objclose=".close"+"{$key}";
+          	padname="signature-pad"+"{$key}";
+            $(objclose).click(function () {
+			    comtip='#comtip'+"{$key}";
+	            $(comtip).hide();
+	        });
+	        spad["{$key}"]="#"+"{$key}";	       
+	        $(spad["{$key}"]).click(function () {
+		    	 if (isMobile()) {
+		    	 	
+	               var link="{$detail.link}";
+	               var field=$(spad["{$key}"]).attr('data-src');
+	               var dlink=$(spad["{$key}"]).attr('data-link');
+				  // var url=dlink;
+				  
+				   location.href=dlink;
+	            } else {
+				   comtip='#comtip'+"{$key}";
+	               $(comtip).show();
+	            }
+	        })  
+			
+        	fname="{$key}";
+        	if (!isMobile()) {
+        		canvas[fname] = document.getElementById(padname);
+        	    dynamicVars[fname]= new SignaturePad(canvas[fname]);
+        	}
+        	
+			
+        <?php }}?>
+		    function saveSignature22(fname2){
+		        saveSignature(fname2, fname2+"img", dynamicVars[fname2]);
+			}
+			function clearSignature22(fname2){
+			    dynamicVars[fname2].clear(dynamicVars[fname2]);
+			}
+	        function saveSignature(field,fieldimg,signaturePad) {
+	            if (signaturePad.isEmpty()) {
+	                msg('Please sign you name');
+	                return;
+	            }
+	         //   var dataURL = signaturePad.toDataURL();
+	          //以下进行缩小
+	              var signatureCanvas = signaturePad.canvas;
+	              var signatureContext = signatureCanvas.getContext('2d');
+	              
+	              // 创建一个新的、尺寸减半的画布
+	              var resizedCanvas = document.createElement('canvas');
+	              resizedCanvas.width = signatureCanvas.width / 2;
+	              resizedCanvas.height = signatureCanvas.height / 2;
+	              var resizedContext = resizedCanvas.getContext('2d');
+	              
+	              // 将原始签名绘制到新的画布上，并缩小一倍
+	              resizedContext.drawImage(signatureCanvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+	              //以下进行缩小结束
+	              // 使用新的画布来保存签名（这里以PNG格式为例）
+	            var dataURL = resizedCanvas.toDataURL('image/png');
+	            var link="{$detail.link}";
+	            var obj="#"+field;
+	            var field=$(obj).attr('data-src');//"{$field}";$(this).attr('data-src');
+	            var ct="#comtip"+field;
+	            var ctimg="#"+field+"img";
+	        
+	          //  var url="{:url('Order/signature',['id'=>2])}";
+	            fetch("{:url('free/signaturet')}", {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link+"&f="+field
+	            })
+	            .then(response => response.text())
+	            .then(data => {
+	                var da=JSON.parse(data);
+	                msg('Signature is saved',1);
+	                $(ct).hide();
+	                var id="{$contract.id}";
+	                $(ctimg).attr('src',da.img);
+	                //更改所有签名
+	                <?php  
+if($signary!=''){
+	                foreach($signary as $key=>$val){?>
+	                   var field22=$(spad["{$key}"]).attr('data-src');
+	                   var ctimg22="#"+field22+"img";    
+	                   $(ctimg22).attr('src',da.img);
+	                <?php } }?>
+	                //更改所有签名
+	            })
+	            .catch((error) => {
+	                console.error('Error:', error);
+	            });
+	        }
+			function saveSignature___(field,fieldimg,signaturePad) {
+				if (signaturePad.isEmpty()) {  
+				     msg('Please sign first');
+					return;
+				}
+				$('.save').css('background-color','#8a8a8a');
+				$('.save').attr('disabled',true);
+				var dataURL = signaturePad.toDataURL();
+				var link="{$detail.link}";
+				var obj="#"+field;
+	            var field=$(obj).attr('data-src');//"{$field}";$(this).attr('data-src');
+	            var ct="#comtip"+field;
+	            var ctimg="#"+field+"img";
+				//var field="{$field}";
+				fetch("{:url('free/signaturet')}", {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link+"&f="+field
+				})
+				.then(response => response.text())
+				.then(data => {
+					var da=JSON.parse(data);
+	                msg('Signature is saved',1);
+	                $(ct).hide();
+	                var id="{$contract.id}";
+	                $(ctimg).attr('src',da.img);
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+				});
+           }
+	        function clearSignature(signaturePad) {
+	            signaturePad.clear();
+	        }
+        
+		
+        function isMobile() {
+           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+           // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) && window.innerWidth < 768;
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+       }
+	   function getScaleValue(element) {
+			// 获取元素的transform属性的值
+			var transform = $(element).css('transform') || $(element).css('-webkit-transform') || 'none';
+
+			// 使用正则表达式来匹配scale值
+			// 这里的正则表达式假设transform属性可能包含多个变换，我们只关心第一个scale变换
+			// 注意：这个正则表达式可能需要根据实际情况进行调整
+			var match = transform.match(/scale\(([^)]+)\)/);
+
+			if (match) {
+				// 如果找到了scale变换，则进一步分割字符串以获取具体的scale值
+				// 这里假设scale值可能是一个或多个由逗号分隔的数字（例如scale(2)或scale(2, 3)）
+				var values = match[1].split(',').map(function(value) {
+					return parseFloat(value);
+				});
+
+				// 返回scale值，这里返回一个数组，因为可能有多个scale值（如X轴和Y轴分别设置）
+				return values;
+			}
+
+			// 如果没有找到scale变换，则返回null或者一个默认值
+			return null;
+		}
+		function mobileType(){
+		 var userAgent = navigator.userAgent.toLowerCase();
+            var deviceType = "unknown";
+
+            if (userAgent.indexOf('android') > -1) {
+                deviceType = "Android";
+            } else if (userAgent.indexOf('iphone') > -1 || userAgent.indexOf('ipad') > -1 || userAgent.indexOf('ipod') > -1) {
+                deviceType = "iOS";
+            }
+              return deviceType;
+		}
+	   function msg(msg,ss=0,url='',time=2000) { 
+			if(ss==1){
+				//$('.layui-layer-hui').css('backgroud-color','#536cf1');
+				layer.msg(msg,{time:time,skin:'layui-layer-hui2'},function () {
+			    });
+			}else{
+				layer.msg(msg,{time:time},function () {
+			  });
+			}
+		}
+        // Set the initial scale when the page loads
+    //  window.onload = setInitialScale;
+	   
+      $(document).ready(function() {
+   //    	if(isMobile()){
+		 // if(mobileType()!="Android"){
+   //      	  $('body').css('max-width', '420px');
+		 // }
+   //    }
+      	$('.tabletd').each(function(index, element) {
+           var fieldvalue=$(this).val();
+           var vv=$(this).attr('data-src');
+           if(fieldvalue!=''){
+           	  if (fieldvalue.indexOf('$') !== -1) { 
+
+		     }else{
+		     	if(vv!='business_name'&&vv!='business_description'&&vv!='year'&&vv!='v1_miles_for_business_only'&&vv!='v2_miles_for_business_only'&&vv!='v1_miles_for_personal_only'&&vv!='v2_miles_for_personal_only'&&vv!='total_square_feet_of_home'&&vv!='total_square_feet_of_office_only'){
+		     		$(this).val('$'+fieldvalue);
+		     	}
+		     }
+           }
+            
+		});
+
+      	 var scaleFactor = 1; // 初始缩放比例
+		 $('.zoom').click(function() {
+		 	if(isMobile()){
+			     if(mobileType()!="Android"){
+			     	$('.page').css('transform', 'scale(0.3)');
+			        	scale=0.3;
+			     }else{
+			     //	$('.page').css('transform', 'scale(0.28)');
+			     }
+		    }
+		  });
+		 $('.zoom2').click(function() {
+		 	if(isMobile()){
+			     if(mobileType()=="Android"){
+			     $('#page-container').css('transform', 'scale(0.7)');
+			     }
+		    }
+		  });
+		  $('#ZoomIn').click(function() {
+		  	if(scaleFactor<1.5){
+		  		 scaleFactor += 0.1; // 增加缩放比例
+		  	}else{
+		  		return false;
+		  	}
+		    scaleFactor += 0.1; // 增加缩放比例
+		    $('#page-container').css('transform', 'scale(' + scaleFactor + ')');
+		  });
+		 
+		  $('#ZoomOut').click(function() {
+		  	if(isMobile()){
+		  		if(scaleFactor>0.5){
+		  		 scaleFactor -= 0.1; // 减少缩放比例
+			  	}else{
+			  		return false;
+			    }
+		  	}else{
+		  		if(scaleFactor>1){
+		  		 scaleFactor -= 0.1; // 减少缩放比例
+			  	}else{
+			  		return false;
+			    }
+		  	}
+		  	
+		    $('#page-container').css('transform', 'scale(' + scaleFactor + ')');
+		  });
+		
+      	if(isMobile()){
+      		 $('#page-container').css('zoom', 0.46);
+            /*
+		     if(mobileType()=="Android"){
+			  $('#page-container').css('transform', 'scale(0.46)');
+				//$('html, body').css('transform', 'scale(1)');
+			 }else{
+			   $('.page').css('transform', 'scale(0.3)');
+			 }
+      		const viewport = document.querySelector('meta[name="viewport"]');			 
+            if (viewport) {
+               scaleVal=0.3;
+            }*/
+      	}
+      
+	    
+		
+	  //即时保存input
+	 <?php if($detail['status']<2||$islogin==1){ ?>
+	 	var link="{$detail.link}";
+	 	var plan="{$detail.plan}";
+        for(var i=1;i<=<?php echo $loopi;?>;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           ajax_post_field(fieldname,fieldvalue,link,plan); 
+        });
+      }
+	  <?php }?>
+
+	   $('input:checkbox').click(function () {
+          var val=$(this).val();
+          var fieldname=$(this).attr('data-src');
+          
+          if($(this).prop("checked")==true){
+          	 $('input[name='+fieldname+']').each(function() {
+              //$(this).prop("checked", !$(this).is(":checked"));
+              $(this).prop("checked",false);
+             });
+          	$(this).prop("checked",true);
+          }
+         /* $('input[name='+fieldname+']').each(function() {
+              $(this).prop("checked", !$(this).is(":checked"));
+           });
+
+          if($(this).prop("checked")==true){
+          	$(this).prop("checked",true);
+          }else{
+          	$(this).prop("checked",false);
+          }
+          */
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          var plan="{$detail.plan}";
+          var all=0;
+          $('input[name='+fieldname+']').each(function() {
+              if($(this).prop("checked")==true){
+                   all=fieldvalue;
+              }
+          });
+          ajax_post_field(fieldname,all,link,plan);  
+       });
+	   
+	   /*
+	   //鼠标移到下一个input
+	   $('input').each(function(index) {
+        $(this).mouseleave(function() {
+            if ($(this).next('input').length > 0) {
+                $(this).next('input').focus();
+            }
+        });
+       });*/
+	    $('.submit').click(function () {
+		   //必填项
+		   
+			//查看是否签名了，没签名也不能提交
+			var link="{$detail.link}";
+			var plan="{$detail.plan}";
+			var signcheck=0;
+			 $.ajax({
+               url:"{:url('free/signcheck')}",
+               type:'post',
+               data:{'link':link},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+					 signcheck=1;
+					    $('.submit').css('background-color','#8a8a8a');
+						$('.submit').attr('disabled',true);
+						var link="{$detail.link}";
+						 $.ajax({
+						   url:"{:url('free/submit')}",
+						   type:'post',
+						   data:{'link':link},
+						   dataType:'json',
+						   success:function (res) {
+							   if (res.status=='success'){
+								 msg('Successfully submitted',1);
+								 setTimeout(function() {
+								   var url="https://taxprep.republictax.com/clients/free/"+link;
+								   location.href=url;
+								}, 2000);
+								  
+							   }else {
+								  $('.submit').css('background-color','#536cf1');
+								  $('.submit').attr('disabled',false);
+								  msg(res.message);
+								  // console.log('sucess');
+								 //  msg(res.msg);
+							   }
+						   },error:function () {
+							   msg('Try it again later');
+							   $('.submit').css('background-color','#536cf1');
+							   $('.submit').attr('disabled',false);
+
+						   }
+					 });
+                   }else{
+				     msg('Please sign your name');
+			         return false;
+				   }
+               },error:function () {
+               }
+            });
+		    
+		});
+		
+	
+		  $('.download').click(function () {
+				   // $(this).html('Generating...');
+					//$(this).css('background-color','#b1b1b1');
+					$(this).attr('disabled',true);
+					var obj=$(this);
+					//交给后端处理
+					// 触发下载并监控进度
+					var link="{$detail.link}";
+					var url="https://taxprep.republictax.com/clients/pl_topdf?link="+link;
+				
+					location.href=url;
+					//obj.css('background-color','#fff');
+							obj.attr('disabled',false);
+							//obj.html('Download');
+					return false;
+					var xhr = new XMLHttpRequest();
+					xhr.open('GET', url, true);
+					xhr.responseType = 'blob';
+					xhr.onload = function(e) {
+						if (this.status == 200) {
+							// 下载完成
+							var blob = this.response;
+							var link = document.createElement('a');
+							link.href = window.URL.createObjectURL(blob);
+							link.download = 'profitlossfiles.pdf'; // 设置下载文件的名称和扩展名
+							link.click();
+							obj.css('background-color','#536cf1');
+							obj.attr('disabled',false);
+							obj.html('Download PDF');
+						}
+					};
+		   });
+		 
+      });
+</script>

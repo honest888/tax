@@ -1,0 +1,158 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">收货地址</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<form id="public-form" onsubmit="return false;" method="post">
+    <div class="form-item">
+        <div class="form-input">
+            <div class="tit">收货人</div>
+            <input type="text" value="{$add.consignee}" name="consignee" placeholder="请输入收货人">
+        </div>
+        <div class="form-input">
+            <div class="tit">手机号码</div>
+            <input type="text" name="mobile" value="{$add.mobile}" placeholder="请输入手机号码">
+        </div>
+        <div class="form-input dizhi-container">
+            <div class="tit">选择省份</div>
+            <select name="pid" id="province">
+                <option value="">请选择</option>
+                {volist name="$parents" id="parent"}
+                <option value="{$parent.id}" {if $add.pid==$parent.id}selected{/if}>{$parent.name}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="form-input dizhi-container">
+            <div class="tit">选择城市</div>
+            <select name="cid" id="city">
+                <option value="">请选择</option>
+                {volist name="$citys" id="city"}
+                <option value="{$city.id}" {if $add.cid==$city.id}selected{/if}>{$city.name}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="form-input dizhi-container">
+            <div class="tit">选择地区</div>
+            <select name="did" id="district">
+                <option value="">请选择</option>
+                {volist name="$districts" id="district"}
+                <option value="{$district.id}" {if $add.did==$district.id}selected{/if}>{$district.name}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="form-input dizhi">
+            <div class="tit">详细地址</div>
+            <textarea name="address" placeholder="请输入详细地址">{$add.address}</textarea>
+        </div>
+    </div>
+    <div class="btn-list">
+        <button id="submit" class="bg-red" data-style="expand-left" type="submit">提交</button>
+        <input type="hidden" name="address_id"  value="{$add.address_id}">
+    </div>
+</form>
+<!--内容区e-->
+{if $Request.param.from == 'cart'}
+<form action="" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+    <input type="hidden" name="goods_num" value="{$Request.param.goods_num}">
+    <input type="hidden" name="item_id" value="{$Request.param.item_id}">
+    <input type="hidden" name="action" value="{$Request.param.action}">
+    <input type="hidden" name="address_id" value="{$Request.param.address_id}">
+</form>
+{/if}
+{if $Request.param.from == 'jifen'}
+<form action="" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+    <input type="hidden" name="goods_num" value="{$Request.param.goods_num}">
+    <input type="hidden" name="address_id" value="{$Request.param.address_id}">
+</form>
+{/if}
+</body>
+<script>
+    var address_id='{$add.address_id}';
+    var from='{$Request.param.from}';
+    $(function () {
+        $('.dizhi-container').on('change','select',function () {
+            var val=$(this).val();
+            get_region(val,this);
+        });
+        public_validate('#public-form');
+        $('#submit').click(function () {
+            if (!$('#public-form').valid()){
+                return false;
+            }
+            var url="{:url('User/address_save')}";
+            var data=$('#public-form').serialize();
+            var obj=document.getElementById('submit');
+            var l = Ladda.create(obj);
+            l.start();
+            setTimeout(function () {
+                l.stop();
+                $(obj).attr('disabled',true);
+                $.ajax({
+                    url:url,
+                    type:'post',
+                    data:data,
+                    dataType:'json',
+                    success:function (res) {
+                        if (res.code==1){
+                            msg(res.msg);
+                            if(from){
+                                if (from==='cart'){
+                                    var add="{:url('User/address_list',['from'=>'cart'])}";
+                                }else {
+                                    var add="{:url('User/address_list',['from'=>'jifen'])}";
+                                }
+                                setTimeout(function () {
+                                    $('#form').attr('action',add).submit();
+                                },1500)
+                            }else {
+                                setTimeout(function () {
+                                    location.href=res.url;
+                                },1500)
+                            }
+                        }else {
+                            msg(res.msg);
+                        }
+                    },error:function () {
+                        msg('网络错误,请稍后再试!')
+                    }
+                });
+                setTimeout(function () {
+                    $(obj).attr('disabled',false);
+                },2000)
+            },1000);
+        });
+    });
+    function get_region(id,obj) {
+        var url = "{:url('Index/get_region')}";
+        var data = {'parent_id':id};
+        $.ajax({
+            url:url,
+            type:'post',
+            data:data,
+            dataType:'json',
+            success:function (res) {
+                var html='<option value="">请选择</option>';
+                if (res.code==1){
+                    $.each(res.result, function(index, item) {
+                        html+='<option value="'+item.id+'">'+item.name+'</option>';
+                    });
+                }
+                $(obj).parent().nextAll().find('select').empty().append('<option value="">请选择</option>');
+                $(obj).parent().next().find('select').empty().append(html);
+            },error:function () {
+                msg('网络错误,请稍后再试!')
+            }
+        });
+    }
+</script>
+</html>

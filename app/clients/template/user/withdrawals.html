@@ -1,0 +1,79 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<body>
+<!--头部导航位置s-->
+<header class="header">
+	<a class="back iconfont iconback"></a>
+	<div class="title">申请提现</div>
+	<a href="{:url('User/withdrawals_list')}">提现记录</a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<form id="public-form" onsubmit="return false;" method="post">
+	<div class="form-item">
+		<div class="form-input">
+			<span class="tit">手机号码</span>
+			<div class="hint">{$user.mobile}</div>
+		</div>
+		<div class="form-input">
+			<span class="tit">我的余额</span>
+			<div class="hint">{$user.user_money}</div>
+		</div>
+		<div class="form-input">
+			<span class="tit">提现账户</span>
+			<select name="tx_type">
+				<option value="1">支付宝</option>
+				<option value="2">银行卡</option>
+			</select>
+		</div>
+		{if $user_with_sms_enable}
+			<div class="form-input code">
+				<span class="tit">验证码</span>
+				<input type="text" maxlength="6" name="code" placeholder="请输入验证码">
+				<button class="verify-code" type="button">获取验证码</button>
+			</div>
+		{/if}
+		<div class="form-input">
+			<span class="tit">提现金额</span>
+			<input type="text" name="money" placeholder="请输入提现金额">
+		</div>
+	</div>
+	<div class="btn-list">
+		{:token_field()}
+		<button id="submit" class="bg-theme mto10" data-style="expand-left" type="button">提交</button>
+		<input type="hidden" id="mobile" value="{$user.mobile}">
+	</div>
+	<div class="public-notice">
+		<h5>温馨提示:</h5>
+		{if $cash_config.ye_tx_xishu>0}
+		<p>提现金额为{$cash_config.ye_tx_xishu}元的整数倍</p>
+		{else/}
+		<p>提现金额为无限制</p>
+		{/if}
+		{if $cash_config.ye_tx_sxf>0}
+		<p>提现手续费为{$cash_config.ye_tx_sxf}%</p>
+		{/if}
+	</div>
+</form>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        $('.verify-code').click(function () {
+            var mobile=$('#mobile').val();
+            send_code(this,mobile,'',"{$tpshop_config.sms_sms_time_out|default=60}")
+        });
+        public_validate('#public-form');
+        $('#submit').click(function () {
+            if (!$('#public-form').valid()){
+                return false;
+            }
+            var url="{:url('User/withdrawals')}";
+            var data=$('#public-form').serialize();
+            public_submit(url,data);
+        });
+    })
+</script>
+</html>

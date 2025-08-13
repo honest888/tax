@@ -1,0 +1,63 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header bg-fff">
+	<a class="back iconfont iconback"></a>
+	<div class="title">积分</div>
+	<a href="{:url('User/points',['type'=>2])}">明细</a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="lingqian">
+	<div class="top">
+		<img src="__MOBILE__/img/jifen.png">
+		<p>我的积分</p>
+		<h4>¥ {$user.jifen}</h4>
+	</div>
+	<div class="btn-container">
+		{if $find}
+		<button disabled class="sign-btn">今日已签到</button>
+		{else/}
+		<button class="bg-danger sign-btn">签到</button>
+		{/if}
+		<a href="{:url('Shop/index')}" class="bg-success">兑换</a>
+	</div>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+		$('.sign-btn').click(function () {
+			var url="{:url('User/do_sign')}";
+			var data='';
+			var obj=this;
+			var l = Ladda.create(obj);
+			l.start();
+			setTimeout(function () {
+				l.stop();
+				$(obj).attr('disabled',true);
+				$.ajax({
+					url:url,
+					type:'post',
+					data:data,
+					dataType:'json',
+					success:function (res) {
+						if (res.code==1){
+							msg(res.msg,res.url);
+						}else {
+							msg(res.msg);
+						}
+					},error:function () {
+						msg('网络错误,请稍后再试!')
+					}
+				});
+				setTimeout(function () {
+					$(obj).attr('disabled',false);
+				},2000)
+			},1000);
+		});
+    })
+</script>
+</html>

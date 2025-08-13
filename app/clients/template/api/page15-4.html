@@ -1,0 +1,89 @@
+{include file='public:header-css'/}
+{include file='public:upload'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		<div class="master-detail-layout__body">
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<!--<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>-->
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+                                	<main class="master-detail-layout__main-container">
+                                		<div class="master-detail-layout__main-content">
+                                			<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                				<h1 class="center text-center font-36 extrabold mt-20">Upload your 1099-INT forms</h1>
+                                				<p class="text-center"><span>If your 1099-INT was included as part of a consolidated tax statement and you already uploaded it in the Brokerage Accounts section, you can skip this step.</span></p>
+                                				
+                                				<div style="height: 20px;"></div>
+                                          	<?php 
+                                			   $ary='';
+                                			   if($detail['filename']){
+                                			    $fileary=json_decode($detail['filename'],true);
+                                			    if($fileary[$pagename]){
+                                			      $ary=json_encode($fileary[$pagename]);
+                                			     }
+                                			    }
+                                			    ?>
+                                			    <!--文件上传开始-->
+                                			 <div class="uploader__box js-uploader__box">
+		                                     </div>
+                                    		    <!--文件上传结束-->
+                                			</div>
+                                		</div>
+                                	</main>
+                                </div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 <input type="hidden" name="curfield" value="interest_did_confirm">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									<input type="hidden" name="finishpage" value="interest_did_confirm" >
+								</form>
+								{include file='public:footer2'/}
+								<!--需要选择的单独写footer-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+	<script src="__STATIC__/stanford/jquery-1.11.0.min.js"></script>
+	<script src="__STATIC__/stanford/jquery.imageuploader.js"></script>
+	<script type="text/javascript">
+		(function(){
+		    <?php if($ary){ ?>
+		    var str=$.parseJSON('{$ary|raw}');
+		    var fileary=str;
+		    <?php }else{ ?>
+		    var fileary=[];
+		    <?php }?>
+		    
+	            var options = {};
+	            $('.js-uploader__box').uploader({
+	            	'selectButtonCopy':'请选择或拖拽文件',
+	            	'instructionsCopy':'你可以选择或拖拽多个文件',
+	            	'submitButtonCopy':'上传选择的文件',
+	            	'furtherInstructionsCopy':'你可以选择或拖拽更多的文件',
+	            	'secondarySelectButtonCopy':'More',
+	            	'pagename':'{$pagename}',
+	            	'link':'{$detail.link}',
+	            	'fileary': fileary
+	            });
+	   }());
+	</script>

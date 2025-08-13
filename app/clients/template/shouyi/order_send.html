@@ -1,0 +1,91 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">订单发货</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="order-send">
+    <div class="top"></div>
+    <form action="" class="form">
+        <div class="title">
+            <span class="iconfont iconwujilu"></span>
+            <span>发货信息</span>
+        </div>
+        <div class="form-info">
+            <div class="form-row">
+                <div class="tit">收件人:</div>
+                <input type="text" value="{$order.consignee}" readonly>
+            </div>
+            <div class="form-row">
+                <div class="tit">联系电话:</div>
+                <input type="text" value="{$order.mobile}" readonly>
+            </div>
+            <div class="form-row">
+                <div class="tit">收货地址:</div>
+                <input type="text" value="{$order.province}{$order.city}{$order.district}" readonly>
+            </div>
+            <div class="form-row">
+                <div class="tit">详细地址:</div>
+                <input type="text" value="{$order.address}" readonly>
+            </div>
+            <div class="form-row">
+                <div class="tit">快递编码:</div>
+                <select name="shipping_code" id="shipping_code">
+                    <option value="">请选择快递编码</option>
+                    {volist name="$shipping" id="shipping"}
+                    <option value="{$key}" {if $order.shipping_code==$key}selected{/if}>{$shipping}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="tit">快递公司:</div>
+                <input type="text" id="shipping_name" name="shipping_name" placeholder="请输入快递公司" value="{$order.shipping_name}">
+            </div>
+            <div class="form-row">
+                <div class="tit">快递单号:</div>
+                <input type="text" name="shipping_number" placeholder="请输入快递单号" value="{$order.shipping_number}">
+            </div>
+            <div class="btn-list">
+                {:token_field()}
+                <button id="submit" data-style="expand-left" type="button">确认发货</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!--内容区e-->
+</body>
+<script>
+    $(function () {
+        $('#shipping_code').on('change',function () {
+            var val=$('#shipping_code option:selected').text();
+            $('#shipping_name').val(val);
+        });
+        $('#submit').on('click',function () {
+            var shipping_code=$('[name=shipping_code]').val();
+            var shipping_name=$('[name=shipping_name]').val();
+            var shipping_number=$('[name=shipping_number]').val();
+            if (shipping_code==''){
+                msg('请选择快递编码');
+                return false;
+            }
+            if (shipping_name==''){
+                msg('请输入快递公司');
+                return false;
+            }
+            if (shipping_number==''){
+                msg('请输入快递单号');
+                return false;
+            }
+            var url="{:url('Shouyi/order_send',['order_id'=>$order.order_id])}";
+            var data=$('.form').serialize();
+            public_submit(url,data,this);
+        });
+    })
+</script>
+</html>

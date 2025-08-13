@@ -1,0 +1,102 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+								        <div class="master-detail-layout__main-content">
+                                        	<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                        		<h1 class="center text-center font-36 extrabold mt-20">Tell us if you had other expenses for this property</h1>
+                                        		<p class="text-center">
+                                        			<span>If you need more space, please use the notes section at the end of the income section.</span>
+                                        		</p>
+                                        		<div style="height: 20px;"></div>
+                                        		<?php
+                                        		  $nextpage="page15-13-15-".$detail['cur_property'];
+                                        		?>
+                                        		<table class="form-table-left-align wizard-form-table">
+                                        			<thead>
+                                        				<tr class="font-16">
+                                        					<th style="width: 75%;">Description</th>
+                                        					<th style="width: 25%;">Amount</th>
+                                        				</tr>
+                                        			</thead>
+                                        			<tbody>
+                                        				<tr>
+                                        					<td>
+                                        						<div class="form-field form-field--filled">
+                                        					<?php $fname="rental_properties_".$detail['cur_property']."_expenses_other_0_description";?>
+                                        						<input id="a1" autocomplete="off" type="text"  data-src="{$fname}" value="<?php echo $detail[$fname];?>">
+                                        						</div>
+                                        					</td>
+                                        					<td>
+                                        						<div class="form-field form-field--filled">
+                                        					<?php $fname="rental_properties_".$detail['cur_property']."_expenses_other_0_amount";?>   
+                                        							<input id="a2" autocomplete="off" type="text" data-src="{$fname}" value="<?php echo $detail[$fname];?>">
+                                        						</div>
+                                        					</td>
+                                        				</tr>
+                                        			</tbody>
+                                        		</table>
+                                        		<table class="form-table-left-align wizard-form-table">
+                                        			<thead>
+                                        				<tr class="font-16">
+                                        					<th style="width: 75%;">Description</th>
+                                        					<th style="width: 25%;">Amount</th>
+                                        				</tr>
+                                        			</thead>
+                                        			<tbody>
+                                        				<tr>
+                                        					<td>
+                                        						<div class="form-field form-field--filled">
+                                        					<?php $fname="rental_properties_".$detail['cur_property']."_expenses_other_1_description";?>   
+                                        						<input id="a3" autocomplete="off" type="text" data-src="{$fname}" value="<?php echo $detail[$fname];?>">
+                                        						</div>
+                                        					</td>
+                                        					<td>
+                                        						<div class="form-field form-field--filled">
+                                        					<?php $fname="rental_properties_".$detail['cur_property']."_expenses_other_1_description";?> 
+                                        							<input id="a4" autocomplete="off" type="text"  data-src="{$fname}" value="<?php echo $detail[$fname];?>">
+                                        						</div>
+                                        					</td>
+                                        				</tr>
+                                        			</tbody>
+                                        		</table>
+                                        	</div>
+                                        </div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      for(var i=1;i<=4;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+});
+</script>

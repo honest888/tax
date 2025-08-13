@@ -1,0 +1,156 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body class="bg-fff">
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<!--头部导航位置s-->
+<header class="header">
+  <a class="back">关闭</a>
+  <a class="iconfont iconfenxiang3"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容s-->
+<div class="circle-detail">
+  <div class="top">
+    <div class="xiu">{$circle['user']['realname']}的秀</div>
+    <div class="head">
+      <div class="left">
+        <img src="{$circle.user.head_pic}">
+      </div>
+      <div class="center">
+        <h5>{$circle.user.realname}</h5>
+        <p>{$circle.day_text}</p>
+      </div>
+      <div class="right">
+        浏览 {$circle.click}
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="text" {if empty($circle.images)}style="margin-bottom: 0"{/if}>
+      {$circle.content|raw}
+    </div>
+    <div class="images">
+      {volist name="$circle.images" id="image"}
+      <img src="{$image}">
+      {/volist}
+    </div>
+  </div>
+  <div class="favour-list">
+    {volist name="$circle.circle_zan" id="zan"}
+    <a href="{:url('Circle/user_circle',['user_id'=>$zan.user.user_id])}" class="favour{$zan.id}">
+      <img src="{$zan.user.head_pic}">
+    </a>
+    {/volist}
+  </div>
+  <div class="horizontal-line"></div>
+  <div class="comment-input">
+    <textarea name="content" class="textarea" placeholder="我也说一句"></textarea>
+    <button type="button" class="submit" onclick="comment('{$circle.id}',this)">提交</button>
+  </div>
+  <div class="comment-list" id="comment-list"></div>
+  <div style="height: 50px"></div>
+  <div class="circle-bot">
+      <div class="circle-bot-item" onclick="zan('{$circle.id}',this)">
+        <span class="iconfont {if $find}iconshoucang{else/}iconshoucang1{/if}"></span>
+        <span class="favourNum">{$circle.favour}</span>
+      </div>
+      <div class="circle-bot-item">
+        <span class="iconfont iconpinglun"></span>
+        <span class="commentNum">{$circle.comment}</span>
+      </div>
+      <div class="circle-bot-item">
+        <span class="iconfont iconfenxiang4"></span>
+        <span>分享</span>
+      </div>
+  </div>
+</div>
+<!--内容e-->
+</body>
+{load href="__MOBILE__/css/zoomify.min.css"/}
+{load href="__MOBILE__/js/zoomify.min.js"/}
+<script>
+    $(function () {
+      $('.images img').zoomify();
+      get_more('{$circle.id}');
+    });
+    function get_more(id) {
+      public_ajax('.comment-list',"{:url('Circle/ajax_get_circle_comment')}",'&id='+id,'暂无评论记录');
+    }
+    var flag=true;
+    function zan(id,obj) {
+      if (!flag)return false;
+      var url="{:url('Circle/circle_zan')}";
+      var data={'id':id};
+      flag=false;
+      $.ajax({
+        url:url,
+        type:'post',
+        data:data,
+        dataType:'json',
+        success:function (res) {
+          if (res.code===1){
+            var favourNum=parseInt($('.favourNum').text());
+            var icon=$(obj).find('.iconfont');
+            //已点赞
+            if ($(icon).hasClass('iconshoucang')){
+              $(icon).attr('class','iconfont iconshoucang1');
+              $('.favour'+res.id).remove();
+              --favourNum;
+            }else {
+              $(icon).attr('class','iconfont iconshoucang');
+              var html='<a href="" class="favour'+res.id+'">';
+              html+='<img src="'+res.head+'">';
+              html+='</a>';
+              $('.favour-list').prepend(html);
+              ++favourNum;
+            }
+            $('.favourNum').text(favourNum);
+          }else{
+            msg(res.msg);
+          }
+          flag=true;
+        },error:function () {
+          msg('网络错误,请稍后再试!')
+        }
+      });
+    }
+    function comment(id,obj) {
+        var content=$('.textarea').val();
+        if (content==''){
+          msg('请输入评论内容');
+          return false;
+        }
+        $(obj).attr('disabled',true);
+      var url="{:url('Circle/circle_comment')}";
+      var data={'id':id,'content':content};
+      $.ajax({
+        url:url,
+        type:'post',
+        data:data,
+        dataType:'json',
+        success:function (res) {
+          if (res.code===1){
+            var commentNum=parseInt($('.commentNum').text());
+            var url="{:url('Circle/user_circle',['user_id'=>$user.user_id])}";
+            var head_pic='{$user.head_pic}';
+            var realname='{$user.realname}';
+            var html='<div class="comment-item">';
+            html+='<a class="left" href="'+url+'"><img src="'+head_pic+'"></a>';
+            html+='<div class="center"><h5><span>'+realname+'</span><span class="time">刚刚</span></h5><p>'+content+'</p></div>';
+            html+='</div>';
+            $('.textarea').val('');
+            $('#empty').remove();
+            $('.comment-list').prepend(html);
+            $('.commentNum').text(commentNum++);
+          }else{
+            msg(res.msg);
+          }
+          $(obj).attr('disabled',false);
+        },error:function () {
+          msg('网络错误,请稍后再试!')
+        }
+      });
+    }
+</script>
+</html>

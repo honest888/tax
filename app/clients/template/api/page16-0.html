@@ -1,0 +1,443 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+									   <div class="f-theme banner column align-center justify-center banner--sticky banner--error " style="margin-bottom: -48px;display:none;"><div>Please complete the question to continue</div></div>
+										<div class="master-detail-layout__main-content">
+											<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+												<h1 class="center text-center font-36 extrabold mt-20">Which of the following applied to you?</h1>
+												<p class="text-center">
+													<span>We'll use this information to maximize your deductions & credits.</span>
+												</p>
+												<div style="height: 20px;"></div>
+												<div class="categories column gap-40">
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Home</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.mortgage_interest_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="mortgage_interest_did_confirm">
+																<label class="option-label font-16">Home Loan Interest</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip1">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Home Loan Interest</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you paid interest or points on a mortgage, or mortgage insurance. This type of interest is usually reported on Form 1098.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.mortgage_interest_did_confirm eq 1}color-white{else/}color-grey{/if}">Form 1098</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.property_taxes_did_confirm eq 1}multi-select-option--selected dark-theme{/if}"  data-src="property_taxes_did_confirm">
+																<label class="option-label font-16">Property Taxes</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip2">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Property Taxes</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you paid state or local taxes for real estate property you own. This includes taxes paid at closing, and taxes paid to your local county.</span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Family</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.child_care_credit_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="child_care_credit_did_confirm">
+																<label class="option-label font-16">Child Care Credit</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip3">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Child Care Credit</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you spent money on day care or if you paid wages a nanny or babysitter.
+This credit is only for children under the age of 13 or who are disabled.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.adoption_credit_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="adoption_credit_did_confirm">
+																<label class="option-label font-16">Adoption Credit</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip4">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Adoption Credit</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you adopted a child, began adoption proceedings, or tried unsuccessfully to adopt a child. Do not select this option if the child being adopted is your spouse's child.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.alimony_paid_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="alimony_paid_did_confirm">
+																<label class="option-label font-16">Paid Alimony </label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip5">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Paid Alimony</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you paid alimony to a spouse or former spouse.</span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Charitable Donations</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.charitable_donations_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="charitable_donations_did_confirm">
+																<label class="option-label font-16">Cash & Check Donations</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip6">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Cash/ Check Donations</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you donated cash or checks to any non-profit, government, or religious organizations.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.charitable_donations_did_confirm eq 1}color-white{else/}color-grey{/if}">Charitable Receipts (Cash/Check)</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.non_cash_donations_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="non_cash_donations_did_confirm">
+																<label class="option-label font-16">Non-Cash Donations</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip7">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Non-Cash Donations</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you donated household items, old clothing, furniture, etc. to any non-profit, government, or religious organizations.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.non_cash_donations_did_confirm eq 1}color-white{else/}color-grey{/if}">Charitable Receipts (Non-Cash)</span>
+																
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Retirement</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.retirement_contributions_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="retirement_contributions_did_confirm">
+																<label class="option-label font-16">Retirement Contributions</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip8">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Retirement Contributions</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you contributed money to a traditional IRA, Roth IRA, SEP, or Solo 401(k).
+This is not referring to employer contributions made through payroll.
+Note: you can make IRA contributions for the {$detail.taxyear} tax year up until April 15, 2024.</span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Education &amp; Work</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.college_tuition_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="college_tuition_did_confirm">
+																<label class="option-label font-16">College Tuition & Expenses</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip9">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">College Tuition & Expenses</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you, your spouse, or a dependent attended college during the year.
+We'll determine whether you qualify for the American Opportunity Credit (up to $2,500 per student), Lifetime Learning Credit (up to $2,000 per tax return), or Tuition and Fees Deduction (up to $4,000 per tax return).</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.college_tuition_did_confirm eq 1}color-white{else/}color-grey{/if}">1098-T</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.student_loan_interest_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="student_loan_interest_did_confirm">
+																<label class="option-label font-16">Student Loan Interest</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip10">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Student Loan Interest</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you paid student loans. This deduction only applies to those whose adjusted gross income is under $85,000 (or $170,000 if married fling jointly).</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.student_loan_interest_did_confirm eq 1}color-white{else/}color-grey{/if}">1098-E</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.contributed_to_529_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="contributed_to_529_did_confirm">
+																<label class="option-label font-16">529 Plan or Coverdell ESA Contribution</label>
+																<span>&nbsp;</span>
+																
+																
+															</div>
+															<div class="multi-select-option row align-center {if $detail.educator_expenses_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="educator_expenses_did_confirm">
+																<label class="option-label font-16">Educator Expenses</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip11">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Educator Expenses</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you're a K-12 teachers and bought classroom supplies out of your own pocket. We'll be able to deduct up to $250 whether or not we itemize.</span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Vehicles &amp; Personal Property</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.major_purchases_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="major_purchases_did_confirm">
+																<label class="option-label font-16">Major Purchases</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip12">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Major Purchases</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you purchased a big-ticket item such as a car or boat, and we'll determine if you can claim the state/local sales taxes.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.car_registration_fees_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="car_registration_fees_did_confirm">
+																<label class="option-label font-16">Car Registration Fees</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip13">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Car Registration Fees</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you live in one of the following states and paid car registration fees:
+AL, AZ, CA, CO, GA, IN, IA, KY, LA, MA, MI, MS, MO, MT, NE, NV, NH, NC, SC, WA, WY. Also select this option if you live in one of these states and paid vehicle property taxes: AR, CT, KS, ME, RI, VA, WV. This will only be relevant if we itemize deductions.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.car_registration_fees_did_confirm eq 1}color-white{else/}color-grey{/if}">Car Renewal Notice</span>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.personal_property_taxes_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="personal_property_taxes_did_confirm">
+																<label class="option-label font-16">Personal Property Taxes</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip14">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Personal property taxes</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">You can deduct taxes you paid on the value of personal property, including a boat, motorcycle, RV, or airplane, but not your home or any real estate you own.
+Registration fees you pay on your car are also part of the personal property tax, but we ask about that separately.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.casualties_and_thefts_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="casualties_and_thefts_did_confirm">
+																<label class="option-label font-16">Casualties and Thefts</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip15">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Casualties and Thefts</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if your personal property was damaged as a result of a disaster (storm, flood, fire, car accident, etc.), or if your property was stolen.</span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Energy Efficiency Credits</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center {if $detail.home_energy_credits_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="home_energy_credits_did_confirm">
+																<label class="option-label font-16">Home Energy Credits</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip16">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Home Energy Credits</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you made any of the following energy-efficient improvements to your main home: home insulation, exterior doors, exterior windows and skylights, certain roofing materials, electric heat pumps, electric heat pump water heaters, central air conditioning systems, natural gas, propane or oil water heaters, stoves that use biomass fuel, natural gas, propane or oil furnaces, natural gas, propane or oil hot water boilers, advanced circulating fans for natural gas, propane or oil furnaces.
+You cannot take this credit for equipment used to heat a swimming pool or hot tub, or for energy star appliances, low-flow shower heads, or low-flush toilets.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.energy_efficient_vehicles_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="energy_efficient_vehicles_did_confirm">
+																<label class="option-label font-16">Clean Vehicles</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip17">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Clean Vehicles</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you bought a plug-in electric vehicle or fuel cell vehicle. The amount of the credit depends on the specific model and is based on the vehicle's fuel efficiency. Tesla and GM vehicles no longer qualify.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center {if $detail.energy_efficient_charging_station_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="energy_efficient_charging_station_did_confirm">
+																<label class="option-label font-16">Charging Station</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip18">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Charging stations</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Alternative vehicle stations that qualify are: electric, liquefied petroleum, natural gas, E85, hydrogen, and diesel fuel blends containing a minimum of 20% biodiesel.</span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<h2 class="font-16 font-weight-lighter bg-white">Medical</h2>
+														<div style="height: 15px;"></div>
+														<div class="column gap-20">
+															<div class="multi-select-option row align-center  {if $detail.contributions_to_hsa_msa_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="contributions_to_hsa_msa_did_confirm">
+																<label class="option-label font-16">Contributions to HSA/MSA </label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip19">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Contributions to HSA/MSA</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you contributed money to your Health Savings Account or Medical Savings Account.
+																	Note: you can make HSA & MSA contributions for the {$detail.taxyear} tax year up until April 15, 2024.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1 {if $detail.contributions_to_hsa_msa_did_confirm eq 1}color-white{else/}color-grey{/if}">Form 5498-SA</span>
+															</div>
+															<div class="multi-select-option row align-center  {if $detail.medical_expenses_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="medical_expenses_did_confirm">
+																<label class="option-label font-16">Medical & Dental Expenses</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip20">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Medical & Dental Expenses</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if your out-of-pocket medical and dental expenses exceeded 7.5% of your income.</span></span>
+																</div>
+															</div>
+															<div class="multi-select-option row align-center  {if $detail.affordable_care_act_did_confirm eq 1}multi-select-option--selected dark-theme{/if}" data-src="affordable_care_act_did_confirm">
+																<label class="option-label font-16">Affordable Care Act (Obamacare)</label>
+																<span>&nbsp;</span>
+																<div class="popover__child" id="tip21">
+																	<div class="tooltip-icon">?</div>
+																</div>
+																<div class="popover__element tipcommon">
+																	<span class="callout callout--above text-align-left"><span class="callout__arrow"></span>
+																	<h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Affordable Care Act</h3>
+																	<span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Select this option if you, your spouse, or dependents enrolled in a health plan through the Health Insurance Marketplace and received a 1095-A.</span></span>
+																</div>
+																<span class="font-14 font-weight-lighter text-align-right grow-1  {if $detail.affordable_care_act_did_confirm eq 1}color-white{else/}color-grey{/if}">1095-A</span>
+															</div>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</main>
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+							    {include file='public:footer_nojs'/}
+								<script>
+								$('.action-button').click(function () {
+                                            var url=$(this).attr('data-src');
+                                            if(url=='nextform'||url=="lastform"){
+                                                var tag=0;
+                                                if(url=='nextform'){
+                                                    $('.multi-select-option').each(function () {
+                                                        if($(this).hasClass("multi-select-option--selected dark-theme")){
+                                                            tag=1;
+                                                        }
+                                                    });
+                                                    if(tag==0){
+                                                        $("#page").val("page19-1");
+                                                    }
+                                                }
+                                                $('#'+url).submit();
+                                            }else{
+                                                if(url!='')location.href=url;else return false;
+                                            }
+                                    });
+                                     function ajax_post_field(fieldname,fieldvalue,link) {
+                                         var pagename="{$pagename}";
+                                      $.ajax({
+                                                url:"{:url('api/pagesave')}",
+                                                type:'post',
+                                                data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename},
+                                                dataType:'json',
+                                                success:function (res) {
+                                                    if (res.code==1){
+                                                        console.log('sucess');
+                                                        var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                                                       $('#savetime').html(html);
+                                                    }else {
+                                                        console.log('sucess');
+                                                      //  msg(res.msg);
+                                                    }
+                                                },error:function () {
+                                                    msg('Try it again later')
+                                                }
+                                     });
+                                  }
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+</iframe>
+<script>
+$(document).ready(function() {
+      $('.multi-select-option').click(function () {
+            // $(".radio-select-option").each(function(){
+            //   $(this).find("input[type='radio']").prop('checked',false);
+            //   $(this).removeClass('radio-select-option--selected dark-theme');
+            // });  row align-center
+            if($(this).hasClass('multi-select-option--selected dark-theme')){
+                $(this).removeClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-white');
+                $(this).find('span').addClass('color-grey');
+                var fieldvalue=2;
+            }else{
+                $(this).addClass('multi-select-option--selected dark-theme');
+                $(this).find('span').removeClass('color-grey');
+                $(this).find('span').addClass('color-white');
+                var fieldvalue=1;//1选中 2未选中
+               // $('.banner--error').hide();
+            }
+           var fieldname=$(this).attr('data-src');
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             // alert($('#page').val());
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+});
+</script>

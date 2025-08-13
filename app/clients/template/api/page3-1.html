@@ -1,0 +1,117 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+	
+		<div class="master-detail-layout__body">
+		
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+										<div class="master-detail-layout__main-content">
+											<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+												<h1 class="center text-center font-36 extrabold mt-20">What's your new address?</h1>
+												<div style="height: 20px;"></div>
+												<form class="address-input row-wrap gap-20" style="width: 100%;">
+													<div class="w-full row-wrap gap-20">
+														<div class="f-field w-300 grow-2">
+															<label for="9apw0">Address&nbsp;</label>
+															<input id="address" data-src="basic_info_mailing_address_street" value="{$detail.basic_info_mailing_address_street}" autocomplete="off" type="text">
+														</div>
+														<div class="f-field w-150 grow-1">
+															<label for="ll138">City&nbsp;</label>
+															<input id="city" data-src="basic_info_mailing_address_city" value="{$detail.basic_info_mailing_address_city}" autocomplete="off" type="text">
+														</div>
+													</div>
+													<div class="w-full row-wrap gap-20">
+														<div class="f-field w-150 grow-2">
+															<label for="ml0yx">State&nbsp;</label>
+															<input id="state"  data-src="basic_info_mailing_address_state" value="{$detail.basic_info_mailing_address_state}"  autocomplete="off" type="text">
+														</div>
+														<div class="f-field w-150 grow-2">
+															<label for="5jpg5">Country</label>
+															<select class="f-input" id="country">
+                                    							<option label="Select an option"></option>
+                                    							<?php foreach($country_ary as $key=>$val){ ?>
+                                    						     	<option value="{$key}" {if $key eq $detail.basic_info_mailing_address_country} selected{/if}>{$val}</option>
+                                    							<?php }?>
+                                    						</select>
+														</div>
+														<div class="f-field w-75 grow-1">
+															<label for="m83hy">ZIP code&nbsp;</label>
+															<input id="zip"  data-src="basic_info_mailing_address_zip" value="{$detail.basic_info_mailing_address_zip}" autocomplete="off" type="text" value="v">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</main>
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+       $("#country").change(function(){
+           var fieldname='basic_info_mailing_address_country';
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });
+    $("#address").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+     $("#city").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+     $("#state").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+     $("#zip").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+</script>

@@ -1,0 +1,29 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">系统公告</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="notice">
+    <div class="notice-list"></div>
+</div>
+<!--内容区e-->
+</body>
+<style>
+    .hui-media-list img{
+        width: 60px;
+    }
+</style>
+<script>
+    $(function () {
+        public_ajax('.notice-list',"{:url('Content/ajax_essay_list')}",'','暂无公告');
+    })
+</script>
+</html>

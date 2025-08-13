@@ -1,0 +1,56 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">我的团队</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="group">
+    <div class="money-top">
+        <a class="top-item">
+            <p>我的抢购</p>
+            <h5>{$user.lj_buy}</h5>
+        </a>
+        <a class="top-item">
+            <p>团队抢购</p>
+            <h5>{$user.td_buy}</h5>
+        </a>
+        <a class="top-item">
+            <p>团队人数</p>
+            <h5>{$user.td_num}</h5>
+        </a>
+        <a class="top-item">
+            <p>直推人数</p>
+            <h5>{$user.zt_num}</h5>
+        </a>
+    </div>
+    <div class="group-info" style="padding: 0">
+        <div class="tit" style="padding-left: 10px">我的团队</div>
+        <div class="public-view-list">
+            <div class="title">
+                <span>手机号码</span>
+                <span>等级</span>
+                <span>注册日期</span>
+            </div>
+            <div id="container"></div>
+        </div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<style>
+    .public-view-list .title, .public-view-list .list{
+        background: none;
+    }
+</style>
+<script>
+    $(function () {
+        public_ajax('#container',"{:url('User/ajax_team')}",'','暂无相关数据');
+    });
+</script>
+</html>

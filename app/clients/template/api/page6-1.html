@@ -1,0 +1,161 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+	
+		<div class="master-detail-layout__body">
+		
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+										<div class="master-detail-layout__main-content">
+											<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+												<h1 class="center text-center font-36 extrabold mt-20">Tell us about your spouse</h1>
+												<div style="height: 20px;"></div>
+												<form class="row-wrap gap-20" style="width: 100%;">
+													<div class="f-field grow-1">
+														<label for="ulr80">First name&nbsp;</label>
+														<input id="a1" placeholder="First name" autocomplete="off" type="text" data-src="basic_info_spouse_name_first_name" value="{$detail.basic_info_spouse_name_first_name}">
+													</div>
+													<div class="f-field grow-1">
+														<label for="mkuif">Last name&nbsp;</label>
+														<input id="a2" placeholder="Last name" autocomplete="off" type="text" data-src="basic_info_spouse_name_last_name" value="{$detail.basic_info_spouse_name_last_name}">
+													</div>
+											    </form>
+												<div class="f-field">
+													<label for="7cj6x">Social Security Number&nbsp;</label>
+													<input id="a3" autocomplete="off" type="text" data-src="basic_info_spouse_social_security_number" value="{$detail.basic_info_spouse_social_security_number}">
+												</div>
+												<div class="f-field">
+													<label for="n979e">Date of Birth</label>
+													<input id="a4" placeholder="mm/dd/yyyy" autocomplete="off" type="text" data-src="basic_info_spouse_date_of_birth" value="{$detail.basic_info_spouse_date_of_birth}">
+												</div>
+												<div class="f-field">
+													<label for="72131">Occupation&nbsp;</label>
+													<input id="a5" autocomplete="off" type="text" data-src="basic_info_spouse_occupation" value="{$detail.basic_info_spouse_occupation}">
+												</div>
+												<div class="f-field">
+													<label for="1ahmo">Phone Number&nbsp;</label>
+													<input id="a6" autocomplete="off" type="text" data-src="basic_info_spouse_phone_number" value="{$detail.basic_info_spouse_phone_number}">
+												</div>
+												<div class="f-field">
+													<label for="k6sip">Email Address&nbsp;</label>
+													<input id="a7" autocomplete="off" type="text" data-src="basic_info_spouse_email_address" value="{$detail.basic_info_spouse_email_address}">
+												</div>
+												<div class="toggle-button__container ">My spouse can be claimed as a dependent on someone else's return<div style="width: 20px;"></div>
+													<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-1" class="cb-item_input" data-src="basic_info_spouse_dependent_of_another" {if $detail.basic_info_spouse_dependent_of_another eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-1" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+												<div class="toggle-button__container ">My spouse is blind or disabled<div style="width: 20px;"></div>
+													<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-2" class="cb-item_input"  data-src="basic_info_spouse_is_blind_or_disabled" {if $detail.basic_info_spouse_is_blind_or_disabled eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-2" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+												<div class="toggle-button__container ">My spouse was a full-time student<div style="width: 20px;"></div>
+												   <div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-3" class="cb-item_input" data-src="basic_info_spouse_is_full_time_student" {if $detail.basic_info_spouse_is_full_time_student eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-3" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+												<div class="toggle-button__container ">My spouse was on active military duty<div style="width: 20px;"></div>
+													<div class="cb-item_ios-style">
+                                                        <input type="checkbox" id="cb-item_ios-style-4" class="cb-item_input" data-src="basic_info_spouse_was_on_active_duty"  {if $detail.basic_info_spouse_was_on_active_duty eq 1}checked="" {/if}>
+                                                        <label for="cb-item_ios-style-4" class="cb-item_label">
+                                                            <span class="cb-item_marker"></span>
+                                                        </label>
+                                                    </div>
+												</div>
+											</div>
+										</div>
+									</main>
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+      var dateInput = $('#a4');
+    // 当输入框失去焦点时，检测输入值是否为有效日期
+    dateInput.on('blur', function() {
+        var inputValue = $(this).val();
+        Valuevar = $(this).val();
+        // 定义正则表达式，用于匹配 "mm-dd-yyyy" 格式
+       var regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+        // 使用正则表达式的 test 方法来检查输入值是否匹配
+        if (regex.test(inputValue)) {
+           
+        } else {
+		    if(inputValue!=''){
+			  alert('Give the correct date format please');
+			}
+        }
+    });
+   for(i=1;i<=7;i++){
+        var obj="#a"+i;
+      $(obj).blur(function(){
+	       if(obj=='#a4'){
+		      var inputValue = $(this).val();
+				// 定义正则表达式，用于匹配 "mm-dd-yyyy" 格式
+			   var regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+				// 使用正则表达式的 test 方法来检查输入值是否匹配
+				if (regex.test(inputValue)) {
+				   
+				} else {
+					if(inputValue!=''){
+					  alert('Give the correct date format please');
+					  return false;
+					}
+				}
+		   }
+          // alert($(this).val());
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+      });  
+   }
+ for(i=1;i<=4;i++){
+      var obj2="#cb-item_ios-style-"+i;
+      $(obj2).click(function () {
+      var val=0;
+      if ($(this).prop('checked')) {
+        val=1;
+      }
+      var fieldname=$(this).attr('data-src');//'basic_info_taxpayer_dependent_by_other';
+      var fieldvalue=val;
+      var link="{$detail.link}";
+      
+       $('#savetime').html('Saving');
+      ajax_post_field(fieldname,fieldvalue,link);  
+   });
+ }
+</script>

@@ -1,0 +1,110 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">How much did you contribute to your Solo 401(k) plan?</h1>
+                                    			<p class="text-center">
+                                    				<span></span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<?php
+                                    			    $nec=0;
+                                    			    $misc=0;
+                                    			    $sep=0;
+                                    			    $k=0;
+                                    			    $none=0;
+                                    			    if($detail['retirement_contributions_type_of_ira']!=''&&$detail['retirement_contributions_type_of_ira']!='null'){
+                                    			        $ary22=json_decode($detail['retirement_contributions_type_of_ira'],true);
+                                        			    foreach($ary22 as $key=>$val){
+                                        			        switch($val){
+                                        			          case 't_ira':
+                                        			          $nec=1;
+                                        			          break;
+                                        			          case 'r_ira':
+                                        			          $misc=1;
+                                        			          break;
+                                        			          case 'sep':
+                                        			          $sep=1;
+                                        			          break;
+                                        			          case '401k':
+                                        			          $k=1;
+                                        			          break;
+                                        			          case 'none':
+                                        			          $none=1;
+                                        			          break;
+                                        			        }
+                                        			    }
+                                    			    }
+                                                   
+                                                  if($misc){
+                                                    $lastpage="page18-8-1-rira";
+                                                  }else{
+                                                     if($nec){
+                                                       $lastpage="page18-8-1-tira";
+                                                     }else{
+                                                        $lastpage="page18-8";
+                                                     }
+                                                  }
+                                    			?>
+                                    			<div class="f-field">
+                                    			<label for="bxwt5">You &nbsp;</label>
+                                    				<input id="a1" autocomplete="off" type="text"  data-src="taxpayer_solo_401k_contributions" value="{$detail.taxpayer_solo_401k_contributions}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    			<label for="bxwt5">Your Spouse &nbsp;</label>
+                                    				<input id="a2" autocomplete="off" type="text"  data-src="spouse_solo_401k_contributions" value="{$detail.spouse_solo_401k_contributions}">
+                                    			</div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								<!--需要选择的单独写footer-->
+								<form actoin="{$actionpage}" id="lastform" method="post">
+									 <input type="hidden" name="page" value="{$lastpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+								</form>
+								<form actoin="{$actionpage}" id="nextform" method="post">
+									 <input type="hidden" id="page" name="page" value="{$nextpage}">
+									 <input type="hidden" name="link" value="{$detail.link}">
+									 <input type="hidden" name="finishpage" value="retirement_contributions_did_confirm" >
+								</form>
+								 {include file='public:footer2'/}
+								<!--需要选择的单独写footer-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      for(var i=1;i<=2;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           $('#savetime').html('Saving');
+           ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+});
+</script>

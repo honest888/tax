@@ -1,0 +1,76 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body>
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="search-bar">
+        <span class="iconfont iconsousuo"></span>
+        <input type="text" class="search-input" value="{$Request.param.keyword}" placeholder="搜索">
+        <button type="button" class="search-btn">搜索</button>
+    </div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="goodslist">
+    <div class="public_header">
+        <a href="{:url('Goods/goods_list',['order'=>'all','keyword'=>$keyword,'type'=>$type,'cat_id'=>$cat_id])}" {if $order == 'all'}class="act"{/if}>综合</a>
+        <a href="{:url('Goods/goods_list',['order'=>'sales_sum','cat_id'=>$cat_id,'keyword'=>$keyword,'type'=>$type,'sort'=>$sort=='desc'?'asc':'desc'])}">
+            <span {if $order == 'sales_sum'}class="act"{/if}>销量</span>
+            <span class="right">
+                <span class="iconfont iconjiantou-up {if $order == 'sales_sum' && $sort == 'asc'}act{/if}"></span>
+                <span class="iconfont iconjiantou-down {if $order == 'sales_sum' && $sort == 'desc'}act{/if}"></span>
+            </span>
+        </a>
+        <a href="{:url('Goods/goods_list',['order'=>'goods_price','cat_id'=>$cat_id,'type'=>$type,'keyword'=>$keyword,'sort'=>$sort=='desc'?'asc':'desc'])}">
+            <span {if $order == 'goods_price'}class="act"{/if}>价格</span>
+            <span class="right">
+                <span class="iconfont iconjiantou-up {if $order == 'goods_price' && $sort == 'asc'}act{/if}"></span>
+                <span class="iconfont iconjiantou-down {if $order == 'goods_price' && $sort == 'desc'}act{/if}"></span>
+            </span>
+        </a>
+        <a onclick="view(this)">
+            <span class="iconfont iconliebiao"></span>
+        </a>
+    </div>
+    <div class="public-list mto5">
+        <div class="public-list-list"></div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<style>
+    .search-bar{
+        flex: 1;
+    }
+</style>
+<script>
+    $(function () {
+        $('.search-btn').on('click',function () {
+            $('.public-list-list').empty();
+            get_more();
+        });
+        get_more();
+    });
+    function get_more() {
+        var keyword=$('.search-input').val();
+        var data="&keyword="+keyword+"&order={$order}"+"&sort={$sort}"+"&cat_id={$cat_id}";
+        public_ajax('.public-list-list',"{:url('Goods/ajax_goods')}",data,'暂无相关商品');
+    }
+    function view(obj) {
+        var span=$(obj).find('.iconfont');
+        if (span.hasClass('iconliebiao')){
+            span.removeClass('iconliebiao').addClass('iconfenlei');
+        }else {
+            span.removeClass('iconfenlei').addClass('iconliebiao');
+        }
+        $(obj).addClass('act');
+        var str=$('.layui-flow-more').is(':hidden');
+        if (!str){
+            $('.public-list-list').toggleClass('column');
+        }
+    }
+</script>
+</html>

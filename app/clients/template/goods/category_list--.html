@@ -1,0 +1,81 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header">
+	<div class="search">
+		<input type="text" placeholder="请输入搜索内容">
+	</div>
+	<a id="popup" class="iconfont iconmenu"></a>
+	<a id="ajax_search" style="display:none">搜索</a>
+</header>
+<!--头部导航位置e-->
+<!--搜索框位置s-->
+<div id="search" style="display:none">
+	<div class="shade"></div>
+	<div class="search-info">
+		<div class="title">热门搜索</div>
+		<div class="search-list">
+			{foreach name="$tpshop_config.basic_hot_keywords" item="wd" key="k"}
+				<span>{$wd}</span>
+			{/foreach}
+		</div>
+	</div>
+</div>
+<!--搜索框位置e-->
+<!--内容区s-->
+<div id="cate">
+    <div class="cate-left">
+        {volist name="catList" id="cat"}
+        <a {if $i eq 1}class="active"{/if} data-id="{$cat.id}">{$cat.name}</a>
+        {/volist}
+    </div>
+    <div class="cate-right">
+        <div id="list">
+
+        </div>
+    </div>
+</div>
+<!--内容区e-->
+<!--底部导航s-->
+{include file='public:bottom'/}
+<!--底部导航e-->
+</body>
+<script>
+    $('.cate-left a').click(function () {
+        if ($(this).hasClass('active')){
+            return false;
+        }
+        $(this).addClass('active').siblings().removeClass('active');
+        ajax_more();
+    });
+    ajax_more();
+    function ajax_more(){
+        var cat_id=$('.cate-left a.active').data('id');
+        if (cat_id){
+            $.ajax({
+                url:"{:url('Goods/ajax_cate')}",
+                type:'post',
+                data:{cat_id:cat_id},
+                dataType:'json',
+                success:function (res) {
+                    if (res.code==1){
+                        $('#list').empty().append(res.data);
+                    }
+                }
+            });
+        }
+    }
+    $('#ajax_search').click(function () {
+        var key=$('.header .search input').val();
+        if (key==''){
+            msg('请输入搜索内容');
+            $('.header .search input').focus();
+            return false;
+        }
+        $('.header .search input').focus();
+        location.href="{:url('Goods/goods_list')}?keyword="+key;
+    });
+</script>
+</html>

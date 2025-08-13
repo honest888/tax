@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style.css" crossorigin=""	data-precedence="next" />
+</head>
+<body>
+<div class="master-detail-layout f-theme column align-center">
+	<header>
+		<div class="navigation navigation--header row align-center w-full">
+			<div class="navigation__inner">
+				<a href="/">
+					<p style="font-family: Gilroy; font-weight: 900; font-size: 28px; color: rgb(72, 79, 117); margin: 0px;">
+						Republic Ta<span style="color: rgb(83, 108, 241);">x</span>
+					</p>
+				</a>
+				<div class="grow-1"></div>
+				<!--right menu start-->
+				<style>
+				    .f-theme {
+                    --text-input-padding: 20px;
+                    --text-input-height: 60px;
+                    --text-input-border: 1px solid #e3e3e3;
+                    font-family: Gilroy;
+                }
+				.row, .row-wrap {
+                    display: flex;
+                    flex-direction: row;
+                }
+				.align-self-stretch {
+                    align-self: stretch;
+                }
+				.gap-20 {
+                    gap: 20px;
+                }
+				.font-14 {
+                    font-size: 14px;
+                }
+				.navigation nav .link-active {
+                    font-weight: 700;
+                    color: #000;
+                }
+				.navigation--header nav>a:not(.action-button) {
+                    position: relative;
+                    line-height: 60px;
+                    color: #717589;
+                 }
+                 .font-14 {
+                        font-size: 14px;
+                    }
+                 .f-theme a {
+                    cursor: pointer;
+                    text-decoration: none;
+                }  
+                .navigation nav .link-active:before {
+                    content: "";
+                    background-color: var(--color-blue);
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 6px;
+                }
+				</style>
+				<!--
+                <div class="framer-10slqsx" data-framer-name="Right Side" style="opacity: 1;">
+                	<div class="framer-16ycv10-container" style="opacity: 1;">
+                	<?php if(session('user')){?>
+                		<div class="framer-2HTsd framer-cYRH6 framer-v-1vkpx8j" tabindex="0">
+                			<a class="framer-1skui0i framer-1oe6d9m" data-framer-name="Secondary" data-highlight="true" href="{:url('user/logout')}" rel="noopener" tabindex="0">
+                			<p class="framer-text framer-styles-preset-bm1xh3" data-styles-preset="lJ8sDwX4r" style="color:#717589;font-weight:bold;min-width:80px;">Log Out</p></p>
+                			</a>
+                		</div>
+                	<?php }else{ ?>
+                    	<div class="framer-2HTsd framer-cYRH6 framer-v-1vkpx8j" style="border:1px solid #e5e5e5;border-radius:5px;" tabindex="0">
+                    			<a class="framer-1skui0i framer-1oe6d9m" data-framer-name="Secondary" data-highlight="true" href="{:url('user/login')}" rel="noopener" tabindex="0">
+                    			<p class="framer-text framer-styles-preset-bm1xh3" data-styles-preset="lJ8sDwX4r" style="color:#000000;font-weight:bold;">Login</p>
+                    			</a>
+                    	</div>
+                	 <?php }?>
+                	</div>
+                </div>-->
+                <?php if(session('user')){?>
+                <nav class="row align-self-stretch gap-20 font-14">
+                	<a href="{:url('user/center')}">
+                		Clients
+                	</a>
+                	<!--
+                	<a href="/stanfordtax-2/team" class="">
+                		Team
+                	</a>
+                	
+                	<a href="/stanfordtax-2/branding" class="">
+                		Branding
+                	</a>
+                	<a href="/stanfordtax-2/plans" class="" class="link-active">
+                		Plans
+                	</a>-->
+                	<a class="logout-button" style="cursor: pointer;" href="{:url('user/logout')}">
+                		Log out
+                	</a>
+                    <!--
+                	<a class="action-button action-button--secondary" href="https://calendly.com/stanford-tax/intro"
+                	target="_blank" rel="noreferrer">
+                		Book demo
+                	</a>-->
+                </nav>
+                <?php }else{ ?>
+                <div class="framer-10slqsx" data-framer-name="Right Side" style="opacity: 1;">
+                	<div class="framer-16ycv10-container" style="opacity: 1;">
+                    	<div class="framer-2HTsd framer-cYRH6 framer-v-1vkpx8j" style="border:1px solid #e5e5e5;border-radius:5px;padding:5px 10px;" tabindex="0">
+                    			<a class="framer-1skui0i framer-1oe6d9m" data-framer-name="Secondary" data-highlight="true" href="{:url('user/login')}" rel="noopener" tabindex="0">
+                    			<p class="framer-text framer-styles-preset-bm1xh3" data-styles-preset="lJ8sDwX4r" style="color:#000000;font-weight:bold;">Login</p>
+                    			</a>
+                    	</div>
+                	</div>
+                </div>
+                <?php }?>
+			<!--right menu end-->
+			</div>
+		</div>
+	</header>
+	<div class="master-detail-layout__body">
+		<main class="master-detail-layout__main-container">
+			<div class="master-detail-layout__main-content column align-center pv-60">
+				{$tpshop_config.basic_home_detail|raw}
+			</div>
+		</main>
+	</div>
+</div>
+</body>
+</html>

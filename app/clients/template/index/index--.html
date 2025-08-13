@@ -1,0 +1,266 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<script src="__MOBILE__/js/swiper.min.js"></script>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<!--内容s-->
+<div id="index">
+  <div class="index-bg"></div>
+  <div class="top">
+    <div class="search-bar">
+      <span class="iconfont iconsousuo"></span>
+      <input type="text" class="search-input" placeholder="搜索">
+      <button type="button" class="search-btn">搜索</button>
+    </div>
+    <!--轮播位置s-->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {volist name="$ad" id="ad"}
+        <div class="swiper-slide">
+          <a href="{$ad.ad_link}">
+            <img src="{$ad.image}">
+          </a>
+        </div>
+        {/volist}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="menu-container">
+      <!--菜单位置s-->
+      <div class="indexmenu">
+        <a href="{:url('Goods/category_list')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/fenlei.png">
+            </dt>
+            <dd>商品分类</dd>
+          </dl>
+        </a>
+        <a href="javascript:;">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/mianbu.png">
+            </dt>
+            <dd>面部产品</dd>
+          </dl>
+        </a>
+        <a href="javascript:;">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/daren.png">
+            </dt>
+            <dd>达人推荐</dd>
+          </dl>
+        </a>
+        <a href="{:url('Shop/index')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/huiyuan.png">
+            </dt>
+            <dd>会员专区</dd>
+          </dl>
+        </a>
+        <a href="{:url('User/jifen')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/qiandao.png">
+            </dt>
+            <dd>每日签到</dd>
+          </dl>
+        </a>
+        <a href="javascript:;">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/dongtai.png">
+            </dt>
+            <dd>商城动态</dd>
+          </dl>
+        </a>
+        <a href="{:url('Content/video_list')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/shipin.png">
+            </dt>
+            <dd>视频专区</dd>
+          </dl>
+        </a>
+        <a href="javascript:;">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/zhibo.png">
+            </dt>
+            <dd>在线直播</dd>
+          </dl>
+        </a>
+        <a href="{:url('Circle/index')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/shequ.png">
+            </dt>
+            <dd>社区圈子</dd>
+          </dl>
+        </a>
+        <a href="javascript:;">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index/jiaju.png">
+            </dt>
+            <dd>家具用品</dd>
+          </dl>
+        </a>
+      </div>
+      <!--公告位置s-->
+      <div class="notice">
+        <div class="left">
+          <img src="__MOBILE__/img/index/toutiao.png">
+        </div>
+        <div class="right swiper">
+          <div class="swiper-wrapper">
+            {volist name="$essay" id="essay"}
+            <div class="swiper-slide">
+              <a href="{:url('Content/essay_detail',['artid'=>$essay.id])}">{$essay.title}</a>
+            </div>
+            {/volist}
+          </div>
+        </div>
+        <a class="more" href="{:url('Content/essay_list')}">更多</a>
+      </div>
+    </div>
+    <div class="ad-container">
+      <div class="left">
+        <a href="javascript:;">
+          <img src="__MOBILE__/img/index/ad-left.png">
+        </a>
+      </div>
+      <div class="right">
+        <a href="javascript:;">
+          <img src="__MOBILE__/img/index/ad1.png">
+        </a>
+        <a href="javascript:;">
+          <img src="__MOBILE__/img/index/ad2.png">
+        </a>
+      </div>
+    </div>
+    <div class="video-container">
+      <div class="video-top">
+        <div class="left">视频专区</div>
+        <a href="{:url('Content/video_list')}" class="right">
+          <span>更多</span>
+          <span class="iconfont iconjiantou"></span>
+        </a>
+      </div>
+      <div class="video-list">
+        <div class="video-list-container">
+          {volist name="$video_list" id="video"}
+          <div class="video-item">
+            <div class="video-title">{$video.title}</div>
+            <img src="__MOBILE__/img/play.png" data-id="{$video.id}" class="play">
+            <video id="video{$video.id}" data-id="{$video.id}" class="video" src="{$video.video_url}" poster="{$video.image}">您的浏览器不支持 video 标签。</video>
+            <div class="video-duration">{$video.duration}</div>
+          </div>
+          {/volist}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="goods-list mto5">
+    <div class="img-title">
+      <img src="__MOBILE__/img/tuijian.png">
+    </div>
+    <div class="goods-container mto5">
+      <div class="goods-list-container"></div>
+    </div>
+  </div>
+  <div style="height: 60px"></div>
+</div>
+<!--内容e-->
+<!--底部导航s-->
+{include file='public:bottom'/}
+<!--底部导航e-->
+</body>
+<style>
+  .header{
+    background-color: #fff;
+  }
+  .header .title span{
+    font-size: 13px;
+  }
+</style>
+<script>
+  var id=0;
+  $(function () {
+    $('.search-btn').click(function () {
+      var key=$('.search-input').val();
+      if (key==''){
+        msg('请输入搜索内容');
+        $('.search-input').focus();
+        return false;
+      }
+      $('.search-input').focus();
+      location.href="{:url('Goods/goods_list')}?keyword="+key;
+    });
+    get_more();
+    // var video = document.getElementsByTagName("video");
+    // for ( var i in video) {
+    //   var e = video[i];
+    //   (function(i) {
+    //     $(e).bind('play', function() {
+    //       for ( var j in video) {
+    //         if (j != i) {
+    //           document.getElementById('video'+j).pause();
+    //         }
+    //       }
+    //     });
+    //   })(i);
+    // }
+    $(document).on('click','.play',function (){
+      var obj=$(this).next('video');
+      obj.trigger('click');
+    })
+    $(document).on('click','.video',function (){
+      var did=$(this).attr('data-id');
+      var obj=$(this).prev('.play');
+      var isHidden=obj.is(':hidden');
+      if (did==id){
+        if (isHidden){
+          obj.show();
+          $(this).trigger('pause');
+        }else {
+          obj.hide();
+          $(this).trigger('play');
+        }
+      }else {
+        obj.hide();
+        $('.play[data-id='+id+']').show();
+        $('#video'+id).trigger('pause');
+        $(this).trigger('play');
+        id=did;
+      }
+    })
+  });
+  function get_more() {
+    public_ajax('.goods-list-container',"{:url('Index/ajax_index')}",'','暂无相关商品');
+  }
+  var swiper = new Swiper('.swiper-container', {
+    loop:true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    autoplay: {
+      delay: 3000,
+      stopOnLastSlide: false,
+      disableOnInteraction: false,
+    },
+  });
+  var swiper1 = new Swiper('.swiper', {
+    loop:true,
+    direction: 'vertical',
+    autoplay: {
+      delay: 3000,
+      stopOnLastSlide: false,
+      disableOnInteraction: false,
+    },
+  });
+</script>
+</html>

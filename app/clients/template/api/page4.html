@@ -1,0 +1,520 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+	
+		<div class="master-detail-layout__body">
+			<nav class="master-detail-layout__nav mobile-hide">
+				<div class="f-theme folder-sidebar column gap-20 position-relative">
+					<div class="column gap-12" style="flex: 1 1 0%; overflow-y: auto; padding-top: 20px; padding-bottom: 120px;">
+						<div class="row justify-between align-center" style="margin: 0px 10px;">
+							<div class="folder-section-badge color-grey font-12 uppercase row align-center gap-6" style="border: 1px solid var(--color-grey); padding: 4px 15px; border-radius: 20px;">
+								<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M3.35357 2.39646C3.54882 2.59172 3.54881 2.9083 3.35355 3.10356L1.60355 4.85347C1.41451 5.04251 1.11021 5.04939 0.91281 4.8691L0.162811 4.1841C-0.0410874 3.99788 -0.055413 3.68162 0.130814 3.47772C0.31704 3.27382 0.633298 3.2595 0.837196 3.44572L1.23436 3.80847L2.64646 2.39644C2.84173 2.20118 3.15831 2.20119 3.35357 2.39646ZM3.35355 8.10356C3.54881 7.90831 3.54882 7.59172 3.35357 7.39646C3.15831 7.20119 2.84173 7.20118 2.64646 7.39644L1.23436 8.80847L0.837196 8.44572C0.633298 8.2595 0.31704 8.27382 0.130814 8.47772C-0.055413 8.68162 -0.0410874 8.99788 0.162811 9.1841L0.91281 9.8691C1.11021 10.0494 1.41451 10.0425 1.60355 9.85347L3.35355 8.10356ZM4.5 8.5C4.5 8.22386 4.72386 8 5 8H11.5C11.7761 8 12 8.22386 12 8.5C12 8.77614 11.7761 9 11.5 9H5C4.72386 9 4.5 8.77614 4.5 8.5ZM5 3C4.72386 3 4.5 3.22386 4.5 3.5C4.5 3.77614 4.72386 4 5 4H11.5C11.7761 4 12 3.77614 12 3.5C12 3.22386 11.7761 3 11.5 3H5Z" fill="#5D5F6B"></path>
+								</svg>Tasks
+							</div>
+						</div>
+						<div class="column">
+							<div class="column">
+								<a class="folder-list-item row align-center folder-list-item--selected">
+									<span class="flex-1">Complete Questionnaire</span>
+									<div class="folder-list-item-actions row align-center gap-6">
+										<div class="popover__child">
+											<button type="button" class="action-button action-button--mini action-button--icon-only" style="font-family: Gilroy;">
+												<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z" fill="#5D5F6B"></path>
+												</svg>
+											</button>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="column align-stretch" style="margin-top: 20px;">
+							<div class="row justify-between align-center" style="margin: 0px 10px;">
+								<div class="folder-section-badge color-grey font-12 uppercase row align-center gap-6" style="border: 1px solid var(--color-grey); padding: 4px 15px; border-radius: 20px;">
+									<svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M8 0C10.8166 0 12.4145 1.92329 12.6469 4.24599L12.7179 4.24599C14.5306 4.24599 16 5.75792 16 7.62299C16 9.48806 14.5306 11 12.7179 11H3.28205C1.46942 11 0 9.48806 0 7.62299C0 5.82009 1.3731 4.34717 3.10199 4.25098L3.35314 4.24599C3.58687 1.90802 5.18335 0 8 0ZM8 1C5.88606 1 4.55108 2.31588 4.34818 4.34547C4.29707 4.85669 3.86688 5.24601 3.3531 5.24599L3.28207 5.24599C2.02819 5.24599 1 6.30392 1 7.62299C1 8.94206 2.02819 10 3.28205 10H12.7179C13.9718 10 15 8.94206 15 7.62299C15 6.30393 13.9718 5.24599 12.718 5.24599L12.6469 5.24599C12.1332 5.24601 11.703 4.85673 11.6518 4.34554C11.4497 2.32493 10.1085 1 8 1Z" fill="#5D5F6B"></path>
+									</svg>Uploads
+								</div>
+								<div class="action-button action-button--mini action-button--icon-only">
+									<input id="input-tmbgj" multiple="" type="file">
+									<svg width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M22 12.5C22 18.0228 17.5228 22.5 12 22.5C6.47715 22.5 2 18.0228 2 12.5C2 6.97715 6.47715 2.5 12 2.5C17.5228 2.5 22 6.97715 22 12.5ZM24 12.5C24 19.1274 18.6274 24.5 12 24.5C5.37258 24.5 0 19.1274 0 12.5C0 5.87258 5.37258 0.5 12 0.5C18.6274 0.5 24 5.87258 24 12.5ZM11 11.5V6.5H13V11.5H18V13.5H13V18.5H11V13.5H6V11.5H11Z" fill="currentColor"></path>
+									</svg>
+									<label class="action-button__file-label" for="input-tmbgj"></label>
+								</div>
+							</div>
+							<div class="column">
+								<h3>Uncategorized</h3>
+								<div class="column">
+									<a class="folder-list-item row align-center">
+										<span class="flex-1">002r1FuVgy1hkjdlcrobvj60j60pkdjy02.jpg</span>
+										<div class="folder-list-item-actions row align-center gap-6">
+											<div class="popover__child">
+												<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock color-black">
+													<circle cx="12" cy="12" r="10"></circle>
+													<polyline points="12 6 12 12 16 14"></polyline>
+												</svg>
+											</div>
+											<div class="popover__child">
+												<button type="button" class="action-button action-button--mini action-button--icon-only" style="font-family: Gilroy;">
+													<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z" fill="#5D5F6B"></path>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="column">
+									<a class="folder-list-item row align-center">
+										<span class="flex-1">002r1FuVgy1hkjdlcs8z4j60j60pkq6e02.jpg</span>
+										<div class="folder-list-item-actions row align-center gap-6">
+											<div class="popover__child">
+												<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock color-black">
+													<circle cx="12" cy="12" r="10"></circle>
+													<polyline points="12 6 12 12 16 14"></polyline>
+												</svg>
+											</div>
+											<div class="popover__child">
+												<button type="button" class="action-button action-button--mini action-button--icon-only" style="font-family: Gilroy;">
+													<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z" fill="#5D5F6B"></path>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="column">
+									<a class="folder-list-item row align-center">
+										<span class="flex-1">002r1FuVgy1hkjdlcsansj60j60pkjun02.jpg</span>
+										<div class="folder-list-item-actions row align-center gap-6">
+											<div class="popover__child">
+												<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock color-black">
+													<circle cx="12" cy="12" r="10"></circle>
+													<polyline points="12 6 12 12 16 14"></polyline>
+												</svg>
+											</div>
+											<div class="popover__child">
+												<button type="button" class="action-button action-button--mini action-button--icon-only" style="font-family: Gilroy;">
+													<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z" fill="#5D5F6B"></path>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="column">
+									<a class="folder-list-item row align-center">
+										<span class="flex-1">2.docx</span>
+										<div class="folder-list-item-actions row align-center gap-6">
+											<div class="popover__child">
+												<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock color-black">
+													<circle cx="12" cy="12" r="10"></circle>
+													<polyline points="12 6 12 12 16 14"></polyline>
+												</svg>
+											</div>
+											<div class="popover__child">
+												<button type="button" class="action-button action-button--mini action-button--icon-only" style="font-family: Gilroy;">
+													<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z" fill="#5D5F6B"></path>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="column">
+									<a class="folder-list-item row align-center">
+										<span class="flex-1">fb.txt</span>
+										<div class="folder-list-item-actions row align-center gap-6">
+											<div class="popover__child">
+												<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock color-black">
+													<circle cx="12" cy="12" r="10"></circle>
+													<polyline points="12 6 12 12 16 14"></polyline>
+												</svg>
+											</div>
+											<div class="popover__child">
+												<button type="button" class="action-button action-button--mini action-button--icon-only" style="font-family: Gilroy;">
+													<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M7.99984 5.33329C8.73317 5.33329 9.33317 4.73329 9.33317 3.99996C9.33317 3.26663 8.73317 2.66663 7.99984 2.66663C7.2665 2.66663 6.6665 3.26663 6.6665 3.99996C6.6665 4.73329 7.2665 5.33329 7.99984 5.33329ZM7.99984 6.66663C7.2665 6.66663 6.6665 7.26663 6.6665 7.99996C6.6665 8.73329 7.2665 9.33329 7.99984 9.33329C8.73317 9.33329 9.33317 8.73329 9.33317 7.99996C9.33317 7.26663 8.73317 6.66663 7.99984 6.66663ZM7.99984 10.6666C7.2665 10.6666 6.6665 11.2666 6.6665 12C6.6665 12.7333 7.2665 13.3333 7.99984 13.3333C8.73317 13.3333 9.33317 12.7333 9.33317 12C9.33317 11.2666 8.73317 10.6666 7.99984 10.6666Z" fill="#5D5F6B"></path>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="button-group justify-center gap-20 wrap column" style="padding: 20px 10px 0px; margin-bottom: 80px;">
+						<div class="button-group justify-center gap-20 wrap column">
+							<button type="button" class="action-button action-button--secondary" style="font-family: Gilroy; max-width: 100%;">
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5.4693 9.71891L5.55342 9.64629C5.84703 9.42844 6.2637 9.45264 6.52996 9.71891L9.24934 12.4382L9.24963 5.74854L9.25648 5.64676C9.30614 5.28069 9.61994 4.99854 9.99963 4.99854L10.1014 5.00538C10.4675 5.05504 10.7496 5.36884 10.7496 5.74854L10.7493 12.4402L13.47 9.71831L13.5541 9.64567C13.8477 9.42776 14.2644 9.45189 14.5307 9.7181C14.8236 10.0109 14.8237 10.4858 14.5309 10.7788L10.5309 14.7803L10.4468 14.8529C10.1532 15.0709 9.73643 15.0467 9.47013 14.7804L5.4693 10.7796L5.39669 10.6955C5.17883 10.4018 5.20304 9.98518 5.4693 9.71891ZM20 9.99902C20 15.5219 15.5228 19.999 10 19.999C4.47715 19.999 0 15.5219 0 9.99902C0 4.47618 4.47715 -0.000976562 10 -0.000976562C15.5228 -0.000976562 20 4.47618 20 9.99902ZM1.5 9.99902C1.5 14.6934 5.30558 18.499 10 18.499C14.6944 18.499 18.5 14.6934 18.5 9.99902C18.5 5.3046 14.6944 1.49902 10 1.49902C5.30558 1.49902 1.5 5.3046 1.5 9.99902Z" fill="currentColor"></path>
+								</svg>Download Folder ZIP
+							</button>
+							<button type="button" class="action-button action-button--secondary" style="font-family: Gilroy; max-width: 100%;">
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5.4693 9.71891L5.55342 9.64629C5.84703 9.42844 6.2637 9.45264 6.52996 9.71891L9.24934 12.4382L9.24963 5.74854L9.25648 5.64676C9.30614 5.28069 9.61994 4.99854 9.99963 4.99854L10.1014 5.00538C10.4675 5.05504 10.7496 5.36884 10.7496 5.74854L10.7493 12.4402L13.47 9.71831L13.5541 9.64567C13.8477 9.42776 14.2644 9.45189 14.5307 9.7181C14.8236 10.0109 14.8237 10.4858 14.5309 10.7788L10.5309 14.7803L10.4468 14.8529C10.1532 15.0709 9.73643 15.0467 9.47013 14.7804L5.4693 10.7796L5.39669 10.6955C5.17883 10.4018 5.20304 9.98518 5.4693 9.71891ZM20 9.99902C20 15.5219 15.5228 19.999 10 19.999C4.47715 19.999 0 15.5219 0 9.99902C0 4.47618 4.47715 -0.000976562 10 -0.000976562C15.5228 -0.000976562 20 4.47618 20 9.99902ZM1.5 9.99902C1.5 14.6934 5.30558 18.499 10 18.499C14.6944 18.499 18.5 14.6934 18.5 9.99902C18.5 5.3046 14.6944 1.49902 10 1.49902C5.30558 1.49902 1.5 5.3046 1.5 9.99902Z" fill="currentColor"></path>
+								</svg>Download PDF Workpaper
+							</button>
+						</div>
+					</div>
+					<div class="position-absolute font-12 row align-center gap-6 color-grey" style="bottom: 20px; left: 20px; line-height: 20px;">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M8 0C10.2091 0 12 1.79086 12 4V6H13.75C14.9926 6 16 7.00736 16 8.25L16.0004 9C15.6815 9.00005 15.3626 9.10957 15.1038 9.32862L14.9966 9.42931C14.8328 9.5998 14.6678 9.75186 14.5009 9.88599L14.5 8.25C14.5 7.83579 14.1642 7.5 13.75 7.5H2.25C1.83579 7.5 1.5 7.83579 1.5 8.25V17.75C1.5 18.1642 1.83579 18.5 2.25 18.5L12.1384 18.5008C12.546 19.0774 13.0606 19.579 13.6783 20.0005L2.25 20C1.00736 20 0 18.9926 0 17.75V8.25C0 7.00736 1.00736 6 2.25 6H4V4C4 1.79086 5.79086 0 8 0ZM16.2837 10.1223C17.2758 11.1576 18.3751 11.6667 19.6 11.6667C19.7933 11.6667 19.9546 11.8095 19.9919 11.9994L20 12.0833V14.5844C20 17.2663 18.687 19.0896 16.1265 19.9786C16.0444 20.0071 15.9556 20.0071 15.8735 19.9786C13.3984 19.1192 12.0889 17.3868 12.0044 14.8497L12 14.5844V12.0833C12 11.8532 12.1791 11.6667 12.4 11.6667C13.6234 11.6667 14.7233 11.1575 15.7178 10.122C15.8741 9.95921 16.1276 9.95936 16.2837 10.1223ZM8.00012 11.5C8.82855 11.5 9.50012 12.1716 9.50012 13C9.50012 13.8284 8.82855 14.5 8.00012 14.5C7.1717 14.5 6.50012 13.8284 6.50012 13C6.50012 12.1716 7.1717 11.5 8.00012 11.5ZM8 1.5C6.61929 1.5 5.5 2.61929 5.5 4V6H10.5V4C10.5 2.61929 9.38071 1.5 8 1.5Z" fill="currentColor"></path>
+						</svg>AES 256 Encrypted
+					</div>
+				</div>
+			</nav>
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						<div style="width: 100%;">
+							<div class="position-absolute row justify-center align-center mobile-hide" style="left: 0px; right: 0px; height: 80px; z-index: 1100;">
+								<div class="radio-tabs">
+									<a class="row align-top">Questionnaire</a>
+									<a class="row align-top">Answers</a>
+								</div>
+							</div>
+						</div>
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+									<main class="master-detail-layout__main-container">
+										<div class="master-detail-layout__main-content">
+											<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+												<h1 class="center text-center font-36 extrabold mt-20">What's your address?</h1>
+												<div style="height: 20px;"></div>
+												<form class="address-input row-wrap gap-20" style="width: 100%;">
+													<div class="w-full row-wrap gap-20">
+														<div class="f-field w-300 grow-2">
+															<label for="9apw0">Address&nbsp;</label>
+															<input id="address" data-src="basic_info_mailing_address_street" value="{$detail.basic_info_mailing_address_street}" autocomplete="off" type="text">
+														</div>
+														<div class="f-field w-150 grow-1">
+															<label for="ll138">City&nbsp;</label>
+															<input id="city" data-src="basic_info_mailing_address_city" value="{$detail.basic_info_mailing_address_city}" autocomplete="off" type="text">
+														</div>
+													</div>
+													<div class="w-full row-wrap gap-20">
+														<div class="f-field w-150 grow-2">
+															<label for="ml0yx">State&nbsp;</label>
+															<input id="state"  data-src="basic_info_mailing_address_state" value="{$detail.basic_info_mailing_address_state}"  autocomplete="off" type="text">
+														</div>
+														<div class="f-field w-150 grow-2">
+															<label for="5jpg5">Country</label>
+															<select class="f-input" id="5jpg5">
+																<option label="Select an option"></option>
+																<option value="AF">Afghanistan</option>
+																<option value="AX">Åland Islands</option>
+																<option value="AL">Albania</option>
+																<option value="DZ">Algeria</option>
+																<option value="AS">American Samoa</option>
+																<option value="AD">Andorra</option>
+																<option value="AO">Angola</option>
+																<option value="AI">Anguilla</option>
+																<option value="AQ">Antarctica</option>
+																<option value="AG">Antigua and Barbuda</option>
+																<option value="AR">Argentina</option>
+																<option value="AM">Armenia</option>
+																<option value="AW">Aruba</option>
+																<option value="AU">Australia</option>
+																<option value="AT">Austria</option>
+																<option value="AZ">Azerbaijan</option>
+																<option value="BS">Bahamas</option>
+																<option value="BH">Bahrain</option>
+																<option value="BD">Bangladesh</option>
+																<option value="BB">Barbados</option>
+																<option value="BY">Belarus</option>
+																<option value="BE">Belgium</option>
+																<option value="BZ">Belize</option>
+																<option value="BJ">Benin</option>
+																<option value="BM">Bermuda</option>
+																<option value="BT">Bhutan</option>
+																<option value="BO">Bolivia, Plurinational State of</option>
+																<option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+																<option value="BA">Bosnia and Herzegovina</option>
+																<option value="BW">Botswana</option>
+																<option value="BV">Bouvet Island</option>
+																<option value="BR">Brazil</option>
+																<option value="IO">British Indian Ocean Territory</option>
+																<option value="BN">Brunei Darussalam</option>
+																<option value="BG">Bulgaria</option>
+																<option value="BF">Burkina Faso</option>
+																<option value="BI">Burundi</option>
+																<option value="KH">Cambodia</option>
+																<option value="CM">Cameroon</option>
+																<option value="CA">Canada</option>
+																<option value="CV">Cape Verde</option>
+																<option value="KY">Cayman Islands</option>
+																<option value="CF">Central African Republic</option>
+																<option value="TD">Chad</option>
+																<option value="CL">Chile</option>
+																<option value="CN">China</option>
+																<option value="CX">Christmas Island</option>
+																<option value="CC">Cocos (Keeling) Islands</option>
+																<option value="CO">Colombia</option>
+																<option value="KM">Comoros</option>
+																<option value="CG">Congo</option>
+																<option value="CD">Congo, the Democratic Republic of the</option>
+																<option value="CK">Cook Islands</option>
+																<option value="CR">Costa Rica</option>
+																<option value="CI">Côte d'Ivoire</option>
+																<option value="HR">Croatia</option>
+																<option value="CU">Cuba</option>
+																<option value="CW">Curaçao</option>
+																<option value="CY">Cyprus</option>
+																<option value="CZ">Czech Republic</option>
+																<option value="DK">Denmark</option>
+																<option value="DJ">Djibouti</option>
+																<option value="DM">Dominica</option>
+																<option value="DO">Dominican Republic</option>
+																<option value="EC">Ecuador</option>
+																<option value="EG">Egypt</option>
+																<option value="SV">El Salvador</option>
+																<option value="GQ">Equatorial Guinea</option>
+																<option value="ER">Eritrea</option>
+																<option value="EE">Estonia</option>
+																<option value="ET">Ethiopia</option>
+																<option value="FK">Falkland Islands (Malvinas)</option>
+																<option value="FO">Faroe Islands</option>
+																<option value="FJ">Fiji</option>
+																<option value="FI">Finland</option>
+																<option value="FR">France</option>
+																<option value="GF">French Guiana</option>
+																<option value="PF">French Polynesia</option>
+																<option value="TF">French Southern Territories</option>
+																<option value="GA">Gabon</option>
+																<option value="GM">Gambia</option>
+																<option value="GE">Georgia</option>
+																<option value="DE">Germany</option>
+																<option value="GH">Ghana</option>
+																<option value="GI">Gibraltar</option>
+																<option value="GR">Greece</option>
+																<option value="GL">Greenland</option>
+																<option value="GD">Grenada</option>
+																<option value="GP">Guadeloupe</option>
+																<option value="GU">Guam</option>
+																<option value="GT">Guatemala</option>
+																<option value="GG">Guernsey</option>
+																<option value="GN">Guinea</option>
+																<option value="GW">Guinea-Bissau</option>
+																<option value="GY">Guyana</option>
+																<option value="HT">Haiti</option>
+																<option value="HM">Heard Island and McDonald Islands</option>
+																<option value="VA">Holy See (Vatican City State)</option>
+																<option value="HN">Honduras</option>
+																<option value="HK">Hong Kong</option>
+																<option value="HU">Hungary</option>
+																<option value="IS">Iceland</option>
+																<option value="IN">India</option>
+																<option value="ID">Indonesia</option>
+																<option value="IR">Iran, Islamic Republic of</option>
+																<option value="IQ">Iraq</option>
+																<option value="IE">Ireland</option>
+																<option value="IM">Isle of Man</option>
+																<option value="IL">Israel</option>
+																<option value="IT">Italy</option>
+																<option value="JM">Jamaica</option>
+																<option value="JP">Japan</option>
+																<option value="JE">Jersey</option>
+																<option value="JO">Jordan</option>
+																<option value="KZ">Kazakhstan</option>
+																<option value="KE">Kenya</option>
+																<option value="KI">Kiribati</option>
+																<option value="KP">Korea, Democratic People's Republic of</option>
+																<option value="KR">Korea, Republic of</option>
+																<option value="KW">Kuwait</option>
+																<option value="KG">Kyrgyzstan</option>
+																<option value="LA">Lao People's Democratic Republic</option>
+																<option value="LV">Latvia</option>
+																<option value="LB">Lebanon</option>
+																<option value="LS">Lesotho</option>
+																<option value="LR">Liberia</option>
+																<option value="LY">Libya</option>
+																<option value="LI">Liechtenstein</option>
+																<option value="LT">Lithuania</option>
+																<option value="LU">Luxembourg</option>
+																<option value="MO">Macao</option>
+																<option value="MK">Macedonia, the Former Yugoslav Republic of</option>
+																<option value="MG">Madagascar</option>
+																<option value="MW">Malawi</option>
+																<option value="MY">Malaysia</option>
+																<option value="MV">Maldives</option>
+																<option value="ML">Mali</option>
+																<option value="MT">Malta</option>
+																<option value="MH">Marshall Islands</option>
+																<option value="MQ">Martinique</option>
+																<option value="MR">Mauritania</option>
+																<option value="MU">Mauritius</option>
+																<option value="YT">Mayotte</option>
+																<option value="MX">Mexico</option>
+																<option value="FM">Micronesia, Federated States of</option>
+																<option value="MD">Moldova, Republic of</option>
+																<option value="MC">Monaco</option>
+																<option value="MN">Mongolia</option>
+																<option value="ME">Montenegro</option>
+																<option value="MS">Montserrat</option>
+																<option value="MA">Morocco</option>
+																<option value="MZ">Mozambique</option>
+																<option value="MM">Myanmar</option>
+																<option value="NA">Namibia</option>
+																<option value="NR">Nauru</option>
+																<option value="NP">Nepal</option>
+																<option value="NL">Netherlands</option>
+																<option value="NC">New Caledonia</option>
+																<option value="NZ">New Zealand</option>
+																<option value="NI">Nicaragua</option>
+																<option value="NE">Niger</option>
+																<option value="NG">Nigeria</option>
+																<option value="NU">Niue</option>
+																<option value="NF">Norfolk Island</option>
+																<option value="MP">Northern Mariana Islands</option>
+																<option value="NO">Norway</option>
+																<option value="OM">Oman</option>
+																<option value="PK">Pakistan</option>
+																<option value="PW">Palau</option>
+																<option value="PS">Palestine, State of</option>
+																<option value="PA">Panama</option>
+																<option value="PG">Papua New Guinea</option>
+																<option value="PY">Paraguay</option>
+																<option value="PE">Peru</option>
+																<option value="PH">Philippines</option>
+																<option value="PN">Pitcairn</option>
+																<option value="PL">Poland</option>
+																<option value="PT">Portugal</option>
+																<option value="PR">Puerto Rico</option>
+																<option value="QA">Qatar</option>
+																<option value="RE">Réunion</option>
+																<option value="RO">Romania</option>
+																<option value="RU">Russian Federation</option>
+																<option value="RW">Rwanda</option>
+																<option value="BL">Saint Barthélemy</option>
+																<option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+																<option value="KN">Saint Kitts and Nevis</option>
+																<option value="LC">Saint Lucia</option>
+																<option value="MF">Saint Martin (French part)</option>
+																<option value="PM">Saint Pierre and Miquelon</option>
+																<option value="VC">Saint Vincent and the Grenadines</option>
+																<option value="WS">Samoa</option>
+																<option value="SM">San Marino</option>
+																<option value="ST">Sao Tome and Principe</option>
+																<option value="SA">Saudi Arabia</option>
+																<option value="SN">Senegal</option>
+																<option value="RS">Serbia</option>
+																<option value="SC">Seychelles</option>
+																<option value="SL">Sierra Leone</option>
+																<option value="SG">Singapore</option>
+																<option value="SX">Sint Maarten (Dutch part)</option>
+																<option value="SK">Slovakia</option>
+																<option value="SI">Slovenia</option>
+																<option value="SB">Solomon Islands</option>
+																<option value="SO">Somalia</option>
+																<option value="ZA">South Africa</option>
+																<option value="GS">South Georgia and the South Sandwich Islands</option>
+																<option value="SS">South Sudan</option>
+																<option value="ES">Spain</option>
+																<option value="LK">Sri Lanka</option>
+																<option value="SD">Sudan</option>
+																<option value="SR">Suriname</option>
+																<option value="SJ">Svalbard and Jan Mayen</option>
+																<option value="SZ">Swaziland</option>
+																<option value="SE">Sweden</option>
+																<option value="CH">Switzerland</option>
+																<option value="SY">Syrian Arab Republic</option>
+																<option value="TW">Taiwan, Province of China</option>
+																<option value="TJ">Tajikistan</option>
+																<option value="TZ">Tanzania, United Republic of</option>
+																<option value="TH">Thailand</option>
+																<option value="TL">Timor-Leste</option>
+																<option value="TG">Togo</option>
+																<option value="TK">Tokelau</option>
+																<option value="TO">Tonga</option>
+																<option value="TT">Trinidad and Tobago</option>
+																<option value="TN">Tunisia</option>
+																<option value="TR">Turkey</option>
+																<option value="TM">Turkmenistan</option>
+																<option value="TC">Turks and Caicos Islands</option>
+																<option value="TV">Tuvalu</option>
+																<option value="UG">Uganda</option>
+																<option value="UA">Ukraine</option>
+																<option value="AE">United Arab Emirates</option>
+																<option value="GB">United Kingdom</option>
+																<option value="US">United States</option>
+																<option value="UM">United States Minor Outlying Islands</option>
+																<option value="UY">Uruguay</option>
+																<option value="UZ">Uzbekistan</option>
+																<option value="VU">Vanuatu</option>
+																<option value="VE">Venezuela, Bolivarian Republic of</option>
+																<option value="VN">Viet Nam</option>
+																<option value="VG">Virgin Islands, British</option>
+																<option value="VI">Virgin Islands, U.S.</option>
+																<option value="WF">Wallis and Futuna</option>
+																<option value="EH">Western Sahara</option>
+																<option value="YE">Yemen</option>
+																<option value="ZM">Zambia</option>
+																<option value="ZW">Zimbabwe</option>
+															</select>
+														</div>
+														<div class="f-field w-75 grow-1">
+															<label for="m83hy">ZIP code&nbsp;</label>
+															<input id="zip"  data-src="basic_info_mailing_address_zip" value="{$detail.basic_info_mailing_address_zip}" autocomplete="off" type="text" value="v">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</main>
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+    $("#address").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+     $("#city").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+     $("#state").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+     $("#zip").blur(function(){
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+           if(fieldvalue!=''){
+             $('#savetime').html('Saving');
+             ajax_post_field(fieldname,fieldvalue,link);  
+           }
+    });
+</script>

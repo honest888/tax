@@ -1,0 +1,1059 @@
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style.css" data-precedence="next" />
+		<link rel="stylesheet" href="__ST__/checkbox.css" data-precedence="next" />
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <script src="__MOBILE__/js/popup.js"></script>
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+		 <!--<link rel="stylesheet" href="__STATIC__/js/signature/popstyle.css">-->
+         <script src="__STATIC__/js/signature/snature.js"></script>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			font-size:15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto; /* Allow columns to adjust width based on content */
+        }
+        th, td {
+            border: 2px solid #000;
+            padding: 0px;
+            text-align: left;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflow content */
+            text-overflow: ellipsis; /* Show ellipsis for overflow text */
+			height:25px;
+        }
+        input[type="text"] {
+		    padding-left:20px;
+            width: 100%;
+            box-sizing: border-box;
+			min-width: 150px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+       .tips{
+	     font-size:13px;
+	   }
+	   .tipslarger{
+	     font-size:14px;
+	   }
+	   .tipsbold{
+	     padding-left:10px;
+	     font-weight:bold;	   
+	   }
+	   .tipRed{
+	     color:#ff0000;
+		 text-decoration:underline;
+	   }
+	   .tipItailc{
+	     	font-style:italic;
+	   }
+	   .noborder{
+	      border:none;
+	   }
+	   .action-button{
+	     margin-bottom:20px;
+	   }
+	   .inputTd{
+	     padding: 0 15px;
+	   }
+	   input:hover {
+		  border:none;
+		}
+		input:focus {
+			outline: none;
+			border: none;
+		}
+		.tableTd{
+		    border: none;
+			background:#f1f4ff;
+			transition: background-color 0.3s ease;
+		}
+		.right{
+		  text-align:right;
+		  padding-right:10px;
+		}
+		.center{
+		  text-align:center;
+		}
+		.borderLeft{
+		  border-left:2px solid #000;
+		}
+		.borderRight{
+		  border-right:2px solid #000;
+		}
+		.borderTop{
+		  border-top:2px solid #000;
+		}
+		.borderBottom{
+		  border-bottom:2px solid #000;
+		}
+		.greybgcolor{
+		  background:#dadada;
+		}
+		.fieldcheckbox{
+		    border:1px solid;
+		    border-style: solid;
+		  border-color: #ccc;
+		  width:15px;
+		    height:15px;
+		}
+		input[type="checkbox"] {
+		  border-radius: 5px;
+		  border:0.5px solid $ccc;
+		}
+		.dialog{
+		  max-width:1080px;
+		  height:560px;
+		}
+		.pcshow{
+		  display:flex;
+		}
+		@media screen and (max-width: 600px) {
+			.dialog {
+				top: 0;
+				left: auto;
+				right: 1%;
+				bottom: auto;
+				display: flex;
+				align-items: center;
+			}
+			.pcshow{
+			  display:none;
+			}
+		}
+		@media screen and (min-width: 600px) {
+			.dialog {
+				top: 0;
+				left: auto;
+				right: 1%;
+				bottom: auto;
+				display: flex;
+				align-items: center;
+			}
+			.mobileshow{
+			  display:none;
+			}
+		}
+		 .rotatable {
+			transition: transform 0.5s ease-in-out; /* 平滑过渡效果 */
+			/* 其他样式 */
+			width: 200px;
+			height: 200px;
+			background-color: #f00;
+			margin: 50px auto;
+		  }
+		input:focus {
+			background-color: #8bda5b;
+		}
+</style>
+<body>
+    <div>
+	   <div class="pcshow" style="width:100%; background: #323639;justify-content:space-evenly;position:fixed;">
+	          <button onclick="start()" class="action-button savetime">Start</button>
+              <button id="prevButton" class="action-button action-button--secondary">Previous</button>
+              <button id="nextButton" class="action-button action-button--secondary">Next</button>
+			  <button class="action-button action-button--secondary submit">Submit</button>
+			  <button class="action-button action-button--secondary download">Download</button>
+        </div>
+		<div class="mobileshow" style="width:100%; background: #323639;justify-content:space-evenly;position:fixed;">
+		11111111111
+		</div>
+		<div class="page"  style="padding:50px;padding-top:100px;">
+		<table style="width:100%;">
+		  <tr>
+			 <td class="tipsbold noborder">TOTAL BUSINESS INCOME</td>
+			 <td class="noborder"><input type="text" id="a1" class="tabletd required" data-src="total_business_income" value="{$detail.total_business_income}" style="border:1px solid #000;"></td>
+			 <td class="noborder" colspan="2" rowspan="3" style="text-align: center;"> <img src="__STATIC__/images/logo.png" style="width:120px;"></td>
+			 <td style="text-align:right;" class="tipsbold noborder borderLeft borderTop greybgcolor">BUSINESS NAME:</td>
+			 <td class="noborder borderTop borderBottom borderRight"><input type="text" id="a2" data-src="business_name" class="tabletd" id="input1" value="{$detail.business_name}"></td>
+		  </tr>
+		  <tr>
+		     <td class="noborder"></td>
+			 <td class="tipsbold tipslarger noborder right requiredtip" data-src="total_business_income" style="padding-top:0px;">***REQUIRED***</td>
+			 <td style="text-align:right;" class="tipsbold noborder borderLeft greybgcolor">Business Description:</td>
+			 <td class="noborder borderBottom borderRight" ><input type="text" id="a3" data-src="business_description"  class="tabletd" value="{$detail.business_description}"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold noborder">PART I: BUSINESS EXPENSES</td>
+			 <td class="noborder" style="border-right:none;"></td>
+			 <td style="text-align:right;" class="tipsbold noborder borderLeft borderBottom greybgcolor">Year:</td>
+			 <td class="noborder borderBottom borderRight"><input type="text" id="a4" data-src="year" class="tabletd" value="{$detail.year}"></td>
+		  </tr>
+		   <tr>
+			 <td class="noborder"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Advertising</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a5" data-src="advertising" value="{$detail.advertising}"></td>
+			 <td colspan="2" class="tipsbold noborder">Did you purchase materials used towards Job Completion?</td>
+			 <td colspan="2" class="tipsbold tipRed tipItailc noborder" style="text-align:center;">PLEASE NOTE: THESE ARE</td>
+		  </tr>
+          <tr>
+			 <td class="tipsbold">Commissions & Fees</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a6" data-src="commission_fee" value="{$detail.commission_fee}"></td>
+			 <td colspan="2" class="tips noborder">(such as Lumber, Piping, Nails)</td>
+			 <td colspan="2" class="tipsbold tipRed tipItailc noborder" style="text-align:center;">BUSINESS EXPENSES ONLY</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Subcontractor/Contract Labor</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a7" data-src="subcontractor" value="{$detail.subcontractor}"></td>
+			 <td colspan="2" class="tips tipsbold noborder" style="text-decoration:underline;">This cannot be combined with Expenses at left</td>
+			 <td colspan="2" class="tipsbold tipRed tipItailc noborder"  style="text-align:center;">NOT PERSONAL EXPENSES</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Employee Health Insurance</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a8" data-src="employee_health_inshurance" value="{$detail.employee_health_inshurance}"></td>
+			 <td class="noborder"  style="text-align:right;">Total of Goods Purchased:</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a9" data-src="total_of_goods_purchased" value="{$detail.total_of_goods_purchased}"></td>
+			 <td colspan="2" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Insurance (non-Health) (Auto, Liability)</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a10" data-src="insurance" value="{$detail.insurance}"></td>
+			 <td colspan="4" class="noborder" ></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Interest</td>
+			 <td class="noborder"></td>
+			 <td colspan="4" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Paid to Non Mortgage Banks</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a11" data-src="paid_to_non_mortgage_banks" value="{$detail.paid_to_non_mortgage_banks}"></td>
+			 <td colspan="4" class="noborder tipsbold">Did you have a Home Office? If so, Complete PART II</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Business Credit Card Interest</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a12" data-src="business_credit_card" value="{$detail.business_credit_card}"></td>
+			 <td colspan="4" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Legal & Professional Fees</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a13" data-src="legal_professional_fees" value="{$detail.legal_professional_fees}"></td>
+			 <td colspan="4" class="noborder tipsbold">PART II: Business Use of Home</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Office Expenses</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a14" data-src="office_expenses" value="{$detail.office_expenses}"></td>
+			 <td colspan="2" class="noborder" style="border-bottom:1px solid #fff;"></td>
+			 <td colspan="2" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Rent or Lease</td>
+			 <td class="noborder "></td>
+			 <td class="noborder  borderLeft right greybgcolor borderTop">Total Square feet of Home</td>
+			 <td class="noborder borderBottom borderTop borderRight greybgcolor"><input type="text" class="tabletd required" style="background:#dadada;" id="a15" data-src="total_square_feet_of_home" value="{$detail.total_square_feet_of_home}"></td>
+			 <td colspan="2" class="noborder requiredtip"  data-src="total_square_feet_of_home">***REQUIRED***</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Machinery, Equipment</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a102" data-src="machinery_equipment" value="{$detail.machinery_equipment}"></td>
+			 <td class="noborder borderLeft borderBottom right greybgcolor">Total Square feet of Office only</td>
+			 <td class="noborder borderBottom borderRight greybgcolor"><input type="text" style="background:#dadada;" class="tabletd required" id="a16" data-src="total_square_feet_of_office_only" value="{$detail.total_square_feet_of_office_only}"></td>
+			 <td colspan="2" class="noborder requiredtip" data-src="total_square_feet_of_office_only">***REQUIRED***</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Land, Other</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a17" data-src="land_other" value="{$detail.land_other}"></td>
+			 <td colspan="2" class="noborder"></td>
+			 <td colspan="2" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Office Rent</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a18" data-src="office_rent" value="{$detail.office_rent}"></td>
+			 <td class="noborder right">Mortgage Interest</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a19" data-src="mortgage_interest" value="{$detail.mortgage_interest}"></td>
+			 <td colspan="2" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Repairs & Maintenance</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a20" data-src="repairs_maintenance" value="{$detail.repairs_maintenance}"></td>
+			 <td class="noborder right">Real Estate Taxes</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a21" data-src="real_estate_taxes" value="{$detail.real_estate_taxes}"></td>
+			 <td colspan="2" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Taxes & Licenses</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a22" data-src="taxes_licenses" value="{$detail.taxes_licenses}"></td>
+			 <td class="noborder right">Home Insurance</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a23" data-src="home_insurance" value="{$detail.home_insurance}"></td>
+			 <td colspan="2" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Payroll Taxes</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a24" data-src="payroll_taxes" value="{$detail.payroll_taxes}"></td>
+			 <td class="noborder right">MISC</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a25" data-src="misc" value="{$detail.misc}"></td>
+			 <td colspan="2" rowspan="8" class="noborder" style="padding-top:0px;">
+				 <div style="margin-left:30%;text-align:left;border:1px solid #000;line-height:28px;padding: 0 5px;background:#dadada;font-weight:bold;">
+				 I agree that all information contained<br>
+				 here is accurate and to the best<br>
+				 of my knowledge.
+				   <p style="background:#b4c6de;width: 250px;text-align: center;border-bottom:1px solid #000;" id="sign">
+				     {if $detail.signimage}
+					   <img src="{$detail.signimage}" id="signimg" style="width:220px;">
+				     {else/}
+					   <img src="__STATIC__/images/sign.png" id="signimg" style="width:220px;">
+				     {/if}
+				   </p>
+				 <span style="font-size:14px;font-weight:bold;">CLIENT SIGNATURE</span>
+				 </div>
+				 <p style="text-align:center;font-size:15px;" class="requiredtip" data-src="signimage">***REQUIRED***</p>
+			 </td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Sales Tax</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a26" data-src="sales_tax" value="{$detail.sales_tax}"></td>
+			 <td class="noborder right">Mortgage / Rent</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a27" data-src="mortgage_rent" value="{$detail.mortgage_rent}"></td>
+			 <!--<td colspan="2" class="noborder"></td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Other Tax or License</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a28" data-src="other_tax_or_license" value="{$detail.other_tax_or_license}"></td>
+			 <td class="noborder right">Repairs & Maintenance</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a29" data-src="repairs_maintenance" value="{$detail.repairs_maintenance}"></td>
+			<!-- <td colspan="2" class="noborder"></td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Travel</td>
+			 <td class="noborder"></td>
+			 <td class="noborder right">Utilities</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a30" data-src="utilities" value="{$detail.utilities}"></td>
+			<!-- <td colspan="2" class="noborder"></td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Airfare/Train</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a31" data-src="airfare_train" value="{$detail.airfare_train}"></td>
+			 <td class="noborder right">Other</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a32" data-src="other" value="{$detail.other}"></td>
+			 <!--<td colspan="2" class="noborder"></td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Meals</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a33" data-src="meals" value="{$detail.meals}"></td>
+			 <td class="noborder right"></td>
+			 <td class="noborder"></td>
+			 <!--<td colspan="2" class="noborder">CLIENT SIGNATURE</td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Parking/Tolls</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a34" data-src="parking_tolls" value="{$detail.parking_tolls}"></td>
+			 <td colspan="2" class="noborder"></td>
+			<!-- <td colspan="2" class="noborder"></td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Car Rental / Gas</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a35" data-src="car_rental_gas" value="{$detail.car_rental_gas}"></td>
+			 <td colspan="2" class="noborder"></td>
+			<!-- <td colspan="2" class="noborder">***REQUIRED***</td>-->
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Taxi, Shuttles, Shared</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a36" data-src="tax_shuttles_shared" value="{$detail.tax_shuttles_shared}"></td>
+			 <td colspan="4" class="noborder tipsbold">Did you use a Vehicle for your Business? If so, complete PART III</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Lodging</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a37" data-src="lodging" value="{$detail.lodging}"></td>
+			 <td colspan="4" class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Tips</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a38" data-src="tips" value="{$detail.tips}"></td>
+			 <td colspan="4" class="noborder tipsbold">PART III: Vehicle(s)</td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold">Dry Cleaning</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a39" data-src="dry_cleaning" value="{$detail.dry_cleaning}"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder tipslarger tipsbold">VEHICLE 1</td>
+			 <td class="noborder tipslarger tipsbold">VEHICLE 2</td>
+			 <td class="noborder"></td>
+		  </tr>
+		  <tr>
+			 <td class="tipsbold"># of Days of town</td>
+			 <td class="noborder borderBottom"><input type="text" class="tabletd" id="a40" data-src="of_days_of_town" value="{$detail.of_days_of_town}"></td>
+			 <td class="noborder borderLeft borderTop borderRight right tipsbold greybgcolor">Vehicle - Year, Make, Model</td>
+		     <td><input type="text" class="tabletd required" id="a41" data-src="v1_year_make_modal" value="{$detail.v1_year_make_modal}"></td>
+		     <td><input type="text" class="tabletd required" id="a42" data-src="v2_year_make_modal" value="{$detail.v2_year_make_modal}"></td>
+		     <td class="noborder requiredtip" data-src="year_make_modal">***REQUIRED***</td>
+		  </tr>
+	      <tr>
+	       <td class="tipsbold">Utilities/Internet (not Home Utilities)</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a43" data-src="utilities_internet" value="{$detail.utilities_internet}"></td>
+	       <td class="noborder borderLeft borderRight right tipsbold greybgcolor">Date placed into service</td>
+	       <td><input type="text" class="tabletd required" id="a44" data-src="v1_date_placed_into_service" value="{$detail.v1_date_placed_into_service}"></td>
+	       <td><input type="text" class="tabletd required" id="a45" data-src="v2_date_placed_into_service" value="{$detail.v2_date_placed_into_service}"></td>
+	       <td class="noborder requiredtip" data-src="date_placed_into_service">***REQUIRED***</td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Telephone (landline, Mobile, FAX)</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a46" data-src="telephone" value="{$detail.telephone}"></td>
+	       <td class="noborder borderLeft borderRight right tipsbold greybgcolor">Miles for Business Only</td>
+	       <td><input type="text" class="tabletd required" id="a99" data-src="v1_miles_for_business_only" value="{$detail.v1_miles_for_business_only}"></td>
+	       <td><input type="text" class="tabletd required" id="a47" data-src="v2_miles_for_business_only" value="{$detail.v2_miles_for_business_only}"></td>
+	       <td class="noborder requiredtip" data-src="miles_for_business_only">***REQUIRED***</td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Salaries / Wages - Employees</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a48" data-src="salaries_wages_employees" value="{$detail.salaries_wages_employees}"></td>
+	       <td class="noborder borderLeft borderRight right tipsbold greybgcolor">Miles for Personal Only</td>
+	       <td><input type="text" class="tabletd required" id="a49" data-src="v1_miles_for_personal_only" value="{$detail.v1_miles_for_personal_only}"></td>
+	       <td><input type="text" class="tabletd required" id="a50" data-src="v2_miles_for_personal_only" value="{$detail.v2_miles_for_personal_only}"></td>
+	       <td class="noborder requiredtip" data-src="miles_for_personal_only">***REQUIRED***</td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Bank Fees</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a51" data-src="bank_fees" value="{$detail.bank_fees}"></td>
+	       <td class="noborder borderLeft borderRight right tipsbold greybgcolor">Is Vehicle Leased?</td>
+	       <td class="greybgcolor">
+			   <input type="radio" name="v1_is_vehicle_leased" value="1" class="fieldcheckbox required" data-src="v1_is_vehicle_leased" {if $detail.v1_is_vehicle_leased eq 1} checked{/if}>Yes 
+			   <input type="radio" name="v1_is_vehicle_leased" value="2" class="fieldcheckbox required" data-src="v1_is_vehicle_leased"  {if $detail.v1_is_vehicle_leased eq 2} checked{/if}>No
+		   </td>
+	       <td class="greybgcolor">
+			   <input type="radio" name="v2_is_vehicle_leased"  value="1" class="fieldcheckbox required" data-src="v2_is_vehicle_leased"  {if $detail.v2_is_vehicle_leased eq 1} checked{/if} >Yes 
+			   <input type="radio" name="v2_is_vehicle_leased"  value="2" class="fieldcheckbox required" data-src="v2_is_vehicle_leased"  {if $detail.v2_is_vehicle_leased eq 2} checked{/if}>No
+		   </td>
+	       <td class="noborder requiredtip" data-src="is_vehicle_leased">***REQUIRED***</td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Delivery</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a100" data-src="delivery" value="{$detail.delivery}"></td>
+	       <td class="noborder borderLeft borderRight right tipsbold greybgcolor">Is Vehicle Owned/Financed?</td>
+	       <td class="greybgcolor">
+		   <input type="radio" name="v1_is_vehicle_ownedfinanced" value="1" class="fieldcheckbox required" data-src="v1_is_vehicle_ownedfinanced" {if $detail.v1_is_vehicle_ownedfinanced eq 1} checked{/if}>Yes 
+		   <input type="radio" name="v1_is_vehicle_ownedfinanced" value="2" class="fieldcheckbox required" data-src="v1_is_vehicle_ownedfinanced" {if $detail.v1_is_vehicle_ownedfinanced eq 2} checked{/if}>No
+		   </td>
+	       <td class="greybgcolor">
+		   <input type="radio" name="v2_is_vehicle_ownedfinanced" value="1" class="fieldcheckbox required" data-src="v2_is_vehicle_ownedfinanced" {if $detail.v2_is_vehicle_ownedfinanced eq 1} checked{/if} >Yes 
+		   <input type="radio" name="v2_is_vehicle_ownedfinanced" value="2" class="fieldcheckbox required" data-src="v2_is_vehicle_ownedfinanced" {if $detail.v2_is_vehicle_ownedfinanced eq 2} checked{/if} >No
+		   </td>
+	       <td class="noborder">***REQUIRED***</td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Dues & Subscriptions</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a101" data-src="dues_subscriptions" value="{$detail.dues_subscriptions}"></td>
+	       <td class="noborder borderLeft borderRight borderBottom right tipsbold greybgcolor">Was vehicle Depreciated a prior Year?</td>
+	       <td class="greybgcolor">
+			   <input type="radio" class="fieldcheckbox" name="v1_was_vehicle_depreciated_a_prior_year required" value="1" data-src="v1_was_vehicle_depreciated_a_prior_year" {if $detail.v1_was_vehicle_depreciated_a_prior_year eq 1} checked{/if}>Yes 
+			   <input type="radio" class="fieldcheckbox" name="v1_was_vehicle_depreciated_a_prior_year required" value="2" data-src="v1_was_vehicle_depreciated_a_prior_year" {if $detail.v1_was_vehicle_depreciated_a_prior_year eq 2} checked{/if}>No
+		   </td>
+	       <td class="greybgcolor">
+		      <input type="radio" name="v2_was_vehicle_depreciated_a_prior_year" value="1" class="fieldcheckbox required" data-src="v2_was_vehicle_depreciated_a_prior_year" {if $detail.v2_was_vehicle_depreciated_a_prior_year eq 1} checked{/if}>Yes 
+			  <input type="radio" name="v2_was_vehicle_depreciated_a_prior_year" value="2" class="fieldcheckbox required"  data-src="v2_was_vehicle_depreciated_a_prior_year" {if $detail.v2_was_vehicle_depreciated_a_prior_year eq 2} checked{/if}>No
+			</td>
+	       <td class="noborder">***REQUIRED***</td>
+	      </tr>
+	      <tr>
+			 <td class="tipsbold">Entertainment / Meals w/ Clients</td>
+			 <td class="noborder borderBottom"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder borderRight"></td>
+			 <td class="noborder"></td>
+			 <td class="noborder"></td>
+		  </tr>
+		  <tr>
+	       <td class="tipsbold">Gifts</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a53" data-src="gifts" value="{$detail.gifts}"></td>
+	       <td class="noborder borderLeft right tipsbold">Lease / Financing Payments</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a54" data-src="v1_lease_financing_payments" value="{$detail.v1_lease_financing_payments}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a55" data-src="v2_lease_financing_payments" value="{$detail.v2_lease_financing_payments}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Janitorial</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a56" data-src="janitorial" value="{$detail.janitorial}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Gas, Lube, Oil</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a57" data-src="v1_gas_lube_oi" value="{$detail.v1_gas_lube_oi}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a58" data-src="v2_gas_lube_oi" value="{$detail.v2_gas_lube_oi}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Laundry & Cleaning</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a60" data-src="laundry_cleaning" value="{$detail.laundry_cleaning}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Repairs and Maintence</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a61" data-src="v1_repairs_and_maintence" value="{$detail.v1_repairs_and_maintence}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a62" data-src="v2_repairs_and_maintence" value="{$detail.v2_repairs_and_maintence}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">MISC</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a63" data-src="misc" value="{$detail.misc}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Tires</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a64" data-src="v1_tires" value="{$detail.v1_tires}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a65" data-src="v2_tires" value="{$detail.v2_tires}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Postage</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a66" data-src="postage" value="{$detail.postage}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Towing</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a67" data-src="v1_towing" value="{$detail.v1_towing}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a68" data-src="v2_towing" value="{$detail.v2_towing}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Printing</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a69" data-src="printing" value="{$detail.printing}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Insurance</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a70" data-src="v1_insurance" value="{$detail.v1_insurance}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a71" data-src="v2_insurance" value="{$detail.v2_insurance}"> </td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Security</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a72" data-src="security" value="{$detail.security}"></td>
+	       <td class="noborder borderLeft  right tipsbold">License & Registration</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a73" data-src="v1_license_registration" value="{$detail.v1_license_registration}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a74" data-src="v2_license_registration" value="{$detail.v2_license_registration}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Tools</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a75" data-src="tools" value="{$detail.tools}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Permits</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a76" data-src="v1_permits" value="{$detail.v1_permits}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a77" data-src="v2_permits" value="{$detail.v2_permits}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Uniforms</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a78" data-src="uniforms" value="{$detail.uniforms}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Interest</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a79" data-src="v1_interest" value="{$detail.v1_interest}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a80" data-src="v2_interest" value="{$detail.v2_interest}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Supplies</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a81" data-src="supplies" value="{$detail.supplies}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Auto Club</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a82" data-src="v1_auto_club" value="{$detail.v1_auto_club}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a83" data-src="v2_auto_club" value="{$detail.v2_auto_club}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td class="tipsbold">Other - (Explain)</td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a84" data-src="other_explain" value="{$detail.other_explain}"></td>
+	       <td class="noborder borderLeft  right tipsbold">Warranty</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" class="tabletd" id="a85" data-src="v1_warranty" value="{$detail.v1_warranty}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" class="tabletd" id="a86" data-src="v2_warranty" value="{$detail.v2_warranty}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+	      <tr>
+	       <td colspan="2" class="noborder"></td>
+	       <td class="noborder right tipsbold">Smog</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a87" data-src="v1_smog" value="{$detail.v1_smog}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a88" data-src="v2_smog" value="{$detail.v2_smog}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+
+	      <tr>
+	       <td class="tipsbold noborder">Total Expenses:</td>
+	       <td ><input type="text" class="tabletd" id="a89" data-src="total_expenses" value="{$detail.total_expenses}"></td>
+	       <td class="noborder borderLeft right tipsbold">Other</td>
+	       <td class="noborder borderBottom borderRight"><input type="text" class="tabletd" id="a90" data-src="v1_other" value="{$detail.v1_other}"></td>
+	       <td class="noborder borderBottom"><input type="text" class="tabletd" id="a91" data-src="v2_other" value="{$detail.v2_other}"></td>
+	       <td class="noborder"></td>
+	      </tr>
+		  <tr>
+	       <td class="noborder"></td>
+	       <td class="noborder right">***REQUIRED***</td>
+	       <td class="noborder"></td>
+	       <td class="noborder"></td>
+	       <td class="noborder"></td>
+	       <td class="noborder right">Profit and Loss Statement</td>
+	      </tr>
+		</table>
+		</div>
+	</div>
+	 <!--签名 弹出页-->
+        <div class="modal-barrier" id="comtip" style="display:none;">
+		       <?php if(!is_mobile_device()){ ?> 
+				   <div class="dialog f-theme column  position-relative gap-20 dialog--normal">
+                		<svg class="close close3" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>
+                	<!--	<canvas id="signature-pad" width="165" height="275" style="border: 1px dashed green;"></canvas>
+                		<canvas id="signature-pad" width="330" height="550" style="border: 1px dashed green;"></canvas>
+                	
+                		<canvas id="signature-pad" width="650" height="300" style="border: 1px dashed green;"></canvas>-->
+                	
+						<canvas id="signature-pad" width="1000" height="272" style="border: 1px dashed green;"></canvas>
+                		<div class="row align-center justify-end" style="display:flex;margin-top:40px;">
+                        <button onclick="clearSignature()" class="action-button action-button--secondary signbutton" style="margin-left:10px;">Clear</button>
+                        <button onclick="saveSignature()"  class="action-button action-button--primary signbutton">Save</button>
+                        </div>
+                	</div>
+				<?php }else{ ?>
+				 <style>
+				 .dialog{
+				   max-width: 350px;
+                   height: 800px;
+				}
+				 </style>
+				   <div class="dialog f-theme column  position-relative gap-20 dialog--normal">
+                		<svg class="close close3" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>
+						<canvas id="signature-pad" width="272" height="740" style="border: 1px dashed green;"></canvas>
+                		<div class="row align-center justify-end" style="display:flex;margin-top:40px;">
+                        <button onclick="clearSignature()" class="action-button action-button--secondary signbutton" style="margin-left:10px;">Clear</button>
+                        <button onclick="saveSignature()"  class="action-button action-button--primary signbutton">Save</button>
+                        </div>
+                	</div>
+				<?php }?>
+       </div>  
+</body>
+</html>
+<script>
+        var curfield="{$detail.curfield}";
+       
+      var inputs = document.querySelectorAll('input[type="text"]');
+     
+	   var link="{$detail.link}";
+	   var currentIndex=getIndex(curfield);
+	   var specificInput = $('input[data-src="'+curfield+'"]');
+	   document.getElementById('nextButton').addEventListener('click', function() {	   
+
+	        if (currentIndex < inputs.length - 1) {
+	            currentIndex++;
+				var obj=inputs[currentIndex];
+				inputs[currentIndex].focus();
+	        }else{
+	        	currentIndex=0;
+	        	$('#a1').focus();
+	        }
+	        positionTo(currentIndex);
+	    });
+
+	    document.getElementById('prevButton').addEventListener('click', function() {
+	        if (currentIndex > 0) {
+	            currentIndex--;
+				var obj=inputs[currentIndex];
+				inputs[currentIndex].focus();
+	        }else{
+	        	currentIndex=0;
+	        	$('#a1').focus();
+	        }
+	        positionTo(currentIndex);
+	    });
+        function getIndex(findelement){
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = findelement;
+			var targetIndex = -1; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (inputs[i].getAttribute('data-src') === targetValue) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetIndex = i;
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetIndex;
+        }
+        function getDataSrc(curIndex){
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = '';
+			var targetIndex = curIndex; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (i === targetIndex) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetValue = inputs[i].getAttribute('data-src');
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetValue;
+        }
+        function start() {
+        	if(currentIndex>0){
+        		var curfield2=getDataSrc(currentIndex);
+                var offsetTop= $('input[data-src="'+curfield2+'"]').offset().top;
+			    // 滚动到该位置，使用 animate 方法实现平滑滚动效果
+			    $('html, body').animate({
+			        scrollTop: offsetTop-130
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+			    viewport = document.querySelector('meta[name="viewport"]');
+		            if (viewport) {
+		                viewport.setAttribute('content', 'width=device-width, initial-scale=0.8');
+		            }
+		        inputs[currentIndex].focus(); 
+		       // $('input[data-src="'+curfield+'"]').css('background',"#8bda5b");
+        	}else{
+        		$('#a1').focus();
+        	}        
+        }
+        function positionTo(cindex){
+        	    var curfield2=getDataSrc(cindex);
+                var offsetTop= $('input[data-src="'+curfield2+'"]').offset().top;
+			    // 滚动到该位置，使用 animate 方法实现平滑滚动效果
+			    $('html, body').animate({
+			        scrollTop: offsetTop-130
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+			    viewport = document.querySelector('meta[name="viewport"]');
+		            if (viewport) {
+		                viewport.setAttribute('content', 'width=device-width, initial-scale=0.8');
+		            }
+		        inputs[currentIndex].focus(); 
+		        return true;
+        }
+        function start2222() {
+        	if(curfield){
+                var offsetTop = $('input[data-src="'+curfield+'"]').offset().top;
+			    // 滚动到该位置，使用 animate 方法实现平滑滚动效果
+			    $('html, body').animate({
+			        scrollTop: offsetTop-130
+			    }, 1000); // 1000 毫秒 = 1 秒的动画时间
+			    viewport = document.querySelector('meta[name="viewport"]');
+		            if (viewport) {
+		                viewport.setAttribute('content', 'width=device-width, initial-scale=0.8');
+		            }
+		        $('input[data-src="'+curfield+'"]').focus(); 
+		        currentIndex=getIndex(curfield);
+		       // $('input[data-src="'+curfield+'"]').css('background',"#8bda5b");
+        	}else{
+        		$('#a1').focus();
+        	}        
+        }
+    
+  
+   function getInputIndex(inputElement) {
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i] === inputElement) {
+                return i;
+            }
+        }
+        return -1; // Return -1 if the input element is not found
+    }
+    
+
+
+        // Function to set the initial scale
+        function setInitialScale() {
+          //  const viewport = document.querySelector('meta[name="viewport"]');
+			const viewport=document.querySelector('div[class="page"]');
+            if (viewport) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=1.5');
+            }
+        }
+		function ajax_post_field(fieldname,fieldvalue,link) {
+         var pagename="folder";
+         $.ajax({
+               url:"{:url('profitloss/profitsave')}",
+               type:'post',
+               data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+                      curfield=fieldname;
+                   	 // specificInput = $('input[data-src="'+curfield+'"]'); // Replace 'specificInputId' with the actual ID or reference		
+		              
+		            //  alert("save后"+newfieldid);
+		             // return true;
+                     // $('#savetime').html(html);
+                   }else {
+                       console.log('sucess');
+                     //  msg(res.msg);
+                   }
+               },error:function () {
+                   msg('Try it again later')
+               }
+         });
+        }
+	    function isValidNumber(value) {
+            // 匹配整数或浮点数的正则表达式
+            var pattern = /^\d+(\.\d+)?$/;
+            return pattern.test(value);
+        }
+		var canvas = document.getElementById('signature-pad');
+        var signaturePad = new SignaturePad(canvas);
+
+        function saveSignature() {
+		
+            if (signaturePad.isEmpty()) {
+                alert('Please sign you name');
+                return;
+            }
+         //   var dataURL = signaturePad.toDataURL();
+          //以下进行缩小
+              var signatureCanvas = signaturePad.canvas;
+              var signatureContext = signatureCanvas.getContext('2d');
+              
+              // 创建一个新的、尺寸减半的画布
+              var resizedCanvas = document.createElement('canvas');
+              resizedCanvas.width = signatureCanvas.width / 2;
+              resizedCanvas.height = signatureCanvas.height / 2;
+              var resizedContext = resizedCanvas.getContext('2d');
+              
+              // 将原始签名绘制到新的画布上，并缩小一倍
+              resizedContext.drawImage(signatureCanvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+              //以下进行缩小结束
+              // 使用新的画布来保存签名（这里以PNG格式为例）
+              var dataURL = resizedCanvas.toDataURL('image/png');
+            var link="{$detail.link}";
+            
+          //  var url="{:url('Order/signature',['id'=>2])}";
+            fetch("{:url('profitloss/signature')}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link
+            })
+            .then(response => response.text())
+            .then(data => {
+                var da=JSON.parse(data);
+                msg('Signature is saved');
+                $('#comtip').hide();
+                var id="{$contract.id}";
+                $('#signimg').attr('src',da.img);
+                $('#ctip').hide();
+                
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+        function clearSignature() {
+            signaturePad.clear();
+        }
+        function isMobile() {
+           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+           // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) && window.innerWidth < 768;
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+       }
+        // Set the initial scale when the page loads
+    //  window.onload = setInitialScale;
+	   
+      $(document).ready(function() {
+      	if(isMobile()){
+      		const viewport = document.querySelector('meta[name="viewport"]');			 
+            if (viewport) {
+               viewport.setAttribute('content', 'width=device-width, initial-scale=0.6');
+            }
+      	}
+	    $('#sign').click(function () {
+	    	 if (isMobile()) {
+               var link="{$detail.link}";
+			   var url="https://taxprep.republictax.com/clients/signpage?link="+link;
+			   location.href=url;
+            } else {
+               $("#comtip").show();
+            }
+        })
+        $('.close3').click(function () {
+            $("#comtip").hide();
+        });
+		
+	  //即时保存input
+	 
+	   for(var i=1;i<=120;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+         // $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+           
+        });
+      }
+	 
+      $('input:text').click(function () {
+           var fieldname=$(this).attr('data-src');
+           currentIndex=getIndex(fieldname);
+		   inputs[currentIndex+1].focus();
+       });
+	   /*
+	  //即时保存radio
+	  $('.fieldcheckbox').click(function () {
+          var val=0;
+          if ($(this).prop('checked')) {
+            val=1;
+          }
+          var fieldname=$(this).attr('data-src');
+          var fieldvalue=val;
+          var link="{$detail.link}";
+        //   $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link);  
+       });*/
+	   $('input:radio').click(function () {
+          var val=$(this).val();
+          var fieldname=$(this).attr('data-src');
+          $('input[name='+fieldname+']').each(function() {
+              $(this).prop("checked", !$(this).is(":checked"));
+         });
+         $(this).prop("checked",true);
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          
+          ajax_post_field(fieldname,fieldvalue,link);  
+       });
+	   
+	   /*
+	   //鼠标移到下一个input
+	   $('input').each(function(index) {
+        $(this).mouseleave(function() {
+            if ($(this).next('input').length > 0) {
+                $(this).next('input').focus();
+            }
+        });
+       });*/
+	    $('.submit').click(function () {
+		   //必填项
+		   var val='';
+		   var datasrc='';
+		   $('.required').each(function() {
+               val=$(this).val();	
+			  
+			   datasrc=$(this).attr('data-src');
+               if(datasrc=="v1_is_vehicle_leased"||datasrc=="v2_is_vehicle_leased"||datasrc=="v1_is_vehicle_ownedfinanced"||datasrc=="v2_is_vehicle_ownedfinanced"||datasrc=="v1_was_vehicle_depreciated_a_prior_year"||datasrc=="v2_was_vehicle_depreciated_a_prior_year"){
+			      var tag=0;
+			     if(datasrc=="v1_is_vehicle_leased"||datasrc=="v2_is_vehicle_leased"){
+					if(!$('input[name=v1_is_vehicle_leased]').is(":checked")&&!$('input[name=v2_is_vehicle_leased]').is(":checked")){
+					   datasrc='is_vehicle_leased';
+					   tag=1;
+					}
+				  }
+				  if(datasrc=="v1_is_vehicle_ownedfinanced"||datasrc=="v2_is_vehicle_ownedfinanced"){
+					if(!$('input[name=v1_is_vehicle_ownedfinanced]').is(":checked")&&!$('input[name=v2_is_vehicle_ownedfinanced]').is(":checked")){
+					   datasrc='is_vehicle_ownedfinanced';
+					   tag=1;
+					}
+				  }
+				  if(datasrc=="v1_was_vehicle_depreciated_a_prior_year"||datasrc=="v2_was_vehicle_depreciated_a_prior_year"){
+					if(!$('input[name=v1_was_vehicle_depreciated_a_prior_year]').is(":checked")&&!$('input[name=v2_was_vehicle_depreciated_a_prior_year]').is(":checked")){
+					   datasrc='was_vehicle_depreciated_a_prior_year';
+					   tag=1;
+					}
+				  }
+				  if(tag==1){
+				     var obj=$('.requiredtip[data-src="'+datasrc+'"]');
+					obj.css('color','red');
+					$(this).focus()
+			        return false;
+				  }
+			   }else{
+			    
+			     if(val==''){
+				  if(datasrc=="v1_year_make_modal"||datasrc=="v2_year_make_modal"){
+				    datasrc='year_make_modal';
+				  }
+				  if(datasrc=="v1_date_placed_into_service"||datasrc=="v2_date_placed_into_service"){
+				    datasrc='date_placed_into_service';
+				  }
+				  if(datasrc=="v1_miles_for_personal_only"||datasrc=="v2_miles_for_personal_only"){
+				    datasrc='miles_for_personal_only';
+				  }
+				  if(datasrc=="v1_is_vehicle_leased"||datasrc=="v2_is_vehicle_leased"){
+				    datasrc='is_vehicle_leased';
+				  }
+				  if(datasrc=="v1_is_vehicle_ownedfinanced"||datasrc=="v2_is_vehicle_ownedfinanced"){
+				    datasrc='is_vehicle_ownedfinanced';
+				  }
+				  if(datasrc=="v1_was_vehicle_depreciated_a_prior_year"||datasrc=="v1_was_vehicle_depreciated_a_prior_year"){
+				    datasrc='was_vehicle_depreciated_a_prior_year';
+				  }
+				  var obj=$('.requiredtip[data-src="'+datasrc+'"]');
+					obj.css('color','red');
+					$(this).focus();
+			    // $('input[data-src="'+datasrc+'"]').css('color','red');
+			     return false;
+			    }
+			   }	
+            });
+			var link="{$detail.link}";
+			 $.ajax({
+               url:"{:url('profitloss/submit')}",
+               type:'post',
+               data:{'link':link},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+                      curfield=fieldname;
+                   	 // specificInput = $('input[data-src="'+curfield+'"]'); // Replace 'specificInputId' with the actual ID or reference		
+		              
+		            //  alert("save后"+newfieldid);
+		             // return true;
+                     // $('#savetime').html(html);
+                   }else {
+                       console.log('sucess');
+                     //  msg(res.msg);
+                   }
+               },error:function () {
+                   msg('Try it again later')
+               }
+         });
+		});
+		  $('.download').click(function () {
+				    $(this).html('Generating...');
+					$(this).css('background-color','#b1b1b1');
+					$(this).attr('disabled',true);
+					var obj=$(this);
+					//交给后端处理
+					// 触发下载并监控进度
+					var link="{$detail.link}";
+					var url="https://taxprep.republictax.com/clients/pl_topdf?link="+link;
+				
+					location.href=url;
+					obj.css('background-color','#fff');
+							obj.attr('disabled',false);
+							obj.html('Download');
+					return false;
+					var xhr = new XMLHttpRequest();
+					xhr.open('GET', url, true);
+					xhr.responseType = 'blob';
+					xhr.onload = function(e) {
+						if (this.status == 200) {
+							// 下载完成
+							var blob = this.response;
+							var link = document.createElement('a');
+							link.href = window.URL.createObjectURL(blob);
+							link.download = 'profitlossfiles.pdf'; // 设置下载文件的名称和扩展名
+							link.click();
+							obj.css('background-color','#536cf1');
+							obj.attr('disabled',false);
+							obj.html('Download PDF');
+						}
+					};
+		   });
+            $('.tabletd').click(function () {
+                const viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1');
+                }
+                $(this).focus();
+            });
+      });
+</script>

@@ -1,0 +1,84 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">收益中心</div>
+</header>
+<!--头部导航位置e-->
+<!--内容s-->
+<div id="shouyi">
+  <div class="top">
+    <div style="height: 45px"></div>
+    <div class="head">
+      <div class="left">
+        <img src="{$user.head_pic|default='__MOBILE__/img/default.png'}">
+      </div>
+      <div class="right">
+        <h4>
+          <b>{$user.realname|default='无'}</b>
+          <a href="{:url('User/realname')}"><span class="iconfont iconjiantou"></span></a>
+        </h4>
+        <p class="level">{$user.level_name}</p>
+      </div>
+      <a href="{:url('Index/index')}" class="update">去升级</a>
+    </div>
+    <div class="info">
+        <div class="left item">
+            <a href="{:url('Shouyi/hy_points',['type'=>2])}" class="info-item">
+              <p>总收入(元)</p>
+              <h4>{$zong_sr}</h4>
+            </a>
+            <a href="{:url('User/withdrawals_list',['type'=>4])}" class="info-item">
+              <p>已提现(元)</p>
+              <h4>{$ytx}</h4>
+            </a>
+        </div>
+        <div class="right item">
+          <a href="{:url('Shouyi/hy_points',['type'=>1])}" class="info-item">
+            <p>本月收入(元)</p>
+            <h4 class="red">+{$month_sr}</h4>
+          </a>
+          <a href="{:url('User/withdrawals',['type'=>4])}" class="info-item">
+            <p>待提现(元)</p>
+            <h4>{$user.hy_yue}</h4>
+          </a>
+        </div>
+    </div>
+  </div>
+    <div class="menu">
+        <a href="{:url('User/qrcode')}">
+            <img src="__MOBILE__/img/daili.png">
+            <p>招募代理</p>
+        </a>
+        <a href="{:url('User/team_index')}">
+            <img src="__MOBILE__/img/team.png">
+            <p>我的团队</p>
+        </a>
+        <a href="{:url('Shouyi/td_order')}">
+            <img src="__MOBILE__/img/dingdan.png">
+            <p>订单管理</p>
+        </a>
+        <a href="{:url('User/info')}">
+            <img src="__MOBILE__/img/tixian.png">
+            <p>提现账户</p>
+        </a>
+        <a href="{:url('User/user_info')}">
+            <img src="__MOBILE__/img/dianpu.png">
+            <p>店铺管理</p>
+        </a>
+        <a href="{:url('Shouyi/qy_daili')}">
+            <img src="__MOBILE__/img/quyu.png">
+            <p>区域代理</p>
+        </a>
+    </div>
+</div>
+<!--内容e-->
+</body>
+<script>
+    $(function () {
+    });
+</script>
+</html>

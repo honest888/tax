@@ -1,0 +1,80 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								    <main class="master-detail-layout__main-container">
+                                    	<div class="master-detail-layout__main-content">
+                                    		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                    			<h1 class="center text-center font-36 extrabold mt-20">How many miles did you drive with your vehicle during the calendar year?</h1>
+                                    			<p class="text-center">
+                                    				<span></span>
+                                    			</p>
+                                    			<div style="height: 20px;"></div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Mileage (business)   &nbsp;
+													 <div class="popover__child" id="tip1"><div class="tooltip-icon">?</div></div>
+													 <div class="popover__element tipcommon"><span class="callout callout--above text-align-left"><span class="callout__arrow"></span><h3 class="callout__title font-16" style="color: rgb(51, 51, 51);">Mileage (business)</h3><span class="callout__body font-14 font-weight-normal whitespace-pre-line" style="color: rgb(0, 0, 0);">Tell us how many miles you drove for work-related reasons only.
+
+Don't include miles you drove between your home and regular workplace since commuting miles aren't deductible.</span></span></div>
+													</label>
+                                    				<input id="business" autocomplete="off" type="text"  data-src="self_employment_0_vehicles_0_miles_driven_work_only" value="{$detail.self_employment_0_vehicles_0_miles_driven_work_only}">
+                                    			</div>
+                                    		    <div class="f-field">
+                                    				<label for="bxwt5">Mileage (commuting) &nbsp;</label>
+                                    				<input id="commuting" autocomplete="off" type="text"  data-src="self_employment_0_vehicles_0_miles_commuting" value="{$detail.self_employment_0_vehicles_0_miles_commuting}">
+                                    			</div>
+                                    			<div class="f-field">
+                                    				<label for="bxwt5">Mileage (personal) &nbsp;</label>
+                                    				<input id="personal" autocomplete="off" type="text"  data-src="self_employment_0_vehicles_0_miles_personal" value="{$detail.self_employment_0_vehicles_0_miles_personal}">
+                                    			</div>
+                                    		
+                                    		</div>
+                                    	</div>
+                                    </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      $('#business').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+     $('#commuting').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+      $('#personal').blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+      });
+});
+</script>

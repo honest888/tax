@@ -1,0 +1,1596 @@
+<html lang="en">
+<head>
+		<meta charSet="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+		<title>{$tpshop_config.basic_store_title}</title>
+		<link rel="stylesheet" href="__ST__/style.css" data-precedence="next" />
+		<link rel="stylesheet" href="__ST__/checkbox.css" data-precedence="next" />
+		<link rel="stylesheet" href="__ST__/upload.css" data-precedence="next" />
+		<script src="__MOBILE__/js/jquery.js"></script>
+        <!-- <script src="__MOBILE__/js/popup.js"></script> -->
+        <script src="__MOBILE__/js/jquery.validate.min.js"></script>
+        <script src="__MOBILE__/js/spin.min.js"></script>
+        <script src="__MOBILE__/js/ladda.min.js"></script>
+        <script src="__STATIC__/plugin/layer/layer.js"></script>
+		 <!--<link rel="stylesheet" href="__STATIC__/js/signature/popstyle.css">-->
+         <script src="__STATIC__/js/signature/snature.js"></script>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			font-size:14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto; /* Allow columns to adjust width based on content */
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 0px;
+            text-align: left;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflow content */
+            text-overflow: ellipsis; /* Show ellipsis for overflow text */
+			height:25px;
+			font-size:12px;
+        }
+        input[type="text"] {
+		    padding-left:10px;
+            width: 100%;
+            box-sizing: border-box;
+			line-height:25px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+       .tips{
+	     font-size:13px;
+	   }
+	   .tipslarger{
+	     font-size:14px;
+	   }
+	   .tipsbold{
+	     padding-left:10px;
+	     font-weight:bold;	   
+	   }
+	   .tipRed{
+	     color:#ff0000;
+		 text-decoration:underline;
+	   }
+	   .tipItailc{
+	     	font-style:italic;
+	   }
+	   .noborder{
+	      border:none;
+	   }
+	   .action-button{
+	     margin-bottom:20px;
+	   }
+	   .inputTd{
+	     padding: 0 15px;
+	   }
+	   /*
+	   input:hover {
+		  border:none;
+		}*/
+		
+		input:focus {
+			outline: none;
+			border: 1px solid #000;
+		}
+		.tabletd{
+		    border: none;
+			background:#f1f4ff;
+			font-size:12px;
+		}
+		
+		.tableTdtext{
+		    border: none;
+			background:#f1f4ff;
+			transition: background-color 0.3s ease;
+		}
+		.right{
+		  text-align:right;
+		  padding-right:10px;
+		}
+		.tdcenter{
+		  text-align:center;
+		}
+		.borderLeft{
+		  border-left:1px solid #000;
+		}
+		.borderRight{
+		  border-right:1px solid #000;
+		}
+		.borderTop{
+		  border-top:1px solid #000;
+		}
+		.borderBottom{
+		  border-bottom:1px solid #000;
+		}
+		.greybgcolor{
+		  background:#f3f3f3;
+		}
+		.fieldcheckbox{
+		    border:1px solid;
+		    border-style: solid;
+		  border-color: #ccc;
+		  width:15px;
+		    height:15px;
+		}
+		input[type="checkbox"] {
+		  border-radius: 5px;
+		  border:0.5px solid $ccc;
+		}
+		.dialog{
+		  max-width:1080px;
+		  height:560px;
+		}
+		.pcshow{
+		  display:flex;
+		}
+		.page{
+			padding:50px;
+			padding-top:100px;
+			transform-origin: left top;
+			transition: transform 0.5s ease;
+			background: rgb(83, 86, 89);
+		}
+		.innerpage{
+		  margin:0 auto;
+		  background: #ffff;
+		  box-shadow: rgba(0, 0, 0, 0.5) 0px -2px 10px;		
+       	  
+		}
+		.action-button{
+		    min-width: 50px;
+		    max-width:90px;
+		}
+		@media (max-width: 576px) {
+			.dialog {
+				top: 0;
+				left: auto;
+				right: 1%;
+				bottom: auto;
+				display: flex;
+				align-items: center;
+			}
+			.pcshow{
+			  display:none;
+			}
+			.mobileshow{
+			 display:flex;
+			 width: 100%;
+			 z-index:9999999;
+		    }
+			.action-button{
+			  min-width: 60px;
+			  max-width: 60px;
+			  border-radius: 10px;
+		   }
+		   .page{
+			  top: 100px;
+              position: absolute;
+              padding:0 20px;
+			 /* width:500px;*/
+			 background:#fff;
+		    }
+		.innerpage{
+		/*  width:500px;*/
+		   padding: 20px;
+		  }
+		  
+		}
+		@media (min-width: 576px) {
+		  .dialog {
+				top: 0;
+				left: auto;
+				right: 1%;
+				bottom: auto;
+				display: flex;
+				align-items: center;
+		  }
+		 .mobileshow{
+			 display:none;
+		 }
+		 .page{
+			 width:1000px;
+			 margin:0 auto;
+			 width: 100%;
+			 padding: 100px 0px; overflow: scroll;
+		  }
+		  .innerpage{
+		  width:95%; padding: 50px 30px;
+		  }
+		
+		}
+		.rotatable {
+			transition: transform 0.5s ease-in-out; /* 平滑过渡效果 */
+			/* 其他样式 */
+			width: 200px;
+			height: 200px;
+			background-color: #f00;
+			margin: 50px auto;
+		}
+		input:focus {
+			background-color: #8bda5b;
+		}
+		.tincome{
+		  color:#8bda5b;
+		}
+		.expenses{
+		  color:red;
+		}
+		.difference{
+		  color:#536cf1;
+		}
+        .buttonclick{
+		  -webkit-user-select: none; /* Safari */
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+/Edge */
+		user-select: none; /* Standard */
+		outline: none; /* 去除点击时的边框 */
+		}
+		.w100{
+		  width:100px!important;
+		}
+		.w120{
+			width:120px!important;
+		}
+		
+		.m20{
+		   margin-top:20px;
+		}
+		
+		.ma20{
+		  margin-left:20px;
+		}
+		textarea{
+		 background: #f1f4ff;
+		}
+		.padding20{
+			padding-left:20px;
+		}
+		
+		.w220{
+			width:220px!important;
+		}
+		.w200{
+			width:200px!important;
+		}
+		.title{
+		  font-weight:bold;
+		  text-align:center;
+		  font-size:18px;
+		}
+		.pleft{
+			padding-left:10px;
+		}
+	/*for left*/	
+	.row-offcanvas-left {
+		margin-left: -250px;
+	}
+	.row-offcanvas {
+		height: 100%;
+	}
+#es-sidebar-container {
+    width: 250px;
+    background-color: #fff;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid #c8c8c8;
+    z-index: 1050;
+    -webkit-transition: margin-top 0.2s ease-in-out;
+    -moz-transition: margin-top 0.2s ease-in-out;
+    -o-transition: margin-top 0.2s ease-in-out;
+    transition: margin-top 0.2s ease-in-out;
+    display: none;
+}
+.sidebar-offcanvas {
+    position: fixed;
+    top: 0;
+}
+nav {
+    display: block;
+    unicode-bidi: isolate;
+}
+.es-sidebar-nav {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: auto;
+}
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.hidden-accessible {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 -1px -1px 0 !important;
+}
+.hidden-accessible {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 -1px -1px 0 !important;
+    white-space: nowrap;
+}
+.hidden-accessible {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 -1px -1px 0 !important;
+    white-space: nowrap;
+}
+.hidden-accessible {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 -1px -1px 0 !important;
+    white-space: nowrap;
+}
+.hidden-accessible {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 -1px -1px 0 !important;
+    white-space: nowrap;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}	
+#es-sidebar-container .es-sidebar-nav > li > a {
+    color: #4b4b4b;
+    outline: 0;
+	text-decoration: none;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+.modal-backdrop.in {
+    opacity: 0.4;
+    filter: alpha(opacity = 40);
+	  animation: fadeIn 0.5s ease-in-out forwards;
+}
+.modal-backdrop.fade {
+    opacity: 0;
+}
+.fade:not(.show) {
+    opacity: 0;
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+.fade {
+    transition: opacity 0.15s linear;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.4; }
+}
+.sidebar-offcanvas{
+animation: slideInFromLeft 0.2s;
+}
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+.layui-layer-hui{
+			width: 300px;
+			 height: 80px;
+			 font-size: 18px;
+			background-color: rgb(247 98 98 / 90%)
+		}
+		.layui-layer-hui2{
+		 	width: 300px;
+			 height: 80px;
+			 font-size: 18px;
+			background-color:#536cf1;
+			color:#fff;
+		}
+		.layui-layer-hui .layui-layer-content,.layui-layer-hui2 .layui-layer-content{
+			  padding:25px 10px;
+		}
+		.layui-layer-dialog .layui-layer-content{
+		   display:flex;
+		  font-size:17px;
+		  justify-content: space-around;
+          align-items: flex-end;
+		}
+		.layui-layer-dialog .layui-layer-content::before{
+		      content: "";
+			  display: block;
+			  width: 30px;
+			  height: 30px;
+			  background-image: url('/static/images/danger.svg');
+			  background-size: cover;
+		}
+  .allTleft{
+    width:150px;padding-right:5px;
+  }
+  .w170{
+    width:170px!important;
+  }
+  .w150{
+    width:150px!important;
+  }
+  .w130{
+    width:130px!important;
+  }
+  .w70{
+    width:70px!important;
+  }
+  .w50{
+    width:50px!important;
+  }
+  .lineheight{
+    line-height:18px;
+  }
+  .focus::focus {
+	border-bottom:1px solid #000;
+  }
+  .inputborder{
+    border:1px solid #000;
+  }
+</style>
+<body>
+
+  <div class="modal-backdrop sidebar-modal fade" style="display:none;"></div>
+    <div>
+	  
+	   <div class="pcshow" style="width:100%; background: #323639;justify-content:space-evenly;position:fixed;z-index: 99999;padding: 0px 100px;">
+	
+	   {if $islogin eq 1}
+		<a href="/republic/center" class="link-active" style="margin-right: 20px;display: flex;align-items: center;">
+	      <div><svg t="1722479586466" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3355" width="32" height="32"><path d="M475.591111 300.373333V175.217778c-11.377778-52.337778-54.613333-20.48-54.613333-20.48L120.604444 411.875556c-65.991111 45.511111-4.551111 79.644444-4.551111 79.644444l295.822223 254.862222c59.164444 43.235556 63.715556-22.755556 63.715555-22.755555v-116.053334C775.964444 514.275556 898.844444 887.466667 898.844444 887.466667c11.377778 20.48 18.204444 0 18.204445 0 116.053333-559.786667-441.457778-587.093333-441.457778-587.093334z" fill="#ffffff" p-id="3356"></path></svg></div></a>
+		{/if}
+		
+	    <button onclick="start()" class="action-button savetime">Start</button>
+        <button id="prevButton" class="action-button action-button--secondary">Previous</button>
+        <button id="nextButton" class="action-button action-button--secondary">Next</button>
+		<button class="action-button action-button--secondary submit">Submit</button>
+		<button class="action-button action-button--secondary download">Download</button>
+			
+    </div>
+    <div class="mobileshow" style="background: #323639;justify-content:space-evenly;position:fixed;align-items: center;">
+	
+       {if $islogin eq 1}
+		<a href="/republic/center" class="link-active" style="margin-right: 20px;display: flex;align-items: center;">
+	      <div><svg t="1722479586466" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3355" width="26" height="26"><path d="M475.591111 300.373333V175.217778c-11.377778-52.337778-54.613333-20.48-54.613333-20.48L120.604444 411.875556c-65.991111 45.511111-4.551111 79.644444-4.551111 79.644444l295.822223 254.862222c59.164444 43.235556 63.715556-22.755556 63.715555-22.755555v-116.053334C775.964444 514.275556 898.844444 887.466667 898.844444 887.466667c11.377778 20.48 18.204444 0 18.204445 0 116.053333-559.786667-441.457778-587.093333-441.457778-587.093334z" fill="#ffffff" p-id="3356"></path></svg></div></a>
+		{/if}
+	
+        <button onclick="start()" class="action-button savetime">Start</button>
+        <div id="prevButton" style="cursor: pointer" class="buttonclick">
+		   <svg t="1722076568524" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5409" width="26" height="26"><path d="M204.8 506.667l472.064-512 142.336 153.6-330.752 358.4 330.752 358.4-142.336 153.6-472.064-512z" p-id="5410" fill="#ffffff"></path></svg>
+		</div>
+		<div id="nextButton" style="cursor: pointer" class="buttonclick">
+		  <svg t="1722076633757" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6666" width="26" height="26"><path d="M819.2 512l-472.064 512L204.8 870.4 535.552 512 204.8 153.6 347.136 0 819.2 512z" p-id="6667" fill="#ffffff"></path></svg>
+		</div>
+		
+	    <div class="submit"><svg t="1722049553403" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7727" width="32" height="32"><path d="M510.976 971.264c-114.176 0-227.84-43.52-314.368-130.048-83.968-83.968-130.56-195.584-130.56-314.368s46.08-230.4 130.56-314.368S392.192 81.92 510.976 81.92c118.784 0 230.4 46.08 314.368 130.56 83.968 83.968 130.56 195.584 130.56 314.368s-46.08 230.4-130.56 314.368c-86.528 87.04-200.192 130.048-314.368 130.048z m0-827.904c-102.4 0-198.656 39.936-271.36 112.128s-112.128 168.96-112.128 271.36 39.936 198.656 112.128 271.36c74.752 74.752 173.056 112.128 271.36 112.128s196.608-37.376 271.36-112.128c72.192-72.192 112.128-168.96 112.128-271.36s-39.936-198.656-112.128-271.36-168.96-112.128-271.36-112.128z" p-id="7728" fill="#ffffff"></path><path d="M511.488 798.72c-16.896 0-30.72-13.824-30.72-30.72V340.992c0-16.896 13.824-30.72 30.72-30.72s30.72 13.824 30.72 30.72V768c0 16.896-13.824 30.72-30.72 30.72z" p-id="7729" fill="#ffffff"></path><path d="M358.4 509.952c-7.68 0-15.872-3.072-21.504-9.216-11.776-11.776-11.776-31.232 0-43.52l153.088-153.088c11.776-11.776 31.232-11.776 43.52 0 11.776 11.776 11.776 31.232 0 43.52l-153.6 153.088c-5.632 6.144-13.824 9.216-21.504 9.216z" p-id="7730" fill="#ffffff"></path><path d="M674.304 509.952c-7.68 0-15.872-3.072-21.504-9.216L499.2 347.648c-11.776-11.776-11.776-31.232 0-43.52 11.776-11.776 31.232-11.776 43.52 0l153.088 153.088c11.776 11.776 11.776 31.232 0 43.52-5.632 6.144-13.824 9.216-21.504 9.216z" p-id="7731" fill="#ffffff"></path></svg></div>
+	  
+		<div class="download"><svg t="1722049607087" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8820" width="32" height="32"><path d="M794.0096 445.2608a35.4304 35.4304 0 0 0-9.3696-24.9344l-0.512-0.512a34.49344 34.49344 0 0 0-24.01792-9.57952 36.5568 36.5568 0 0 0-26.33728 11.29472L547.84 607.4624V107.46368a35.84 35.84 0 1 0-71.68 0v499.8144L290.42688 421.53984c-6.97856-6.97856-15.97952-10.85952-25.41568-11.0848l-0.86016-0.01024c-9.1136 0-17.60768 3.43552-24.07936 9.37984l-0.512 0.512c-13.29664 13.83424-12.76416 36.38784 1.7152 50.3552l242.54464 242.54464a35.90656 35.90656 0 0 0 11.94496 9.82528c0.59392 0.31744 1.2032 0.59392 1.81248 0.87552 0.22528 0.09728 0.44544 0.20992 0.67584 0.30208 4.224 1.80224 8.7552 2.72896 13.3376 2.72896l0.08704-0.00512 0.32256 0.01536c0.09216 0 0.17408-0.01536 0.26624-0.01536 0.09728 0 0.18944 0.01536 0.28672 0.01536a33.75616 33.75616 0 0 0 20.224-6.67136c2.51904-1.79712 4.80768-3.8912 6.784-6.26176l243.36384-243.36896c6.97856-6.97344 10.85952-15.97952 11.0848-25.41568z" fill="#ffffff" p-id="8821"></path><path d="M880.64 747.57632v61.44c0 39.58784-32.09216 71.68-71.68 71.68H215.04c-39.58784 0-71.68-32.09216-71.68-71.68v-61.44a35.84 35.84 0 1 0-71.68 0v61.44c0 79.17568 64.18432 143.36 143.36 143.36h593.92c79.17568 0 143.36-64.18432 143.36-143.36v-61.44a35.84 35.84 0 1 0-71.68 0z" fill="#ffffff" p-id="8822"></path></svg></div>
+		<!--
+		 <a href="javascript:void(0)" class="showupload" style="display: flex;align-items: center;" >
+		<svg t="1725935790648" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4508" width="32" height="32"><path d="M884.2 909.6H126.8c-38.6 0-70-31.4-70-70V204.6c0-38.6 31.4-70 70-70h328.6c38.6 0 70 31.4 70 70 0 11-9 20-20 20s-20-9-20-20c0-16.6-13.4-30-30-30H126.8c-16.6 0-30 13.4-30 30v635c0 16.6 13.4 30 30 30h757.4c11 0 20 9 20 20s-8.8 20-20 20z" fill="#ffffff" p-id="4509"></path><path d="M884.2 909.6c-11 0-20-9-20-20s9-20 20-20c16.6 0 30-13.4 30-30V428.2c0-16.6-13.4-30-30-30H292.6c-16.6 0-30 13.4-30 30v268.6c0 11-9 20-20 20s-20-9-20-20V428.2c0-38.6 31.4-70 70-70h591.6c38.6 0 70 31.4 70 70v411.4c0 38.6-31.4 70-70 70zM734 295h-178.2c-38.6 0-70-31.4-70-70v-10.4c0-11 9-20 20-20s20 9 20 20v10.4c0 16.6 13.4 30 30 30H734c11 0 20 9 20 20s-9 20-20 20z" fill="#ffffff" p-id="4510"></path><path d="M192.8 909.6h-15.8c-11 0-20-9-20-20s9-20 20-20h15.8c16.6 0 30-13.4 30-30v-168.6c0-11 9-20 20-20s20 9 20 20v168.6c-0.2 38.6-31.4 70-70 70zM818 398.4c-11 0-20-9-20-20v-53.2c0-16.6-13.4-30-30-30h-90.4c-11 0-20-9-20-20s9-20 20-20H768c38.6 0 70 31.4 70 70v53.2c0 11-9 20-20 20z" fill="#ffffff" p-id="4511"></path><path d="M598.2 764.6c-11 0-20-9-20-20V532.4c0-11 9-20 20-20s20 9 20 20v212.2c0 11-9 20-20 20z" fill="#ffffff" p-id="4512"></path><path d="M683.8 638c-5.2 0-10.2-2-14.2-5.8L584 546.6c-7.8-7.8-7.8-20.4 0-28.2 7.8-7.8 20.4-7.8 28.2 0L698 604c7.8 7.8 7.8 20.4 0 28.2-4 4-9 5.8-14.2 5.8z" fill="#ffffff" p-id="4513"></path><path d="M512.4 638c-5.2 0-10.2-2-14.2-5.8-7.8-7.8-7.8-20.4 0-28.2l85.8-85.8c7.8-7.8 20.4-7.8 28.2 0 7.8 7.8 7.8 20.4 0 28.2l-85.8 85.8c-3.8 4-8.8 5.8-14 5.8z" fill="#ffffff" p-id="4514"></path></svg></a>-->
+		
+		<div class="zoom">
+		<svg t="1722304294694" class="icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9180" width="30" height="30"><path d="M657.253673 380.832792a51.187203 51.187203 0 0 0 48.883779-11.261185l216.777806-201.165708v167.63809a51.187203 51.187203 0 0 0 51.187203 51.187203 51.187203 51.187203 0 0 0 51.187203-51.187203V51.187203a51.187203 51.187203 0 0 0-51.187203-51.187203H694.108459a51.187203 51.187203 0 0 0-51.187203 51.187203 51.187203 51.187203 0 0 0 51.187203 51.187203h153.56161l-210.123469 195.023245a51.187203 51.187203 0 0 0 19.451137 84.970757zM51.197187 386.207448a48.883779 48.883779 0 0 0 35.575106-14.844289 51.187203 51.187203 0 0 0 14.844289-35.31917V168.405899l216.777806 201.165708a51.187203 51.187203 0 0 0 71.150212-2.55936 51.187203 51.187203 0 0 0-2.55936-70.894276L175.582091 100.83879h153.56161a48.883779 48.883779 0 0 0 35.575106-14.844289A48.883779 48.883779 0 0 0 379.563096 51.187203a48.883779 48.883779 0 0 0-14.844289-36.086978A51.187203 51.187203 0 0 0 329.143701 0H51.197187A51.187203 51.187203 0 0 0 14.854273 15.100225 48.883779 48.883779 0 0 0 0.009984 51.187203v284.856786a48.883779 48.883779 0 0 0 14.844289 35.31917 48.883779 48.883779 0 0 0 36.342914 14.844289zM51.197187 637.28068a49.651587 49.651587 0 0 1 35.575106 14.588353 51.187203 51.187203 0 0 1 14.844289 35.575106v167.63809l216.777806-201.165708a51.187203 51.187203 0 0 1 68.590852 73.453636l-211.403149 195.279181h153.56161a51.187203 51.187203 0 0 1 0 100.582854H51.197187a51.187203 51.187203 0 0 1-36.342914-14.844289A49.395651 49.395651 0 0 1 0.009984 972.556861V687.444139a51.187203 51.187203 0 0 1 51.187203-51.187203zM1008.909759 652.892777a51.187203 51.187203 0 0 0-71.150212 0 51.187203 51.187203 0 0 0-14.844289 35.575106v167.638091l-216.777806-201.421645a51.187203 51.187203 0 0 0-36.086978-13.308673 49.651587 49.651587 0 0 0-35.063234 16.123969 51.187203 51.187203 0 0 0 2.55936 70.894277l210.379405 195.023244h-153.56161a51.187203 51.187203 0 0 0-35.31917 85.738565 51.187203 51.187203 0 0 0 35.31917 14.844289H972.566845a51.187203 51.187203 0 0 0 51.187203-51.187203V688.467883a51.187203 51.187203 0 0 0-14.844289-35.575106z" p-id="9181" fill="#ffffff"></path></svg>
+		</div>
+		
+		
+	</div>
+		<div class="page">
+		 <div class="innerpage">
+			<table style="width:100%;">
+			    <tr>
+				 <td class="w50" style="border:3px solid #000;height: 50px;"> </td>
+				 <td class="title" style="border:3px solid #000;">1040</td>
+				 <td class="title" style="border:3px solid #000;">US</td>
+				 <td class="title" style="border:3px solid #000;">Rental & Royalty Income (Schedule E)</td>
+				 <td style="border:3px solid #000;">&nbsp;Year <input tabindex="3" type="text" id="a3" data-src="tax_year" class="tabletd w70" value="{$detail.tax_year}" style="border:1px solid #000;"></td>
+				 <td  class="title" style="border:3px solid #000;">18</td>
+			    </tr> 
+			</table>
+		   <div style="border:3px solid #000;padding:20px;border-top:none;">
+		    <div style="font-weight:bold;font-size:18px;margin-top:20px;">GENERAL INFORMATION</div>
+			<table style="width:100%;">
+			    <tr>
+				 <td class="noborder">Description of property </td>
+				 <td class="noborder"><input tabindex="4" type="text" id="a4" data-src="description_of_property" class="tabletd " value="{$detail.description_of_property}" style="border:1px solid #000;"></td>
+				 <td class="noborder" rowspan="7" style="width:180px;">
+				  <div style="border-right:1px solid #000;border-top:1px solid #000;border-bottom:1px solid #000;width:100%;height:100%;">
+				    <div style="margin-left:50px;padding-top:30px;"><b>Type of Property</b></div>
+					<div style="margin-left:20px;padding-right:20px;">
+					1 = Single Family Residence<br>
+					2 = Multi-Family Residence<br>
+					3 = Vacation /Short-Term Rental<br>
+					4 = Commercial<br>
+					5 = Land<br>
+					6 = Royalties<br>
+					7 = Self-Rental
+					</div>
+				  </div>
+				 </td>
+			    </tr> 
+				<tr>
+				 <td class="noborder">Street address </td>
+				 <td class="noborder"><input tabindex="5" type="text" id="a5" data-src="street_address" class="tabletd inputborder" value="{$detail.street_address}"></td>				
+			    </tr> 
+				<tr>
+				 <td class="noborder">City</td>
+				 <td class="noborder"><input tabindex="6" type="text" id="a6" data-src="city" class="tabletd inputborder" value="{$detail.city}" ></td>
+			    </tr> 
+				<tr>
+				 <td class="noborder">State</td>
+				 <td class="noborder"><input tabindex="7" type="text" id="a7" data-src="state" class="tabletd inputborder" value="{$detail.state}"></td>				
+			    </tr> 
+				<tr>
+				 <td class="noborder">ZIP code</td>
+				 <td class="noborder"><input tabindex="8" type="text" id="a8" data-src="zip_code" class="tabletd inputborder" value="{$detail.zip_code}"></td>				 
+			    </tr> 
+				<tr>
+				 <td class="noborder">Type of property (see table) </td>
+				 <td class="noborder"><input tabindex="9" type="text" id="a9" data-src="type_of_property" class="tabletd inputborder" value="{$detail.type_of_property}"></td>				 
+			    </tr> 
+				<tr>
+				 <td class="noborder">Other type of property </td>
+				 <td class="noborder"><input tabindex="10" type="text" id="a10" data-src="other_type_of_property" class="tabletd inputborder" value="{$detail.other_type_of_property}"></td>				
+			    </tr>
+				<tr>
+				 <td class="noborder">Number of days rented </td>
+				 <td class="noborder" style="text-align:right;"><div style="display:inline-block;border:1px solid #000;border-right:0px;width:30px;text-align:center;margin-right:-3px;line-height:27px;">34</div>
+				 <input tabindex="11" type="text" id="a11" data-src="number_of_day_rent" class="tabletd w130" value="{$detail.number_of_day_rent}" style="border:1px solid #000;line-height:25px;"></td>	
+				 <td class="noborder"><input tabindex="12" type="text" id="a12" data-src="number_of_day_rent_2" class="tabletd " value="{$detail.number_of_day_rent_2}" style="border:1px solid #000;border-left:none;line-height:25px;"> </td>	
+			    </tr>
+			</table>
+			<div style="margin-top:20px;"></div>
+			<table style="width:100%;">
+			  <tr>
+				 <td class="noborder">Percentage of ownership<br>if not 100% (.xxxx). </td>
+				 <td class="noborder"><input tabindex="13" type="text" id="a13" data-src="percent_of_ownership" class="tabletd inputborder" value="{$detail.percent_of_ownership}"></td>	
+				 <td class="noborder padding20">1=did not actively participate </td>
+				 <td class="noborder"><input tabindex="14" type="text" id="a14" data-src="did_not_actively_participate" class="tabletd inputborder" value="{$detail.did_not_actively_participate}"></td>				 
+			  </tr> 
+			  <tr>
+				 <td class="noborder">Percentage of tenant occupancy <br>if not 100% (.xxxx)</td>
+				 <td class="noborder"><input tabindex="15" type="text" id="a15" data-src="percent_of_tenant_occupancy" class="tabletd inputborder" value="{$detail.percent_of_tenant_occupancy}"></td>	
+				 <td class="noborder padding20">1=real estate professional </td>
+				 <td class="noborder"><input tabindex="16" type="text" id="a16" data-src="real_estate_professional" class="tabletd inputborder" value="{$detail.real_estate_professional}"></td>				 
+			  </tr>
+			  <tr>
+				 <td class="noborder">1=spouse, 2=joint</td>
+				 <td class="noborder"><input tabindex="17" type="text" id="a17" data-src="spouse_joint" class="tabletd inputborder" value="{$detail.spouse_joint}"></td>	
+				 <td class="noborder padding20">1=rental other than real estate </td>
+				 <td class="noborder"><input tabindex="18" type="text" id="a18" data-src="rental_other_than_real" class="tabletd inputborder" value="{$detail.rental_other_than_real}"></td>				 
+			  </tr>
+			  <tr>
+				 <td class="noborder">1=qualified joint venture</td>
+				 <td class="noborder"><input tabindex="19" type="text" id="a19" data-src="qualified_joint_venture" class="tabletd inputborder" value="{$detail.qualified_joint_venture}"></td>	
+				 <td class="noborder padding20">1=investment </td>
+				 <td class="noborder"><input tabindex="20" type="text" id="a20" data-src="investment" class="tabletd inputborder" value="{$detail.investment}"></td>				 
+			  </tr>
+			  <tr>
+				 <td class="noborder">1=nonpassive activity, <br>2=passive royalty</td>
+				 <td class="noborder"><input tabindex="21" type="text" id="a21" data-src="nonpassive_activity" class="tabletd inputborder" value="{$detail.nonpassive_activity}"></td>	
+				 <td class="noborder padding20">1=single member limited <br>liability company. </td>
+				 <td class="noborder"><input tabindex="22" type="text" id="a22" data-src="liability" class="tabletd inputborder" value="{$detail.liability}"></td>				 
+			  </tr>
+			  <tr>
+				 <td class="noborder" colspan="3">If required to file Form(s) 1099, did you or will you file all required Form(s) 1099: 1=yes, 2=no</td>
+				 <td class="noborder"><input tabindex="23" type="text" id="a23" data-src="fill_forms" class="tabletd inputborder" value="{$detail.fill_forms}"></td>				 
+			  </tr>
+			</table>
+			<div style="font-weight:bold;font-size:18px;margin-top:20px;">INCOME</div>
+			<table>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Rents or royalties received </td>
+				 <td class="noborder"><input tabindex="24" type="text" id="a24" data-src="rent_received" class="tabletd inputborder" value="{$detail.rent_received}"></td>
+				 <td class="noborder"><input tabindex="25" type="text" id="a25" data-src="rent_received_2" class="tabletd inputborder" value="{$detail.rent_received_2}"></td>				 
+			   </tr>
+			</table>
+			<div style="font-weight:bold;font-size:18px;margin-top:20px;">DIRECT EXPENSES</div>
+			<div >NOTE : <span style="background-color:yellow;">Direct expenses are related only to the rental activity. These include rental agency fees, advertising, and office supplies.</span></div>
+			<table style="margin-top:10px;">
+			   <tr>
+				 <td class="noborder" style="width:50%;">Advertising</td>
+				 <td class="noborder"><input tabindex="26" type="text" id="a26" data-src="advertising" class="tabletd inputborder" value="{$detail.advertising}"></td>
+				 <td class="noborder"><input tabindex="27" type="text" id="a27" data-src="advertising_2" class="tabletd inputborder" value="{$detail.advertising_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Association dues</td>
+				 <td class="noborder"><input tabindex="28" type="text" id="a28" data-src="associated_dues" class="tabletd inputborder" value="{$detail.associated_dues}"></td>
+				 <td class="noborder"><input tabindex="29" type="text" id="a29" data-src="associated_dues_2" class="tabletd inputborder" value="{$detail.associated_dues_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Auto and travel (not entered elsewhere)</td>
+				 <td class="noborder"><input tabindex="30" type="text" id="a30" data-src="auto_and_travel" class="tabletd inputborder" value="{$detail.auto_and_travel}"></td>
+				 <td class="noborder"><input tabindex="31" type="text" id="a31" data-src="auto_and_travel_2" class="tabletd inputborder" value="{$detail.auto_and_travel_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Cleaning and maintenance </td>
+				 <td class="noborder"><input tabindex="32" type="text" id="a32" data-src="clean_and_maintenance" class="tabletd inputborder" value="{$detail.clean_and_maintenance}"></td>
+				 <td class="noborder"><input tabindex="33" type="text" id="a33" data-src="clean_and_maintenance_2" class="tabletd inputborder" value="{$detail.clean_and_maintenance_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Commissions</td>
+				 <td class="noborder"><input tabindex="34" type="text" id="a34" data-src="commission" class="tabletd inputborder" value="{$detail.commission}"></td>
+				 <td class="noborder"><input tabindex="35" type="text" id="a35" data-src="commission_2" class="tabletd inputborder" value="{$detail.commission_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Gardening</td>
+				 <td class="noborder"><input tabindex="36" type="text" id="a36" data-src="gradening" class="tabletd inputborder" value="{$detail.gradening}"></td>
+				 <td class="noborder"><input tabindex="37" type="text" id="a37" data-src="gradening_2" class="tabletd inputborder" value="{$detail.gradening_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Insurance</td>
+				 <td class="noborder"><input tabindex="38" type="text" id="a38" data-src="insurance" class="tabletd inputborder" value="{$detail.insurance}"></td>
+				 <td class="noborder"><input tabindex="39" type="text" id="a39" data-src="insurance_2" class="tabletd inputborder" value="{$detail.insurance_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Legal and professional fees</td>
+				 <td class="noborder"><input tabindex="40" type="text" id="a40" data-src="legal_and_professional_fees" class="tabletd inputborder" value="{$detail.legal_and_professional_fees}"></td>
+				 <td class="noborder"><input tabindex="41" type="text" id="a41" data-src="legal_and_professional_fees_2" class="tabletd inputborder" value="{$detail.legal_and_professional_fees_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Licenses and permits</td>
+				 <td class="noborder"><input tabindex="42" type="text" id="a42" data-src="license_and_permits" class="tabletd inputborder" value="{$detail.license_and_permits}"></td>
+				 <td class="noborder"><input tabindex="43" type="text" id="a43" data-src="license_and_permits_2" class="tabletd inputborder" value="{$detail.license_and_permits_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Management fees</td>
+				 <td class="noborder"><input tabindex="44" type="text" id="a44" data-src="management_fees" class="tabletd inputborder" value="{$detail.management_fees}"></td>
+				 <td class="noborder"><input tabindex="45" type="text" id="a45" data-src="management_fees_2" class="tabletd inputborder" value="{$detail.management_fees_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Miscellaneous</td>
+				 <td class="noborder"><input tabindex="46" type="text" id="a46" data-src="miscellaneous" class="tabletd inputborder" value="{$detail.miscellaneous}"></td>
+				 <td class="noborder"><input tabindex="47" type="text" id="a47" data-src="miscellaneous_2" class="tabletd inputborder" value="{$detail.miscellaneous_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Mortgage interest (paid to banks, etc.)</td>
+				 <td class="noborder"><input tabindex="48" type="text" id="a48" data-src="mortgage_interest" class="tabletd inputborder" value="{$detail.mortgage_interest}"></td>
+				 <td class="noborder"><input tabindex="49" type="text" id="a49" data-src="mortgage_interest_2" class="tabletd inputborder" value="{$detail.mortgage_interest_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Qualified mortgage insurance premiums</td>
+				 <td class="noborder"><input tabindex="50" type="text" id="a50" data-src="qualified_mortgage" class="tabletd inputborder" value="{$detail.qualified_mortgage}"></td>
+				 <td class="noborder"><input tabindex="51" type="text" id="a51" data-src="qualified_mortgage_2" class="tabletd inputborder" value="{$detail.qualified_mortgage_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Excess mortgage interest</td>
+				 <td class="noborder"><input tabindex="52" type="text" id="a52" data-src="excess_mortgage" class="tabletd inputborder" value="{$detail.excess_mortgage}"></td>
+				 <td class="noborder"><input tabindex="53" type="text" id="a53" data-src="excess_mortgage_2" class="tabletd inputborder" value="{$detail.excess_mortgage_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Other interest (not entered elsewhere)</td>
+				 <td class="noborder"><input tabindex="54" type="text" id="a54" data-src="other_interest" class="tabletd inputborder" value="{$detail.other_interest}"></td>
+				 <td class="noborder"><input tabindex="55" type="text" id="a55" data-src="other_interest_2" class="tabletd inputborder" value="{$detail.other_interest_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Painting and decorating</td>
+				 <td class="noborder"><input tabindex="56" type="text" id="a56" data-src="paintint_and_decorating" class="tabletd inputborder" value="{$detail.paintint_and_decorating}"></td>
+				 <td class="noborder"><input tabindex="57" type="text" id="a57" data-src="paintint_and_decorating_2" class="tabletd inputborder" value="{$detail.paintint_and_decorating_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Pest control</td>
+				 <td class="noborder"><input tabindex="58" type="text" id="a58" data-src="pest_control" class="tabletd inputborder" value="{$detail.pest_control}"></td>
+				 <td class="noborder"><input tabindex="59" type="text" id="a59" data-src="pest_control_2" class="tabletd inputborder" value="{$detail.pest_control_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Plumbing and electrical </td>
+				 <td class="noborder"><input tabindex="60" type="text" id="a60" data-src="plumbing_and_electrical" class="tabletd inputborder" value="{$detail.plumbing_and_electrical}"></td>
+				 <td class="noborder"><input tabindex="61" type="text" id="a61" data-src="plumbing_and_electrical_2" class="tabletd inputborder" value="{$detail.plumbing_and_electrical_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Repairs </td>
+				 <td class="noborder"><input tabindex="62" type="text" id="a62" data-src="repairs" class="tabletd inputborder" value="{$detail.repairs}"></td>
+				 <td class="noborder"><input tabindex="63" type="text" id="a63" data-src="repairs_2" class="tabletd inputborder" value="{$detail.repairs_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Supplies </td>
+				 <td class="noborder"><input tabindex="64" type="text" id="a64" data-src="supplies" class="tabletd inputborder" value="{$detail.supplies}"></td>
+				 <td class="noborder"><input tabindex="65" type="text" id="a65" data-src="supplies_2" class="tabletd inputborder" value="{$detail.supplies_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Taxes - real estate </td>
+				 <td class="noborder"><input tabindex="66" type="text" id="a66" data-src="taxes_real_estate" class="tabletd inputborder" value="{$detail.taxes_real_estate}"></td>
+				 <td class="noborder"><input tabindex="67" type="text" id="a67" data-src="taxes_real_estate_2" class="tabletd inputborder" value="{$detail.taxes_real_estate_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Taxes - other (not entered elsewhere)  </td>
+				 <td class="noborder"><input tabindex="68" type="text" id="a68" data-src="taxes_others" class="tabletd inputborder" value="{$detail.taxes_others}"></td>
+				 <td class="noborder"><input tabindex="69" type="text" id="a69" data-src="taxes_others_2" class="tabletd inputborder" value="{$detail.taxes_others_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Telephone </td>
+				 <td class="noborder"><input tabindex="70" type="text" id="a70" data-src="telephone" class="tabletd inputborder" value="{$detail.telephone}"></td>
+				 <td class="noborder"><input tabindex="71" type="text" id="a71" data-src="telephone_2" class="tabletd inputborder" value="{$detail.telephone_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Utilities </td>
+				 <td class="noborder"><input tabindex="72" type="text" id="a72" data-src="utilities" class="tabletd inputborder" value="{$detail.utilities}"></td>
+				 <td class="noborder"><input tabindex="73" type="text" id="a73" data-src="utilities_2" class="tabletd inputborder" value="{$detail.utilities_2}"></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;">Wages and salaries </td>
+				 <td class="noborder"><input tabindex="74" type="text" id="a74" data-src="wages_and_salaries" class="tabletd inputborder" value="{$detail.wages_and_salaries}"></td>
+				 <td class="noborder"><input tabindex="75" type="text" id="a75" data-src="wages_and_salaries_2" class="tabletd inputborder" value="{$detail.wages_and_salaries_2}"></td>				 
+			   </tr>			  
+			</table>
+			<div>Other:</div>
+			<table>
+			   <tr>
+				 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="76" type="text" id="a76" data-src="other_1" class="tabletd borderBottom" value="{$detail.other_1}" style="width:360px;"></td>
+				 <td></td>
+				 <td></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="77" type="text" id="a77" data-src="other_2" class="tabletd borderBottom" value="{$detail.other_2}" style="width:360px;"></td>
+				 <td></td>
+				 <td></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="78" type="text" id="a78" data-src="other_3" class="tabletd borderBottom" value="{$detail.other_3}" style="width:360px;"></td>
+				 <td class=""></td>
+				 <td class=""></td>				 
+			   </tr>
+			   <tr>
+				 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="79" type="text" id="a79" data-src="other_4" class="tabletd borderBottom" value="{$detail.other_4}" style="width:360px;"></td>
+				 <td class=""></td>
+				 <td class=""></td>				 
+			   </tr>			   
+			</table>
+		   </div>
+		   <table style="width:100%;">
+			    <tr>
+				 <td style="width:90%;border:3px solid #000;border-top:none;"></td>
+				 <td class="title" style="border:3px solid #000;border-top:none;">18</td>
+			    </tr> 
+			</table>
+		</div>
+		<!--inner page end-->
+		<div class="innerpage" style="margin-top:20px;">
+			<table style="width:100%;">
+			    <tr>
+				 <td class="w50" style="border:3px solid #000;height: 50px;"> </td>
+				 <td class="title" style="border:3px solid #000;">1040</td>
+				 <td class="title" style="border:3px solid #000;">US</td>
+				 <td class="title" style="border:3px solid #000;">Rental & Royalty Income (Sch. E) (cont.)</td>
+				 <td style="border:3px solid #000;">&nbsp;Year <input tabindex="80" type="text" id="a80" data-src="tax_year" class="tabletd w70" value="{$detail.tax_year}" style="border:1px solid #000;"></td>
+				 <td  class="title" style="border:3px solid #000;">18</td>
+			    </tr> 
+			</table>
+		   <div style="border:3px solid #000;padding:20px;border-top:none;">
+				<div style="margin-top:10px;"><b>The indirect</b> expense column should only be used for vacation homes or less than 100% tenant occupied rentals.</div>
+				<div style="font-weight:bold;font-size:18px;margin-top:5px;margin-bottom:20px;">GENERAL INFORMATION</div>
+				<table>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Foreign region</td>
+					 <td class="noborder" colspan="3"><input tabindex="81" type="text" id="a81" data-src="foreign_region" class="tabletd inputborder" value="{$detail.foreign_region}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Foreign postal code</td>
+					 <td class="noborder" colspan="3"><input tabindex="82" type="text" id="a82" data-src="foreign_postal_code" class="tabletd inputborder" value="{$detail.foreign_postal_code}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Foreign country</td>
+					 <td class="noborder" colspan="3"><input tabindex="83" type="text" id="a83" data-src="foreign_country" class="tabletd inputborder" value="{$detail.foreign_country}"></td>				 
+				   </tr>
+			   </table>
+			   <div style="font-weight:bold;font-size:18px;margin-top:5px;">OIL AND GAS</div>
+			   <table>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Production type (preparer use only)</td>
+					 <td class="noborder"><input tabindex="84" type="text" id="a84" data-src="production_type" class="tabletd inputborder" value="{$detail.production_type}"></td>
+					 <td class="noborder"><input tabindex="85" type="text" id="a85" data-src="production_type_2" class="tabletd inputborder" value="{$detail.production_type_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Cost depletion</td>
+					 <td class="noborder"><input tabindex="86" type="text" id="a86" data-src="cost_depletion_1" class="tabletd inputborder" value="{$detail.cost_depletion_1}"></td>
+					 <td class="noborder"><input tabindex="87" type="text" id="a87" data-src="cost_depletion_2" class="tabletd inputborder" value="{$detail.cost_depletion_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Percentage depletion rate or amount</td>
+					 <td class="noborder"><input tabindex="88" type="text" id="a88" data-src="percentage_depletion_1" class="tabletd inputborder" value="{$detail.percentage_depletion_1}"></td>
+					 <td class="noborder"><input tabindex="89" type="text" id="a89" data-src="percentage_depletion_2" class="tabletd inputborder" value="{$detail.percentage_depletion_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">State cost depletion, if different (-1 if none)</td>
+					 <td class="noborder"><input tabindex="90" type="text" id="a90" data-src="state_cost_depletion_1" class="tabletd inputborder" value="{$detail.state_cost_depletion_1}"></td>
+					 <td class="noborder"><input tabindex="91" type="text" id="a91" data-src="state_cost_depletion_2" class="tabletd inputborder" value="{$detail.state_cost_depletion_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">State % depletion rate or amount, if different (-1 if none) .</td>
+					 <td class="noborder"><input tabindex="92" type="text" id="a92" data-src="state_depletion_rate_or_amount_1" class="tabletd inputborder" value="{$detail.state_depletion_rate_or_amount_1}"></td>
+					 <td class="noborder"><input tabindex="93" type="text" id="a93" data-src="state_depletion_rate_or_amount_2" class="tabletd inputborder" value="{$detail.state_depletion_rate_or_amount_2}"></td>				 
+				   </tr>
+			   </table>
+			   <div style="font-weight:bold;font-size:18px;margin-top:5px;">PERSONAL USE OF DWELLING UNIT (INCLUDING VACATION HOME)</div>
+			   <table>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Number of days personal use</td>
+					 <td class="noborder"><input tabindex="94" type="text" id="a94" data-src="number_of_days_personal_use_1" class="tabletd inputborder" value="{$detail.number_of_days_personal_use_1}"></td>
+					 <td class="noborder"><input tabindex="95" type="text" id="a95" data-src="number_of_days_personal_use_2" class="tabletd inputborder" value="{$detail.number_of_days_personal_use_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Number of days owned (if optional method elected)</td>
+					 <td class="noborder"><input tabindex="96" type="text" id="a96" data-src="number_of_days_owned_1" class="tabletd inputborder" value="{$detail.number_of_days_owned_1}"></td>
+					 <td class="noborder"><input tabindex="97" type="text" id="a97" data-src="number_of_days_owned_2" class="tabletd inputborder" value="{$detail.number_of_days_owned_2}"></td>				 
+				   </tr>
+			   </table>
+			   <div style="font-weight:bold;font-size:18px;margin-top:5px;">INDIRECT EXPENSES</div>
+			   <div style="margin-top:5px;">NOTE :<span style="background-color:yellow;">Indirect expenses are related to operating or maintaining the dwelling unit.<br>
+					These include repairs, insurance, and utilities.</span></div>
+			   <table>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Advertising</td>
+					 <td class="noborder"><input tabindex="98" type="text" id="a98" data-src="advertising2_1" class="tabletd inputborder" value="{$detail.advertising2_1}"></td>
+					 <td class="noborder"><input tabindex="99" type="text" id="a99" data-src="advertising2_2" class="tabletd inputborder" value="{$detail.advertising2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Association dues</td>
+					 <td class="noborder"><input tabindex="100" type="text" id="a100" data-src="associated_dues2_1" class="tabletd inputborder" value="{$detail.associated_dues2_1}"></td>
+					 <td class="noborder"><input tabindex="101" type="text" id="a101" data-src="associated_dues2_2" class="tabletd inputborder" value="{$detail.associated_dues2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Auto and travel (not entered elsewhere)</td>
+					 <td class="noborder"><input tabindex="102" type="text" id="a102" data-src="auto_and_travel2_1" class="tabletd inputborder" value="{$detail.auto_and_travel2_1}"></td>
+					 <td class="noborder"><input tabindex="103" type="text" id="a103" data-src="auto_and_travel2_2" class="tabletd inputborder" value="{$detail.auto_and_travel2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Cleaning and maintenance</td>
+					 <td class="noborder"><input tabindex="104" type="text" id="a104" data-src="clean_and_maintenance2_1" class="tabletd inputborder" value="{$detail.clean_and_maintenance2_1}"></td>
+					 <td class="noborder"><input tabindex="105" type="text" id="a105" data-src="clean_and_maintenance2_2" class="tabletd inputborder" value="{$detail.clean_and_maintenance2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Commissions</td>
+					 <td class="noborder"><input tabindex="106" type="text" id="a106" data-src="commission2_1" class="tabletd inputborder" value="{$detail.commission2_1}"></td>
+					 <td class="noborder"><input tabindex="107" type="text" id="a107" data-src="commission2_2" class="tabletd inputborder" value="{$detail.commission2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Gardening</td>
+					 <td class="noborder"><input tabindex="108" type="text" id="a108" data-src="gradening2_1" class="tabletd inputborder" value="{$detail.gradening2_1}"></td>
+					 <td class="noborder"><input tabindex="109" type="text" id="a109" data-src="gradening2_2" class="tabletd inputborder" value="{$detail.gradening2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Insurance</td>
+					 <td class="noborder"><input tabindex="110" type="text" id="a110" data-src="insurance2_1" class="tabletd inputborder" value="{$detail.insurance2_1}"></td>
+					 <td class="noborder"><input tabindex="111" type="text" id="a111" data-src="insurance2_2" class="tabletd inputborder" value="{$detail.insurance2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Legal and professional fees</td>
+					 <td class="noborder"><input tabindex="112" type="text" id="a112" data-src="legal_and_professional_fees2_1" class="tabletd inputborder" value="{$detail.legal_and_professional_fees2_1}"></td>
+					 <td class="noborder"><input tabindex="113" type="text" id="a113" data-src="legal_and_professional_fees2_2" class="tabletd inputborder" value="{$detail.legal_and_professional_fees2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Licenses and permits</td>
+					 <td class="noborder"><input tabindex="114" type="text" id="a114" data-src="license_and_permits2_1" class="tabletd inputborder" value="{$detail.license_and_permits2_1}"></td>
+					 <td class="noborder"><input tabindex="115" type="text" id="a115" data-src="license_and_permits2_2" class="tabletd inputborder" value="{$detail.license_and_permits2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Management fees </td>
+					 <td class="noborder"><input tabindex="116" type="text" id="a116" data-src="management_fees2_1" class="tabletd inputborder" value="{$detail.management_fees2_1}"></td>
+					 <td class="noborder"><input tabindex="117" type="text" id="a117" data-src="management_fees2_2" class="tabletd inputborder" value="{$detail.management_fees2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Miscellaneous</td>
+					 <td class="noborder"><input tabindex="118" type="text" id="a118" data-src="miscellaneous2_1" class="tabletd inputborder" value="{$detail.miscellaneous2_1}"></td>
+					 <td class="noborder"><input tabindex="119" type="text" id="a119" data-src="miscellaneous2_2" class="tabletd inputborder" value="{$detail.miscellaneous2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Mortgage interest (paid to banks, etc.)</td>
+					 <td class="noborder"><input tabindex="120" type="text" id="a120" data-src="mortgage_interest2_1" class="tabletd inputborder" value="{$detail.mortgage_interest2_1}"></td>
+					 <td class="noborder"><input tabindex="121" type="text" id="a121" data-src="mortgage_interest2_2" class="tabletd inputborder" value="{$detail.mortgage_interest2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Qualified mortgage insurance premiums</td>
+					 <td class="noborder"><input tabindex="122" type="text" id="a122" data-src="qualified_mortgage2_1" class="tabletd inputborder" value="{$detail.qualified_mortgage2_1}"></td>
+					 <td class="noborder"><input tabindex="123" type="text" id="a123" data-src="qualified_mortgage2_2" class="tabletd inputborder" value="{$detail.qualified_mortgage2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Excess mortgage interest</td>
+					 <td class="noborder"><input tabindex="124" type="text" id="a124" data-src="excess_mortgage2_1" class="tabletd inputborder" value="{$detail.excess_mortgage2_1}"></td>
+					 <td class="noborder"><input tabindex="125" type="text" id="a125" data-src="excess_mortgage2_2" class="tabletd inputborder" value="{$detail.excess_mortgage2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Other interest (not entered elsewhere)</td>
+					 <td class="noborder"><input tabindex="126" type="text" id="a126" data-src="other_interest2_1" class="tabletd inputborder" value="{$detail.other_interest2_1}"></td>
+					 <td class="noborder"><input tabindex="127" type="text" id="a127" data-src="other_interest2_2" class="tabletd inputborder" value="{$detail.other_interest2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Painting and decorating</td>
+					 <td class="noborder"><input tabindex="128" type="text" id="a128" data-src="paintint_and_decorating2_1" class="tabletd inputborder" value="{$detail.paintint_and_decorating2_1}"></td>
+					 <td class="noborder"><input tabindex="129" type="text" id="a129" data-src="paintint_and_decorating2_2" class="tabletd inputborder" value="{$detail.paintint_and_decorating2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Pest control</td>
+					 <td class="noborder"><input tabindex="130" type="text" id="a130" data-src="pest_control2_1" class="tabletd inputborder" value="{$detail.pest_control2_1}"></td>
+					 <td class="noborder"><input tabindex="131" type="text" id="a131" data-src="pest_control2_2" class="tabletd inputborder" value="{$detail.pest_control2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Plumbing and electrical</td>
+					 <td class="noborder"><input tabindex="132" type="text" id="a132" data-src="plumbing_and_electrical2_1" class="tabletd inputborder" value="{$detail.plumbing_and_electrical2_1}"></td>
+					 <td class="noborder"><input tabindex="133" type="text" id="a133" data-src="plumbing_and_electrical2_2" class="tabletd inputborder" value="{$detail.plumbing_and_electrical2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Repairs</td>
+					 <td class="noborder"><input tabindex="134" type="text" id="a134" data-src="repairs2_1" class="tabletd inputborder" value="{$detail.repairs2_1}"></td>
+					 <td class="noborder"><input tabindex="135" type="text" id="a135" data-src="repairs2_2" class="tabletd inputborder" value="{$detail.repairs2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Supplies</td>
+					 <td class="noborder"><input tabindex="136" type="text" id="a136" data-src="supplies2_1" class="tabletd inputborder" value="{$detail.supplies2_1}"></td>
+					 <td class="noborder"><input tabindex="137" type="text" id="a137" data-src="supplies2_2" class="tabletd inputborder" value="{$detail.supplies2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Taxes - real estate</td>
+					 <td class="noborder"><input tabindex="138" type="text" id="a138" data-src="taxes_real_estate2_1" class="tabletd inputborder" value="{$detail.taxes_real_estate2_1}"></td>
+					 <td class="noborder"><input tabindex="139" type="text" id="a139" data-src="taxes_real_estate2_2" class="tabletd inputborder" value="{$detail.taxes_real_estate2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Taxes - other (not entered elsewhere) </td>
+					 <td class="noborder"><input tabindex="140" type="text" id="a140" data-src="taxes_others2_1" class="tabletd inputborder" value="{$detail.taxes_others2_1}"></td>
+					 <td class="noborder"><input tabindex="141" type="text" id="a141" data-src="taxes_others2_2" class="tabletd inputborder" value="{$detail.taxes_others2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Telephone</td>
+					 <td class="noborder"><input tabindex="142" type="text" id="a142" data-src="telephone2_1" class="tabletd inputborder" value="{$detail.telephone2_1}"></td>
+					 <td class="noborder"><input tabindex="143" type="text" id="a143" data-src="telephone2_2" class="tabletd inputborder" value="{$detail.telephone2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Utilities</td>
+					 <td class="noborder"><input tabindex="144" type="text" id="a144" data-src="utilities2_1" class="tabletd inputborder" value="{$detail.utilities2_1}"></td>
+					 <td class="noborder"><input tabindex="145" type="text" id="a145" data-src="utilities2_2" class="tabletd inputborder" value="{$detail.utilities2_2}"></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;">Wages and salaries</td>
+					 <td class="noborder"><input tabindex="146" type="text" id="a146" data-src="wages_and_salaries2_1" class="tabletd inputborder" value="{$detail.wages_and_salaries2_1}"></td>
+					 <td class="noborder"><input tabindex="147" type="text" id="a147" data-src="wages_and_salaries2_2" class="tabletd inputborder" value="{$detail.wages_and_salaries2_2}"></td>				 
+				   </tr>
+			   </table>
+				<div>Other:</div>
+				<table>
+				   <tr>
+					 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="148" type="text" id="a148" data-src="other2_1" class="tabletd borderBottom" value="{$detail.other2_1}" style="width:360px;"></td>
+					 <td></td>
+					 <td></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="149" type="text" id="a149" data-src="other2_2" class="tabletd borderBottom" value="{$detail.other2_2}" style="width:360px;"></td>
+					 <td></td>
+					 <td></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="150" type="text" id="a150" data-src="other2_3" class="tabletd borderBottom" value="{$detail.other2_3}" style="width:360px;"></td>
+					 <td class=""></td>
+					 <td class=""></td>				 
+				   </tr>
+				   <tr>
+					 <td class="noborder" style="width:50%;padding-left:30px;"><input tabindex="151" type="text" id="a151" data-src="other2_4" class="tabletd borderBottom" value="{$detail.other2_4}" style="width:360px;"></td>
+					 <td class=""></td>
+					 <td class=""></td>				 
+				   </tr>			   
+				</table>			   
+		   </div>
+		   <table style="width:100%;">
+			    <tr>
+				 <td style="width:90%;border:3px solid #000;border-top:none;"></td>
+				 <td class="title" style="border:3px solid #000;border-top:none;">18</td>
+			    </tr> 
+			</table>
+		</div>   
+	</div>
+	 <!--签名 弹出页-->
+        <div class="modal-barrier" id="comtip" style="display:none;">
+		       <?php if(!is_mobile_device()){ ?> 
+				   <div class="dialog f-theme column  position-relative gap-20 dialog--normal">
+                		<svg class="close close3" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>
+                	
+						<canvas id="signature-pad" width="1000" height="272" style="border: 1px dashed green;"></canvas>
+                		<div class="row align-center justify-end" style="display:flex;margin-top:40px;  width: 100%; justify-content: space-evenly">
+                        <button onclick="clearSignature()" class="action-button action-button--secondary signbutton" style="margin-left:10px;">Clear</button>
+                        <button onclick="saveSignature()"  class="action-button action-button--primary signbutton">Save</button>
+                        </div>
+                	</div>
+				<?php }else{ ?>
+				 <style>
+				 .dialog{
+				   max-width: 350px;
+                   height: 800px;
+				}
+				 </style>
+				   <div class="dialog f-theme column  position-relative gap-20 dialog--normal">
+                		<svg class="close close3" width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                			<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                			<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                		</svg>
+						<canvas id="signature-pad" width="272" height="740" style="border: 1px dashed green;"></canvas>
+                		<div class="row align-center justify-end" style="display:flex;margin-top:40px;">
+                        <button onclick="clearSignature()" class="action-button action-button--secondary signbutton" style="margin-left:10px;">Clear</button>
+                        <button onclick="saveSignature()"  class="action-button action-button--primary signbutton">Save</button>
+                        </div>
+                	</div>
+				<?php }?>
+         </div>  
+		
+     <!--弹出上传文件页面-->
+     
+</body>
+</html>
+<script>
+       var curfield="{$detail.curfield}";       
+     // var inputs = document.querySelectorAll('input[type="text"]');
+	//  var inputs = document.querySelectorAll('input[tabindex="text"]');
+    // var inputs=$('input, textarea');
+	   var link="{$detail.link}";
+	   var currentIndex=getIndex(curfield);
+	   var currentIndex2=getIndex2(curfield);
+	   var specificInput = $('[data-src="'+curfield+'"]');
+	   var scaleVal=0.3;
+	   ////////////
+	   	   var $inputs = $('input, textarea').sort(function(a, b) {
+	        return $(a).attr('tabindex') - $(b).attr('tabindex');
+		    });
+		    $inputs = $($inputs);
+		
+		    // 初始化当前焦点的索引
+		   // var currentIndex =currentIndex;
+		    // 当点击Prev或Next按钮时
+		    $('#prevButton, #nextButton').click(function() {
+		        var direction = $(this).is('#prevButton') ? -1 : 1;
+		        // 更新当前索引，并确保它在有效范围内
+		      //  currentIndex2 = (currentIndex2 + direction + $inputs.length) % $inputs.length;
+				if(currentIndex2<=$inputs.length+1){
+				  currentIndex2=parseInt(currentIndex2)+parseInt(direction);
+				}else{
+				  currentIndex2=3;
+				}
+				if($(this).is('#nextButton')){
+					if(currentIndex2>=151){ 
+					   $('#nextButton').attr('disabled',true);
+					}else{
+					   $('#nextButton').attr('disabled',false);
+					}
+					$('#prevButton').attr('disabled',false);
+					
+				}
+				if($(this).is('#prevButton')){
+					if(currentIndex2<=2){ 
+					    $('#prevButton').attr('disabled',true);
+						return false;
+					}else{
+						$('#prevButton').attr('disabled',false);
+					}
+					$('#nextButton').attr('disabled',false);
+				}
+				 positionTo2(currentIndex2);
+				 return false;
+			
+		    });
+			
+		      	//  end
+	  $.fn.validateDate = function() {
+		    this.each(function() {
+		      
+		    });
+		    return this;
+		};
+		 
+		// 使用方法：
+		$('input[data-src="date_debt"]').blur(function() {
+                var date = $('input[data-src="date_debt"]').val();
+		        var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/;
+		        if (!regex.test(date)) {
+		           // console.log('日期格式不正确，请确保格式为 mm/dd/yy');
+		            msg('The date format is incorrect, please ensure that the format is mm/dd/yy');
+		            $('input[data-src="date_debt"]').val('');
+		            return false;
+		            // 这里可以添加其他操作，比如显示错误信息或禁用提交按钮
+		        } 
+		});
+	 
+	  <?php if($detail['status']==2&&!$islogin){ ?>
+	  	$('.savetime').attr('disabled', true);
+	  	$('#nextButton').attr('disabled', true);
+	  	$('#prevButton').attr('disabled', true);
+	    $('input').attr('readonly', true);
+	  <?php }?>
+      <?php if($detail['status']<2||$islogin==1){ ?>      		
+	    $('#sign').click(function () {
+	    	 if (isMobile()) {
+               var link="{$detail.link}";
+			   var url="https://taxprep.republictax.com/clients/de_signpage?link="+link;
+			   location.href=url;
+            } else {
+               $("#comtip").show();
+            }
+        })
+        <?php }?>
+	 
+		function menuhandle(){
+	      //得到菜单 看当前是显示还是隐藏
+		  var obj=$('.modal-backdrop');
+		  var esobj=$('#es-sidebar-container');
+		  if(obj.hasClass('fade')){
+			obj.addClass('in');
+			obj.removeClass('fade');
+		    obj.show();
+			esobj.show();
+		  }else{
+		    obj.removeClass('in');
+		    obj.addClass('fade');
+		    obj.hide();
+			esobj.hide();
+		  }
+	   }
+	   $('.modal-backdrop').click(function() {
+	        var obj=$('.modal-backdrop');
+		    var esobj=$('#es-sidebar-container');
+	        obj.hide();
+			esobj.hide();
+	   });
+	 
+	   
+        function getIndex(findelement){
+		  var obj=$('input[data-src="'+findelement+'"]');
+		  if(obj){
+		     return obj.attr('tabindex');
+		  }else{
+		     var obj=$('textarea[data-src="'+findelement+'"]');
+			 return obj.attr('tabindex');
+		    return false;
+		  }
+			// 假设我们想要找到 data-src 属性值为 'someValue' 的 input 元素的索引
+			var targetValue = findelement;
+			var targetIndex = -1; // 初始化为-1，表示未找到
+
+			// 遍历 NodeList
+			for (var i = 0; i < inputs.length; i++) {
+			    // 检查每个 input 元素的 data-src 属性值
+			    if (inputs[i].getAttribute('data-src') === targetValue) {
+			        // 如果找到匹配的元素，返回其索引值
+			        targetIndex = i;
+			        break; // 找到后退出循环
+			    }
+			}
+		   return targetIndex;
+        }
+        function getIndex2(curfield){
+        	var obj=$('[data-src="'+curfield+'"]');
+        	var num=obj.attr('tabindex');
+        	return num;
+        }
+        function getDataSrc(curIndex){
+		 
+		  var obj=$('[tabindex="'+curIndex+'"]');
+		  return obj.attr('data-src');
+        }
+        
+        function start() {
+		  
+        	if(currentIndex2>=0){
+				positionTo2(currentIndex2,1);
+        		return false;
+			   if(isMobile()){
+			      $inputs.eq(currentIndex2).focus();
+			   }else{
+			   	 positionTo(currentIndex);
+			    inputs[currentIndex].focus();
+			 }
+        	}else{
+        		$('#a3').focus();
+        	}  
+        }
+     
+        
+        function positionTo2(currentIndex2,isstart=0){
+		
+                 var curfield2=getDataSrc(currentIndex2);
+				 var obj00=$('input[tabindex="'+currentIndex2+'"]');
+				 if(obj00.length>0){
+				   
+				 }else{
+				    var obj00=$('textarea[tabindex="'+currentIndex2+'"]');
+					if(!(obj00.length>0)){
+					  //alert(currentIndex2+'元素不存在');
+					}
+				 }
+				 
+
+		      //  var offsetTop= $('input[data-src="'+curfield2+'"]').offset().top;
+				var offsetTop= obj00.offset().top;
+			    $('html, body').animate({
+			        scrollTop: offsetTop-130
+			    }, 100); // 1000 毫秒 = 1 秒的动画时间
+				// $inputs.eq(currentIndex2).focus();
+				$('input[type="checkbox"]').parent().css('background', '#fff');
+				if(obj00.attr('type')=='checkbox'){
+					   var $ancestor = obj00.parent();
+					   $ancestor.css('background', '#8bda5b');
+				  }
+				 obj00.focus();
+				 return true;
+					/*
+				$('html, body').animate({
+			        scrollTop: offsetTop
+			    }, 1000); */
+			//	alert(offsetTop);
+				
+        	 if(isMobile()){
+        	   // $('.page').css('transform', 'scale(0.7)');
+				//$inputs.eq(currentIndex2).focus();
+                return false;
+        	 }else{
+			    
+			    $('html, body').animate({
+			        scrollTop: offsetTop
+			    }, 100); // 1000 毫秒 = 1 秒的动画时间
+		       // $inputs.eq(currentIndex2).focus();
+        	 } 
+		        return true;
+        }
+		
+
+
+		function ajax_post_field(fieldname,fieldvalue,link,total1=-1,total2=-1,total3=-1) {
+        
+         $.ajax({
+               url:"{:url('rentalincome/save')}",
+               type:'post',
+               data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'total1':total1,'total2':total2,'total3':total3},
+               dataType:'json',
+               success:function (res) {
+                   if (res.code==1){
+                      curfield=fieldname;
+                   	  specificInput = $('[data-src="'+curfield+'"]'); // Replace 'specificInputId' with the actual ID or reference		
+		             // currentIndex2=specificInput.attr('tabindex');
+		            //  alert("save后"+newfieldid);
+		             // return true;
+                     // $('#savetime').html(html);
+                   }else {
+                       console.log('sucess');
+                     //  msg(res.msg);
+                   }
+               },error:function () {
+                   msg('Try it again later')
+               }
+         });
+        }
+	    function isValidNumber(value) {
+            // 匹配整数或浮点数的正则表达式
+            var pattern = /^\d+(\.\d+)?$/;
+            return pattern.test(value);
+        }
+		var canvas = document.getElementById('signature-pad');
+        var signaturePad = new SignaturePad(canvas);
+	
+         function saveSignature() {
+            if (signaturePad.isEmpty()) {
+                msg('Please sign you name');
+                return;
+            }
+         //   var dataURL = signaturePad.toDataURL();
+          //以下进行缩小
+              var signatureCanvas = signaturePad.canvas;
+              var signatureContext = signatureCanvas.getContext('2d');
+              
+              // 创建一个新的、尺寸减半的画布
+              var resizedCanvas = document.createElement('canvas');
+              resizedCanvas.width = signatureCanvas.width / 2;
+              resizedCanvas.height = signatureCanvas.height / 2;
+              var resizedContext = resizedCanvas.getContext('2d');
+              
+              // 将原始签名绘制到新的画布上，并缩小一倍
+              resizedContext.drawImage(signatureCanvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+              //以下进行缩小结束
+              // 使用新的画布来保存签名（这里以PNG格式为例）
+              var dataURL = resizedCanvas.toDataURL('image/png');
+            var link="{$detail.link}";
+            
+          //  var url="{:url('Order/signature',['id'=>2])}";
+            fetch("{:url('rentalincome/signaturet')}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'signature=' + encodeURIComponent(dataURL)+"&link="+link
+            })
+            .then(response => response.text())
+            .then(data => {
+                var da=JSON.parse(data);
+                msg('Taxpayer’s Signature is saved',1);
+                $('#comtip').hide();
+                $('#signimg').attr('src',da.img);
+                $('#ctip').hide();
+                
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+		
+        function clearSignature() {
+            signaturePad.clear();
+        }
+	
+        function isMobile() {
+           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+           // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) && window.innerWidth < 768;
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+       }
+	 
+		function mobileType(){
+		 var userAgent = navigator.userAgent.toLowerCase();
+            var deviceType = "unknown";
+
+            if (userAgent.indexOf('android') > -1) {
+                deviceType = "Android";
+            } else if (userAgent.indexOf('iphone') > -1 || userAgent.indexOf('ipad') > -1 || userAgent.indexOf('ipod') > -1) {
+                deviceType = "iOS";
+            }
+              return deviceType;
+		}
+		function msg(msg,ss=0,url='',time=2000) { 
+			if(ss==1){
+				//$('.layui-layer-hui').css('backgroud-color','#536cf1');
+				layer.msg(msg,{time:time,skin:'layui-layer-hui2'},function () {
+			    });
+			}else{
+				layer.msg(msg,{time:time},function () {
+			  });
+			}
+		}
+        // Set the initial scale when the page loads
+    //  window.onload = setInitialScale;
+	   
+      $(document).ready(function() {
+      	if(isMobile()){
+		 if(mobileType()!="Android"){
+        	  $('body').css('max-width', '420px');
+		 }
+      }
+	  /*
+      	$('.tabletd').each(function(index, element) {
+           var fieldvalue=$(this).val();
+           var vv=$(this).attr('data-src');
+           if(fieldvalue!=''){
+           	  if (fieldvalue.indexOf('$') !== -1) { 
+
+		     }else{
+		     	if(vv!='business_name'&&vv!='business_description'&&vv!='year'&&vv!='v1_miles_for_business_only'&&vv!='v2_miles_for_business_only'&&vv!='v1_miles_for_personal_only'&&vv!='v2_miles_for_personal_only'&&vv!='total_square_feet_of_home'&&vv!='total_square_feet_of_office_only'){
+		     		$(this).val('$'+fieldvalue);
+		     	}
+		     }
+           }
+            
+		});*/
+
+      	 var scaleFactor = 1; // 初始缩放比例
+		 $('.zoom').click(function() {
+		 	if(isMobile()){
+			     if(mobileType()!="Android"){
+			     	$('.page').css('transform', 'scale(0.415)');
+			        	scale=0.415;
+			     }else{
+			     //	$('.page').css('transform', 'scale(0.28)');
+			     }
+		    }
+		  });
+      
+        $('.close3').click(function () {
+            $("#comtip").hide();
+        });
+		
+	  //即时保存input
+	 <?php if($detail['status']<2||$islogin==1){ ?>
+        for(var i=1;i<=151;i++){
+          var obj="#a"+i;
+		 
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+		 
+		   if(fieldname=='income_amount'||fieldname=='chidcare_expense'){
+		       if(!isValidNumber(fieldvalue)){
+				  return false;
+			   }
+		   }
+		   /*
+		    var total1=0;
+			$('.total_1').each(function(index, element) {
+				 var fieldvalue22=$(this).val();
+				 total1=parseFloat(total1)+parseFloat(fieldvalue22);
+			});
+		   $('#a18').val(total1);
+		   var total2=0;
+			$('.total_2').each(function(index, element) {
+				 var fieldvalue22=$(this).val();
+				 total2=parseFloat(total2)+parseFloat(fieldvalue22);
+			});
+		   $('#a40').val(total2);
+		   var total3=total1-total2;
+		   $('#a41').val(total3); */
+		   /*
+         if (fieldvalue.indexOf('$') !== -1) { 
+            fieldvalue=fieldvalue.replace('$', '');
+         }*/
+         var link="{$detail.link}";
+         // $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+	  <?php }?>
+      $('input:checkbox').click(function () {
+          var val=$(this).val();
+          var fieldname=$(this).attr('data-src');
+         
+          if($(this).prop("checked")==true){
+          	 $('input[name='+fieldname+']').each(function() {
+              //$(this).prop("checked", !$(this).is(":checked"));
+              $(this).prop("checked",false);
+             });
+          	$(this).prop("checked",true);
+          }
+          var fieldvalue=val;
+          var link="{$detail.link}";
+         
+          var all=0;
+          $('input[name='+fieldname+']').each(function() {
+              if($(this).prop("checked")==true){
+                   all=fieldvalue;
+              }
+          });
+          ajax_post_field(fieldname,all,link);  
+       });
+	   $('input:radio').click(function () {
+          var val=$(this).val();
+          var fieldname=$(this).attr('data-src');
+          $('input[name='+fieldname+']').each(function() {
+              $(this).prop("checked", !$(this).is(":checked"));
+         });
+         $(this).prop("checked",true);
+          var fieldvalue=val;
+          var link="{$detail.link}";
+          
+          ajax_post_field(fieldname,fieldvalue,link);  
+       });
+	   
+	   /*
+	   //鼠标移到下一个input
+	   $('input').each(function(index) {
+        $(this).mouseleave(function() {
+            if ($(this).next('input').length > 0) {
+                $(this).next('input').focus();
+            }
+        });
+       });*/
+	    $('.submit').click(function () {
+		   //必填项
+		   var val='';
+		   var datasrc='';
+		   var totaltag=0;
+		   $('.required').each(function() {
+               val=$(this).val();	
+			  
+			   datasrc=$(this).attr('data-src');
+                if(val==''){
+				  var obj=$('.requiredtip[data-src="'+datasrc+'"]');
+					obj.css('color','red');
+					$(this).focus();
+					totaltag=1;
+			       return false;
+			    }	
+            });
+			if(totaltag==1){
+			   msg('Please fill in the required fields');
+			   return false;
+			} 
+			//查看是否签名了，没签名也不能提交
+			var link="{$detail.link}";
+		
+		    $('.submit').css('background-color','#8a8a8a');
+			$('.submit').attr('disabled',true);
+			var link="{$detail.link}";
+			 $.ajax({
+               url:"{:url('rentalincome/submit')}",
+               type:'post',
+               data:{'link':link},
+               dataType:'json',
+               success:function (res) {
+                   if (res.status=='success'){
+                   
+                     msg('Successfully submitted',1);
+                     setTimeout(function() {
+					   var url="https://taxprep.republictax.com/clients/rentalincome/"+link;
+                       location.href=url;
+					}, 2000);
+                      
+                   }else {
+                   	  $('.submit').css('background-color','#536cf1');
+				      $('.submit').attr('disabled',false);
+				     msg('Failed to submit');
+                       console.log('sucess');
+                     //  msg(res.msg);
+                   }
+               },error:function () {
+
+                   msg('Try it again later');
+                   $('.submit').css('background-color','#536cf1');
+				   $('.submit').attr('disabled',false);
+
+               }
+         });
+		});
+		  $('.download').click(function () {
+				   // $(this).html('Generating...');
+					//$(this).css('background-color','#b1b1b1');
+					$(this).attr('disabled',true);
+					var obj=$(this);
+					//交给后端处理
+					// 触发下载并监控进度
+					var link="{$detail.link}";
+					var url="https://taxprep.republictax.com/clients/r_topdf?link="+link;
+				
+					location.href=url;
+					//obj.css('background-color','#fff');
+							obj.attr('disabled',false);
+							//obj.html('Download');
+					return false;
+					var xhr = new XMLHttpRequest();
+					xhr.open('GET', url, true);
+					xhr.responseType = 'blob';
+					xhr.onload = function(e) {
+						if (this.status == 200) {
+							// 下载完成
+							var blob = this.response;
+							var link = document.createElement('a');
+							link.href = window.URL.createObjectURL(blob);
+							link.download = 'CM-financial.pdf'; // 设置下载文件的名称和扩展名
+							link.click();
+							obj.css('background-color','#536cf1');
+							obj.attr('disabled',false);
+							obj.html('Download PDF');
+						}
+					};
+		   });
+		 
+      });
+	  
+</script>

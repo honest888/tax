@@ -1,0 +1,103 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<link rel="stylesheet" href="__MOBILE__/css/form.css">
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">区域代理</div>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="quyu">
+    <div class="top">
+        <div style="height: 50px"></div>
+        <div class="order">
+            <div class="order-item">
+                <h4>{$day_order}</h4>
+                <p>今日订单</p>
+            </div>
+            <a href="{:url('Shouyi/dl_points',['type'=>1])}" class="order-item">
+                <h4>{$day_sr}</h4>
+                <p>今日收入</p>
+            </a>
+            <a href="{:url('Shouyi/dl_points',['type'=>2])}" class="order-item">
+                <h4>{$zong_sr}</h4>
+                <p>总收入</p>
+            </a>
+            <a href="{:url('User/withdrawals',['type'=>3])}" class="order-item">
+                <h4>{$user.dl_yue}</h4>
+                <p>待提现</p>
+            </a>
+        </div>
+        <div class="info">
+            <div class="info-item">
+                <h4>省级</h4>
+                <p>{$sheng_jl}</p>
+            </div>
+            <div class="info-item">
+                <h4>市级</h4>
+                <p>{$shi_jl}</p>
+            </div>
+            <div class="info-item">
+                <h4>县级</h4>
+                <p>{$xian_jl}</p>
+            </div>
+        </div>
+    </div>
+    <div class="inner">
+        <div class="tab">
+            <div class="tab-item act" data-status="-1">
+                <h4>{$dfk}</h4>
+                <p>待付款</p>
+            </div>
+            <div class="tab-item" data-status="1">
+                <h4>{$dfh}</h4>
+                <p>待发货</p>
+            </div>
+            <div class="tab-item" data-status="2">
+                <h4>{$dsh}</h4>
+                <p>待收货</p>
+            </div>
+            <div class="tab-item" data-status="3">
+                <h4>{$ywc}</h4>
+                <p>已完成</p>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search-info">
+                <span class="iconfont iconsousuo"></span>
+                <input type="text" class="search-input" placeholder="搜索订单号/手机号/物流单号">
+                <button type="button" class="submit" onclick="search(this)">搜索</button>
+            </div>
+        </div>
+        <div class="list-container"></div>
+    </div>
+</div>
+<!--内容区e-->
+</body>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<script>
+    $(function () {
+        $('.tab-item').on('click',function () {
+            if($(this).hasClass('act'))return;
+            $(this).addClass('act').siblings().removeClass('act');
+            var status=$(this).attr('data-status');
+            var keyword=$('.search-input').val();
+            $('.list-container').empty();
+            get_more(status,keyword);
+        });
+        get_more('-1');
+    });
+    function search(obj) {
+        var status=$('.tab .act').attr('data-status');
+        var keyword=$('.search-input').val();
+        $('.list-container').empty();
+        get_more(status,keyword);
+    }
+    function get_more(status,keyword='') {
+        public_ajax('.list-container',"{:url('Shouyi/ajax_send_order')}",'&status='+status+'&keyword='+keyword,'暂无相关记录');
+    }
+</script>
+</html>

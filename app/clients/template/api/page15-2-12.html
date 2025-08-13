@@ -1,0 +1,139 @@
+{include file='public:header-css'/}
+<div class="documents-dropzone">
+	<div class="master-detail-layout">
+		
+		<div class="master-detail-layout__body">
+			
+			<main class="master-detail-layout__main-container">
+				<div class="master-detail-layout__main-content">
+					<div class="f-theme position-relative" style="width: 100%; height: 100%; background: rgb(83, 86, 89);">
+						
+						<div style="position: fixed; inset: 0px; z-index: 2000; background: rgba(0, 0, 0, 0);">
+							<div class="master-detail-layout f-theme bg-white">
+								{include file='public:header'/}
+								<div class="master-detail-layout__body">
+								    <!--主要内容开始-->
+								   <main class="master-detail-layout__main-container">
+                                	<div class="master-detail-layout__main-content">
+                                		<div class="wizard-page-body w-max-700 w-full m-auto column justify-self align-stretch gap-20 pv-30 ph-30">
+                                			<h1 class="center text-center font-36 extrabold mt-20">Tell us about any other expenses you had related to the work you did</h1>
+                                			<p class="text-center">
+                                				<span>If you need more space, please use the notes section at the end of the income section.</span>
+                                			</p>
+                                			<div style="height: 20px;"></div>
+                                			<table class="form-table-left-align wizard-form-table">
+                                				<thead>
+                                					<tr class="font-16">
+                                						<th style="width: 75%;">Description</th>
+                                						<th style="width: 25%;">Amount</th>
+                                					</tr>
+                                				</thead>
+                                				<tbody>
+                                					<tr>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a1" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_0_description}" data-src="self_employment_0_expenses_other_0_description">
+                                							</div>
+                                						</td>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a2" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_0_amount}" data-src="self_employment_0_expenses_other_0_amount">
+                                							</div>
+                                						</td>
+                                					</tr>
+                                				</tbody>
+                                			</table>
+                                			<table class="form-table-left-align wizard-form-table">
+                                				<thead>
+                                					<tr class="font-16">
+                                						<th style="width: 75%;">Description</th>
+                                						<th style="width: 25%;">Amount</th>
+                                					</tr>
+                                				</thead>
+                                				<tbody>
+                                					<tr>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a3" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_1_description}" data-src="self_employment_0_expenses_other_1_description">
+                                							</div>
+                                						</td>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a4" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_1_amount}" data-src="self_employment_0_expenses_other_1_amount">
+                                							</div>
+                                						</td>
+                                					</tr>
+                                				</tbody>
+                                			</table>
+                                			<table class="form-table-left-align wizard-form-table">
+                                				<thead>
+                                					<tr class="font-16">
+                                						<th style="width: 75%;">Description</th>
+                                						<th style="width: 25%;">Amount</th>
+                                					</tr>
+                                				</thead>
+                                				<tbody>
+                                					<tr>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a5" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_2_description}" data-src="self_employment_0_expenses_other_2_description">
+                                							</div>
+                                						</td>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a6" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_2_amount}" data-src="self_employment_0_expenses_other_2_amount">
+                                							</div>
+                                						</td>
+                                					</tr>
+                                				</tbody>
+                                			</table>
+                                			<table class="form-table-left-align wizard-form-table">
+                                				<thead>
+                                					<tr class="font-16">
+                                						<th style="width: 75%;">Description</th>
+                                						<th style="width: 25%;">Amount</th>
+                                					</tr>
+                                				</thead>
+                                				<tbody>
+                                					<tr>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a7" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_3_description}" data-src="self_employment_0_expenses_other_3_description">
+                                							</div>
+                                						</td>
+                                						<td>
+                                							<div class="form-field">
+                                								<input id="a8" autocomplete="off" type="text" value="{$detail.self_employment_0_expenses_other_3_amount}" data-src="self_employment_0_expenses_other_3_amount">
+                                							</div>
+                                						</td>
+                                					</tr>
+                                				</tbody>
+                                			</table>
+                                		</div>
+                                	</div>
+                                </main>
+                                    <!--主要内容结束-->
+								</div>
+								{include file='public:footer'/}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+      for(var i=1;i<=8;i++){
+          var obj="#a"+i;
+          $(obj).blur(function () {
+           var fieldname=$(this).attr('data-src');
+           var fieldvalue=$(this).val();
+           var link="{$detail.link}";
+          $('#savetime').html('Saving');
+          ajax_post_field(fieldname,fieldvalue,link); 
+        });
+      }
+});
+</script>

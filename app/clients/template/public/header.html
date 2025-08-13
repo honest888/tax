@@ -1,0 +1,224 @@
+                             	<header class="pcheader">
+									<div class="app-bar app-bar--white app-bar--inline font-theme box-shadow">
+										<div class="row align-center" >
+											<div class="button-group justify-center gap-20 wrap align-center row">
+												<button type="button" class="action-button action-button--secondary gap-4" style="font-family: Gilroy; z-index: 1;" data-src="{$mainlink}">
+													<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.29549 1.28406C8.6889 0.896434 9.32205 0.901123 9.70967 1.29453C10.0973 1.68793 10.0926 2.32108 9.6992 2.7087L4.3289 8.00004L18 8.00004C18.5523 8.00004 19 8.44776 19 9.00004C19 9.55233 18.5523 10 18 10L4.33539 10L9.6992 15.285C10.0926 15.6726 10.0973 16.3058 9.70967 16.6992C9.32205 17.0926 8.6889 17.0973 8.29549 16.7096L1.3713 9.88725C0.87439 9.39764 0.87439 8.59605 1.3713 8.10644L8.29549 1.28406Z" fill="currentColor"></path>
+													</svg>
+													<div class="row gap-4">
+														<span>Exit</span>
+														<span class="mobile-hide">Questionnaire</span>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="grow-1"></div>
+										<div class="row align-stretch justify-center" style="position: absolute; inset: 0px;">
+											<nav class="w-full position-relative row justify-center">
+                                            	<div class="row justify-center align-center gap-100 bold uppercase font-12 color-grey-dark mobile-hide">
+                                            		<a class="center gap-20 {if $percent<30} link-active{/if} actoina" data-next="submission" data-link="{$detail.link}">
+                                            			<svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            				<path d="M35 6C36.1046 6 37 6.89543 37 8V32C37 33.1046 36.1046 34 35 34H5C3.89543 34 3 33.1046 3 32V8C3 6.89543 3.89543 6 5 6H35Z" fill="white" stroke="currentColor" stroke-width="2"></path>
+                                            				<path d="M16 16C16 17.6569 14.6569 19 13 19C11.3431 19 10 17.6569 10 16C10 14.3431 11.3431 13 13 13C14.6569 13 16 14.3431 16 16ZM8 22.5C8 21.6716 8.67157 21 9.5 21H16.5C17.3284 21 18 21.6716 18 22.5V24C18 24 18 27.5 13 27.5C8 27.5 8 24 8 24V22.5Z" stroke="currentColor"></path>
+                                            				<rect x="22" y="15" width="10" height="1" rx="0.5" fill="currentColor"></rect>
+                                            				<rect x="22" y="20" width="10" height="1" rx="0.5" fill="currentColor"></rect>
+                                            				<rect x="22" y="25" width="10" height="1" rx="0.5" fill="currentColor"></rect>
+                                            			</svg>
+                                            			<p>Basic info</p>
+                                            		</a>
+                                            		<a class="center gap-20 {if $percent>=30 and $percent<80} link-active{/if} actoina" data-next="page12" data-link="{$detail.link}">
+                                            			<svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            				<g clip-path="url(#clip0_948_847)">
+                                            					<path d="M1.12367 13.3607L34.5332 7.67034C34.8356 7.61882 35.1216 7.82155 35.1731 8.12402L38.0065 24.7594C38.058 25.0619 37.8553 25.3479 37.5528 25.3994L4.14333 31.0898C3.84087 31.1413 3.5549 30.9386 3.50338 30.6361L0.669989 14.0007C0.618472 13.6982 0.821204 13.4123 1.12367 13.3607Z" stroke="currentColor"></path>
+                                            					<path d="M4.39294 15.8877H38.2836C38.3142 15.8877 38.3383 15.9117 38.3383 15.9424V32.8174C38.3383 32.8481 38.3142 32.8721 38.2836 32.8721H4.39294C4.36227 32.8721 4.33826 32.8481 4.33826 32.8174V15.9424C4.33826 15.9117 4.36227 15.8877 4.39294 15.8877Z" fill="white" stroke="currentColor" stroke-width="2"></path>
+                                            					<path d="M29 24.5C29 28.9183 25.4183 32.5 21 32.5C16.5817 32.5 13 28.9183 13 24.5C13 20.0817 16.5817 16.5 21 16.5C25.4183 16.5 29 20.0817 29 24.5Z" stroke="currentColor"></path>
+                                            					<path d="M8.68201 25.4346C9.26448 25.4346 9.73669 24.9624 9.73669 24.3799C9.73669 23.7974 9.26448 23.3252 8.68201 23.3252C8.09954 23.3252 7.62732 23.7974 7.62732 24.3799C7.62732 24.9624 8.09954 25.4346 8.68201 25.4346ZM33.9945 23.3252C33.412 23.3252 32.9398 23.7974 32.9398 24.3799C32.9398 24.9624 33.412 25.4346 33.9945 25.4346C34.577 25.4346 35.0492 24.9624 35.0492 24.3799C35.0492 23.7974 34.577 23.3252 33.9945 23.3252Z" fill="currentColor"></path>
+                                            					<path fill-rule="evenodd" clip-rule="evenodd" d="M21.5 19.4933V16H20.5V19.5476C20.0306 19.6492 19.5701 19.8645 19.2053 20.2208C18.7678 20.6481 18.5 21.2482 18.5 22.0003C18.5 22.9996 18.8312 23.6641 19.4055 24.0894C19.9138 24.4659 20.5665 24.6106 21.0945 24.7277L21.1415 24.7382C21.7306 24.8691 22.179 24.9771 22.4992 25.2144C22.7687 25.414 23 25.7495 23 26.5003C23 27.0859 22.7559 27.4606 22.4113 27.6998C22.0464 27.9532 21.538 28.0723 21.0257 28.0459C20.5245 28.0201 20.0066 27.8534 19.5879 27.5742C19.3581 27.421 19.0477 27.4831 18.8945 27.7129C18.7413 27.9427 18.8034 28.2531 19.0332 28.4063C19.4725 28.6992 19.982 28.8976 20.5 28.99V32.9902H21.5V29.0341C22.0194 28.9865 22.5434 28.8255 22.9816 28.5213C23.5894 28.0993 24 27.4208 24 26.5003C24 25.5009 23.6688 24.8363 23.0945 24.4109C22.5861 24.0342 21.9334 23.8895 21.4053 23.7724L21.3585 23.762C20.7693 23.6311 20.321 23.523 20.0007 23.2858C19.7313 23.0863 19.5 22.7509 19.5 22.0003C19.5 21.5025 19.6697 21.1651 19.9041 20.9361C20.1475 20.6984 20.4931 20.5473 20.8786 20.4959C21.2649 20.4444 21.6572 20.498 21.966 20.6312C22.2766 20.7652 22.4586 20.9572 22.5257 21.1584C22.613 21.4204 22.8961 21.5619 23.1581 21.4746C23.4201 21.3873 23.5617 21.1042 23.4743 20.8422C23.2914 20.2932 22.8484 19.9227 22.3621 19.713C22.095 19.5978 21.8014 19.5242 21.5 19.4933Z" fill="currentColor"></path>
+                                            				</g>
+                                            				<defs>
+                                            					<clipPath id="clip0_948_847">
+                                            						<rect width="40" height="40" fill="white"></rect>
+                                            					</clipPath>
+                                            				</defs>
+                                            			</svg>
+                                            			<p>Income</p>
+                                            		</a>
+                                            		<a class="center gap-20 {if $percent>=80 and $percent<100} link-active{/if} actoina" data-next="page16-0" data-link="{$detail.link}">
+                                            			<svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            				<path d="M37 6C38.1046 6 39 6.89543 39 8V27C39 28.1046 38.1046 29 37 29H8C6.89543 29 6 28.1046 6 27V8C6 6.89543 6.89543 6 8 6H37Z" fill="white" stroke="currentColor" stroke-width="2"></path>
+                                            				<path d="M33.5 23H28.5C28.2239 23 28 23.2239 28 23.5C28 23.7761 28.2239 24 28.5 24H33.5C33.7761 24 34 23.7761 34 23.5C34 23.2239 33.7761 23 33.5 23Z" fill="currentColor"></path>
+                                            				<path d="M40 11H5V12H40V11Z" fill="currentColor"></path>
+                                            				<circle cx="9.5" cy="25.5" r="9" fill="white" stroke="currentColor"></circle>
+                                            				<path d="M9.5 21.5V30.5" stroke="currentColor" stroke-linecap="round"></path>
+                                            				<path d="M6 27L9.5 30.5" stroke="currentColor" stroke-linecap="round"></path>
+                                            				<path d="M13 27L9.5 30.5" stroke="currentColor" stroke-linecap="round"></path>
+                                            			</svg>
+                                            			<p>Deductions</p>
+                                            		</a>
+                                            	</div>
+                                            	<div class="progress-bar progress-bar--normal position-absolute-bottom">
+                                            		<div class="progress-bar__meter" style="width: {$percent}%;"></div>
+                                            	</div>
+                                            </nav>
+										</div>
+										<div class="grow-1"></div>
+										<div class="button-group justify-center gap-20 wrap align-center row" id="savetime">
+										    <!--<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>Saved at 2:47 PM</div>-->
+									 </div>
+									</div>									
+								</header>
+<style>
+                                    .tipcommon{
+									    display:none;
+									   /*top: calc(50vw - 100px);*/
+									 } 
+								    @media (max-width:768px){
+                                        .pcheader{
+										   display:none;
+										 }
+										 .mbheader{
+										    display:block;
+											z-index:9999;
+										 }	
+										.tipcommon{
+										  
+										}
+                                     }
+									 @media (min-width:768px){
+                                         .pcheader{
+										   display:;
+										 }
+										 .mbheader{
+										    display:none;
+										 }
+                                     }
+									 @media screen and (max-width: 700px){
+									    .show-gt-700 {
+										display: none;
+									    }
+										
+										.w-max-150 {
+											max-width: 150px;
+										}
+										.justify-center {
+											justify-content: center;
+										}
+										.w-max-700 {
+												max-width: 390px;
+										}
+									 }
+									 
+								.w-max-450 {
+									max-width: 450px;
+								}
+								.align-stretch {
+									align-items: stretch;
+								}
+								.font-12 {
+								font-size: 12px;
+							   }
+							   .gap-0 {
+									gap: 0;
+								}
+								.ph-0 {
+									padding-left: 0;
+									padding-right: 0;
+								}
+	.w-min-80 {
+    min-width: 80px;
+}
+.whitespace-nowrap {
+    white-space: nowrap;
+}
+.mr-6 {
+    margin-right: 6px;
+}
+.ml-6 {
+    margin-left: 6px;
+}
+.f-theme .link-active {
+    color: var(--color-navbar-active);
+}
+.f-theme nav a {
+    color: inherit;
+}
+.app-bar a {
+    font-size: 14px;
+}
+.f-theme a {
+    cursor: pointer;
+    text-decoration: none;
+}
+								</style>
+<header class="mbheader">
+	<div class="app-bar app-bar--white box-shadow align-stretch ph-0 gap-0">
+		<div class="w-full row align-center justify-start">
+			<div class="w-20"></div>
+			<h3 class="show-gt-700">stanfordtax</h3>
+		</div>
+		<nav class="w-full w-max-450 row align-stretch justify-center bold uppercase font-12 color-grey-dark">
+			<a class="w-full w-max-150 column align-center justify-center gap-4 {if $percent<30} link-active{/if} actoina" data-next="submission" data-link="{$detail.link}">
+				<svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M35 6C36.1046 6 37 6.89543 37 8V32C37 33.1046 36.1046 34 35 34H5C3.89543 34 3 33.1046 3 32V8C3 6.89543 3.89543 6 5 6H35Z" fill="white" stroke="currentColor" stroke-width="2"></path>
+					<path d="M16 16C16 17.6569 14.6569 19 13 19C11.3431 19 10 17.6569 10 16C10 14.3431 11.3431 13 13 13C14.6569 13 16 14.3431 16 16ZM8 22.5C8 21.6716 8.67157 21 9.5 21H16.5C17.3284 21 18 21.6716 18 22.5V24C18 24 18 27.5 13 27.5C8 27.5 8 24 8 24V22.5Z" stroke="currentColor"></path>
+					<rect x="22" y="15" width="10" height="1" rx="0.5" fill="currentColor"></rect>
+					<rect x="22" y="20" width="10" height="1" rx="0.5" fill="currentColor"></rect>
+					<rect x="22" y="25" width="10" height="1" rx="0.5" fill="currentColor"></rect>
+				</svg>
+				<span class=" ml-6 mr-6 w-min-80 text-center whitespace-nowrap">Basic Info</span>
+			</a>
+			<a class="w-full w-max-150 column align-center justify-center gap-4 {if $percent>=30 and $percent<80} link-active{/if} actoina" data-next="page12" data-link="{$detail.link}">
+				<svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0_948_847)">
+						<path d="M1.12367 13.3607L34.5332 7.67034C34.8356 7.61882 35.1216 7.82155 35.1731 8.12402L38.0065 24.7594C38.058 25.0619 37.8553 25.3479 37.5528 25.3994L4.14333 31.0898C3.84087 31.1413 3.5549 30.9386 3.50338 30.6361L0.669989 14.0007C0.618472 13.6982 0.821204 13.4123 1.12367 13.3607Z" stroke="currentColor"></path>
+						<path d="M4.39294 15.8877H38.2836C38.3142 15.8877 38.3383 15.9117 38.3383 15.9424V32.8174C38.3383 32.8481 38.3142 32.8721 38.2836 32.8721H4.39294C4.36227 32.8721 4.33826 32.8481 4.33826 32.8174V15.9424C4.33826 15.9117 4.36227 15.8877 4.39294 15.8877Z" fill="white" stroke="currentColor" stroke-width="2"></path>
+						<path d="M29 24.5C29 28.9183 25.4183 32.5 21 32.5C16.5817 32.5 13 28.9183 13 24.5C13 20.0817 16.5817 16.5 21 16.5C25.4183 16.5 29 20.0817 29 24.5Z" stroke="currentColor"></path>
+						<path d="M8.68201 25.4346C9.26448 25.4346 9.73669 24.9624 9.73669 24.3799C9.73669 23.7974 9.26448 23.3252 8.68201 23.3252C8.09954 23.3252 7.62732 23.7974 7.62732 24.3799C7.62732 24.9624 8.09954 25.4346 8.68201 25.4346ZM33.9945 23.3252C33.412 23.3252 32.9398 23.7974 32.9398 24.3799C32.9398 24.9624 33.412 25.4346 33.9945 25.4346C34.577 25.4346 35.0492 24.9624 35.0492 24.3799C35.0492 23.7974 34.577 23.3252 33.9945 23.3252Z" fill="currentColor"></path>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M21.5 19.4933V16H20.5V19.5476C20.0306 19.6492 19.5701 19.8645 19.2053 20.2208C18.7678 20.6481 18.5 21.2482 18.5 22.0003C18.5 22.9996 18.8312 23.6641 19.4055 24.0894C19.9138 24.4659 20.5665 24.6106 21.0945 24.7277L21.1415 24.7382C21.7306 24.8691 22.179 24.9771 22.4992 25.2144C22.7687 25.414 23 25.7495 23 26.5003C23 27.0859 22.7559 27.4606 22.4113 27.6998C22.0464 27.9532 21.538 28.0723 21.0257 28.0459C20.5245 28.0201 20.0066 27.8534 19.5879 27.5742C19.3581 27.421 19.0477 27.4831 18.8945 27.7129C18.7413 27.9427 18.8034 28.2531 19.0332 28.4063C19.4725 28.6992 19.982 28.8976 20.5 28.99V32.9902H21.5V29.0341C22.0194 28.9865 22.5434 28.8255 22.9816 28.5213C23.5894 28.0993 24 27.4208 24 26.5003C24 25.5009 23.6688 24.8363 23.0945 24.4109C22.5861 24.0342 21.9334 23.8895 21.4053 23.7724L21.3585 23.762C20.7693 23.6311 20.321 23.523 20.0007 23.2858C19.7313 23.0863 19.5 22.7509 19.5 22.0003C19.5 21.5025 19.6697 21.1651 19.9041 20.9361C20.1475 20.6984 20.4931 20.5473 20.8786 20.4959C21.2649 20.4444 21.6572 20.498 21.966 20.6312C22.2766 20.7652 22.4586 20.9572 22.5257 21.1584C22.613 21.4204 22.8961 21.5619 23.1581 21.4746C23.4201 21.3873 23.5617 21.1042 23.4743 20.8422C23.2914 20.2932 22.8484 19.9227 22.3621 19.713C22.095 19.5978 21.8014 19.5242 21.5 19.4933Z" fill="currentColor"></path>
+					</g>
+					<defs>
+						<clipPath id="clip0_948_847">
+							<rect width="40" height="40" fill="white"></rect>
+						</clipPath>
+					</defs>
+				</svg>
+				<span class=" ml-6 mr-6 w-min-80 text-center whitespace-nowrap">Income</span>
+			</a>
+			<a class="w-full w-max-150 column align-center justify-center gap-4 {if $percent>=80 and $percent<100} link-active{/if} actoina" data-next="page16-0" data-link="{$detail.link}">
+				<svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M37 6C38.1046 6 39 6.89543 39 8V27C39 28.1046 38.1046 29 37 29H8C6.89543 29 6 28.1046 6 27V8C6 6.89543 6.89543 6 8 6H37Z" fill="white" stroke="currentColor" stroke-width="2"></path>
+					<path d="M33.5 23H28.5C28.2239 23 28 23.2239 28 23.5C28 23.7761 28.2239 24 28.5 24H33.5C33.7761 24 34 23.7761 34 23.5C34 23.2239 33.7761 23 33.5 23Z" fill="currentColor"></path>
+					<path d="M40 11H5V12H40V11Z" fill="currentColor"></path>
+					<circle cx="9.5" cy="25.5" r="9" fill="white" stroke="currentColor"></circle>
+					<path d="M9.5 21.5V30.5" stroke="currentColor" stroke-linecap="round"></path>
+					<path d="M6 27L9.5 30.5" stroke="currentColor" stroke-linecap="round"></path>
+					<path d="M13 27L9.5 30.5" stroke="currentColor" stroke-linecap="round"></path>
+				</svg>
+				<span class=" ml-6 mr-6 w-min-80 text-center whitespace-nowrap">Deductions</span>
+			</a>
+		</nav>
+		<div class="w-full row align-center justify-end gap-20">
+			<button type="button" class="action-button action-button--secondary action-button--icon-only" style="font-family: Gilroy; width: 40px;" data-src="{$mainlink}">
+				<svg class="close" width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+					<path d="M4.07113 23.6691L23.8701 3.87012" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+					<path d="M4.07113 3.86995L23.8701 23.6689" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+				</svg>
+			</button>
+			<div class="w-5 shrink-1"></div>
+		</div>
+	</div>
+</header>								
+
+                                    <form actoin="{$actionpage}" id="headerpost" method="post">
+										 <input type="hidden" name="page" id="toppage">
+										 <input type="hidden" name="link" value="{$detail.link}">
+									</form>
+								<script>
+								$('.actoina').click(function () {
+                                       var url=$(this).attr('data-next');
+                                    
+                                       $("#toppage").val(url);
+                                       $('#headerpost').submit();
+                                 });
+                                </script>

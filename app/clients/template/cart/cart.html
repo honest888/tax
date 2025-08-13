@@ -1,0 +1,142 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<style>
+    .public-list .public-list-list .public-list-item:nth-last-child(2) {
+        border-bottom: 1px solid var(--border);
+    }
+    .public-bottom .left{
+        height: auto;
+    }
+</style>
+<!--头部导航位置s-->
+<header class="header bg-fff">
+    <a class="back iconfont iconback"></a>
+    <div class="title">提交订单</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div id="cart">
+    <a onclick="address()" class="address">
+        <div class="zuo">
+            <img src="__MOBILE__/img/dingwei.png">
+        </div>
+        <div class="left">
+            <p>
+                <span>{$add.consignee}</span>
+                <span class="cc">{$add.mobile}</span>
+            </p>
+            <p>{$add.province}{$add.city}{$add.district}{$add.address}</p>
+        </div>
+        <div class="rot-nav"></div>
+    </a>
+    {if $user.level>1}
+    <div class="buy-user">
+        <div class="left">请输入购买会员</div>
+        <div class="right">
+            <input type="text" id="xd_uid" placeholder="自己购买不用填写">
+        </div>
+    </div>
+    {/if}
+    <div class="public-list mto10">
+        <div class="public-list-list bg-fff">
+            {volist name="$cartList" id="vo"}
+            <div class="public-list-item">
+                <a class="public-list-item-a">
+                    <div class="img">
+                        <img src="{$vo.img}">
+                    </div>
+                    <div class="good">
+                        <p class="word m4">{$vo.goods_name}</p>
+                        {if $vo.item_name}
+                        <p class="word ccc">{$vo.item_name}</p>
+                        {/if}
+                        <p class="price flex-between">
+                            <span>￥{$vo.goods_price}</span>
+                            <span>×{$vo.goods_num}</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            {/volist}
+        </div>
+    </div>
+    <div class="note">
+        <div class="textarea">
+            <div class="left">订单备注</div>
+            <textarea id="user_note" placeholder="有什么想对商家留言的可以在这里说"></textarea>
+        </div>
+    </div>
+    <div class="info pay" style="margin-bottom:10px">
+        <div class="public_title">支付方式</div>
+        {volist name="$pay_list" id="pay"}
+        <dl>
+            <dt class="{if $i eq 1}theme{else/}black{/if}">
+                <span data-code='{$pay.code}' class="iconfont {if $i eq 1}icondanxuanact{else/}icondanxuan{/if}"></span>
+                <span class="m4-left">{$pay.name}</span>
+            </dt>
+        </dl>
+        {/volist}
+    </div>
+</div>
+<div class="public-bottom buy" style="display:block">
+    <div class="public-bottom-item">
+        <a class="left" style="justify-content:center;">
+            应付金额
+            <span class="m2-left">￥<span id="order_amount">{$order_amount}</span></span>
+        </a>
+        <a class="right">
+            <button data-style="slide-right" id="submit" class="new-btn">提交订单</button>
+        </a>
+    </div>
+</div>
+<!--内容区e-->
+<form action="{:url('Cart/cart')}" method="post" id="form">
+    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+    <input type="hidden" name="goods_num" value="{$Request.param.goods_num}">
+    <input type="hidden" name="address_id" value="{$add.address_id}">
+    <input type="hidden" name="act" value="submit_order">
+    <input type="hidden" name="action" value="{$Request.param.action}">
+    <input type="hidden" name="user_note" value="">
+    <input type="hidden" name="xd_uid" value="">
+    <input type="hidden" name="pay_code" value="{$pay_list[0]['code']}">
+</form>
+</body>
+<script>
+    var address_id = $('[name=address_id]').val();
+    var form = $('#form');
+    if (address_id == '') {
+        var attr = "{:url('User/address_list',['from'=>'cart'])}";
+        msg('请先添加收货地址');
+        setTimeout(function () {
+            form.attr('action', attr).submit();
+        }, 1000);
+    }
+    var order_amount = '{$order_amount}';
+    function round(x, num) {
+        return Math.round(x * Math.pow(10, num)) / Math.pow(10, num);
+    }
+    $(function () {
+        $('.pay dl dt').click(function () {
+            if ($(this).hasClass('theme'))return false;
+            $('.pay dl dt').removeClass('theme').addClass('black');
+            $('.pay dl dt .icondanxuanact').removeClass('icondanxuanact').addClass('icondanxuan');
+            $(this).find('.iconfont').removeClass('icondanxuan').addClass('icondanxuanact');
+            $(this).addClass('theme').removeClass('black');
+            $('[name=pay_code]').val($(this).find('.iconfont').data('code'));
+        });
+    });
+    $('#submit').click(function () {
+        var tt = $('#user_note').val();
+        var xd_uid = $('#xd_uid').val();
+        $('[name=user_note]').val(tt);
+        $('[name=xd_uid]').val(xd_uid);
+        public_submit("{:url('Cart/cart')}", $('#form').serialize());
+    });
+    function address() {
+        form.attr('action', "{:url('User/address_list',['from'=>'cart'])}").submit();
+    }
+</script>
+</html>

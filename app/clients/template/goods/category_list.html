@@ -1,0 +1,96 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body>
+<!--头部导航位置s-->
+<header class="header" style="position: relative">
+	<div class="search-bar">
+		<span class="iconfont iconsousuo"></span>
+		<input type="text" class="search-input" placeholder="搜索">
+		<button type="button" class="search-btn">搜索</button>
+	</div>
+</header>
+<!--头部导航位置e-->
+<!--搜索框位置s-->
+<div id="search" style="display:none">
+	<div class="shade"></div>
+	<div class="search-info">
+		<div class="title">热门搜索</div>
+		<div class="search-list">
+			{foreach name="$tpshop_config.basic_hot_keywords" item="wd" key="k"}
+				<span>{$wd}</span>
+			{/foreach}
+		</div>
+	</div>
+</div>
+<!--搜索框位置e-->
+<!--内容区s-->
+<div id="cate">
+    <div class="cate-left">
+		<div class="swiper-wrapper">
+			{volist name="catList" id="cat"}
+			<div class="swiper-slide {if $i == 1}active{/if}" data-id="{$cat.id}">
+				<a>{$cat.name}</a>
+			</div>
+			{/volist}
+		</div>
+    </div>
+    <div class="cate-right goods-list" id="goodslist"></div>
+</div>
+<!--内容区e-->
+<!--底部导航s-->
+{include file='public:bottom'/}
+<!--底部导航e-->
+</body>
+<style>
+	body{
+		height: 100%;
+	}
+	.search-bar{
+		flex: 1;
+	}
+	#cate .cate-right{
+		padding: 0 5px;
+	}
+	.goods-list .goods-list-container{
+		padding: 0;
+	}
+</style>
+<script src="__MOBILE__/js/swiper.min.js"></script>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<script>
+	var swiper1 = new Swiper('.cate-left', {
+		slidesPerView:'auto',
+		direction: 'vertical',
+		freeMode: true,
+		on:{
+			tap:function () {
+				var item=$('.cate-left .swiper-slide').eq(this.clickedIndex);
+				if (item.hasClass('active'))return;
+				$('.cate-left .active').removeClass('active');
+				item.addClass('active');
+				swiper1.slideTo(this.clickedIndex);
+				$('#goodslist').empty();
+				ajax_more();
+			}
+		}
+	});
+    ajax_more();
+    function ajax_more(){
+        var cat_id=$('.cate-left .active').data('id');
+        if (cat_id){
+			public_ajax('#goodslist',"{:url('Goods/ajax_cate_goods')}",'&cat_id='+cat_id,'暂无相关商品');
+        }
+    }
+    $('.search-btn').click(function () {
+        var key=$('.search-input').val();
+        if (key==''){
+            msg('请输入搜索内容');
+            $('.search-input').focus();
+            return false;
+        }
+        $('.search-input').focus();
+        location.href="{:url('Goods/goods_list')}?keyword="+key;
+    });
+</script>
+</html>

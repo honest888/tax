@@ -1,0 +1,30 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<body class="bg-fff">
+<!--头部导航位置s-->
+<header class="header">
+    <a class="back iconfont iconback"></a>
+    <div class="title">团队列表</div>
+    <a id="popup" class="iconfont iconmenu"></a>
+</header>
+<!--头部导航位置e-->
+<!--内容区s-->
+<div class="team-index">
+    <div id="container"></div>
+</div>
+<!--内容区e-->
+</body>
+<style>
+    .public-view-list .title, .public-view-list .list{
+        background: none;
+    }
+</style>
+<script>
+    $(function () {
+        var user_id='{$user_id}';
+        public_ajax('#container',"{:url('User/ajax_team')}",'&user_id='+user_id,'暂无相关数据');
+    });
+</script>
+</html>

@@ -1,0 +1,91 @@
+<!--头部css位置s-->
+{include file='public:header-css'/}
+<!--头部css位置e-->
+<body class="bg-fff">
+<script src="__MOBILE__/js/swiper.min.js"></script>
+<script src="__STATIC__/plugin/layui/layui.js"></script>
+<!--内容s-->
+<div id="index">
+  <div class="index-bg"></div>
+  <div class="top">
+    <div class="search-bar">
+      <span class="iconfont iconsousuo"></span>
+      <input type="text" class="search-input" placeholder="搜索">
+      <button type="button" class="search-btn">搜索</button>
+    </div>
+    <!--轮播位置s-->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {volist name="$ad" id="ad"}
+        <div class="swiper-slide">
+          <a href="{$ad.ad_link}">
+            <img src="{$ad.image}">
+          </a>
+        </div>
+        {/volist}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="menu-container">
+      <!--菜单位置s-->
+      <div class="indexmenu">
+        <a href="{:url('User/index')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index-grzx.png">
+            </dt>
+            <dd>个人中心</dd>
+          </dl>
+        </a>
+        <a href="{:url('Content/essay_list')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index-gg.png">
+            </dt>
+            <dd>新闻公告</dd>
+          </dl>
+        </a>
+        <a href="{:url('Cart/index')}">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index-cart.png">
+            </dt>
+            <dd>购物车</dd>
+          </dl>
+        </a>
+        <a href="javascript:;">
+          <dl>
+            <dt>
+              <img src="__MOBILE__/img/index-lx.png">
+            </dt>
+            <dd>联系我们</dd>
+          </dl>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="index-cate-swiper">
+    <div class="index-swiper">
+      <div class="swiper-wrapper">
+        {volist name="$cate_list" id="cate"}
+        <div class="swiper-slide {if $i==1}act{/if}" data-id="{$cate.id}">
+          <p>{$cate.name}</p>
+        </div>
+        {/volist}
+      </div>
+    </div>
+  </div>
+  <div class="goods-list mto5">
+    <div class="goods-container mto5">
+      <div class="goods-list-container"></div>
+    </div>
+  </div>
+  <div style="height: 60px"></div>
+</div>
+<!--内容e-->
+<!--底部导航s-->
+{include file='public:bottom'/}
+<!--底部导航e-->
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+                                <footer>
+									<div class="app-bar app-bar--white app-bar--inline font-theme box-shadow">
+									    {if $percent eq 0}
+										<button type="button" class="action-button action-button--primary action-button--disabled"  disabled="" style="font-family: Gilroy;">
+											<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M8.29549 1.28406C8.6889 0.896434 9.32205 0.901123 9.70967 1.29453C10.0973 1.68793 10.0926 2.32108 9.6992 2.7087L4.3289 8.00004L18 8.00004C18.5523 8.00004 19 8.44776 19 9.00004C19 9.55233 18.5523 10 18 10L4.33539 10L9.6992 15.285C10.0926 15.6726 10.0973 16.3058 9.70967 16.6992C9.32205 17.0926 8.6889 17.0973 8.29549 16.7096L1.3713 9.88725C0.87439 9.39764 0.87439 8.59605 1.3713 8.10644L8.29549 1.28406Z" fill="currentColor"></path>
+											</svg>Back
+										</button>
+										{else/}
+										<button type="button" class="action-button action-button--primary" data-src="lastform" style="font-family: Gilroy;"><svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.29549 1.28406C8.6889 0.896434 9.32205 0.901123 9.70967 1.29453C10.0973 1.68793 10.0926 2.32108 9.6992 2.7087L4.3289 8.00004L18 8.00004C18.5523 8.00004 19 8.44776 19 9.00004C19 9.55233 18.5523 10 18 10L4.33539 10L9.6992 15.285C10.0926 15.6726 10.0973 16.3058 9.70967 16.6992C9.32205 17.0926 8.6889 17.0973 8.29549 16.7096L1.3713 9.88725C0.87439 9.39764 0.87439 8.59605 1.3713 8.10644L8.29549 1.28406Z" fill="currentColor"></path></svg>Back</button>
+										{/if}
+										<div class="grow-1"></div>
+										<div class="progress-bar progress-bar--large flex-1">
+											<div class="progress-bar__meter" style="width: {$percent}%;"></div>
+										</div>
+										<div class="grow-1"></div>
+										<button type="button" class="action-button action-button--primary"  data-src="nextform" style="font-family: Gilroy;">Next<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M10.7045 1.28406C10.3111 0.896434 9.67795 0.901123 9.29033 1.29453C8.90271 1.68793 8.9074 2.32108 9.3008 2.7087L14.6711 8.00004L1 8.00004C0.447714 8.00004 -3.73713e-07 8.44776 -3.49572e-07 9.00004C-3.25431e-07 9.55233 0.447715 10 1 10L14.6646 10L9.3008 15.285C8.9074 15.6726 8.90271 16.3058 9.29033 16.6992C9.67795 17.0926 10.3111 17.0973 10.7045 16.7096L17.6287 9.88725C18.1256 9.39764 18.1256 8.59605 17.6287 8.10644L10.7045 1.28406Z" fill="currentColor"></path>
+											</svg>
+										</button>
+									</div>
+								</footer>
+								<script>
+								$(document).ready(function() {
+								   var tipobj='';   								
+								   for(i=1;i<=23;i++){
+								     tipobj="#tip"+i;
+									 $(tipobj).hover(
+											function() {
+												// 当鼠标进入#trigger元素时执行
+												
+												var relativeElement = $(this);
+												var relativeOffset = relativeElement.offset();
+												var relativeHeight = relativeElement.outerHeight();
+												var relativeWidth = relativeElement.outerWidth();
+												 
+												// 获取绝对定位元素
+												var absoluteElement = $(this).next('.tipcommon');
+												var absoluteHeight = absoluteElement.outerHeight();
+												var absoluteWidth = absoluteElement.outerWidth();
+												
+												var leftPosition = relativeOffset.left + (relativeWidth / 2) - (absoluteWidth / 2);
+												 
+												// 设置绝对定位元素相对于相对元素的位置
+												absoluteElement.css({
+													position: 'absolute',
+													top: relativeOffset.top  + relativeHeight - absoluteHeight + 'px', // 加上'px'是为了将数值转换为字符串
+													left:leftPosition + 'px'
+												});
+												
+												
+												//$(this).parent().next('.tipcommon').css({'top':top,'left':left});
+												$(this).next('.tipcommon').show();
+												
+											},
+											function() {
+												// 当鼠标离开#trigger元素时执行
+												
+												$(this).next('.tipcommon').hide();
+											}
+									);
+								   }		
+                                 });
+								     $('.action-button').click(function () {
+                                            var url=$(this).attr('data-src');
+                                            if(url=='nextform'||url=="lastform"){
+                                                $('#'+url).submit();
+                                            }else{
+                                                if(url!='')location.href=url;else return false;
+                                            }
+                                    });
+                                     function ajax_post_field(fieldname,fieldvalue,link) {
+                                         var pagename="{$pagename}";
+                                      $.ajax({
+                                                url:"{:url('api/pagesave')}",
+                                                type:'post',
+                                                data:{'fieldname':fieldname,'fieldvalue':fieldvalue,'link':link,'pagename':pagename},
+                                                dataType:'json',
+                                                success:function (res) {
+                                                    if (res.code==1){
+                                                        console.log('sucess');
+                                                        var html='<div class="save-indicator font-14 bold row align-center justify-between gap-6 radius-4 pv-12 ph-12 save-indicator--" style="color: var(--color-darkgrey);"><svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>'+res.savetime+'</div>';
+                                                       $('#savetime').html(html);
+                                                    }else {
+                                                        console.log('sucess');
+                                                      //  msg(res.msg);
+                                                    }
+                                                },error:function () {
+                                                    msg('Try it again later')
+                                                }
+                                     });
+                                  }
+								</script>
