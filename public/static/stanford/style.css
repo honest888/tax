@@ -3261,3 +3261,7 @@ input.select::-webkit-calendar-picker-indicator {
     background: #0b57d0;
     color:#fff;
 }
+
+.submit:hover {
+    background: #174ea6;
+}
